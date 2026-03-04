@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ConsentProvider } from "@/components/consent/ConsentProvider";
+import { ConsentUI } from "@/components/consent/ConsentUI";
 
 export const metadata: Metadata = {
   title: "Free Macro Calculator | Daily Calories & Macros",
@@ -58,9 +60,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-[#0D0D0D] text-[#F5F5F5] antialiased flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ConsentProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <ConsentUI />
+        </ConsentProvider>
       </body>
     </html>
   );

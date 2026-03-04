@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ConsentReopenLink } from "@/components/consent/ConsentReopenLink";
 
 const dropdownMenu =
   "absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50";
@@ -20,13 +21,20 @@ export function Footer() {
               Free. No signup. No data saved.
             </p>
           </div>
-          <nav className="flex flex-wrap gap-4 items-center" aria-label="Footer navigation">
+          <nav className="flex flex-col gap-3 items-start" aria-label="Footer navigation">
             <Link
               href="/#calculator"
               className="text-sm text-white/90 hover:text-white transition-colors"
             >
               Macro Calculator
             </Link>
+            <Link
+              href="/do-not-sell"
+              className="text-sm text-white/90 hover:text-white transition-colors"
+            >
+              California Privacy Rights
+            </Link>
+            <ConsentReopenLink />
 
             <div className="relative group">
               <span
