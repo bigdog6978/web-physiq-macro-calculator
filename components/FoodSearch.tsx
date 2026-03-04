@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { X } from "lucide-react";
 import type { USDAFood } from "@/types/macro";
 
 export function FoodSearch() {
@@ -52,15 +53,38 @@ export function FoodSearch() {
   }, [query, search]);
 
   const displayFoods = showBranded ? [...foods, ...branded] : foods;
+  const hasResults = query.trim().length > 0;
+
+  const handleCloseResults = useCallback(() => {
+    setQuery("");
+    setFoods([]);
+    setBranded([]);
+    setBrandedCount(0);
+    setShowBranded(false);
+  }, []);
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold text-[#F5F5F5]">
-        USDA Food Database
-      </h2>
-      <p className="text-sm text-[#A3A3A3]">
-        Search any food to see macros per 100g. Generic foods are prioritized.
-      </p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-semibold text-[#F5F5F5]">
+            USDA Food Database
+          </h2>
+          <p className="text-sm text-[#A3A3A3]">
+            Search any food to see macros per 100g. Generic foods are prioritized.
+          </p>
+        </div>
+        {hasResults && (
+          <button
+            type="button"
+            onClick={handleCloseResults}
+            className="flex shrink-0 items-center justify-center rounded-lg p-2 text-[#737373] hover:bg-[#2A2A2A] hover:text-white transition-colors"
+            aria-label="Close search results"
+          >
+            <X size={20} />
+          </button>
+        )}
+      </div>
 
       <input
         type="search"
