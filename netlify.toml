@@ -1,0 +1,4 @@
+package.json
+next.config.js (or next.config.ts)
+app/
+public/
