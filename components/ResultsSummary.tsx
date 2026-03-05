@@ -5,6 +5,69 @@ interface ResultsSummaryProps {
   result: MacroResult;
 }
 
+/** Radial dial - matches Macro Tracker style: thick ring, dashed grey track, colored fill */
+function RadialDial({
+  value,
+  label,
+  unit,
+  color,
+  size = 120,
+  strokeWidth = 10,
+}: {
+  value: number;
+  label: string;
+  unit: string;
+  color: string;
+  size?: number;
+  strokeWidth?: number;
+}) {
+  const r = (size - strokeWidth) / 2 - 2;
+  const cx = size / 2;
+  const cy = size / 2;
+  const circumference = 2 * Math.PI * r;
+
+  return (
+    <div className="flex flex-col items-center">
+      <div className="relative" style={{ width: size, height: size }}>
+        <svg className="rotate-[-90deg]" width={size} height={size}>
+          {/* Dashed grey track */}
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke="#374151"
+            strokeWidth={strokeWidth}
+            strokeDasharray={`${strokeWidth * 1.5} ${strokeWidth}`}
+          />
+          {/* Colored fill - 100% for target */}
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke={color}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={0}
+          />
+        </svg>
+        <div className="absolute inset-0 grid place-items-center place-content-center">
+          <div className="flex flex-col items-center leading-tight translate-y-1">
+            <span className="text-2xl font-bold text-white tabular-nums">
+              {value}
+            </span>
+            <span className="text-xs text-[#9CA3AF] mt-px">{unit}</span>
+          </div>
+        </div>
+      </div>
+      <p className="mt-3 text-sm font-semibold text-white">{label}</p>
+      <p className="text-xs text-[#9CA3AF]">{value}{unit}</p>
+    </div>
+  );
+}
+
 export function ResultsSummary({ result }: ResultsSummaryProps) {
   const { targets, profile, explanation } = result;
   const weightLbs = kgToLbs(profile.weightKg);
@@ -14,44 +77,106 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
       : targets.protein / profile.weightKg;
   const unitLabel = profile.weightUnit === "lb" ? "per lb" : "per kg";
 
+  // Shared Physiq family palette (aligns with Macro Tracker)
+  const CALORIES_COLOR = "#FF5F1F";
+  const PROTEIN_COLOR = "#FF5F1F";
+  const CARBS_COLOR = "#3B82F6";
+  const FAT_COLOR = "#EAB308";
+
   return (
     <div className="space-y-4">
-      <div className="rounded-xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-[#737373] mb-2">
-          Daily Target
-        </h2>
-        <div className="flex items-baseline gap-2">
-          <span className="text-4xl font-bold text-[#EF4444]">
-            {targets.calories}
-          </span>
-          <span className="text-[#737373]">calories/day</span>
-        </div>
-        <p className="mt-2 text-sm text-[#A3A3A3]">{explanation}</p>
-      </div>
-
-      <div className="grid grid-cols-3 gap-3">
-        {[
-          { label: "Protein", value: targets.protein, unit: "g", color: "bg-[#FF5F1F]" },
-          { label: "Carbs", value: targets.carbs, unit: "g", color: "bg-[#3B82F6]" },
-          { label: "Fat", value: targets.fat, unit: "g", color: "bg-[#FBBF24]" },
-        ].map(({ label, value, unit, color }) => (
-          <div
-            key={label}
-            className="rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] p-4 text-center"
-          >
-            <div className={`h-1 w-8 mx-auto rounded ${color} mb-2`} />
-            <div className="text-2xl font-bold text-[#F5F5F5]">{value}</div>
-            <div className="text-sm text-[#737373]">
-              {label} ({unit})
+      {/* Top card - Calories (matches Macro Tracker layout) */}
+      <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
+        <h2 className="text-lg font-bold text-white mb-4">Daily Target Calories</h2>
+        <div className="flex flex-col sm:flex-row items-center gap-6">
+          {/* Left: Large radial dial */}
+          <div className="flex-shrink-0">
+            <div className="relative w-[140px] h-[140px]">
+              <svg className="rotate-[-90deg] w-full h-full">
+                <circle
+                  cx={70}
+                  cy={70}
+                  r={58}
+                  fill="none"
+                  stroke="#374151"
+                  strokeWidth={10}
+                  strokeDasharray="15 10"
+                />
+                <circle
+                  cx={70}
+                  cy={70}
+                  r={58}
+                  fill="none"
+                  stroke={CALORIES_COLOR}
+                  strokeWidth={10}
+                  strokeLinecap="round"
+                  strokeDasharray={2 * Math.PI * 58}
+                  strokeDashoffset={0}
+                />
+              </svg>
+              <div className="absolute inset-0 grid place-items-center place-content-center">
+                <div className="flex flex-col items-center leading-tight translate-y-1">
+                  <span className="text-3xl font-bold text-white tabular-nums">
+                    {targets.calories}
+                  </span>
+                  <span className="text-sm text-[#9CA3AF] mt-px">cal/day</span>
+                </div>
+              </div>
             </div>
           </div>
-        ))}
+
+          {/* Right: Target + explanation */}
+          <div className="flex-1 w-full sm:w-auto text-center sm:text-left">
+            <div className="space-y-2">
+              <div className="flex justify-between sm:block sm:space-y-1">
+                <span className="text-sm text-[#9CA3AF]">Target</span>
+                <span className="text-2xl font-bold text-white tabular-nums sm:block">
+                  {targets.calories}
+                </span>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-[#9CA3AF] leading-relaxed">
+              {explanation}
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3">
-        <p className="text-sm text-[#A3A3A3]">
-          Protein: <strong className="text-[#F5F5F5]">{targets.protein}g</strong> (
-          {proteinPerUnit.toFixed(1)}g {unitLabel} body weight)
+      {/* Bottom card - Macros (3 radial dials) */}
+      <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
+        <h2 className="text-lg font-bold text-white mb-4">Daily Target Macros</h2>
+        <div className="grid grid-cols-3 gap-8">
+          <RadialDial
+            value={targets.protein}
+            label="Protein"
+            unit="gm"
+            color={PROTEIN_COLOR}
+            size={120}
+            strokeWidth={10}
+          />
+          <RadialDial
+            value={targets.carbs}
+            label="Carbs"
+            unit="gm"
+            color={CARBS_COLOR}
+            size={120}
+            strokeWidth={10}
+          />
+          <RadialDial
+            value={targets.fat}
+            label="Fat"
+            unit="gm"
+            color={FAT_COLOR}
+            size={120}
+            strokeWidth={10}
+          />
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3">
+        <p className="text-sm text-[#9CA3AF]">
+          Protein: <strong className="text-white">{targets.protein}gm</strong>{" "}
+          ({proteinPerUnit.toFixed(1)}gm {unitLabel} body weight)
         </p>
       </div>
     </div>

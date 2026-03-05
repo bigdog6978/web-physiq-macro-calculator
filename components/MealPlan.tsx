@@ -9,7 +9,7 @@ export function MealPlan({ result }: MealPlanProps) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold text-[#F5F5F5]">Sample Meal Plan</h2>
+      <h2 className="text-lg font-bold text-white">Sample Meal Plan</h2>
 
       {conflictWarning && (
         <div
@@ -26,7 +26,7 @@ export function MealPlan({ result }: MealPlanProps) {
             key={meal.label}
             className="rounded-xl border border-[#2A2A2A] bg-[#1A1A1A] p-4"
           >
-            <h3 className="font-medium text-[#F5F5F5] mb-3">{meal.label}</h3>
+            <h3 className="text-lg font-bold text-white mb-3">{meal.label}</h3>
             <ul className="space-y-2">
               {meal.items.map((item, idx) => (
                 <li key={idx} className="flex justify-between text-sm">
