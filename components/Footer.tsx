@@ -41,6 +41,9 @@ export function Footer() {
             <Link href="/macros" className={linkClass}>
               Macro Guides
             </Link>
+            <Link href="/guides" className={linkClass}>
+              Nutrition Guides
+            </Link>
             <Link href="/privacy-policy" className={linkClass}>
               Privacy Policy
             </Link>

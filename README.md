@@ -126,3 +126,88 @@ npm start
 
 - Analytics and ad scripts remain consent-gated (via existing consent framework).
 - If analytics/ad IDs are unset, tracking infra remains inert and ad slots stay hidden.
+
+## Phase 4: Scale Content Safely
+
+### What page types are generated now
+
+- **Total generated SEO pages**: ~280 (`/macros/[slug]` SSG)
+- **Families**:
+  - Pillar pages (specialty calculators)
+  - Cluster pages (topic hubs)
+  - Weight/goal/strategy macro pages (curated intent combinations)
+  - Protein intake pages (`protein-intake-for-...`)
+  - Calorie meal-plan pages (`meal-plan-for-...`)
+
+### Where generation rules live
+
+- `lib/seo/pages.ts`
+  - Curated inclusion rules:
+    - `MACRO_INTENTS` (goal/strategy intent matrix)
+    - `INTENT_WEIGHTS`, `INTENT_GENDERS`
+    - `MEAL_PLAN_CALORIES`, `MEAL_PLAN_STRATEGIES`
+  - Slug helpers:
+    - `macroSlug(...)`
+    - `proteinSlug(...)`
+    - `mealPlanSlug(...)`
+  - Safety:
+    - Duplicate slug assertion at module load
+    - `SEO_COUNTS` exported for visibility
+
+### Content differentiation system
+
+- `lib/seo/content.ts` now generates per-page structured sections:
+  - `intro`
+  - `whoThisIsFor`
+  - `macroRationale`
+  - `strategyExplanation`
+  - `adjustmentNotes`
+  - page-family-specific FAQ builders
+  - related links + supporting guide links
+- `app/macros/[slug]/page.tsx` renders those sections in a stable template.
+
+### Quality guardrails
+
+- `lib/seo/quality.ts`
+  - Detects duplicate titles/descriptions (hard error)
+  - Flags near-duplicate intros/FAQ signatures (warning)
+  - Flags high-overlap meal fingerprints (warning)
+  - Scores page depth/uniqueness and warns on low score
+- Enforced during static generation in `app/macros/[slug]/page.tsx` via `assertSEOQuality()`.
+  - Build fails on hard collisions before deployment.
+
+### Internal linking and authority support
+
+- Related links are generated per page family in `lib/seo/content.ts`.
+- New authority guides under `/guides`:
+  - `/guides/fat-loss-macros`
+  - `/guides/protein-per-pound`
+  - `/guides/keto-macros-explained`
+  - `/guides/carnivore-macros-guide`
+  - `/guides/best-macro-split-for-muscle-gain`
+- Macro pages surface “Supporting Guides” links for topical reinforcement.
+
+### Calculator + analytics context
+
+- `components/MacroCalculator.tsx` accepts `analyticsContext`.
+- SEO pages pass:
+  - `page_type: "seo"`
+  - `landing_slug`
+  - `seo_page_type` (`macro`, `protein_intake`, `meal_plan`)
+- This keeps calculator usage measurable by landing context without duplicating tracking code.
+
+### How to scale from ~500 to 5,000 safely
+
+1. Expand one family at a time in `lib/seo/pages.ts` (weights, calorie bands, intent matrix).
+2. Run build and review `seo-quality` warnings before deploying.
+3. Monitor Search Console impressions/indexing + engagement events.
+4. Only scale further when:
+   - low collision warnings remain stable
+   - indexation quality is healthy
+   - engagement per landing page does not materially degrade
+
+### Intentionally excluded (for now)
+
+- Exhaustive permutations of all goals × strategies × demographics.
+- Very low-intent combinations (example: high-calorie keto/carnivore outliers).
+- Any bulk generation that cannot pass uniqueness and quality checks.

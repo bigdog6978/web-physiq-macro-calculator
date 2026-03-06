@@ -45,7 +45,7 @@ export default function Home() {
         ref={calculatorRef}
         className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6 mb-8"
       >
-        <MacroCalculator onResult={handleResult} />
+        <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
       </section>
 
       {/* Results + post-results CTA appear only after a calculation */}

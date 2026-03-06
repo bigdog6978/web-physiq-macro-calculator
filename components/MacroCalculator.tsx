@@ -34,9 +34,18 @@ interface InitialValues {
 interface MacroCalculatorProps {
   onResult: (result: MacroResult) => void;
   initialValues?: InitialValues;
+  analyticsContext?: {
+    page_type?: string;
+    landing_slug?: string;
+    seo_page_type?: string;
+  };
 }
 
-export function MacroCalculator({ onResult, initialValues }: MacroCalculatorProps) {
+export function MacroCalculator({
+  onResult,
+  initialValues,
+  analyticsContext,
+}: MacroCalculatorProps) {
   // Height prefill: convert heightCm to ft/in for the ft_in unit default
   const initFt = initialValues?.heightCm
     ? Math.floor(initialValues.heightCm / 2.54 / 12)
@@ -162,6 +171,15 @@ export function MacroCalculator({ onResult, initialValues }: MacroCalculatorProp
         gender,
         weight_unit: weightUnit,
         activity_level: activityLevel,
+        ...(analyticsContext?.page_type
+          ? { page_type: analyticsContext.page_type }
+          : {}),
+        ...(analyticsContext?.landing_slug
+          ? { landing_slug: analyticsContext.landing_slug }
+          : {}),
+        ...(analyticsContext?.seo_page_type
+          ? { seo_page_type: analyticsContext.seo_page_type }
+          : {}),
       });
 
       onResult({

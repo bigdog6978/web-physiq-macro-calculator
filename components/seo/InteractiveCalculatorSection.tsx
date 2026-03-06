@@ -9,17 +9,27 @@ import type { SEOPageConfig } from "@/lib/seo/types";
 
 interface InteractiveCalculatorSectionProps {
   initialValues: SEOPageConfig;
+  analyticsContext?: {
+    page_type: string;
+    landing_slug?: string;
+    seo_page_type?: string;
+  };
 }
 
 export function InteractiveCalculatorSection({
   initialValues,
+  analyticsContext,
 }: InteractiveCalculatorSectionProps) {
   const [result, setResult] = useState<MacroResult | null>(null);
 
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
-        <MacroCalculator onResult={setResult} initialValues={initialValues} />
+        <MacroCalculator
+          onResult={setResult}
+          initialValues={initialValues}
+          analyticsContext={analyticsContext}
+        />
       </div>
       {result && (
         <div className="space-y-4">

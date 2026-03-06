@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ALL_SEO_PAGES, getPageConfig } from "@/lib/seo/pages";
 import { buildPageContent, configToProfile } from "@/lib/seo/content";
 import { buildFAQSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
+import { assertSEOQuality } from "@/lib/seo/quality";
 import { generateMealPlan } from "@/lib/mealPlanEngine";
 import { ResultsSummary } from "@/components/ResultsSummary";
 import { MealPlan } from "@/components/MealPlan";
@@ -19,6 +20,12 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL ?? "https://physiqmacros.com";
 
 export async function generateStaticParams() {
+  const report = assertSEOQuality();
+  if (report.warnings.length > 0 && process.env.NODE_ENV !== "production") {
+    console.warn(
+      `[seo-quality] ${report.warnings.length} warning(s). Example: ${report.warnings[0]?.message}`
+    );
+  }
   return ALL_SEO_PAGES.map((p) => ({ slug: p.slug }));
 }
 
@@ -137,6 +144,17 @@ export default async function MacroPage({
             </div>
           </header>
 
+          <section className="mb-8 rounded-2xl border border-[#2A2A2A] bg-[#171717] p-5">
+            <h2 className="text-lg font-bold text-white mb-2">Who This Is For</h2>
+            <p className="text-sm text-[#A3A3A3]">{content.whoThisIsFor}</p>
+          </section>
+
+          <section className="mb-8 rounded-2xl border border-[#2A2A2A] bg-[#171717] p-5">
+            <h2 className="text-lg font-bold text-white mb-2">Macro Rationale</h2>
+            <p className="text-sm text-[#A3A3A3] leading-relaxed">{content.macroRationale}</p>
+            <p className="mt-3 text-sm text-[#A3A3A3] leading-relaxed">{content.strategyExplanation}</p>
+          </section>
+
           {/* Pre-computed, server-rendered macro targets */}
           <section className="mb-10" aria-label="Macro targets">
             <ResultsSummary result={macroResult} />
@@ -156,11 +174,29 @@ export default async function MacroPage({
             <p className="text-sm text-[#A3A3A3] mb-4">
               Pre-filled for this profile. Change any value and recalculate.
             </p>
-            <InteractiveCalculatorSection initialValues={config} />
+            <InteractiveCalculatorSection
+              initialValues={config}
+              analyticsContext={{
+                page_type: "seo",
+                landing_slug: slug,
+                seo_page_type: content.pageType,
+              }}
+            />
           </section>
 
           {/* CTA placed after value delivery, not before */}
           <AppConversionCTA placement="post_results" pageType="seo" className="mb-10" />
+
+          <section className="mb-10 rounded-2xl border border-[#2A2A2A] bg-[#171717] p-5">
+            <h2 className="text-lg font-bold text-white mb-3">Adjustment Notes</h2>
+            <ul className="space-y-2">
+              {content.adjustmentNotes.map((note) => (
+                <li key={note} className="text-sm text-[#A3A3A3] leading-relaxed">
+                  • {note}
+                </li>
+              ))}
+            </ul>
+          </section>
 
           {/* FAQ — server-rendered with per-page unique content, no JS required */}
           <section className="mb-10">
@@ -196,6 +232,24 @@ export default async function MacroPage({
           {content.relatedLinks.length > 0 && (
             <section className="mb-10">
               <RelatedPages links={content.relatedLinks} />
+            </section>
+          )}
+
+          {content.supportingGuides.length > 0 && (
+            <section className="mb-10 rounded-2xl border border-[#2A2A2A] bg-[#171717] p-6">
+              <h2 className="text-lg font-bold text-white mb-3">Supporting Guides</h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {content.supportingGuides.map((guide) => (
+                  <li key={guide.href}>
+                    <Link
+                      href={guide.href}
+                      className="text-sm text-[#A3A3A3] hover:text-[#FF5F1F] transition-colors"
+                    >
+                      {guide.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
 
