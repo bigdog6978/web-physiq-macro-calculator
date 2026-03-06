@@ -21,24 +21,28 @@ export function Footer() {
               Free. No signup. No data saved.
             </p>
           </div>
-          <nav className="flex flex-col gap-3 items-start" aria-label="Footer navigation">
+          <nav
+            className="grid grid-cols-2 grid-rows-3 gap-x-8 gap-y-3 items-center"
+            aria-label="Footer navigation"
+          >
             <Link
               href="/#calculator"
               className="text-sm text-white/90 hover:text-white transition-colors"
             >
               Macro Calculator
             </Link>
+            <div className="flex items-center">
+              <ConsentReopenLink />
+            </div>
             <Link
-              href="/do-not-sell"
+              href="#"
               className="text-sm text-white/90 hover:text-white transition-colors"
             >
-              California Privacy Rights
+              Macro Tracker
             </Link>
-            <ConsentReopenLink />
-
-            <div className="relative group">
+            <div className="relative group flex items-center min-h-[1.5rem]">
               <span
-                className="text-sm text-white/90 hover:text-white transition-colors cursor-default py-2 inline-block"
+                className="text-sm text-white/90 hover:text-white transition-colors cursor-default inline-block"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
@@ -63,10 +67,15 @@ export function Footer() {
                 </div>
               </div>
             </div>
-
-            <div className="relative group">
+            <Link
+              href="/do-not-sell"
+              className="text-sm text-white/90 hover:text-white transition-colors"
+            >
+              California Privacy Rights
+            </Link>
+            <div className="relative group flex items-center min-h-[1.5rem]">
               <span
-                className="text-sm text-white/90 hover:text-white transition-colors cursor-default py-2 inline-block"
+                className="text-sm text-white/90 hover:text-white transition-colors cursor-default inline-block"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
