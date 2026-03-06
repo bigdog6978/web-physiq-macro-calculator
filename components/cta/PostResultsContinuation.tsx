@@ -6,5 +6,5 @@ import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
  * The AppConversionCTA post_results variant owns all the copy.
  */
 export function PostResultsContinuation() {
-  return <AppConversionCTA placement="post_results" pageType="home" />;
+  return <AppConversionCTA placement="post_results" pageType="home" showStoreButtons />;
 }

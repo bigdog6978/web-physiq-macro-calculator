@@ -40,6 +40,8 @@ export default function Home() {
         </p>
       </header>
 
+      <AppConversionCTA placement="hero" pageType="home" showStoreButtons className="mb-8" />
+
       <section
         id="calculator"
         ref={calculatorRef}

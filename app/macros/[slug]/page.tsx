@@ -253,6 +253,13 @@ export default async function MacroPage({
             </section>
           )}
 
+          <AppConversionCTA
+            placement="bottom_page"
+            pageType="seo"
+            showStoreButtons
+            className="mb-10"
+          />
+
           <AdSlot id="bottom-content" variant="bottom_content" className="mb-4" />
         </div>
 

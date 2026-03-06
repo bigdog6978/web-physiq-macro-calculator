@@ -1,3 +1,5 @@
+import { STORE_LINKS } from "@/lib/config/storeLinks";
+
 export type CTAPlacement =
   | "hero"
   | "inline_article"
@@ -19,12 +21,8 @@ export interface CTAContent {
   secondaryHref?: string;
 }
 
-const APP_STORE_URL =
-  process.env.NEXT_PUBLIC_APP_STORE_URL ??
-  "https://apps.apple.com/app/physiq-macro-tracker/id6743434787";
-const GOOGLE_PLAY_URL =
-  process.env.NEXT_PUBLIC_GOOGLE_PLAY_URL ??
-  "https://play.google.com/store/apps/details?id=com.physiqmacros";
+const APP_STORE_URL = STORE_LINKS.ios;
+const GOOGLE_PLAY_URL = STORE_LINKS.android;
 
 export function getCTAContent(
   placement: CTAPlacement,
@@ -41,7 +39,7 @@ export function getCTAContent(
       primaryLabel: "Track Macros in Physiq",
       primaryHref: APP_STORE_URL,
       secondaryLabel: "Download for Android",
-      secondaryHref: GOOGLE_PLAY_URL,
+      secondaryHref: GOOGLE_PLAY_URL ?? undefined,
     };
   }
 
@@ -56,7 +54,7 @@ export function getCTAContent(
       primaryLabel: "Get the App",
       primaryHref: APP_STORE_URL,
       secondaryLabel: "Google Play",
-      secondaryHref: GOOGLE_PLAY_URL,
+      secondaryHref: GOOGLE_PLAY_URL ?? undefined,
     };
   }
 
@@ -74,7 +72,7 @@ export function getCTAContent(
       primaryLabel: "Download Physiq Free",
       primaryHref: APP_STORE_URL,
       secondaryLabel: "Google Play",
-      secondaryHref: GOOGLE_PLAY_URL,
+      secondaryHref: GOOGLE_PLAY_URL ?? undefined,
     };
   }
 
@@ -100,6 +98,6 @@ export function getCTAContent(
     primaryLabel: "Download on App Store",
     primaryHref: APP_STORE_URL,
     secondaryLabel: "Google Play",
-    secondaryHref: GOOGLE_PLAY_URL,
+    secondaryHref: GOOGLE_PLAY_URL ?? undefined,
   };
 }

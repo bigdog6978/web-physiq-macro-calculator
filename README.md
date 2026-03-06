@@ -53,6 +53,7 @@ npm start
 - **Monetization-ready slots**: Optional top/mid/bottom/sidebar ad placeholders
 - **Newsletter architecture**: Reusable signup component + API endpoint abstraction for provider integration
 - **Analytics hooks**: Event tracking for calculator submit, CTA clicks, sticky CTA, newsletter submit, ad slot render
+  - Includes store-specific events: `app_store_click` and `google_play_click`
 
 ## Tech Stack
 
@@ -76,6 +77,26 @@ npm start
 - **Where copy is edited**: `lib/cta/config.ts` (`getCTAContent`)
 - **Post-result continuation block**: `components/cta/PostResultsContinuation.tsx`
 - **Sticky mobile CTA**: `components/cta/StickyMobileAppCTA.tsx`
+
+### Store badges + mobile download flow
+
+- **Badge assets**: `public/badges/app-store.svg`, `public/badges/google-play.svg`
+- **Store URL config**: `lib/config/storeLinks.ts`
+  - Current config:
+    - `ios`: `https://apps.apple.com/app/id6759539261`
+    - `android`: `null` (not live yet)
+- **Reusable badge component**: `components/cta/StoreButtons.tsx`
+  - Props:
+    - `size`: `small | medium | large`
+    - `layout`: `horizontal | stacked`
+    - `context`: `hero | post_results | seo_footer`
+- **Android coming-soon modal**: `components/ui/ComingSoonModal.tsx`
+  - Triggered automatically when `STORE_LINKS.android === null`
+  - Closes via ESC, backdrop click, or “Got it”
+- **How to enable Android later**:
+  - Update `lib/config/storeLinks.ts`:
+    - `STORE_LINKS.android = "https://play.google.com/store/apps/details?id=com.physiq"`
+  - No component changes needed.
 
 ### Ad infrastructure
 
