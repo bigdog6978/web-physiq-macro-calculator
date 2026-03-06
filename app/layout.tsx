@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConsentProvider } from "@/components/consent/ConsentProvider";
 import { ConsentUI } from "@/components/consent/ConsentUI";
+import { analyticsConfig } from "@/lib/analytics/config";
 
 export const metadata: Metadata = {
   title: "Free Macro Calculator | Daily Calories & Macros",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   keywords:
     "macro calculator, calorie calculator, TDEE calculator, keto macros, carnivore macros, macro calculator free",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || "https://example.com"
+    process.env.NEXT_PUBLIC_BASE_URL || "https://physiqmacros.com"
   ),
   openGraph: {
     title: "Free Macro Calculator | Daily Calories & Macros",
@@ -30,6 +31,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: analyticsConfig.searchConsoleVerification
+    ? { google: analyticsConfig.searchConsoleVerification }
+    : undefined,
 };
 
 const webAppJsonLd = {

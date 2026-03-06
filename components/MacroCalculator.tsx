@@ -12,6 +12,7 @@ import { TrendingDown, TrendingUp, Minus, RefreshCw } from "lucide-react";
 import { GOALS, STRATEGIES, MODIFIERS, ACTIVITY_LEVELS } from "@/constants/macroData";
 import { calculateMacros, lbsToKg } from "@/lib/macroEngine";
 import { generateMealPlan } from "@/lib/mealPlanEngine";
+import { trackEvent } from "@/lib/analytics/client";
 
 const schema = z.object({
   weightKg: z.number().min(23, "Weight too low").max(272, "Weight too high"),
@@ -20,23 +21,58 @@ const schema = z.object({
   bodyFatPercent: z.number().min(3).max(60).optional().nullable(),
 });
 
-interface MacroCalculatorProps {
-  onResult: (result: MacroResult) => void;
+interface InitialValues {
+  weightLb?: number;
+  gender?: "male" | "female";
+  goal?: UserProfile["goal"];
+  strategy?: UserProfile["strategy"];
+  activityLevel?: UserProfile["activityLevel"];
+  heightCm?: number;
+  age?: number;
 }
 
-export function MacroCalculator({ onResult }: MacroCalculatorProps) {
+interface MacroCalculatorProps {
+  onResult: (result: MacroResult) => void;
+  initialValues?: InitialValues;
+}
+
+export function MacroCalculator({ onResult, initialValues }: MacroCalculatorProps) {
+  // Height prefill: convert heightCm to ft/in for the ft_in unit default
+  const initFt = initialValues?.heightCm
+    ? Math.floor(initialValues.heightCm / 2.54 / 12)
+    : undefined;
+  const initIn = initialValues?.heightCm
+    ? Math.round((initialValues.heightCm / 2.54) % 12)
+    : undefined;
+
   const [weightUnit, setWeightUnit] = useState<WeightUnit>("lb");
   const [heightUnit, setHeightUnit] = useState<HeightUnit>("ft_in");
-  const [weight, setWeight] = useState("");
-  const [heightFeet, setHeightFeet] = useState("");
-  const [heightInches, setHeightInches] = useState("");
+  const [weight, setWeight] = useState(
+    initialValues?.weightLb ? String(initialValues.weightLb) : ""
+  );
+  const [heightFeet, setHeightFeet] = useState(
+    initFt !== undefined ? String(initFt) : ""
+  );
+  const [heightInches, setHeightInches] = useState(
+    initIn !== undefined ? String(initIn) : ""
+  );
   const [heightCm, setHeightCm] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState<"male" | "female">("male");
+  const [age, setAge] = useState(
+    initialValues?.age ? String(initialValues.age) : ""
+  );
+  const [gender, setGender] = useState<"male" | "female">(
+    initialValues?.gender ?? "male"
+  );
   const [bodyFatPercent, setBodyFatPercent] = useState("");
-  const [activityLevel, setActivityLevel] = useState<UserProfile["activityLevel"]>("moderate");
-  const [goal, setGoal] = useState<UserProfile["goal"]>("cut");
-  const [strategy, setStrategy] = useState<UserProfile["strategy"]>("high_protein");
+  const [activityLevel, setActivityLevel] = useState<UserProfile["activityLevel"]>(
+    initialValues?.activityLevel ?? "moderate"
+  );
+  const [goal, setGoal] = useState<UserProfile["goal"]>(
+    initialValues?.goal ?? "cut"
+  );
+  const [strategy, setStrategy] = useState<UserProfile["strategy"]>(
+    initialValues?.strategy ?? "high_protein"
+  );
   const [modifiers, setModifiers] = useState<UserProfile["modifiers"]>([]);
   const [otherModifier, setOtherModifier] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -119,6 +155,14 @@ export function MacroCalculator({ onResult }: MacroCalculatorProps) {
         modifiers,
         strategy
       );
+
+      trackEvent("calculator_submitted", {
+        goal,
+        strategy,
+        gender,
+        weight_unit: weightUnit,
+        activity_level: activityLevel,
+      });
 
       onResult({
         tdee,

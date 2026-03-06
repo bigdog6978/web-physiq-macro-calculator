@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 const FAQ_ITEMS = [
   {
     q: "What are macros?",
@@ -29,22 +25,21 @@ const FAQ_ITEMS = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
+/** Server-rendered accordion. Uses native <details> — zero client JS required. */
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQ_ITEMS.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.a,
-      },
-    })),
-  };
-
   return (
     <>
       <script
@@ -57,38 +52,23 @@ export function FAQ() {
         </h2>
         <div className="space-y-2">
           {FAQ_ITEMS.map((item, idx) => (
-            <div
+            <details
               key={idx}
-              className="rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] overflow-hidden"
+              className="rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] group"
             >
-              <button
-                type="button"
-                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full px-4 py-3 text-left font-medium text-[#F5F5F5] flex justify-between items-center hover:bg-[#242424] transition-colors"
-                aria-expanded={openIndex === idx}
-                aria-controls={`faq-answer-${idx}`}
-                id={`faq-question-${idx}`}
-              >
+              <summary className="px-4 py-3 font-medium text-[#F5F5F5] cursor-pointer list-none flex justify-between items-center hover:bg-[#242424] transition-colors select-none">
                 {item.q}
                 <span
-                  className={`text-[#737373] transition-transform ${
-                    openIndex === idx ? "rotate-180" : ""
-                  }`}
+                  className="text-[#737373] ml-4 shrink-0 transition-transform group-open:rotate-180"
+                  aria-hidden="true"
                 >
                   ▼
                 </span>
-              </button>
-              <div
-                id={`faq-answer-${idx}`}
-                role="region"
-                aria-labelledby={`faq-question-${idx}`}
-                className={`px-4 pb-3 text-sm text-[#A3A3A3] ${
-                  openIndex === idx ? "block" : "hidden"
-                }`}
-              >
+              </summary>
+              <p className="px-4 pb-4 pt-1 text-sm text-[#A3A3A3] leading-relaxed">
                 {item.a}
-              </div>
-            </div>
+              </p>
+            </details>
           ))}
         </div>
       </div>

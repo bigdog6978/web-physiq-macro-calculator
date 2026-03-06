@@ -1,0 +1,32 @@
+"use client";
+
+import { useState } from "react";
+import { MacroCalculator } from "@/components/MacroCalculator";
+import { ResultsSummary } from "@/components/ResultsSummary";
+import { MealPlan } from "@/components/MealPlan";
+import type { MacroResult } from "@/types/macro";
+import type { SEOPageConfig } from "@/lib/seo/types";
+
+interface InteractiveCalculatorSectionProps {
+  initialValues: SEOPageConfig;
+}
+
+export function InteractiveCalculatorSection({
+  initialValues,
+}: InteractiveCalculatorSectionProps) {
+  const [result, setResult] = useState<MacroResult | null>(null);
+
+  return (
+    <div className="space-y-6">
+      <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
+        <MacroCalculator onResult={setResult} initialValues={initialValues} />
+      </div>
+      {result && (
+        <div className="space-y-4">
+          <ResultsSummary result={result} />
+          <MealPlan result={result} />
+        </div>
+      )}
+    </div>
+  );
+}

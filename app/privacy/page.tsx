@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrackEventOnMount } from "@/components/analytics/TrackEventOnMount";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Free Macro Calculator",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
+      <TrackEventOnMount event="legal_page_viewed" payload={{ page: "privacy" }} />
       <h1 className="text-2xl font-bold text-[#F5F5F5] mb-6">Privacy Policy</h1>
       <div className="max-w-none text-[#A3A3A3] space-y-4">
         <p>

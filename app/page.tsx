@@ -6,6 +6,12 @@ import { ResultsSummary } from "@/components/ResultsSummary";
 import { MealPlan } from "@/components/MealPlan";
 import { FoodSearch } from "@/components/FoodSearch";
 import { FAQ } from "@/components/FAQ";
+import { AdSlot } from "@/components/AdSlot";
+import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
+import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
+import { PostResultsContinuation } from "@/components/cta/PostResultsContinuation";
+import { StickyMobileAppCTA } from "@/components/cta/StickyMobileAppCTA";
+// AppCTA unused directly here — AppConversionCTA used instead
 import type { MacroResult } from "@/types/macro";
 
 export default function Home() {
@@ -24,12 +30,13 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
+      {/* Header: deliver the value proposition, let users get straight to the calculator */}
       <header className="mb-8 text-left">
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           Calculate Your Daily Macros
         </h1>
         <p className="mt-2 text-lg text-[#A3A3A3]">
-          Get personalized nutrition targets based on your body and goals
+          Get personalized calorie and macro targets based on your body, goal, and diet strategy.
         </p>
       </header>
 
@@ -41,20 +48,12 @@ export default function Home() {
         <MacroCalculator onResult={handleResult} />
       </section>
 
+      {/* Results + post-results CTA appear only after a calculation */}
       {result && (
         <section ref={resultsRef} className="space-y-10 mb-12">
           <ResultsSummary result={result} />
           <MealPlan result={result} />
-
-          {typeof window !== "undefined" && window.innerWidth < 640 && (
-            <button
-              type="button"
-              onClick={() => calculatorRef.current?.scrollIntoView({ behavior: "smooth" })}
-              className="sticky bottom-4 w-full py-3 rounded-xl bg-[#FF5F1F] text-white font-medium hover:bg-[#ff7a3d] transition-colors"
-            >
-              Recalculate
-            </button>
-          )}
+          <PostResultsContinuation />
         </section>
       )}
 
@@ -146,9 +145,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section className="mb-10">
         <FAQ />
       </section>
+
+      {/* Primary conversion — app download — before secondary (newsletter) */}
+      <AppConversionCTA placement="bottom_page" pageType="home" className="mb-8" />
+      <NewsletterSignup source="home_bottom" className="mb-10" />
+      <AdSlot id="home-bottom-content" variant="bottom_content" className="mb-6" />
+      <StickyMobileAppCTA pageType="home" />
     </div>
   );
 }
