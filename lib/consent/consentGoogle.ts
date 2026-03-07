@@ -1,6 +1,6 @@
 /**
  * Apply consent to Google (Consent Mode v2).
- * Scripts are loaded ONLY when consent is granted.
+ * Google tag (gtag.js) loads on every page; consent default is denied until user accepts.
  * Default state = denied for ad_storage, analytics_storage, ad_user_data, ad_personalization.
  */
 
@@ -41,6 +41,11 @@ function setConsentDefault(): void {
 
 function loadGAScript(): void {
   if (typeof document === "undefined" || !GA_ID || gaLoaded) return;
+  // Skip if tag already in page (e.g. from app/layout.tsx)
+  if (document.querySelector('script[src*="googletagmanager.com/gtag"]')) {
+    gaLoaded = true;
+    return;
+  }
   ensureGtag();
   setConsentDefault();
   const script = document.createElement("script");

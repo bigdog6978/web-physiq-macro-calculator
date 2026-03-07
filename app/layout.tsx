@@ -49,6 +49,8 @@ const webAppJsonLd = {
   },
 };
 
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,6 +64,31 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
         />
+        {GA_MEASUREMENT_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('consent', 'default', {
+                    ad_storage: 'denied',
+                    analytics_storage: 'denied',
+                    ad_user_data: 'denied',
+                    ad_personalization: 'denied',
+                    wait_for_update: 500
+                  });
+                  gtag('js', new Date());
+                  gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
+                `,
+              }}
+            />
+          </>
+        )}
       </head>
       <body className="min-h-screen min-w-0 overflow-x-hidden bg-[#000000] text-[#F5F5F5] antialiased flex flex-col">
         <ConsentProvider>
