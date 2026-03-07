@@ -95,4 +95,6 @@ export function initConsentDefault(): void {
   if (typeof window === "undefined") return;
   ensureGtag();
   setConsentDefault();
+  // Load GA tag on every page (like gtag snippet); consent stays denied until user accepts
+  if (GA_ID) loadGAScript();
 }
