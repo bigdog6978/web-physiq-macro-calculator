@@ -11,9 +11,7 @@ import { MealPlan } from "@/components/MealPlan";
 import { AdSlot } from "@/components/AdSlot";
 import { RelatedPages } from "@/components/RelatedPages";
 import { InteractiveCalculatorSection } from "@/components/seo/InteractiveCalculatorSection";
-import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
-import { StickyMobileAppCTA } from "@/components/cta/StickyMobileAppCTA";
 import type { MacroResult } from "@/types/macro";
 
 const BASE_URL =
@@ -226,8 +224,6 @@ export default async function MacroPage({
             </div>
           </section>
 
-          <NewsletterSignup source={`seo_${slug}_bottom`} className="mb-10" />
-
           {/* Internal linking */}
           {content.relatedLinks.length > 0 && (
             <section className="mb-10">
@@ -269,7 +265,6 @@ export default async function MacroPage({
           <AppConversionCTA placement="inline_article" pageType="seo" />
         </aside>
       </div>
-      <StickyMobileAppCTA pageType="seo" />
     </div>
   );
 }

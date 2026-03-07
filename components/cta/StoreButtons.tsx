@@ -36,7 +36,8 @@ function layoutClasses(
   if (layout === "stacked") {
     return "flex flex-col items-start gap-3";
   }
-  return "flex flex-row flex-wrap items-center gap-3 sm:gap-4";
+  // Horizontal by default, but stack on very narrow screens to prevent clipping.
+  return "flex flex-col min-[400px]:flex-row flex-wrap items-start min-[400px]:items-center gap-3 sm:gap-4";
 }
 
 export function StoreButtons({

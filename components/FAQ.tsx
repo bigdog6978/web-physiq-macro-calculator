@@ -54,9 +54,9 @@ export function FAQ() {
           {FAQ_ITEMS.map((item, idx) => (
             <details
               key={idx}
-              className="rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] group"
+              className="group rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] transition-colors hover:border-[#FF5F1F]/60 open:border-[#FF5F1F]/60 open:bg-[rgba(255,95,31,0.12)]"
             >
-              <summary className="px-4 py-3 font-medium text-[#F5F5F5] cursor-pointer list-none flex justify-between items-center hover:bg-[#242424] transition-colors select-none">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 font-medium text-[#F5F5F5] transition-colors select-none hover:bg-[rgba(255,95,31,0.12)]">
                 {item.q}
                 <span
                   className="text-[#737373] ml-4 shrink-0 transition-transform group-open:rotate-180"

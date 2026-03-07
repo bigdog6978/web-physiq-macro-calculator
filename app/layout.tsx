@@ -63,7 +63,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#0D0D0D] text-[#F5F5F5] antialiased flex flex-col">
+      <body className="min-h-screen min-w-0 overflow-x-hidden bg-[#000000] text-[#F5F5F5] antialiased flex flex-col">
         <ConsentProvider>
           <Header />
           <main className="flex-1">{children}</main>

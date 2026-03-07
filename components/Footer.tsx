@@ -14,7 +14,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-16 border-t border-[#FF5F1F]/40 bg-[#0D0D0D]">
+    <footer className="mt-16 border-t border-[#FF5F1F]/40 bg-[#FF5F1F]/8">
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
 
@@ -44,11 +44,17 @@ export function Footer() {
             <Link href="/guides" className={linkClass}>
               Nutrition Guides
             </Link>
-            <Link href="/privacy-policy" className={linkClass}>
-              Privacy Policy
+            <Link href="/privacy/macro-calculator" className={linkClass}>
+              Calculator Privacy Policy
             </Link>
-            <Link href="/terms-of-use" className={linkClass}>
-              Terms of Use
+            <Link href="/privacy/macro-tracker" className={linkClass}>
+              Tracker Privacy Policy
+            </Link>
+            <Link href="/terms/macro-calculator" className={linkClass}>
+              Calculator Terms of Use
+            </Link>
+            <Link href="/terms/macro-tracker" className={linkClass}>
+              Tracker Terms of Use
             </Link>
             <Link href="/do-not-sell" className={linkClass}>
               California Privacy Rights

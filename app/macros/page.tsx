@@ -219,7 +219,7 @@ export default function MacrosIndexPage() {
       </section>
 
       <NewsletterSignup source="macros_hub_bottom" className="mb-8" />
-      <AppConversionCTA placement="bottom_page" pageType="seo" />
+      <AppConversionCTA placement="bottom_page" pageType="seo" showStoreButtons />
     </div>
   );
 }

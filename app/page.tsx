@@ -1,23 +1,30 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MacroCalculator } from "@/components/MacroCalculator";
 import { ResultsSummary } from "@/components/ResultsSummary";
 import { MealPlan } from "@/components/MealPlan";
 import { FoodSearch } from "@/components/FoodSearch";
 import { FAQ } from "@/components/FAQ";
 import { AdSlot } from "@/components/AdSlot";
-import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 import { PostResultsContinuation } from "@/components/cta/PostResultsContinuation";
-import { StickyMobileAppCTA } from "@/components/cta/StickyMobileAppCTA";
 // AppCTA unused directly here — AppConversionCTA used instead
 import type { MacroResult } from "@/types/macro";
 
 export default function Home() {
   const [result, setResult] = useState<MacroResult | null>(null);
+  const [heroBackgroundImage, setHeroBackgroundImage] = useState(
+    "/background/bkgd1.png"
+  );
   const calculatorRef = useRef<HTMLDivElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const backgrounds = ["/background/bkgd1.png", "/background/bkgd2.png"] as const;
+    const randomIndex = Math.floor(Math.random() * backgrounds.length);
+    setHeroBackgroundImage(backgrounds[randomIndex]);
+  }, []);
 
   const scrollToResults = () => {
     resultsRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,7 +36,14 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
+    <>
+      <div className="relative isolate overflow-hidden bg-gradient-to-b from-[#2D2D2D] to-[#000000]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+          style={{ backgroundImage: `url('${heroBackgroundImage}')` }}
+        />
+        <div className="relative z-10 mx-auto max-w-2xl px-4 py-8">
       {/* Header: deliver the value proposition, let users get straight to the calculator */}
       <header className="mb-8 text-left">
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
@@ -45,7 +59,7 @@ export default function Home() {
       <section
         id="calculator"
         ref={calculatorRef}
-        className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6 mb-8"
+        className="rounded-2xl border-2 border-[#FF5F1F]/60 bg-[#1A1A1A] p-6 mb-8"
       >
         <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
       </section>
@@ -59,11 +73,15 @@ export default function Home() {
         </section>
       )}
 
-      <section className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6 mb-10">
-        <FoodSearch />
-      </section>
+          <section className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6 mb-10">
+            <FoodSearch />
+          </section>
+        </div>
+      </div>
 
-      <p className="text-center text-sm text-[#737373] mb-10">
+      <div className="bg-[#000000]">
+        <div className="mx-auto max-w-2xl px-4 pb-8">
+      <p className="text-center text-sm text-[#737373] mb-10 pt-8">
         Based on Mifflin-St Jeor Equation and widely accepted macro guidelines.
       </p>
 
@@ -152,10 +170,15 @@ export default function Home() {
       </section>
 
       {/* Primary conversion — app download — before secondary (newsletter) */}
-      <AppConversionCTA placement="bottom_page" pageType="home" className="mb-8" />
-      <NewsletterSignup source="home_bottom" className="mb-10" />
+      <AppConversionCTA
+        placement="bottom_page"
+        pageType="home"
+        showStoreButtons
+        className="mb-8"
+      />
       <AdSlot id="home-bottom-content" variant="bottom_content" className="mb-6" />
-      <StickyMobileAppCTA pageType="home" />
-    </div>
+        </div>
+      </div>
+    </>
   );
 }

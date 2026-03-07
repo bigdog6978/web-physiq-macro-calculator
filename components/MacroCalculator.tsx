@@ -224,105 +224,105 @@ export function MacroCalculator({
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <h2 className="text-[1.15rem] font-bold text-white mb-4">Body Stats</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        <div className="min-w-0">
-          <label className={labelClass}>Weight</label>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => setWeightUnit("lb")}
-              className={`${btnBase} ${weightUnit === "lb" ? btnActive : btnInactive}`}
-              aria-pressed={weightUnit === "lb"}
-            >
-              lb
-            </button>
-            <button
-              type="button"
-              onClick={() => setWeightUnit("kg")}
-              className={`${btnBase} ${weightUnit === "kg" ? btnActive : btnInactive}`}
-              aria-pressed={weightUnit === "kg"}
-            >
-              kg
-            </button>
-          </div>
-          <input
-            type="number"
-            inputMode="decimal"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            placeholder={weightUnit === "lb" ? "180" : "82"}
-            className={`mt-2 w-full ${inputBase}`}
-            aria-label="Weight"
-            aria-invalid={!!errors.weight}
-            aria-describedby={errors.weight ? "weight-error" : undefined}
-          />
-          {errors.weight && (
-            <p id="weight-error" className="mt-1 text-sm text-[#EF4444]">
-              {errors.weight}
-            </p>
-          )}
-        </div>
-
-        <div className="min-w-0">
-          <label className={labelClass}>Height</label>
-          <div className="flex gap-2 mb-2">
-            <button
-              type="button"
-              onClick={() => setHeightUnit("ft_in")}
-              className={`${btnBase} ${heightUnit === "ft_in" ? btnActive : btnInactive}`}
-              aria-pressed={heightUnit === "ft_in"}
-            >
-              ft/in
-            </button>
-            <button
-              type="button"
-              onClick={() => setHeightUnit("cm")}
-              className={`${btnBase} ${heightUnit === "cm" ? btnActive : btnInactive}`}
-              aria-pressed={heightUnit === "cm"}
-            >
-              cm
-            </button>
-          </div>
-          {heightUnit === "ft_in" ? (
-            <div className="flex gap-2">
-              <input
-                type="number"
-                inputMode="numeric"
-                value={heightFeet}
-                onChange={(e) => setHeightFeet(e.target.value)}
-                placeholder="5"
-                min={3}
-                max={8}
-                className={`flex-1 min-w-0 ${inputBase}`}
-                aria-label="Height feet"
-              />
-              <input
-                type="number"
-                inputMode="numeric"
-                value={heightInches}
-                onChange={(e) => setHeightInches(e.target.value)}
-                placeholder="10"
-                min={0}
-                max={11}
-                className={`flex-1 min-w-0 ${inputBase}`}
-                aria-label="Height inches"
-              />
+        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-3 sm:gap-6">
+          <div className="min-w-0">
+            <label className={labelClass}>Weight</label>
+            <div className="flex gap-1.5 sm:gap-2">
+              <button
+                type="button"
+                onClick={() => setWeightUnit("lb")}
+                className={`${btnBase} ${weightUnit === "lb" ? btnActive : btnInactive}`}
+                aria-pressed={weightUnit === "lb"}
+              >
+                lb
+              </button>
+              <button
+                type="button"
+                onClick={() => setWeightUnit("kg")}
+                className={`${btnBase} ${weightUnit === "kg" ? btnActive : btnInactive}`}
+                aria-pressed={weightUnit === "kg"}
+              >
+                kg
+              </button>
             </div>
-          ) : (
             <input
               type="number"
               inputMode="decimal"
-              value={heightCm}
-              onChange={(e) => setHeightCm(e.target.value)}
-              placeholder="178"
-              className={`w-full ${inputBase}`}
-              aria-label="Height in cm"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              placeholder={weightUnit === "lb" ? "180" : "82"}
+              className={`mt-2 w-full min-w-0 ${inputBase}`}
+              aria-label="Weight"
+              aria-invalid={!!errors.weight}
+              aria-describedby={errors.weight ? "weight-error" : undefined}
             />
-          )}
-          {errors.heightCm && (
-            <p className="mt-1 text-sm text-[#EF4444]">{errors.heightCm}</p>
-          )}
-        </div>
+            {errors.weight && (
+              <p id="weight-error" className="mt-1 text-sm text-[#EF4444]">
+                {errors.weight}
+              </p>
+            )}
+          </div>
+
+          <div className="min-w-0">
+            <label className={labelClass}>Height</label>
+            <div className="flex gap-1.5 sm:gap-2 mb-2">
+              <button
+                type="button"
+                onClick={() => setHeightUnit("ft_in")}
+                className={`${btnBase} ${heightUnit === "ft_in" ? btnActive : btnInactive}`}
+                aria-pressed={heightUnit === "ft_in"}
+              >
+                ft/in
+              </button>
+              <button
+                type="button"
+                onClick={() => setHeightUnit("cm")}
+                className={`${btnBase} ${heightUnit === "cm" ? btnActive : btnInactive}`}
+                aria-pressed={heightUnit === "cm"}
+              >
+                cm
+              </button>
+            </div>
+            {heightUnit === "ft_in" ? (
+              <div className="flex gap-1.5 sm:gap-2 min-w-0">
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  value={heightFeet}
+                  onChange={(e) => setHeightFeet(e.target.value)}
+                  placeholder="5"
+                  min={3}
+                  max={8}
+                  className={`min-w-0 w-12 sm:w-16 flex-1 ${inputBase}`}
+                  aria-label="Height feet"
+                />
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  value={heightInches}
+                  onChange={(e) => setHeightInches(e.target.value)}
+                  placeholder="10"
+                  min={0}
+                  max={11}
+                  className={`min-w-0 w-12 sm:w-16 flex-1 ${inputBase}`}
+                  aria-label="Height inches"
+                />
+              </div>
+            ) : (
+              <input
+                type="number"
+                inputMode="decimal"
+                value={heightCm}
+                onChange={(e) => setHeightCm(e.target.value)}
+                placeholder="178"
+                className={`w-full min-w-0 ${inputBase}`}
+                aria-label="Height in cm"
+              />
+            )}
+            {errors.heightCm && (
+              <p className="mt-1 text-sm text-[#EF4444]">{errors.heightCm}</p>
+            )}
+          </div>
         </div>
       </div>
 

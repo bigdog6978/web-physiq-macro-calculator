@@ -77,6 +77,21 @@ npm start
 - **Where copy is edited**: `lib/cta/config.ts` (`getCTAContent`)
 - **Post-result continuation block**: `components/cta/PostResultsContinuation.tsx`
 - **Sticky mobile CTA**: `components/cta/StickyMobileAppCTA.tsx`
+- **Bottom install CTA purpose**:
+  - Converts warmed SEO/home visitors from calculator usage to install by reinforcing
+    the workflow: calculate on web → track in app.
+- **Bottom CTA benefit chips**:
+  - Defined in `components/cta/AppConversionCTA.tsx` as `bottomBenefitChips`.
+  - Current chips:
+    - `Fast food logging`
+    - `Macro target tracking`
+    - `Meal Planning`
+    - `Stay consistent`
+- **Where to modify bottom CTA copy later**:
+  - `bottomHeadline`
+  - `bottomSupportingLine`
+  - trust line under StoreButtons
+  - all in `components/cta/AppConversionCTA.tsx`
 
 ### Store badges + mobile download flow
 
