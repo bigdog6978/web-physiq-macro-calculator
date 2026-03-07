@@ -119,7 +119,7 @@ export function AppConversionCTA({
           </p>
 
           <ul
-            className="mt-3 flex flex-wrap gap-2"
+            className="mt-3 flex flex-wrap justify-center gap-2"
             aria-label="App benefits"
           >
             {bottomBenefitChips.map((chip) => (
@@ -132,7 +132,7 @@ export function AppConversionCTA({
             ))}
           </ul>
 
-          <div className="mt-3.5">
+          <div className="mt-3.5 flex justify-center">
             <StoreButtons
               size={storeBtnProps.size}
               layout="horizontal"
@@ -152,12 +152,14 @@ export function AppConversionCTA({
           <p className="text-xs sm:text-sm text-[#A3A3A3] leading-snug">
             {supportingLine}
           </p>
-          <StoreButtons
-            size={storeBtnProps.size}
-            layout="horizontal"
-            context={storeBtnProps.context}
-            pageType={pageType}
-          />
+          <div className="flex justify-center">
+            <StoreButtons
+              size={storeBtnProps.size}
+              layout="horizontal"
+              context={storeBtnProps.context}
+              pageType={pageType}
+            />
+          </div>
         </div>
       ) : (
         <>
