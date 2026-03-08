@@ -6,6 +6,8 @@ import { ConsentProvider } from "@/components/consent/ConsentProvider";
 import { ConsentUI } from "@/components/consent/ConsentUI";
 import { analyticsConfig } from "@/lib/analytics/config";
 
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+
 export const metadata: Metadata = {
   title: "Free Macro Calculator | Daily Calories & Macros",
   description:
