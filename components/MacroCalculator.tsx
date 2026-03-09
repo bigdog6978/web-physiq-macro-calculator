@@ -375,8 +375,8 @@ export function MacroCalculator({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div>
+      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-4">
+        <div className="min-w-0">
           <label htmlFor="age" className={labelClassSmall}>
             Age
           </label>
@@ -387,14 +387,14 @@ export function MacroCalculator({
             value={age}
             onChange={(e) => setAge(e.target.value)}
             placeholder="30"
-            className={inputBase}
+            className={`w-full min-w-0 ${inputBase}`}
             aria-invalid={!!errors.age}
           />
           {errors.age && (
             <p className="mt-1 text-sm text-[#EF4444]">{errors.age}</p>
           )}
         </div>
-        <div>
+        <div className="min-w-0">
           <label htmlFor="bodyfat" className={labelClassSmall}>
             Body Fat % <span className="text-[#737373]">(optional)</span>
           </label>
@@ -405,9 +405,9 @@ export function MacroCalculator({
             value={bodyFatPercent}
             onChange={(e) => setBodyFatPercent(e.target.value)}
             placeholder="18"
-            className={inputBase}
+            className={`w-full min-w-0 ${inputBase}`}
           />
-          <p className={helperClass}>
+          <p className={`${helperClass} break-words`}>
             If you know your body fat %, we can calculate more accurate macros.
           </p>
         </div>
