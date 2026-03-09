@@ -5,8 +5,9 @@ const INTENT_WEIGHTS = [130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230] a
 const INTENT_GENDERS = ["male", "female"] as const;
 const MEAL_PLAN_CALORIES = [1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200] as const;
 const MEAL_PLAN_STRATEGIES: MacroStrategy[] = [
-  "high_protein",
-  "balanced",
+  "standard",
+  "mediterranean",
+  "vegetarian",
   "keto",
   "carnivore",
 ];
@@ -17,20 +18,20 @@ const MACRO_INTENTS: Array<{
   minWeight?: number;
   skip?: (weightLb: number, gender: "male" | "female") => boolean;
 }> = [
-  { goal: "cut", strategy: "high_protein" },
-  { goal: "cut", strategy: "balanced" },
+  { goal: "cut", strategy: "standard" },
+  { goal: "cut", strategy: "mediterranean" },
   { goal: "cut", strategy: "keto" },
   {
     goal: "cut",
     strategy: "carnivore",
     skip: (weightLb, gender) => gender === "female" && weightLb < 150,
   },
-  { goal: "build", strategy: "high_protein" },
-  { goal: "build", strategy: "balanced" },
-  { goal: "build", strategy: "performance", minWeight: 150 },
-  { goal: "maintain", strategy: "balanced" },
-  { goal: "maintain", strategy: "high_protein" },
-  { goal: "recomp", strategy: "balanced", minWeight: 150 },
+  { goal: "build", strategy: "standard" },
+  { goal: "build", strategy: "mediterranean" },
+  { goal: "build", strategy: "vegetarian", minWeight: 150 },
+  { goal: "maintain", strategy: "standard" },
+  { goal: "maintain", strategy: "mediterranean" },
+  { goal: "recomp", strategy: "standard", minWeight: 150 },
 ];
 
 export const GOAL_SLUG: Record<Goal, string> = {
@@ -41,6 +42,10 @@ export const GOAL_SLUG: Record<Goal, string> = {
 };
 
 export const STRATEGY_SLUG: Partial<Record<MacroStrategy, string>> = {
+  standard: "standard",
+  vegan: "vegan",
+  vegetarian: "vegetarian",
+  paleo: "paleo",
   high_protein: "high-protein",
   keto: "keto",
   carnivore: "carnivore",
@@ -77,7 +82,7 @@ function profileDefaults(
   return {
     heightCm: gender === "female" ? 163 : 178,
     age: 30,
-    activityLevel: goal === "build" ? "very_active" : "moderate",
+    activityLevel: goal === "build" ? "strength_training" : "moderate_training",
     goal,
     strategy,
   };
@@ -116,10 +121,10 @@ function generateProteinPages(): SEOPageConfig[] {
         weightLb,
         gender,
         goal: "maintain",
-        strategy: "high_protein",
+        strategy: "standard",
         heightCm: gender === "female" ? 163 : 178,
         age: 30,
-        activityLevel: "moderate",
+        activityLevel: "moderate_training",
       });
     }
   }
@@ -141,7 +146,7 @@ function profileForMealPlan(
       strategy,
       heightCm: 163,
       age: 30,
-      activityLevel: "moderate",
+      activityLevel: "moderate_training",
     };
   }
   if (calorieTarget <= 2200) {
@@ -152,7 +157,7 @@ function profileForMealPlan(
       strategy,
       heightCm: 178,
       age: 30,
-      activityLevel: "moderate",
+      activityLevel: "moderate_training",
     };
   }
   if (calorieTarget <= 2800) {
@@ -163,7 +168,7 @@ function profileForMealPlan(
       strategy,
       heightCm: 180,
       age: 28,
-      activityLevel: "very_active",
+      activityLevel: "strength_training",
     };
   }
   return {
@@ -173,7 +178,7 @@ function profileForMealPlan(
     strategy,
     heightCm: 183,
     age: 30,
-    activityLevel: "very_active",
+    activityLevel: "strength_training",
   };
 }
 
@@ -206,8 +211,8 @@ const CLUSTER_PAGES: SEOPageConfig[] = [
     weightLb: 185,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
-    strategy: "high_protein",
+    activityLevel: "moderate_training",
+    strategy: "standard",
   },
   {
     slug: "macros-for-women",
@@ -218,8 +223,8 @@ const CLUSTER_PAGES: SEOPageConfig[] = [
     weightLb: 145,
     heightCm: 163,
     age: 30,
-    activityLevel: "moderate",
-    strategy: "high_protein",
+    activityLevel: "moderate_training",
+    strategy: "standard",
   },
   {
     slug: "cutting-macros",
@@ -230,8 +235,8 @@ const CLUSTER_PAGES: SEOPageConfig[] = [
     weightLb: 180,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
-    strategy: "high_protein",
+    activityLevel: "moderate_training",
+    strategy: "standard",
   },
   {
     slug: "bulking-macros",
@@ -242,8 +247,8 @@ const CLUSTER_PAGES: SEOPageConfig[] = [
     weightLb: 175,
     heightCm: 178,
     age: 25,
-    activityLevel: "moderate",
-    strategy: "high_protein",
+    activityLevel: "moderate_training",
+    strategy: "standard",
   },
   {
     slug: "maintenance-macros",
@@ -254,8 +259,8 @@ const CLUSTER_PAGES: SEOPageConfig[] = [
     weightLb: 175,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
-    strategy: "balanced",
+    activityLevel: "moderate_training",
+    strategy: "standard",
   },
   {
     slug: "keto-macros",
@@ -267,7 +272,7 @@ const CLUSTER_PAGES: SEOPageConfig[] = [
     weightLb: 185,
     heightCm: 178,
     age: 35,
-    activityLevel: "moderate",
+    activityLevel: "moderate_training",
   },
   {
     slug: "carnivore-macros",
@@ -279,19 +284,19 @@ const CLUSTER_PAGES: SEOPageConfig[] = [
     weightLb: 190,
     heightCm: 178,
     age: 35,
-    activityLevel: "moderate",
+    activityLevel: "moderate_training",
   },
   {
     slug: "high-protein-macros",
     tier: "cluster",
     pageType: "macro",
-    strategy: "high_protein",
+    strategy: "standard",
     goal: "cut",
     gender: "male",
     weightLb: 180,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
+    activityLevel: "moderate_training",
   },
 ];
 
@@ -306,7 +311,7 @@ const PILLAR_PAGES: SEOPageConfig[] = [
     weightLb: 185,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
+    activityLevel: "moderate_training",
   },
   {
     slug: "carnivore-macro-calculator",
@@ -318,7 +323,7 @@ const PILLAR_PAGES: SEOPageConfig[] = [
     weightLb: 185,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
+    activityLevel: "moderate_training",
   },
   {
     slug: "cutting-macro-calculator",
@@ -329,8 +334,8 @@ const PILLAR_PAGES: SEOPageConfig[] = [
     weightLb: 180,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
-    strategy: "high_protein",
+    activityLevel: "moderate_training",
+    strategy: "standard",
   },
   {
     slug: "bulking-macro-calculator",
@@ -341,20 +346,20 @@ const PILLAR_PAGES: SEOPageConfig[] = [
     weightLb: 175,
     heightCm: 178,
     age: 25,
-    activityLevel: "moderate",
-    strategy: "high_protein",
+    activityLevel: "moderate_training",
+    strategy: "standard",
   },
   {
     slug: "high-protein-macro-calculator",
     tier: "pillar",
     pageType: "macro",
-    strategy: "high_protein",
+    strategy: "standard",
     goal: "cut",
     gender: "male",
     weightLb: 180,
     heightCm: 178,
     age: 30,
-    activityLevel: "moderate",
+    activityLevel: "moderate_training",
   },
 ];
 

@@ -1,3 +1,4 @@
+import { EATING_STYLE_LABELS } from "@/constants/macroData";
 import { calculateMacros, lbsToKg } from "@/lib/macroEngine";
 import type {
   MacroTargets,
@@ -7,6 +8,10 @@ import type {
   Gender,
 } from "@/types/macro";
 import type { SEOPageConfig, SEOPageType } from "./types";
+import {
+  migrateLegacyActivityLevel,
+  migrateLegacyEatingStyle,
+} from "@/lib/profile";
 import {
   ALL_SEO_PAGES,
   GOAL_SLUG,
@@ -33,14 +38,18 @@ export const GOAL_NOUN: Record<Goal, string> = {
 };
 
 export const STRATEGY_LABEL: Record<MacroStrategy, string> = {
-  high_protein: "High Protein",
+  standard: "Standard",
+  mediterranean: "Mediterranean",
+  vegan: "Vegan",
+  vegetarian: "Vegetarian",
+  paleo: "Paleo",
   keto: "Keto",
   carnivore: "Carnivore",
-  low_carb: "Low Carb",
-  balanced: "Balanced",
-  performance: "Performance",
-  low_fat: "Low Fat",
-  mediterranean: "Mediterranean",
+  high_protein: "Standard",
+  low_carb: "Keto",
+  low_fat: "Standard",
+  balanced: "Standard",
+  performance: "Standard",
 };
 
 function pageTypeOf(config: SEOPageConfig): SEOPageType {
@@ -56,7 +65,7 @@ function genderTitle(gender?: Gender): "Male" | "Female" {
 }
 
 function strategyLabel(strategy?: MacroStrategy): string {
-  return strategy ? STRATEGY_LABEL[strategy] : "Balanced";
+  return strategy ? STRATEGY_LABEL[strategy] : EATING_STYLE_LABELS.standard;
 }
 
 /** Three weight bands used to vary FAQ question framing. */
@@ -74,12 +83,15 @@ export function configToProfile(config: SEOPageConfig): UserProfile {
     weightKg: lbsToKg(weightLb),
     heightCm: config.heightCm ?? (config.gender === "female" ? 163 : 178),
     age: config.age ?? 30,
+    sex: config.gender ?? "male",
     gender: config.gender ?? "male",
     goal: config.goal ?? "maintain",
-    strategy: config.strategy ?? "balanced",
-    activityLevel: config.activityLevel ?? "moderate",
+    eatingStyle: migrateLegacyEatingStyle(config.strategy),
+    strategy: config.strategy,
+    activityLevel: migrateLegacyActivityLevel(config.activityLevel),
     weightUnit: "lb",
     heightUnit: "ft_in",
+    dietModifiers: [],
     modifiers: [],
   };
 }

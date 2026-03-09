@@ -5,6 +5,7 @@ import { GOAL_NOUN, STRATEGY_LABEL } from "@/lib/seo/content";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 import type { Goal, MacroStrategy } from "@/types/macro";
+import { migrateLegacyEatingStyle } from "@/lib/profile";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://physiqmacros.com";
 
@@ -39,9 +40,11 @@ const CLUSTER_LABELS: Record<string, string> = {
 
 const GOAL_ORDER: Goal[] = ["cut", "build", "maintain", "recomp"];
 const STRAT_ORDER: MacroStrategy[] = [
-  "high_protein",
-  "balanced",
-  "performance",
+  "standard",
+  "mediterranean",
+  "vegan",
+  "vegetarian",
+  "paleo",
   "keto",
   "carnivore",
 ];
@@ -62,7 +65,7 @@ function getMacroMicroGroups(): Group[] {
             p.pageType === "macro" &&
             p.gender === gender &&
             p.goal === goal &&
-            p.strategy === strategy
+            migrateLegacyEatingStyle(p.strategy) === strategy
         );
         if (pages.length === 0) continue;
         groups.push({

@@ -1,5 +1,14 @@
 import type { DietModifier } from "@/types/macro";
 
+export type FoodTag =
+  | DietModifier
+  | "vegan"
+  | "vegetarian"
+  | "breakfast"
+  | "lunch"
+  | "dinner"
+  | "snack";
+
 export interface FoodTemplate {
   name: string;
   portion: string;
@@ -8,7 +17,7 @@ export interface FoodTemplate {
   carbs: number;
   fat: number;
   calories: number;
-  tags: (DietModifier | "breakfast" | "lunch" | "dinner" | "snack")[];
+  tags: FoodTag[];
 }
 
 export const FOOD_DB: FoodTemplate[] = [

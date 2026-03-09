@@ -6,6 +6,9 @@ interface MealPlanProps {
 
 export function MealPlan({ result }: MealPlanProps) {
   const { meals, conflictWarning } = result;
+  const PROTEIN_COLOR = "#3B82F6";
+  const CARB_COLOR = "#84CC16";
+  const FAT_COLOR = "#EAB308";
 
   return (
     <div className="space-y-4">
@@ -34,14 +37,17 @@ export function MealPlan({ result }: MealPlanProps) {
                     <strong>{item.name}</strong> — {item.portion}
                   </span>
                   <span className="text-[#737373]">
-                    {item.calories} cal · P{item.protein} C{item.carbs} F{item.fat}
+                    {item.calories} cal ·{" "}
+                    <span style={{ color: PROTEIN_COLOR }}>P{item.protein}</span>{" "}
+                    <span style={{ color: CARB_COLOR }}>C{item.carbs}</span>{" "}
+                    <span style={{ color: FAT_COLOR }}>F{item.fat}</span>
                   </span>
                 </li>
               ))}
             </ul>
             <div className="mt-2 pt-2 border-t border-[#2A2A2A] text-sm text-[#A3A3A3]">
-              Total: {meal.totals.calories} cal · {meal.totals.protein}g P ·{" "}
-              {meal.totals.carbs}g C · {meal.totals.fat}g F
+              Total: {meal.totals.calories} cal · {meal.totals.proteinGrams}g P ·{" "}
+              {meal.totals.carbGrams}g C · {meal.totals.fatGrams}g F
             </div>
           </div>
         ))}

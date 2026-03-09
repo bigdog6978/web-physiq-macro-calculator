@@ -1,5 +1,5 @@
 import { ALL_SEO_PAGES, SEO_COUNTS } from "./pages";
-import { buildPageContent } from "./content";
+import { buildPageContent, configToProfile } from "./content";
 import { generateMealPlan } from "@/lib/mealPlanEngine";
 
 export interface SEOQualityIssue {
@@ -53,7 +53,7 @@ export function generateSEOQualityReport(): SEOQualityReport {
       page.slug
     );
 
-    const meal = generateMealPlan(content.targets, [], page.strategy ?? "balanced");
+    const meal = generateMealPlan(content.targets, configToProfile(page));
     const fingerprint = `${page.strategy ?? "balanced"}:${meal.meals
       .map((m) => m.items.map((i) => i.name).join(","))
       .join("|")}`;

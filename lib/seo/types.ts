@@ -1,4 +1,10 @@
-import type { Goal, MacroStrategy, ActivityLevel, Gender } from "@/types/macro";
+import type {
+  Goal,
+  MacroStrategy,
+  ActivityLevel,
+  Gender,
+  LegacyActivityLevel,
+} from "@/types/macro";
 
 export type SEOPageType = "macro" | "protein_intake" | "meal_plan";
 
@@ -11,7 +17,7 @@ export interface SEOPageConfig {
   goal?: Goal;
   strategy?: MacroStrategy;
   calorieTarget?: number;
-  activityLevel?: ActivityLevel;
+  activityLevel?: ActivityLevel | LegacyActivityLevel;
   heightCm?: number;
   age?: number;
 }

@@ -1,25 +1,27 @@
+import {
+  ACTIVITY_MULTIPLIERS,
+  ACTIVITY_PROTEIN_FLOOR_G_PER_LB,
+  CALORIE_FLOORS,
+  EATING_STYLE_CARB_CAPS,
+  EATING_STYLE_LABELS,
+  FAT_MINIMUM_G_PER_LB,
+  GOAL_CALORIE_ADJUSTMENTS,
+  GOAL_LABELS,
+  MINIMUM_FAT_CALORIE_PERCENT,
+  MINIMUM_FAT_G_PER_LB,
+  MINIMUM_PROTEIN_G_PER_LB,
+  PROTEIN_FROM_BODY_WEIGHT_G_PER_LB,
+  PROTEIN_FROM_LEAN_MASS_G_PER_LB,
+  RECOMP_BODY_FAT_THRESHOLDS,
+} from "@/constants/macroData";
 import type {
-  UserProfile,
-  MacroTargets,
-  ActivityLevel,
   Goal,
-  MacroStrategy,
+  MacroCalculationBreakdown,
+  MacroTargets,
+  MacroPercentages,
+  UserProfile,
 } from "@/types/macro";
 
-const ACTIVITY_MULTIPLIERS: Record<ActivityLevel, number> = {
-  sedentary: 1.2,
-  light: 1.375,
-  moderate: 1.55,
-  very_active: 1.725,
-  extra_active: 1.9,
-};
-
-type InternalGoal = "cut" | "gain" | "maintain" | "recompose";
-const CUT_ADJUSTMENT = -0.15; // moderate
-const GAIN_ADJUSTMENT = 0.1; // moderate
-const RECOMPOSE_ADJUSTMENT = -0.05;
-
-// ---- small safety helpers ----
 const clamp = (n: number, min: number, max: number) =>
   Math.max(min, Math.min(max, n));
 const roundInt = (n: number) => Math.round(n);
@@ -34,9 +36,6 @@ export function kgToLbs(kg: number): number {
   return kg / 0.453592;
 }
 
-/**
- * Ensure required numeric inputs are sane (prevents NaN cascades and weird negatives)
- */
 function sanitizeProfile(profile: UserProfile): UserProfile {
   return {
     ...profile,
@@ -44,168 +43,314 @@ function sanitizeProfile(profile: UserProfile): UserProfile {
       ? Math.max(profile.weightKg, 1)
       : 1,
     heightCm: Number.isFinite(profile.heightCm)
-      ? Math.max(profile.heightCm, 50)
-      : 50,
-    age: Number.isFinite(profile.age) ? clamp(profile.age, 10, 120) : 30,
+      ? Math.max(profile.heightCm, 100)
+      : 100,
+    age: Number.isFinite(profile.age) ? clamp(profile.age, 13, 100) : 30,
+    bodyFatPercent:
+      profile.bodyFatPercent !== undefined && Number.isFinite(profile.bodyFatPercent)
+        ? clamp(profile.bodyFatPercent, 3, 60)
+        : undefined,
   };
 }
 
-function toInternalGoal(goal: Goal): InternalGoal {
-  if (goal === "build") return "gain";
-  if (goal === "recomp") return "recompose";
-  return goal as InternalGoal;
+function hasBodyFat(profile: UserProfile): profile is UserProfile & {
+  bodyFatPercent: number;
+} {
+  return (
+    profile.bodyFatPercent !== undefined &&
+    Number.isFinite(profile.bodyFatPercent) &&
+    profile.bodyFatPercent > 0 &&
+    profile.bodyFatPercent < 70
+  );
+}
+
+function getLeanMassKg(profile: UserProfile): number | undefined {
+  if (!hasBodyFat(profile)) return undefined;
+  return profile.weightKg * (1 - profile.bodyFatPercent / 100);
 }
 
 export function calculateBMR(rawProfile: UserProfile): number {
   const profile = sanitizeProfile(rawProfile);
   const base =
-    10 * profile.weightKg +
-    6.25 * profile.heightCm -
-    5 * profile.age;
+    10 * profile.weightKg + 6.25 * profile.heightCm - 5 * profile.age;
 
-  if (profile.gender === "male") return base + 5;
-  return base - 161;
+  if (profile.sex === "male") return roundInt(base + 5);
+  if (profile.sex === "female") return roundInt(base - 161);
+
+  // When sex is unspecified we use the midpoint of the binary constants to avoid
+  // blocking the user while keeping the calculation explicit and predictable.
+  return roundInt(base - 78);
 }
 
 export function calculateTDEE(rawProfile: UserProfile): number {
   const profile = sanitizeProfile(rawProfile);
   const bmr = calculateBMR(profile);
-  const mult = ACTIVITY_MULTIPLIERS[profile.activityLevel] ?? 1.2;
-  return roundInt(bmr * mult);
+  return roundInt(bmr * ACTIVITY_MULTIPLIERS[profile.activityLevel]);
+}
+
+function getGoalAdjustmentPercent(profile: UserProfile): number {
+  if (profile.goal !== "recomp") {
+    return GOAL_CALORIE_ADJUSTMENTS[profile.goal];
+  }
+
+  if (!hasBodyFat(profile)) return 0;
+  if (profile.sex === "male" && profile.bodyFatPercent > RECOMP_BODY_FAT_THRESHOLDS.male) {
+    return -0.05;
+  }
+  if (
+    profile.sex === "female" &&
+    profile.bodyFatPercent > RECOMP_BODY_FAT_THRESHOLDS.female
+  ) {
+    return -0.05;
+  }
+  return 0;
 }
 
 export function calculateCalorieTarget(rawProfile: UserProfile): number {
   const profile = sanitizeProfile(rawProfile);
   const tdee = calculateTDEE(profile);
-  const goal = toInternalGoal(profile.goal);
-
-  if (goal === "maintain") return tdee;
-  if (goal === "cut")
-    return roundInt(tdee * (1 + CUT_ADJUSTMENT));
-  if (goal === "recompose")
-    return roundInt(tdee * (1 + RECOMPOSE_ADJUSTMENT));
-  // gain
-  return roundInt(tdee * (1 + GAIN_ADJUSTMENT));
+  const adjusted = roundInt(tdee * (1 + getGoalAdjustmentPercent(profile)));
+  return Math.max(adjusted, CALORIE_FLOORS[profile.sex]);
 }
 
-function getProteinPerLb(goal: InternalGoal): number {
-  switch (goal) {
-    case "cut":
-      return 1.0;
-    case "recompose":
-      return 1.1;
-    case "gain":
-      return 0.9;
-    case "maintain":
-      return 0.85;
-    default:
-      return 0.9;
+function calculateProteinTarget(profile: UserProfile, weightLb: number): {
+  grams: number;
+  rule: string;
+  basis: "body_weight" | "lean_mass";
+  leanBodyMassKg?: number;
+} {
+  const minimumFloor = weightLb * MINIMUM_PROTEIN_G_PER_LB;
+  const leanMassKg = getLeanMassKg(profile);
+
+  if (leanMassKg) {
+    const leanMassLb = kgToLbs(leanMassKg);
+    const leanMassProtein =
+      leanMassLb * PROTEIN_FROM_LEAN_MASS_G_PER_LB[profile.goal];
+    const activityFloor =
+      weightLb * ACTIVITY_PROTEIN_FLOOR_G_PER_LB[profile.activityLevel];
+
+    return {
+      grams: Math.max(leanMassProtein, activityFloor, minimumFloor),
+      rule: `Protein uses lean mass for ${GOAL_LABELS[profile.goal].toLowerCase()} with an activity floor based on total body weight.`,
+      basis: "lean_mass",
+      leanBodyMassKg: leanMassKg,
+    };
   }
+
+  return {
+    grams: Math.max(
+      weightLb * PROTEIN_FROM_BODY_WEIGHT_G_PER_LB[profile.goal][profile.activityLevel],
+      minimumFloor
+    ),
+    rule: `Protein uses total body weight because body fat % was not provided.`,
+    basis: "body_weight",
+  };
 }
 
-function getFatPercentFromStrategy(strategy: MacroStrategy): number {
-  switch (strategy) {
-    case "keto":
-      return 0.7;
-    case "carnivore":
-      return 0.65;
-    case "low_carb":
-      return 0.45;
-    case "high_protein":
-      return 0.25;
-    case "low_fat":
-      return 0.15;
-    case "performance":
-      return 0.2;
-    case "mediterranean":
-      return 0.35;
-    case "balanced":
-      return 0.3;
-    default:
-      return 0.3;
+function getGoalAdjustmentLabel(goal: Goal, adjustmentPercent: number): string {
+  if (goal === "build") return "Controlled surplus for muscle gain";
+  if (goal === "cut") return "Moderate deficit for fat loss";
+  if (goal === "recomp") {
+    return adjustmentPercent < 0
+      ? "Small recomp deficit based on body fat %"
+      : "Recomp at maintenance because body fat guidance did not support a deficit";
   }
+  return "Maintenance calories";
 }
 
-function getProteinMultiplierFromStrategy(
-  strategy: MacroStrategy,
-  goal: InternalGoal
-): number {
-  const base = getProteinPerLb(goal);
-  if (strategy === "high_protein") return Math.min(base + 0.2, 1.2);
-  return base;
-}
+function createMacroProfileLabel(targets: MacroTargets): string {
+  const totalCalories = Math.max(targets.calories, 1);
+  const percentages: MacroPercentages = {
+    protein: (targets.proteinGrams * 4) / totalCalories,
+    carbs: (targets.carbGrams * 4) / totalCalories,
+    fat: (targets.fatGrams * 9) / totalCalories,
+  };
 
-function applyCarbCaps(strategy: MacroStrategy, carbs_g: number): number {
-  if (strategy === "keto") return Math.min(carbs_g, 50);
-  if (strategy === "low_carb") return Math.min(carbs_g, 100);
-  if (strategy === "carnivore") return Math.min(carbs_g, 20);
-  return carbs_g;
-}
+  const proteinLabel = percentages.protein >= 0.3 ? "High Protein" : "Moderate Protein";
+  const carbLabel =
+    percentages.carbs <= 0.1
+      ? "Very Low Carb"
+      : percentages.carbs <= 0.2
+        ? "Low Carb"
+        : percentages.carbs <= 0.45
+          ? "Moderate Carb"
+          : "High Carb";
+  const fatLabel = percentages.fat >= 0.4 ? "High Fat" : "Moderate Fat";
 
-function buildExplanation(
-  tdee: number,
-  calories: number,
-  goal: Goal,
-  strategy: MacroStrategy
-): string {
-  const parts: string[] = [];
-  if (goal === "maintain") {
-    parts.push(`Maintenance at ~${tdee} cal/day (TDEE).`);
-  } else if (goal === "cut") {
-    parts.push(`~15% deficit from TDEE (${tdee} cal) for fat loss.`);
-  } else if (goal === "build") {
-    parts.push(`~10% surplus from TDEE (${tdee} cal) for muscle gain.`);
-  } else if (goal === "recomp") {
-    parts.push(`~5% deficit from TDEE (${tdee} cal) for body recomp.`);
+  if (
+    percentages.protein < 0.3 &&
+    percentages.carbs > 0.3 &&
+    percentages.carbs <= 0.45 &&
+    percentages.fat >= 0.25 &&
+    percentages.fat < 0.4
+  ) {
+    return "Balanced Macros";
   }
-  parts.push(`${strategy.replace("_", " ")} macro split.`);
-  return parts.join(" ");
+
+  return `${proteinLabel} / ${carbLabel} / ${fatLabel}`;
+}
+
+function calculateMacroPercentages(targets: MacroTargets): MacroPercentages {
+  const calories = Math.max(targets.calories, 1);
+  return {
+    protein: (targets.proteinGrams * 4) / calories,
+    carbs: (targets.carbGrams * 4) / calories,
+    fat: (targets.fatGrams * 9) / calories,
+  };
+}
+
+function finalizeTargets(
+  proteinGrams: number,
+  carbGrams: number,
+  fatGrams: number
+): MacroTargets {
+  const roundedProtein = Math.max(roundInt(proteinGrams), 0);
+  const roundedCarbs = Math.max(roundInt(carbGrams), 0);
+  const roundedFat = Math.max(roundInt(fatGrams), 0);
+
+  return {
+    calories: roundedProtein * 4 + roundedCarbs * 4 + roundedFat * 9,
+    proteinGrams: roundedProtein,
+    carbGrams: roundedCarbs,
+    fatGrams: roundedFat,
+    protein: roundedProtein,
+    carbs: roundedCarbs,
+    fat: roundedFat,
+  };
 }
 
 export interface CalculateMacrosResult {
+  bmr: number;
   tdee: number;
   targets: MacroTargets;
+  macroProfileLabel: string;
+  explanationSummary: string;
   explanation: string;
+  calculationBreakdown: MacroCalculationBreakdown;
 }
 
 export function calculateMacros(rawProfile: UserProfile): CalculateMacrosResult {
   const profile = sanitizeProfile(rawProfile);
-  const tdee = calculateTDEE(profile);
-  const calories = Math.max(calculateCalorieTarget(profile), 0);
-  const strategy = profile.strategy;
-  const goal = toInternalGoal(profile.goal);
+  const notes: string[] = [];
+  const weightLb = kgToLbs(profile.weightKg);
+  const bmr = calculateBMR(profile);
+  const tdee = roundInt(bmr * ACTIVITY_MULTIPLIERS[profile.activityLevel]);
 
-  const proteinPerLb = getProteinMultiplierFromStrategy(strategy, goal);
-  const weightLb = profile.weightKg * 2.20462;
-  const protein = Math.max(roundInt(weightLb * proteinPerLb), 0);
-  const proteinCalories = protein * 4;
-
-  if (proteinCalories >= calories) {
-    return {
-      tdee,
-      targets: { calories, protein, carbs: 0, fat: 0 },
-      explanation: buildExplanation(tdee, calories, profile.goal, strategy),
-    };
+  const calorieAdjustmentPercent = getGoalAdjustmentPercent(profile);
+  let calorieTarget = roundInt(tdee * (1 + calorieAdjustmentPercent));
+  const calorieFloor = CALORIE_FLOORS[profile.sex];
+  if (calorieTarget < calorieFloor) {
+    calorieTarget = calorieFloor;
+    notes.push(`Calories were clamped to the ${profile.sex} safety floor.`);
   }
 
-  const fatPercent = getFatPercentFromStrategy(strategy);
-  let fatCalories = roundInt(calories * fatPercent);
-  fatCalories = clamp(fatCalories, 0, calories - proteinCalories);
-  let fat = Math.max(roundInt(fatCalories / 9), 0);
+  const proteinTarget = calculateProteinTarget(profile, weightLb);
+  const hardProteinFloor = weightLb * MINIMUM_PROTEIN_G_PER_LB;
+  let proteinGrams = proteinTarget.grams;
 
-  let carbCalories = calories - proteinCalories - fatCalories;
-  let carbs = Math.max(roundInt(carbCalories / 4), 0);
+  const styleFatMinimum = weightLb * FAT_MINIMUM_G_PER_LB[profile.eatingStyle];
+  const hardFatFloor =
+    profile.eatingStyle === "keto" || profile.eatingStyle === "carnivore"
+      ? styleFatMinimum
+      : Math.max(weightLb * MINIMUM_FAT_G_PER_LB, styleFatMinimum);
+  let fatGrams = Math.max(
+    styleFatMinimum,
+    (calorieTarget * MINIMUM_FAT_CALORIE_PERCENT) / 9
+  );
 
-  carbs = applyCarbCaps(strategy, carbs);
-  carbCalories = carbs * 4;
-  fatCalories = calories - proteinCalories - carbCalories;
-  if (fatCalories < 0) fatCalories = 0;
-  fat = Math.max(roundInt(fatCalories / 9), 0);
+  const minimumSupportedCalories = proteinGrams * 4 + hardFatFloor * 9;
+  if (minimumSupportedCalories > calorieTarget) {
+    calorieTarget = roundInt(minimumSupportedCalories);
+    notes.push(
+      "Calories were raised to support the minimum protein and fat floors safely."
+    );
+  }
+
+  let remainingCalories = calorieTarget - proteinGrams * 4 - fatGrams * 9;
+
+  // If protein + preferred fat baseline exceed the calorie target, reduce fat
+  // toward the hard floor first, then reduce protein only to the explicit safety floor.
+  if (remainingCalories < 0) {
+    fatGrams = Math.max(hardFatFloor, (calorieTarget - proteinGrams * 4) / 9);
+    remainingCalories = calorieTarget - proteinGrams * 4 - fatGrams * 9;
+  }
+
+  if (remainingCalories < 0) {
+    proteinGrams = Math.max(
+      hardProteinFloor,
+      (calorieTarget - fatGrams * 9) / 4
+    );
+    remainingCalories = calorieTarget - proteinGrams * 4 - fatGrams * 9;
+    notes.push("Protein was reduced slightly to preserve non-negative carb output.");
+  }
+
+  let carbGrams = Math.max(remainingCalories / 4, 0);
+  let eatingStyleAdjustment = `${EATING_STYLE_LABELS[profile.eatingStyle]} uses the algorithm output as-is.`;
+
+  if (profile.eatingStyle === "keto") {
+    carbGrams = Math.min(carbGrams, EATING_STYLE_CARB_CAPS.keto ?? 30);
+    fatGrams = Math.max(
+      hardFatFloor,
+      (calorieTarget - proteinGrams * 4 - carbGrams * 4) / 9
+    );
+    eatingStyleAdjustment =
+      "Keto caps carbs around 30g per day and moves the remaining calories into fat.";
+  } else if (profile.eatingStyle === "carnivore") {
+    carbGrams = Math.min(carbGrams, EATING_STYLE_CARB_CAPS.carnivore ?? 5);
+    fatGrams = Math.max(
+      hardFatFloor,
+      (calorieTarget - proteinGrams * 4 - carbGrams * 4) / 9
+    );
+    eatingStyleAdjustment =
+      "Carnivore keeps carbs near zero and shifts the rest of the calories into protein and fat.";
+  }
+
+  if (fatGrams * 9 + proteinGrams * 4 + carbGrams * 4 > calorieTarget) {
+    calorieTarget = roundInt(fatGrams * 9 + proteinGrams * 4 + carbGrams * 4);
+    notes.push(
+      "Final calories were aligned to the rounded macro floors to keep the display internally consistent."
+    );
+  }
+
+  const targets = finalizeTargets(proteinGrams, carbGrams, fatGrams);
+  const percentages = calculateMacroPercentages(targets);
 
   return {
+    bmr,
     tdee,
-    targets: { calories, protein, carbs, fat },
-    explanation: buildExplanation(tdee, calories, profile.goal, strategy),
+    targets,
+    macroProfileLabel: createMacroProfileLabel(targets),
+    explanationSummary:
+      "Your macros are based on your body stats, goal, and activity level. Your eating style changes the foods and meal suggestions, and keto/carnivore also adjust carb intake.",
+    explanation:
+      "Your macros are based on your body stats, goal, and activity level. Your eating style changes the foods and meal suggestions, and keto/carnivore also adjust carb intake.",
+    calculationBreakdown: {
+      bodyCompositionBasis: proteinTarget.basis,
+      leanBodyMassKg: proteinTarget.leanBodyMassKg
+        ? roundInt(proteinTarget.leanBodyMassKg * 10) / 10
+        : undefined,
+      bmr,
+      tdee,
+      calorieAdjustmentPercent,
+      calorieAdjustmentLabel: getGoalAdjustmentLabel(
+        profile.goal,
+        calorieAdjustmentPercent
+      ),
+      proteinRule: proteinTarget.rule,
+      fatRule:
+        profile.eatingStyle === "keto" || profile.eatingStyle === "carnivore"
+          ? `Fat minimum is ${FAT_MINIMUM_G_PER_LB[profile.eatingStyle].toFixed(2)}g per lb for ${profile.eatingStyle}.`
+          : "Fat starts at 0.30g per lb body weight and generally stays above 20% of calories.",
+      carbRule:
+        profile.eatingStyle === "keto"
+          ? "Carbs are capped near ketogenic levels after protein and fat are set."
+          : profile.eatingStyle === "carnivore"
+            ? "Carbs are kept near zero and never allowed to go negative."
+            : "Carbs fill the calories remaining after protein and fat are set.",
+      eatingStyleAdjustment,
+      percentages,
+      notes,
+    },
   };
 }
 
@@ -228,14 +373,14 @@ export function getAdherencePercent(
 
   const calRatio = Math.min(consumed.calories / targets.calories, 1.2);
   const protRatio = Math.min(
-    consumed.protein / Math.max(targets.protein, 1),
+    consumed.proteinGrams / Math.max(targets.proteinGrams, 1),
     1.2
   );
   const carbRatio = Math.min(
-    consumed.carbs / Math.max(targets.carbs, 1),
+    consumed.carbGrams / Math.max(targets.carbGrams, 1),
     1.2
   );
-  const fatRatio = Math.min(consumed.fat / Math.max(targets.fat, 1), 1.2);
+  const fatRatio = Math.min(consumed.fatGrams / Math.max(targets.fatGrams, 1), 1.2);
 
   const avg = (calRatio + protRatio + carbRatio + fatRatio) / 4;
   return roundInt(Math.min(avg, 1) * 100);

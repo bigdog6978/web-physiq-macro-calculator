@@ -50,7 +50,7 @@ export default function Home() {
           Calculate Your Daily Macros
         </h1>
         <p className="mt-2 text-lg text-[#A3A3A3]">
-          Get personalized calorie and macro targets based on your body, goal, and diet strategy.
+          Get personalized calorie and macro targets based on your body stats, goal, activity level, and eating style.
         </p>
       </header>
 
@@ -103,10 +103,11 @@ export default function Home() {
           </p>
           <p>
             <strong className="text-[#F5F5F5]">Goal adjustments</strong> are applied to TDEE: cut fat
-            (-15%), build muscle (+10%), maintain (0%), or body recomp (-5% or
-            maintenance if body fat is low). Your chosen <strong className="text-[#F5F5F5]">macro
-            strategy</strong> (high protein, keto, carnivore, etc.) then splits
-            the remaining calories between protein, carbs, and fat.
+            (-20%), build muscle (+10%), maintain (0%), or body recomp (maintenance or a
+            small deficit based on body fat %). Protein is then set from body composition,
+            goal, and activity level, fat is anchored to a minimum threshold, and carbs fill the remainder.
+            Your chosen <strong className="text-[#F5F5F5]">eating style</strong> mostly affects meal suggestions,
+            with keto and carnivore also capping carbs.
           </p>
         </div>
       </section>
@@ -119,47 +120,45 @@ export default function Home() {
           <div>
             <h3 className="font-medium text-[#F5F5F5]">Fat Loss Macros</h3>
             <p className="text-sm mt-1">
-              A 15% calorie deficit with adequate protein (0.9–1.1g per lb)
-              helps you lose fat while preserving muscle. Choose a strategy like
-              high protein or low carb based on preference.
+              A 20% calorie deficit with goal- and activity-based protein helps
+              you lose fat while preserving muscle. Eating style changes the foods,
+              while keto and carnivore also lower carb intake.
             </p>
           </div>
           <div>
             <h3 className="font-medium text-[#F5F5F5]">Muscle Gain Macros</h3>
             <p className="text-sm mt-1">
-              A 10% surplus supports muscle growth. Prioritize protein (1.0–1.1g
-              per lb) and enough carbs for training. Performance or high protein
-              strategies work well.
+              A 10% surplus supports muscle growth. Protein and carbs both rise
+              with higher training demands, while eating style keeps meal suggestions
+              aligned with how you prefer to eat.
             </p>
           </div>
           <div>
             <h3 className="font-medium text-[#F5F5F5]">Body Recomposition Macros</h3>
             <p className="text-sm mt-1">
-              A slight deficit (-5%) or maintenance lets you build muscle and lose
-              fat. Best for beginners. If body fat is very low (under 15% male /
-              23% female), we use maintenance.
+              Recomp stays around maintenance unless body fat is higher, in which case
+              we use a small deficit. Body fat % makes this more accurate.
             </p>
           </div>
           <div>
             <h3 className="font-medium text-[#F5F5F5]">Keto Macro Calculator</h3>
             <p className="text-sm mt-1">
-              Keto keeps carbs under 5% of remaining calories and fat high (65%).
-              Protein is moderate. Use the Keto strategy for this split.
+              Keto caps carbs around 20-50 grams per day, keeps protein anchored,
+              and shifts remaining calories into fat.
             </p>
           </div>
           <div>
             <h3 className="font-medium text-[#F5F5F5]">Carnivore Macro Calculator</h3>
             <p className="text-sm mt-1">
-              Carnivore sets carbs to zero and allocates 70% of remaining
-              calories to fat. Protein comes from animal foods only.
+              Carnivore keeps carbs near zero and builds meals around animal-based
+              protein and fat sources.
             </p>
           </div>
           <div>
-            <h3 className="font-medium text-[#F5F5F5]">Mediterranean Macros</h3>
+            <h3 className="font-medium text-[#F5F5F5]">Mediterranean Eating Style</h3>
             <p className="text-sm mt-1">
-              Mediterranean uses 35% fat and 40% carbs of remaining calories,
-              with moderate protein. Emphasizes olive oil, fish, and whole
-              grains.
+              Mediterranean keeps the base algorithm intact while emphasizing
+              olive oil, fish, legumes, whole grains, fruits, and vegetables.
             </p>
           </div>
         </div>

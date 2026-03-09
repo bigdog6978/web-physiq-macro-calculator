@@ -69,18 +69,19 @@ function RadialDial({
 }
 
 export function ResultsSummary({ result }: ResultsSummaryProps) {
-  const { targets, profile, explanation } = result;
+  const { targets, profile, explanationSummary, macroProfileLabel, calculationBreakdown } =
+    result;
   const weightLbs = kgToLbs(profile.weightKg);
   const proteinPerUnit =
     profile.weightUnit === "lb"
-      ? targets.protein / weightLbs
-      : targets.protein / profile.weightKg;
+      ? targets.proteinGrams / weightLbs
+      : targets.proteinGrams / profile.weightKg;
   const unitLabel = profile.weightUnit === "lb" ? "per lb" : "per kg";
 
   // Shared Physiq family palette (aligns with Macro Tracker)
   const CALORIES_COLOR = "#FF5F1F";
-  const PROTEIN_COLOR = "#FF5F1F";
-  const CARBS_COLOR = "#3B82F6";
+  const PROTEIN_COLOR = "#3B82F6";
+  const CARBS_COLOR = "#84CC16";
   const FAT_COLOR = "#EAB308";
 
   return (
@@ -136,7 +137,10 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
               </div>
             </div>
             <p className="mt-4 text-sm text-[#9CA3AF] leading-relaxed">
-              {explanation}
+              {explanationSummary}
+            </p>
+            <p className="mt-3 text-sm font-medium text-[#FF5F1F]">
+              {macroProfileLabel}
             </p>
           </div>
         </div>
@@ -147,7 +151,7 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
         <h2 className="text-lg font-bold text-white mb-4">Daily Target Macros</h2>
         <div className="grid grid-cols-3 gap-8">
           <RadialDial
-            value={targets.protein}
+            value={targets.proteinGrams}
             label="Protein"
             unit="gm"
             color={PROTEIN_COLOR}
@@ -155,7 +159,7 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
             strokeWidth={10}
           />
           <RadialDial
-            value={targets.carbs}
+            value={targets.carbGrams}
             label="Carbs"
             unit="gm"
             color={CARBS_COLOR}
@@ -163,7 +167,7 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
             strokeWidth={10}
           />
           <RadialDial
-            value={targets.fat}
+            value={targets.fatGrams}
             label="Fat"
             unit="gm"
             color={FAT_COLOR}
@@ -175,10 +179,31 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
 
       <div className="rounded-xl border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3">
         <p className="text-sm text-[#9CA3AF]">
-          Protein: <strong className="text-white">{targets.protein}gm</strong>{" "}
+          Protein: <strong className="text-white">{targets.proteinGrams}gm</strong>{" "}
           ({proteinPerUnit.toFixed(1)}gm {unitLabel} body weight)
         </p>
       </div>
+
+      <details className="rounded-xl border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3">
+        <summary className="cursor-pointer text-sm font-medium text-white">
+          How we calculated this
+        </summary>
+        <div className="mt-3 space-y-2 text-sm text-[#9CA3AF]">
+          <p>
+            Calories are based on BMR ({calculationBreakdown.bmr}) × activity for a
+            TDEE of {calculationBreakdown.tdee}, then adjusted by{" "}
+            {Math.round(calculationBreakdown.calorieAdjustmentPercent * 100)}% for
+            your goal.
+          </p>
+          <p>{calculationBreakdown.proteinRule}</p>
+          <p>{calculationBreakdown.fatRule}</p>
+          <p>{calculationBreakdown.carbRule}</p>
+          <p>{calculationBreakdown.eatingStyleAdjustment}</p>
+          {calculationBreakdown.notes.map((note) => (
+            <p key={note}>{note}</p>
+          ))}
+        </div>
+      </details>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { ALL_SEO_PAGES, getPageConfig } from "@/lib/seo/pages";
 import { buildPageContent, configToProfile } from "@/lib/seo/content";
 import { buildFAQSchema, buildBreadcrumbSchema } from "@/lib/seo/schema";
 import { assertSEOQuality } from "@/lib/seo/quality";
+import { calculateMacros } from "@/lib/macroEngine";
 import { generateMealPlan } from "@/lib/mealPlanEngine";
 import { ResultsSummary } from "@/components/ResultsSummary";
 import { MealPlan } from "@/components/MealPlan";
@@ -68,18 +69,14 @@ export default async function MacroPage({
 
   const content = buildPageContent(config);
   const profile = configToProfile(config);
-  const { meals, conflictWarning } = generateMealPlan(
-    content.targets,
-    [],
-    config.strategy ?? "balanced"
-  );
+  const macroCalculation = calculateMacros(profile);
+  const { meals, conflictWarning } = generateMealPlan(macroCalculation.targets, profile);
 
   const macroResult: MacroResult = {
-    tdee: content.tdee,
-    targets: content.targets,
+    ...macroCalculation,
     meals,
     profile,
-    explanation: content.explanation,
+    explanation: macroCalculation.explanationSummary,
     ...(conflictWarning && { conflictWarning }),
   };
 
@@ -170,7 +167,7 @@ export default async function MacroPage({
               Adjust Your Macros
             </h2>
             <p className="text-sm text-[#A3A3A3] mb-4">
-              Pre-filled for this profile. Change any value and recalculate.
+              Pre-filled for this profile. Change any value and recalculate from the same macro engine.
             </p>
             <InteractiveCalculatorSection
               initialValues={config}

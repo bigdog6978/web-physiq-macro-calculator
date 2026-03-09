@@ -3,13 +3,22 @@ import type {
   Meal,
   MealItem,
   DietModifier,
-  MacroStrategy,
+  UserProfile,
 } from "@/types/macro";
 import { FOOD_DB, type FoodTemplate } from "@/data/mealTemplates";
 
-const MEAL_TYPES = ["breakfast", "lunch", "dinner", "snack"] as const;
-const MEAL_LABELS = ["Breakfast", "Lunch", "Dinner", "Snack"] as const;
-const MEAL_CALORIE_SPLITS = [0.25, 0.35, 0.3, 0.1];
+const STANDARD_MEALS = [
+  { type: "breakfast", label: "Breakfast", split: 0.25 },
+  { type: "lunch", label: "Lunch", split: 0.35 },
+  { type: "dinner", label: "Dinner", split: 0.3 },
+  { type: "snack", label: "Snack", split: 0.1 },
+] as const;
+
+const FASTING_MEALS = [
+  { type: "lunch", label: "Lunch", split: 0.4 },
+  { type: "snack", label: "Break-Fast Snack", split: 0.15 },
+  { type: "dinner", label: "Dinner", split: 0.45 },
+] as const;
 
 export interface MealPlanResult {
   meals: Meal[];
@@ -21,6 +30,11 @@ function isModifierCompatible(
   modifiers: DietModifier[]
 ): boolean {
   for (const mod of modifiers) {
+    if (mod === "intermittent_fasting") continue;
+    if (mod === "halal" && /(bacon|pork)/i.test(food.name)) return false;
+    if (mod === "kosher" && /(pork|shellfish|shrimp|bacon)/i.test(food.name)) {
+      return false;
+    }
     if (!food.tags.includes(mod)) return false;
   }
   return true;
@@ -51,26 +65,46 @@ function isKetoCompatible(food: FoodTemplate): boolean {
   return food.carbs <= 10;
 }
 
+function isPaleoCompatible(food: FoodTemplate): boolean {
+  return !/(rice|quinoa|beans|oatmeal|toast|yogurt|cheese|cottage)/i.test(
+    food.name
+  );
+}
+
+function isMediterraneanPriority(food: FoodTemplate): boolean {
+  return /(salmon|olive oil|quinoa|brown rice|beans|broccoli|salad|asparagus)/i.test(
+    food.name
+  );
+}
+
 function filterFoods(
   mealType: string,
-  modifiers: DietModifier[],
-  strategy: MacroStrategy
+  profile: UserProfile
 ): FoodTemplate[] {
   const mealTag = mealType as "breakfast" | "lunch" | "dinner" | "snack";
   let foods = FOOD_DB.filter((f) => f.tags.includes(mealTag));
-  foods = foods.filter((f) => isModifierCompatible(f, modifiers));
+  foods = foods.filter((f) => isModifierCompatible(f, profile.dietModifiers));
 
-  if (strategy === "carnivore") {
+  if (profile.eatingStyle === "carnivore") {
     foods = foods.filter((f) => isCarnivoreCompatible(f));
   }
-  if (strategy === "keto") {
+  if (profile.eatingStyle === "keto") {
     foods = foods.filter((f) => isKetoCompatible(f));
   }
-  if (modifiers.includes("vegan")) {
+  if (profile.eatingStyle === "vegan") {
     foods = foods.filter((f) => f.tags.includes("vegan"));
   }
-  if (modifiers.includes("vegetarian") && !modifiers.includes("vegan")) {
+  if (profile.eatingStyle === "vegetarian") {
     foods = foods.filter((f) => f.tags.includes("vegetarian"));
+  }
+  if (profile.eatingStyle === "paleo") {
+    foods = foods.filter((f) => isPaleoCompatible(f));
+  }
+  if (profile.eatingStyle === "mediterranean") {
+    foods = [
+      ...foods.filter((f) => isMediterraneanPriority(f)),
+      ...foods.filter((f) => !isMediterraneanPriority(f)),
+    ];
   }
 
   return foods;
@@ -78,7 +112,9 @@ function filterFoods(
 
 function pickFoodsForMeal(
   available: FoodTemplate[],
-  targetCals: number
+  targetCals: number,
+  targetProtein: number,
+  targetCarbs: number
 ): MealItem[] {
   if (available.length === 0) return [];
 
@@ -86,7 +122,17 @@ function pickFoodsForMeal(
   let remainingCals = targetCals;
   const used = new Set<string>();
 
-  const sorted = [...available].sort((a, b) => b.protein - a.protein);
+  const sorted = [...available].sort((a, b) => {
+    const aScore =
+      Math.abs(a.calories - remainingCals) +
+      Math.abs(a.protein - targetProtein) * 3 +
+      Math.abs(a.carbs - targetCarbs);
+    const bScore =
+      Math.abs(b.calories - remainingCals) +
+      Math.abs(b.protein - targetProtein) * 3 +
+      Math.abs(b.carbs - targetCarbs);
+    return aScore - bScore;
+  });
 
   for (const food of sorted) {
     if (remainingCals < 50) break;
@@ -113,54 +159,57 @@ function sumMacros(items: MealItem[]): MacroTargets {
   return items.reduce(
     (acc, item) => ({
       calories: acc.calories + item.calories,
+      proteinGrams: acc.proteinGrams + item.protein,
+      carbGrams: acc.carbGrams + item.carbs,
+      fatGrams: acc.fatGrams + item.fat,
       protein: acc.protein + item.protein,
       carbs: acc.carbs + item.carbs,
       fat: acc.fat + item.fat,
     }),
-    { calories: 0, protein: 0, carbs: 0, fat: 0 }
+    {
+      calories: 0,
+      proteinGrams: 0,
+      carbGrams: 0,
+      fatGrams: 0,
+      protein: 0,
+      carbs: 0,
+      fat: 0,
+    }
   );
-}
-
-function hasConflict(modifiers: DietModifier[], strategy: MacroStrategy): boolean {
-  if (modifiers.includes("vegan") && strategy === "carnivore") return true;
-  if (modifiers.includes("vegetarian") && strategy === "carnivore") return true;
-  return false;
 }
 
 export function generateMealPlan(
   targets: MacroTargets,
-  modifiers: DietModifier[],
-  strategy: MacroStrategy
+  profile: UserProfile
 ): MealPlanResult {
-  const conflictWarning = hasConflict(modifiers, strategy)
-    ? "Vegan/Vegetarian conflicts with Carnivore. Showing closest feasible plan (low-carb vegetarian)."
-    : undefined;
+  const mealTemplate = profile.dietModifiers.includes("intermittent_fasting")
+    ? FASTING_MEALS
+    : STANDARD_MEALS;
+  const warnings: string[] = [];
 
-  // If conflict (vegan/vegetarian + carnivore), fall back to vegan/vegetarian + low carb
-  let effectiveModifiers = modifiers;
-  let effectiveStrategy = strategy;
-  if (hasConflict(modifiers, strategy)) {
-    const otherMods = modifiers.filter((m) => m !== "vegan" && m !== "vegetarian");
-    effectiveModifiers = modifiers.includes("vegan")
-      ? ["vegan", ...otherMods]
-      : ["vegetarian", ...otherMods];
-    effectiveStrategy = "low_carb";
-  }
-
-  const meals: Meal[] = MEAL_TYPES.map((type, idx) => {
-    const mealCalTarget = Math.round(
-      targets.calories * MEAL_CALORIE_SPLITS[idx]
-    );
-    const available = filterFoods(type, effectiveModifiers, effectiveStrategy);
-    const items = pickFoodsForMeal(available, mealCalTarget);
+  const meals: Meal[] = mealTemplate.map(({ type, label, split }) => {
+    const mealCalTarget = Math.round(targets.calories * split);
+    const mealProteinTarget = Math.round(targets.proteinGrams * split);
+    const mealCarbTarget = Math.round(targets.carbGrams * split);
+    const available = filterFoods(type, profile);
+    const items = pickFoodsForMeal(available, mealCalTarget, mealProteinTarget, mealCarbTarget);
     const totals = sumMacros(items);
 
+    if (items.length === 0) {
+      warnings.push(
+        `We had limited food matches for ${label.toLowerCase()} with the selected eating style and restrictions.`
+      );
+    }
+
     return {
-      label: MEAL_LABELS[idx],
+      label,
       items,
       totals,
     };
   });
 
-  return { meals, conflictWarning };
+  return {
+    meals,
+    conflictWarning: warnings.length > 0 ? warnings.join(" ") : undefined,
+  };
 }

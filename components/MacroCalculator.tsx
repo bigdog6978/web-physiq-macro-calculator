@@ -1,18 +1,29 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { z } from "zod";
 import {
-  type UserProfile,
-  type MacroResult,
-  type WeightUnit,
+  type DietModifier,
+  type EatingStyle,
   type HeightUnit,
+  type LegacyActivityLevel,
+  type MacroResult,
+  type Sex,
+  type UserProfile,
+  type WeightUnit,
 } from "@/types/macro";
 import { TrendingDown, TrendingUp, Minus, RefreshCw } from "lucide-react";
-import { GOALS, STRATEGIES, MODIFIERS, ACTIVITY_LEVELS } from "@/constants/macroData";
+import {
+  ACTIVITY_LEVELS,
+  DIET_MODIFIERS,
+  EATING_STYLES,
+  GOALS,
+} from "@/constants/macroData";
 import { calculateMacros, lbsToKg } from "@/lib/macroEngine";
 import { generateMealPlan } from "@/lib/mealPlanEngine";
 import { trackEvent } from "@/lib/analytics/client";
+import { normalizeUserProfile } from "@/lib/profile";
+import { saveStoredProfile } from "@/lib/profileStorage";
 
 const schema = z.object({
   weightKg: z.number().min(23, "Weight too low").max(272, "Weight too high"),
@@ -23,12 +34,19 @@ const schema = z.object({
 
 interface InitialValues {
   weightLb?: number;
+  weightKg?: number;
   gender?: "male" | "female";
+  sex?: Sex;
   goal?: UserProfile["goal"];
   strategy?: UserProfile["strategy"];
-  activityLevel?: UserProfile["activityLevel"];
+  eatingStyle?: EatingStyle;
+  activityLevel?: UserProfile["activityLevel"] | LegacyActivityLevel;
   heightCm?: number;
   age?: number;
+  bodyFatPercent?: number;
+  dietModifiers?: DietModifier[];
+  modifiers?: UserProfile["modifiers"];
+  dietNotes?: string;
 }
 
 interface MacroCalculatorProps {
@@ -46,18 +64,41 @@ export function MacroCalculator({
   initialValues,
   analyticsContext,
 }: MacroCalculatorProps) {
-  // Height prefill: convert heightCm to ft/in for the ft_in unit default
-  const initFt = initialValues?.heightCm
-    ? Math.floor(initialValues.heightCm / 2.54 / 12)
+  const initialProfile = useMemo(
+    () =>
+      normalizeUserProfile({
+        ...initialValues,
+        weightKg:
+          initialValues?.weightKg ??
+          (initialValues?.weightLb ? lbsToKg(initialValues.weightLb) : undefined),
+        sex: initialValues?.sex ?? initialValues?.gender,
+        eatingStyle: initialValues?.eatingStyle,
+        strategy: initialValues?.strategy,
+        dietModifiers: initialValues?.dietModifiers,
+        modifiers: initialValues?.modifiers,
+      }),
+    [initialValues]
+  );
+
+  const initFt = initialProfile.heightCm
+    ? Math.floor(initialProfile.heightCm / 2.54 / 12)
     : undefined;
-  const initIn = initialValues?.heightCm
-    ? Math.round((initialValues.heightCm / 2.54) % 12)
+  const initIn = initialProfile.heightCm
+    ? Math.round((initialProfile.heightCm / 2.54) % 12)
     : undefined;
 
-  const [weightUnit, setWeightUnit] = useState<WeightUnit>("lb");
-  const [heightUnit, setHeightUnit] = useState<HeightUnit>("ft_in");
+  const [weightUnit, setWeightUnit] = useState<WeightUnit>(
+    initialProfile.weightUnit ?? "lb"
+  );
+  const [heightUnit, setHeightUnit] = useState<HeightUnit>(
+    initialProfile.heightUnit ?? "ft_in"
+  );
   const [weight, setWeight] = useState(
-    initialValues?.weightLb ? String(initialValues.weightLb) : ""
+    initialValues?.weightLb
+      ? String(initialValues.weightLb)
+      : initialProfile.weightKg
+        ? String(Math.round((initialProfile.weightKg / 0.453592) * 10) / 10)
+        : ""
   );
   const [heightFeet, setHeightFeet] = useState(
     initFt !== undefined ? String(initFt) : ""
@@ -65,30 +106,34 @@ export function MacroCalculator({
   const [heightInches, setHeightInches] = useState(
     initIn !== undefined ? String(initIn) : ""
   );
-  const [heightCm, setHeightCm] = useState("");
-  const [age, setAge] = useState(
-    initialValues?.age ? String(initialValues.age) : ""
+  const [heightCm, setHeightCm] = useState(
+    initialProfile.heightCm ? String(initialProfile.heightCm) : ""
   );
-  const [gender, setGender] = useState<"male" | "female">(
-    initialValues?.gender ?? "male"
+  const [age, setAge] = useState(initialProfile.age ? String(initialProfile.age) : "");
+  const [sex, setSex] = useState<Sex>(
+    initialProfile.sex === "female" ? "female" : "male"
   );
-  const [bodyFatPercent, setBodyFatPercent] = useState("");
+  const [bodyFatPercent, setBodyFatPercent] = useState(
+    initialProfile.bodyFatPercent ? String(initialProfile.bodyFatPercent) : ""
+  );
   const [activityLevel, setActivityLevel] = useState<UserProfile["activityLevel"]>(
-    initialValues?.activityLevel ?? "moderate"
+    initialProfile.activityLevel
   );
-  const [goal, setGoal] = useState<UserProfile["goal"]>(
-    initialValues?.goal ?? "cut"
+  const [goal, setGoal] = useState<UserProfile["goal"]>(initialProfile.goal);
+  const [eatingStyle, setEatingStyle] = useState<UserProfile["eatingStyle"]>(
+    initialProfile.eatingStyle
   );
-  const [strategy, setStrategy] = useState<UserProfile["strategy"]>(
-    initialValues?.strategy ?? "high_protein"
+  const [dietModifiers, setDietModifiers] = useState<UserProfile["dietModifiers"]>(
+    initialProfile.dietModifiers
   );
-  const [modifiers, setModifiers] = useState<UserProfile["modifiers"]>([]);
-  const [otherModifier, setOtherModifier] = useState("");
+  const [dietNotes, setDietNotes] = useState(initialProfile.dietNotes ?? "");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const toggleModifier = useCallback((mod: UserProfile["modifiers"][number]) => {
-    setModifiers((prev) =>
-      prev.includes(mod) ? prev.filter((m) => m !== mod) : [...prev, mod]
+  const toggleModifier = useCallback((modifier: DietModifier) => {
+    setDietModifiers((prev) =>
+      prev.includes(modifier)
+        ? prev.filter((item) => item !== modifier)
+        : [...prev, modifier]
     );
   }, []);
 
@@ -101,36 +146,64 @@ export function MacroCalculator({
     return (ft * 12 + inVal) * 2.54;
   }, [heightUnit, heightCm, heightFeet, heightInches]);
 
+  const buildProfile = useCallback((): UserProfile => {
+    const enteredWeight = parseFloat(weight);
+    const enteredBodyFat = bodyFatPercent ? parseFloat(bodyFatPercent) : undefined;
+
+    return {
+      weightKg: weightUnit === "lb" ? lbsToKg(enteredWeight) : enteredWeight,
+      heightCm: getHeightCm(),
+      weightUnit,
+      heightUnit,
+      age: parseInt(age, 10),
+      sex,
+      bodyFatPercent: enteredBodyFat,
+      goal,
+      activityLevel,
+      eatingStyle,
+      dietModifiers,
+      dietNotes: dietNotes.trim() || undefined,
+    };
+  }, [
+    activityLevel,
+    age,
+    bodyFatPercent,
+    dietModifiers,
+    dietNotes,
+    eatingStyle,
+    getHeightCm,
+    goal,
+    heightUnit,
+    sex,
+    weight,
+    weightUnit,
+  ]);
+
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
       setErrors({});
 
-      const w = parseFloat(weight);
-      const a = parseInt(age, 10);
-      const hCm = getHeightCm();
-      const bf = bodyFatPercent ? parseFloat(bodyFatPercent) : undefined;
+      const profile = buildProfile();
 
-      const weightKg = weightUnit === "lb" ? lbsToKg(w) : w;
-
-      if (isNaN(w) || w <= 0) {
+      if (!Number.isFinite(profile.weightKg) || profile.weightKg <= 0) {
         setErrors({ weight: "Enter a valid weight" });
         return;
       }
-      if (hCm <= 0) {
+      if (profile.heightCm <= 0) {
         setErrors({ heightCm: "Enter a valid height" });
         return;
       }
-      if (isNaN(a) || a <= 0) {
+      if (!Number.isFinite(profile.age) || profile.age <= 0) {
         setErrors({ age: "Enter a valid age" });
         return;
       }
 
       const parsed = schema.safeParse({
-        weightKg,
-        heightCm: hCm,
-        age: a,
-        bodyFatPercent: bf ?? null,
+        weightKg: profile.weightKg,
+        heightCm: profile.heightCm,
+        age: profile.age,
+        bodyFatPercent: profile.bodyFatPercent ?? null,
       });
 
       if (!parsed.success) {
@@ -144,31 +217,15 @@ export function MacroCalculator({
         return;
       }
 
-      const profile: UserProfile = {
-        weightKg,
-        heightCm: hCm,
-        weightUnit,
-        heightUnit,
-        age: a,
-        gender,
-        bodyFatPercent: bf,
-        goal,
-        strategy,
-        modifiers,
-        activityLevel,
-      };
+      const macroResult = calculateMacros(profile);
+      const { meals, conflictWarning } = generateMealPlan(macroResult.targets, profile);
 
-      const { tdee, targets, explanation } = calculateMacros(profile);
-      const { meals, conflictWarning } = generateMealPlan(
-        targets,
-        modifiers,
-        strategy
-      );
+      saveStoredProfile(profile);
 
       trackEvent("calculator_submitted", {
         goal,
-        strategy,
-        gender,
+        eating_style: eatingStyle,
+        sex,
         weight_unit: weightUnit,
         activity_level: activityLevel,
         ...(analyticsContext?.page_type
@@ -183,29 +240,21 @@ export function MacroCalculator({
       });
 
       onResult({
-        tdee,
-        targets,
+        ...macroResult,
         meals,
         profile,
-        explanation,
         ...(conflictWarning && { conflictWarning }),
       });
     },
     [
-      weight,
-      weightUnit,
-      heightFeet,
-      heightInches,
-      heightCm,
-      heightUnit,
-      age,
-      gender,
-      bodyFatPercent,
-      goal,
-      strategy,
-      modifiers,
       activityLevel,
-      getHeightCm,
+      analyticsContext,
+      buildProfile,
+      eatingStyle,
+      goal,
+      onResult,
+      sex,
+      weightUnit,
     ]
   );
 
@@ -219,6 +268,7 @@ export function MacroCalculator({
     "rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3 text-base text-[#F5F5F5] placeholder-[#525252] focus:border-[#FF5F1F] focus:ring-1 focus:ring-[#FF5F1F] focus:outline-none";
   const labelClass = "block text-sm font-medium text-[#F5F5F5] mb-2";
   const labelClassSmall = "block text-sm font-medium text-[#F5F5F5] mb-1";
+  const helperClass = "mt-1 text-sm text-[#A3A3A3]";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -254,7 +304,6 @@ export function MacroCalculator({
               className={`mt-2 w-full min-w-0 ${inputBase}`}
               aria-label="Weight"
               aria-invalid={!!errors.weight}
-              aria-describedby={errors.weight ? "weight-error" : undefined}
             />
             {errors.weight && (
               <p id="weight-error" className="mt-1 text-sm text-[#EF4444]">
@@ -355,58 +404,41 @@ export function MacroCalculator({
             inputMode="decimal"
             value={bodyFatPercent}
             onChange={(e) => setBodyFatPercent(e.target.value)}
-            placeholder="—"
+            placeholder="18"
             className={inputBase}
           />
+          <p className={helperClass}>
+            If you know your body fat %, we can calculate more accurate macros.
+          </p>
         </div>
       </div>
 
       <div>
-        <label className={labelClass}>Gender</label>
-        <div className="flex gap-2">
-          {(["male", "female"] as const).map((g) => (
+        <label className={labelClass}>Sex</label>
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { id: "male", label: "Male" },
+            { id: "female", label: "Female" },
+          ].map((option) => (
             <button
-              key={g}
+              key={option.id}
               type="button"
-              onClick={() => setGender(g)}
-              className={`flex-1 py-3 rounded-lg text-sm font-medium border-2 transition-colors ${
-                gender === g ? btnActive : btnInactive
+              onClick={() => setSex(option.id as Sex)}
+              className={`py-3 rounded-lg text-sm font-medium border-2 transition-colors ${
+                sex === option.id ? btnActive : btnInactive
               }`}
-              aria-pressed={gender === g}
+              aria-pressed={sex === option.id}
             >
-              {g === "male" ? "Male" : "Female"}
+              {option.label}
             </button>
           ))}
         </div>
       </div>
 
       <div>
-        <h3 className="text-[1.15rem] font-bold text-white mb-2">Activity</h3>
-        <div className="grid grid-cols-2 gap-2">
-          {ACTIVITY_LEVELS.map((l) => {
-            const isSelected = activityLevel === l.id;
-            return (
-              <button
-                key={l.id}
-                type="button"
-                onClick={() => setActivityLevel(l.id)}
-                className={`px-4 py-3 rounded-lg text-sm font-medium border-2 transition-colors text-left ${
-                  isSelected
-                    ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-[#FF5F1F]"
-                    : "border-[#2A2A2A] bg-[#1A1A1A] text-[#A3A3A3] hover:border-[#3A3A3A]"
-                }`}
-                aria-pressed={isSelected}
-              >
-                {l.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      <div>
         <h3 className="text-[1.15rem] font-bold text-white mb-2">Goal</h3>
-        <div className="grid grid-cols-2 gap-2">
+        <p className={helperClass}>Your goal affects calories and macro targets.</p>
+        <div className="grid grid-cols-2 gap-2 mt-3">
           {GOALS.map((g) => {
             const isSelected = goal === g.id;
             const Icon =
@@ -449,23 +481,58 @@ export function MacroCalculator({
       </div>
 
       <div>
-        <h3 className="text-[1.15rem] font-bold text-white mb-2">
-          Macro Strategy
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {STRATEGIES.map((s) => (
+        <h3 className="text-[1.15rem] font-bold text-white mb-2">Activity Level</h3>
+        <p className={helperClass}>
+          Your activity level affects calories, protein needs, and carb needs.
+        </p>
+        <div className="grid grid-cols-1 gap-2 mt-3">
+          {ACTIVITY_LEVELS.map((level) => {
+            const isSelected = activityLevel === level.id;
+            return (
+              <button
+                key={level.id}
+                type="button"
+                onClick={() => setActivityLevel(level.id)}
+                className={`px-4 py-3 rounded-lg text-sm font-medium border-2 transition-colors text-left ${
+                  isSelected
+                    ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white"
+                    : "border-[#2A2A2A] bg-[#1A1A1A] text-[#A3A3A3] hover:border-[#3A3A3A]"
+                }`}
+                aria-pressed={isSelected}
+              >
+                <span className="block">{level.label}</span>
+                <span className="block text-xs text-white/70 mt-1">
+                  {level.description}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-[1.15rem] font-bold text-white mb-2">Eating Style</h3>
+        <p className={helperClass}>
+          Your eating style affects meal suggestions and food choices. Keto and
+          carnivore also adjust macro distribution.
+        </p>
+        <div className="grid grid-cols-2 gap-2 mt-3">
+          {EATING_STYLES.map((style) => (
             <button
-              key={s.id}
+              key={style.id}
               type="button"
-              onClick={() => setStrategy(s.id)}
-              className={`px-3 py-2 rounded-lg text-sm font-medium border-2 transition-colors ${
-                strategy === s.id
+              onClick={() => setEatingStyle(style.id)}
+              className={`p-3 rounded-lg text-left border-2 transition-colors ${
+                eatingStyle === style.id
                   ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white"
-                  : "border-[#2A2A2A] bg-[#1A1A1A] text-[#737373] hover:border-[#3A3A3A]"
+                  : "border-[#2A2A2A] bg-[#1A1A1A] text-[#A3A3A3] hover:border-[#3A3A3A]"
               }`}
-              aria-pressed={strategy === s.id}
+              aria-pressed={eatingStyle === style.id}
             >
-              {s.label}
+              <span className="block font-medium text-sm">{style.label}</span>
+              <span className="block text-xs text-white/70 mt-1">
+                {style.description}
+              </span>
             </button>
           ))}
         </div>
@@ -473,32 +540,35 @@ export function MacroCalculator({
 
       <div>
         <h3 className="text-[1.15rem] font-bold text-white mb-2">
-          Diet Modifiers <span className="text-[#737373] font-normal">(optional)</span>
+          Dietary Restrictions &amp; Preferences
         </h3>
-        <div className="flex flex-wrap gap-2">
-          {MODIFIERS.map((m) => (
+        <p className={helperClass}>
+          These help us avoid foods that do not fit your needs.
+        </p>
+        <div className="flex flex-wrap gap-2 mt-3">
+          {DIET_MODIFIERS.map((modifier) => (
             <button
-              key={m.id}
+              key={modifier.id}
               type="button"
-              onClick={() => toggleModifier(m.id)}
+              onClick={() => toggleModifier(modifier.id)}
               className={`px-3 py-2 rounded-full text-sm border-2 transition-colors ${
-                modifiers.includes(m.id)
+                dietModifiers.includes(modifier.id)
                   ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white"
                   : "border-[#2A2A2A] bg-[#1A1A1A] text-[#737373] hover:border-[#3A3A3A]"
               }`}
-              aria-pressed={modifiers.includes(m.id)}
+              aria-pressed={dietModifiers.includes(modifier.id)}
             >
-              {m.label}
+              {modifier.label}
             </button>
           ))}
         </div>
         <input
           type="text"
-          value={otherModifier}
-          onChange={(e) => setOtherModifier(e.target.value)}
-          placeholder="Other (not stored)"
-          className={`mt-2 w-full ${inputBase} py-2`}
-          aria-label="Other dietary modifier"
+          value={dietNotes}
+          onChange={(e) => setDietNotes(e.target.value)}
+          placeholder="Other dietary notes"
+          className={`mt-3 w-full ${inputBase} py-2`}
+          aria-label="Other dietary notes"
         />
       </div>
 

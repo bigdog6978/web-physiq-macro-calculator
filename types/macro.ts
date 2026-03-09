@@ -1,8 +1,18 @@
 export type Gender = "male" | "female";
+export type Sex = Gender | "prefer_not_to_say";
 
 export type Goal = "cut" | "build" | "maintain" | "recomp";
 
-export type MacroStrategy =
+export type EatingStyle =
+  | "standard"
+  | "mediterranean"
+  | "vegan"
+  | "vegetarian"
+  | "paleo"
+  | "keto"
+  | "carnivore";
+
+export type LegacyMacroStrategy =
   | "high_protein"
   | "low_carb"
   | "low_fat"
@@ -12,17 +22,30 @@ export type MacroStrategy =
   | "keto"
   | "mediterranean";
 
+// Backwards-compatible alias for legacy SEO and preset code paths.
+export type MacroStrategy = EatingStyle | LegacyMacroStrategy;
+
 export type DietModifier =
-  | "vegan"
-  | "vegetarian"
   | "gluten_free"
   | "dairy_free"
   | "nut_free"
   | "egg_free"
+  | "soy_free"
   | "shellfish_free"
-  | "soy_free";
+  | "intermittent_fasting"
+  | "halal"
+  | "kosher";
+
+export type LegacyDietModifier = DietModifier | "vegan" | "vegetarian";
 
 export type ActivityLevel =
+  | "sedentary"
+  | "light_activity"
+  | "moderate_training"
+  | "strength_training"
+  | "endurance_training";
+
+export type LegacyActivityLevel =
   | "sedentary"
   | "light"
   | "moderate"
@@ -38,19 +61,47 @@ export interface UserProfile {
   weightUnit: WeightUnit;
   heightUnit: HeightUnit;
   age: number;
-  gender: Gender;
+  sex: Sex;
+  gender?: Gender;
   bodyFatPercent?: number;
   goal: Goal;
-  strategy: MacroStrategy;
-  modifiers: DietModifier[];
+  eatingStyle: EatingStyle;
+  strategy?: MacroStrategy;
+  dietModifiers: DietModifier[];
+  modifiers?: LegacyDietModifier[];
+  dietNotes?: string;
   activityLevel: ActivityLevel;
 }
 
 export interface MacroTargets {
   calories: number;
+  proteinGrams: number;
+  carbGrams: number;
+  fatGrams: number;
   protein: number;
   carbs: number;
   fat: number;
+}
+
+export interface MacroPercentages {
+  protein: number;
+  carbs: number;
+  fat: number;
+}
+
+export interface MacroCalculationBreakdown {
+  bodyCompositionBasis: "body_weight" | "lean_mass";
+  leanBodyMassKg?: number;
+  bmr: number;
+  tdee: number;
+  calorieAdjustmentPercent: number;
+  calorieAdjustmentLabel: string;
+  proteinRule: string;
+  fatRule: string;
+  carbRule: string;
+  eatingStyleAdjustment: string;
+  percentages: MacroPercentages;
+  notes: string[];
 }
 
 export interface MealItem {
@@ -69,11 +120,15 @@ export interface Meal {
 }
 
 export interface MacroResult {
+  bmr: number;
   tdee: number;
   targets: MacroTargets;
   meals: Meal[];
   profile: UserProfile;
-  explanation: string;
+  macroProfileLabel: string;
+  explanationSummary: string;
+  explanation?: string;
+  calculationBreakdown: MacroCalculationBreakdown;
   conflictWarning?: string;
 }
 
