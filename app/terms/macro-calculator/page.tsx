@@ -226,7 +226,7 @@ export default function TermsMacroCalculatorPage() {
           </p>
           <p className="mt-2 text-white">
             Physiq Macro Calculator<br />
-            Email: <a href="mailto:physiqmacrotracker@yahoo.com" className="text-[#FF5F1F] hover:text-[#ff7a3d]">physiqmacrotracker@yahoo.com</a>
+            Email: <a href="mailto:support@physiqmacros.com" className="text-[#FF5F1F] hover:text-[#ff7a3d]">support@physiqmacros.com</a>
           </p>
         </section>
       </div>

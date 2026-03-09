@@ -280,7 +280,7 @@ export default function TermsMacroTrackerPage() {
           <h2 className="text-lg font-semibold text-white mb-2">18. CONTACT INFORMATION</h2>
           <p>
             Physiq: Macro Tracker<br />
-            Email: <a href="mailto:physiqmacrotracker@yahoo.com" className="text-[#FF5F1F] hover:text-[#ff7a3d]">physiqmacrotracker@yahoo.com</a>
+            Email: <a href="mailto:support@physiqmacros.com" className="text-[#FF5F1F] hover:text-[#ff7a3d]">support@physiqmacros.com</a>
           </p>
         </section>
       </div>

@@ -43,7 +43,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           For questions, contact us at{" "}
-          <span className="text-[#737373]">[contact email placeholder]</span>.
+          <a href="mailto:support@physiqmacros.com" className="text-[#FF5F1F] hover:text-[#ff7a3d]">support@physiqmacros.com</a>.
         </p>
       </div>
       <p className="mt-8">
