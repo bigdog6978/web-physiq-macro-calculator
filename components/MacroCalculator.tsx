@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { z } from "zod";
 import {
   type DietModifier,
@@ -23,7 +23,7 @@ import { calculateMacros, lbsToKg } from "@/lib/macroEngine";
 import { generateMealPlan } from "@/lib/mealPlanEngine";
 import { trackEvent } from "@/lib/analytics/client";
 import { normalizeUserProfile } from "@/lib/profile";
-import { saveStoredProfile } from "@/lib/profileStorage";
+import { loadStoredProfile, saveStoredProfile } from "@/lib/profileStorage";
 
 const schema = z.object({
   weightKg: z.number().min(23, "Weight too low").max(272, "Weight too high"),
@@ -128,6 +128,8 @@ export function MacroCalculator({
   );
   const [dietNotes, setDietNotes] = useState(initialProfile.dietNotes ?? "");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const hasHydratedStoredProfile = useRef(false);
 
   const toggleModifier = useCallback((modifier: DietModifier) => {
     setDietModifiers((prev) =>
@@ -179,72 +181,125 @@ export function MacroCalculator({
     weightUnit,
   ]);
 
+  const applyProfileToForm = useCallback((profile: UserProfile) => {
+    const weightValue =
+      profile.weightUnit === "kg"
+        ? String(Math.round(profile.weightKg * 10) / 10)
+        : String(Math.round((profile.weightKg / 0.453592) * 10) / 10);
+    const heightFeetValue = profile.heightCm ? Math.floor(profile.heightCm / 2.54 / 12) : 0;
+    const heightInchesValue = profile.heightCm
+      ? Math.round((profile.heightCm / 2.54) % 12)
+      : 0;
+
+    setWeightUnit(profile.weightUnit);
+    setHeightUnit(profile.heightUnit);
+    setWeight(weightValue);
+    setHeightFeet(heightFeetValue ? String(heightFeetValue) : "");
+    setHeightInches(String(heightInchesValue));
+    setHeightCm(profile.heightCm ? String(profile.heightCm) : "");
+    setAge(profile.age ? String(profile.age) : "");
+    setSex(profile.sex === "female" ? "female" : "male");
+    setBodyFatPercent(
+      profile.bodyFatPercent !== undefined ? String(profile.bodyFatPercent) : ""
+    );
+    setActivityLevel(profile.activityLevel);
+    setGoal(profile.goal);
+    setEatingStyle(profile.eatingStyle);
+    setDietModifiers(profile.dietModifiers);
+    setDietNotes(profile.dietNotes ?? "");
+  }, []);
+
+  useEffect(() => {
+    if (initialValues || hasHydratedStoredProfile.current) return;
+    hasHydratedStoredProfile.current = true;
+
+    const storedProfile = loadStoredProfile();
+    if (!storedProfile) return;
+
+    const hydrationTimeout = window.setTimeout(() => {
+      applyProfileToForm(storedProfile);
+    }, 0);
+
+    return () => window.clearTimeout(hydrationTimeout);
+  }, [applyProfileToForm, initialValues]);
+
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
       setErrors({});
+      setSubmitError(null);
 
-      const profile = buildProfile();
+      try {
+        const profile = buildProfile();
 
-      if (!Number.isFinite(profile.weightKg) || profile.weightKg <= 0) {
-        setErrors({ weight: "Enter a valid weight" });
-        return;
-      }
-      if (profile.heightCm <= 0) {
-        setErrors({ heightCm: "Enter a valid height" });
-        return;
-      }
-      if (!Number.isFinite(profile.age) || profile.age <= 0) {
-        setErrors({ age: "Enter a valid age" });
-        return;
-      }
+        if (!Number.isFinite(profile.weightKg) || profile.weightKg <= 0) {
+          setErrors({ weight: "Enter a valid weight" });
+          return;
+        }
+        if (profile.heightCm <= 0) {
+          setErrors({ heightCm: "Enter a valid height" });
+          return;
+        }
+        if (!Number.isFinite(profile.age) || profile.age <= 0) {
+          setErrors({ age: "Enter a valid age" });
+          return;
+        }
 
-      const parsed = schema.safeParse({
-        weightKg: profile.weightKg,
-        heightCm: profile.heightCm,
-        age: profile.age,
-        bodyFatPercent: profile.bodyFatPercent ?? null,
-      });
-
-      if (!parsed.success) {
-        const fieldErrors: Record<string, string> = {};
-        parsed.error.issues.forEach((err) => {
-          const path = (err.path[0] as string) || "";
-          const key = path === "weightKg" ? "weight" : path;
-          if (key && err.message) fieldErrors[key] = err.message;
+        const parsed = schema.safeParse({
+          weightKg: profile.weightKg,
+          heightCm: profile.heightCm,
+          age: profile.age,
+          bodyFatPercent: profile.bodyFatPercent ?? null,
         });
-        setErrors(fieldErrors);
-        return;
+
+        if (!parsed.success) {
+          const fieldErrors: Record<string, string> = {};
+          parsed.error.issues.forEach((err) => {
+            const path = (err.path[0] as string) || "";
+            const key = path === "weightKg" ? "weight" : path;
+            if (key && err.message) fieldErrors[key] = err.message;
+          });
+          setErrors(fieldErrors);
+          return;
+        }
+
+        const macroResult = calculateMacros(profile);
+        const { meals, conflictWarning, mealPlanSummary } = generateMealPlan(
+          macroResult.targets,
+          profile
+        );
+
+        saveStoredProfile(profile);
+
+        trackEvent("calculator_submitted", {
+          goal,
+          eating_style: eatingStyle,
+          sex,
+          weight_unit: weightUnit,
+          activity_level: activityLevel,
+          ...(analyticsContext?.page_type
+            ? { page_type: analyticsContext.page_type }
+            : {}),
+          ...(analyticsContext?.landing_slug
+            ? { landing_slug: analyticsContext.landing_slug }
+            : {}),
+          ...(analyticsContext?.seo_page_type
+            ? { seo_page_type: analyticsContext.seo_page_type }
+            : {}),
+        });
+
+        onResult({
+          ...macroResult,
+          meals,
+          mealPlanSummary,
+          profile,
+          ...(conflictWarning && { conflictWarning }),
+        });
+      } catch (err) {
+        setSubmitError(
+          err instanceof Error ? err.message : "Something went wrong. Please try again."
+        );
       }
-
-      const macroResult = calculateMacros(profile);
-      const { meals, conflictWarning } = generateMealPlan(macroResult.targets, profile);
-
-      saveStoredProfile(profile);
-
-      trackEvent("calculator_submitted", {
-        goal,
-        eating_style: eatingStyle,
-        sex,
-        weight_unit: weightUnit,
-        activity_level: activityLevel,
-        ...(analyticsContext?.page_type
-          ? { page_type: analyticsContext.page_type }
-          : {}),
-        ...(analyticsContext?.landing_slug
-          ? { landing_slug: analyticsContext.landing_slug }
-          : {}),
-        ...(analyticsContext?.seo_page_type
-          ? { seo_page_type: analyticsContext.seo_page_type }
-          : {}),
-      });
-
-      onResult({
-        ...macroResult,
-        meals,
-        profile,
-        ...(conflictWarning && { conflictWarning }),
-      });
     },
     [
       activityLevel,
@@ -270,8 +325,23 @@ export function MacroCalculator({
   const labelClassSmall = "block text-sm font-medium text-[#F5F5F5] mb-1";
   const helperClass = "mt-1 text-sm text-[#A3A3A3]";
 
+  const hasErrors = Object.keys(errors).length > 0;
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {submitError && (
+        <div
+          className="rounded-lg border border-[#EF4444] bg-[rgba(239,68,68,0.15)] px-4 py-3 text-sm text-[#EF4444]"
+          role="alert"
+        >
+          {submitError}
+        </div>
+      )}
+      {hasErrors && (
+        <p className="text-sm text-[#EF4444]" role="alert">
+          Please fix the errors below and try again.
+        </p>
+      )}
       <div>
         <h2 className="text-[1.15rem] font-bold text-white mb-4">Body Stats</h2>
         <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-3 sm:gap-6">
@@ -406,7 +476,11 @@ export function MacroCalculator({
             onChange={(e) => setBodyFatPercent(e.target.value)}
             placeholder="18"
             className={`w-full min-w-0 ${inputBase}`}
+            aria-invalid={!!errors.bodyFatPercent}
           />
+          {errors.bodyFatPercent && (
+            <p className="mt-1 text-sm text-[#EF4444]">{errors.bodyFatPercent}</p>
+          )}
           <p className={`${helperClass} break-words`}>
             If you know your body fat %, we can calculate more accurate macros.
           </p>

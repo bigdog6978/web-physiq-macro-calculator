@@ -3,6 +3,7 @@ import type {
   Meal,
   MealItem,
   DietModifier,
+  MealPlanSummary,
   UserProfile,
 } from "@/types/macro";
 import { FOOD_DB, type FoodTemplate } from "@/data/mealTemplates";
@@ -23,7 +24,18 @@ const FASTING_MEALS = [
 export interface MealPlanResult {
   meals: Meal[];
   conflictWarning?: string;
+  mealPlanSummary: MealPlanSummary;
 }
+
+const EMPTY_MACRO_TARGETS: MacroTargets = {
+  calories: 0,
+  proteinGrams: 0,
+  carbGrams: 0,
+  fatGrams: 0,
+  protein: 0,
+  carbs: 0,
+  fat: 0,
+};
 
 function isModifierCompatible(
   food: FoodTemplate,
@@ -77,6 +89,24 @@ function isMediterraneanPriority(food: FoodTemplate): boolean {
   );
 }
 
+/** Lower = better for tie-breaking; style-preferred foods get 0 so they win when scores are equal. */
+function getStyleRank(food: FoodTemplate, profile: UserProfile): number {
+  if (profile.eatingStyle === "mediterranean") {
+    return isMediterraneanPriority(food) ? 0 : 1;
+  }
+  return 0;
+}
+
+/** Score penalty for non-style-preferred foods so switching style changes the plan (lower score = better). */
+const STYLE_PENALTY = 80;
+
+function styleScoreAdjustment(food: FoodTemplate, profile: UserProfile): number {
+  if (profile.eatingStyle === "mediterranean" && !isMediterraneanPriority(food)) {
+    return STYLE_PENALTY;
+  }
+  return 0;
+}
+
 function filterFoods(
   mealType: string,
   profile: UserProfile
@@ -110,49 +140,146 @@ function filterFoods(
   return foods;
 }
 
+/** Score: after adding this food and scaling meal to hit calorie target, how far are scaled P/C/F from targets? */
+function scoreFoodForTargets(
+  currentCals: number,
+  currentP: number,
+  currentC: number,
+  currentF: number,
+  food: FoodTemplate,
+  targetCals: number,
+  targetP: number,
+  targetC: number,
+  targetF: number
+): number {
+  const newCals = currentCals + food.calories;
+  const newP = currentP + food.protein;
+  const newC = currentC + food.carbs;
+  const newF = currentF + food.fat;
+  if (newCals <= 0) return 1e9;
+  const scale = targetCals / newCals;
+  const scaledP = scale * newP;
+  const scaledC = scale * newC;
+  const scaledF = scale * newF;
+  return (
+    (scaledP - targetP) ** 2 +
+    (scaledC - targetC) ** 2 +
+    (scaledF - targetF) ** 2
+  );
+}
+
+const MIN_MEAL_SCALE = 0.4;
+const MAX_MEAL_SCALE = 2.5;
+const MAX_DAILY_SCALE = 1.15;
+const MIN_DAILY_SCALE = 0.85;
+const MIN_REBALANCE_SCALE = 0.5;
+const MAX_REBALANCE_SCALE = 2;
+
 function pickFoodsForMeal(
   available: FoodTemplate[],
   targetCals: number,
   targetProtein: number,
-  targetCarbs: number
+  targetCarbs: number,
+  targetFat: number,
+  profile: UserProfile
 ): MealItem[] {
   if (available.length === 0) return [];
 
   const items: MealItem[] = [];
-  let remainingCals = targetCals;
+  let totalCals = 0;
+  let totalP = 0;
+  let totalC = 0;
+  let totalF = 0;
   const used = new Set<string>();
 
-  const sorted = [...available].sort((a, b) => {
-    const aScore =
-      Math.abs(a.calories - remainingCals) +
-      Math.abs(a.protein - targetProtein) * 3 +
-      Math.abs(a.carbs - targetCarbs);
-    const bScore =
-      Math.abs(b.calories - remainingCals) +
-      Math.abs(b.protein - targetProtein) * 3 +
-      Math.abs(b.carbs - targetCarbs);
-    return aScore - bScore;
-  });
+  while (items.length < 3 && targetCals - totalCals > 30) {
+    const nextFood = [...available]
+      .filter((f) => !used.has(f.name))
+      .sort((a, b) => {
+        const aScore =
+          scoreFoodForTargets(
+            totalCals,
+            totalP,
+            totalC,
+            totalF,
+            a,
+            targetCals,
+            targetProtein,
+            targetCarbs,
+            targetFat
+          ) + styleScoreAdjustment(a, profile);
+        const bScore =
+          scoreFoodForTargets(
+            totalCals,
+            totalP,
+            totalC,
+            totalF,
+            b,
+            targetCals,
+            targetProtein,
+            targetCarbs,
+            targetFat
+          ) + styleScoreAdjustment(b, profile);
+        const scoreDiff = aScore - bScore;
+        if (scoreDiff !== 0) return scoreDiff;
+        return getStyleRank(a, profile) - getStyleRank(b, profile);
+      })
+      .find(
+        (f) =>
+          f.calories <= targetCals - totalCals + 100 || items.length === 0
+      );
 
-  for (const food of sorted) {
-    if (remainingCals < 50) break;
-    if (used.has(food.name)) continue;
-    if (food.calories <= remainingCals + 50) {
-      items.push({
-        name: food.name,
-        portion: food.portion,
-        protein: food.protein,
-        carbs: food.carbs,
-        fat: food.fat,
-        calories: food.calories,
-      });
-      remainingCals -= food.calories;
-      used.add(food.name);
-    }
-    if (items.length >= 3) break;
+    if (!nextFood) break;
+
+    items.push({
+      name: nextFood.name,
+      portion: nextFood.portion,
+      protein: nextFood.protein,
+      carbs: nextFood.carbs,
+      fat: nextFood.fat,
+      calories: nextFood.calories,
+    });
+    totalCals += nextFood.calories;
+    totalP += nextFood.protein;
+    totalC += nextFood.carbs;
+    totalF += nextFood.fat;
+    used.add(nextFood.name);
   }
 
   return items;
+}
+
+function formatScaledPortion(scale: number, basePortion: string): string {
+  if (scale <= 0 || !Number.isFinite(scale)) return basePortion;
+  const s = Math.round(scale * 10) / 10;
+  if (Math.abs(s - 1) < 0.05) return basePortion;
+  return `${s}× (${basePortion})`;
+}
+
+/** Scale meal items so meal totals match targets; clamp scale to avoid absurd portions. */
+function scaleMealToTargets(
+  items: MealItem[],
+  targetCals: number,
+  targetP: number,
+  targetC: number,
+  targetF: number
+): MealItem[] {
+  if (items.length === 0) return [];
+
+  const currentCals = items.reduce((sum, i) => sum + i.calories, 0);
+  if (currentCals <= 0) return items;
+
+  let scale = targetCals / currentCals;
+  scale = Math.max(MIN_MEAL_SCALE, Math.min(MAX_MEAL_SCALE, scale));
+
+  return items.map((item) => ({
+    ...item,
+    calories: Math.round(item.calories * scale * 10) / 10,
+    protein: Math.round(item.protein * scale * 10) / 10,
+    carbs: Math.round(item.carbs * scale * 10) / 10,
+    fat: Math.round(item.fat * scale * 10) / 10,
+    portion: formatScaledPortion(scale, item.portion),
+  }));
 }
 
 function sumMacros(items: MealItem[]): MacroTargets {
@@ -166,16 +293,168 @@ function sumMacros(items: MealItem[]): MacroTargets {
       carbs: acc.carbs + item.carbs,
       fat: acc.fat + item.fat,
     }),
-    {
-      calories: 0,
-      proteinGrams: 0,
-      carbGrams: 0,
-      fatGrams: 0,
-      protein: 0,
-      carbs: 0,
-      fat: 0,
-    }
+    EMPTY_MACRO_TARGETS
   );
+}
+
+function sumMealTotals(meals: Meal[]): MacroTargets {
+  return meals.reduce(
+    (acc, meal) => ({
+      calories: acc.calories + meal.totals.calories,
+      proteinGrams: acc.proteinGrams + meal.totals.proteinGrams,
+      carbGrams: acc.carbGrams + meal.totals.carbGrams,
+      fatGrams: acc.fatGrams + meal.totals.fatGrams,
+      protein: acc.protein + meal.totals.protein,
+      carbs: acc.carbs + meal.totals.carbs,
+      fat: acc.fat + meal.totals.fat,
+    }),
+    EMPTY_MACRO_TARGETS
+  );
+}
+
+/** Solve 4x4 linear system M*s = t by Gaussian elimination. Returns s or null if singular/invalid. */
+function solve4x4(M: number[][], t: number[]): number[] | null {
+  const n = 4;
+  const aug: number[][] = M.map((row, i) => [...row, t[i]]);
+  for (let col = 0; col < n; col++) {
+    let maxRow = col;
+    for (let row = col + 1; row < n; row++) {
+      if (Math.abs(aug[row][col]) > Math.abs(aug[maxRow][col])) maxRow = row;
+    }
+    [aug[col], aug[maxRow]] = [aug[maxRow], aug[col]];
+    if (Math.abs(aug[col][col]) < 1e-10) return null;
+    for (let row = col + 1; row < n; row++) {
+      const f = aug[row][col] / aug[col][col];
+      for (let k = col; k <= n; k++) aug[row][k] -= f * aug[col][k];
+    }
+  }
+  const s = new Array<number>(n);
+  for (let i = n - 1; i >= 0; i--) {
+    let v = aug[i][n];
+    for (let j = i + 1; j < n; j++) v -= aug[i][j] * s[j];
+    s[i] = v / aug[i][i];
+    if (!Number.isFinite(s[i])) return null;
+  }
+  return s;
+}
+
+/** Solve 3x3 linear system M*s = t. Returns s or null. */
+function solve3x3(M: number[][], t: number[]): number[] | null {
+  const n = 3;
+  const aug: number[][] = M.map((row, i) => [...row, t[i]]);
+  for (let col = 0; col < n; col++) {
+    let maxRow = col;
+    for (let row = col + 1; row < n; row++) {
+      if (Math.abs(aug[row][col]) > Math.abs(aug[maxRow][col])) maxRow = row;
+    }
+    [aug[col], aug[maxRow]] = [aug[maxRow], aug[col]];
+    if (Math.abs(aug[col][col]) < 1e-10) return null;
+    for (let row = col + 1; row < n; row++) {
+      const f = aug[row][col] / aug[col][col];
+      for (let k = col; k <= n; k++) aug[row][k] -= f * aug[col][k];
+    }
+  }
+  const s = new Array<number>(n);
+  for (let i = n - 1; i >= 0; i--) {
+    let v = aug[i][n];
+    for (let j = i + 1; j < n; j++) v -= aug[i][j] * s[j];
+    s[i] = v / aug[i][i];
+    if (!Number.isFinite(s[i])) return null;
+  }
+  return s;
+}
+
+/** Least-squares solve for 3 meals: 4 equations, 3 unknowns. (M^T M) s = M^T t, M is 4x3. */
+function solve3x4LeastSquares(M: number[][], t: number[]): number[] | null {
+  const MtM: number[][] = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ];
+  const Mt: number[] = [0, 0, 0];
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      let v = 0;
+      for (let k = 0; k < 4; k++) v += M[k][i] * M[k][j];
+      MtM[i][j] = v;
+    }
+    let v = 0;
+    for (let k = 0; k < 4; k++) v += M[k][i] * t[k];
+    Mt[i] = v;
+  }
+  return solve3x3(MtM, Mt);
+}
+
+/** Per-meal scale factors so scaled daily totals = targets. Returns null if no valid solution. */
+function solvePerMealScales(
+  mealTotals: MacroTargets[],
+  targets: MacroTargets
+): number[] | null {
+  const n = mealTotals.length;
+  const t = [
+    targets.calories,
+    targets.proteinGrams,
+    targets.carbGrams,
+    targets.fatGrams,
+  ];
+  let s: number[] | null;
+  if (n === 4) {
+    const M = [
+      [mealTotals[0].calories, mealTotals[1].calories, mealTotals[2].calories, mealTotals[3].calories],
+      [mealTotals[0].proteinGrams, mealTotals[1].proteinGrams, mealTotals[2].proteinGrams, mealTotals[3].proteinGrams],
+      [mealTotals[0].carbGrams, mealTotals[1].carbGrams, mealTotals[2].carbGrams, mealTotals[3].carbGrams],
+      [mealTotals[0].fatGrams, mealTotals[1].fatGrams, mealTotals[2].fatGrams, mealTotals[3].fatGrams],
+    ];
+    s = solve4x4(M, t);
+  } else if (n === 3) {
+    const M = [
+      [mealTotals[0].calories, mealTotals[1].calories, mealTotals[2].calories],
+      [mealTotals[0].proteinGrams, mealTotals[1].proteinGrams, mealTotals[2].proteinGrams],
+      [mealTotals[0].carbGrams, mealTotals[1].carbGrams, mealTotals[2].carbGrams],
+      [mealTotals[0].fatGrams, mealTotals[1].fatGrams, mealTotals[2].fatGrams],
+    ];
+    s = solve3x4LeastSquares(M, t);
+  } else {
+    return null;
+  }
+  if (!s) return null;
+  for (let i = 0; i < s.length; i++) {
+    if (!Number.isFinite(s[i]) || s[i] < MIN_REBALANCE_SCALE || s[i] > MAX_REBALANCE_SCALE) {
+      return null;
+    }
+  }
+  return s;
+}
+
+/** Only warn when plan is still meaningfully off target (e.g. >8% or >15g so we don't nag when plan is accurate). */
+function buildAlignmentWarning(
+  totals: MacroTargets,
+  targets: MacroTargets
+): string | undefined {
+  const mismatches: string[] = [];
+  const calTol = Math.max(80, targets.calories * 0.08);
+  const proteinTol = Math.max(12, targets.proteinGrams * 0.08);
+  const carbTol = Math.max(15, targets.carbGrams * 0.08);
+  const fatTol = Math.max(8, targets.fatGrams * 0.08);
+
+  if (Math.abs(totals.calories - targets.calories) > calTol) {
+    mismatches.push("calories");
+  }
+  if (Math.abs(totals.proteinGrams - targets.proteinGrams) > proteinTol) {
+    mismatches.push("protein");
+  }
+  if (Math.abs(totals.carbGrams - targets.carbGrams) > carbTol) {
+    mismatches.push("carbs");
+  }
+  if (Math.abs(totals.fatGrams - targets.fatGrams) > fatTol) {
+    mismatches.push("fat");
+  }
+
+  if (mismatches.length === 0) return undefined;
+
+  return `This sample meal plan does not fully match your live ${mismatches.join(
+    ", "
+  )} targets yet. Adjust portions or recalculate to tighten the fit.`;
 }
 
 export function generateMealPlan(
@@ -187,12 +466,27 @@ export function generateMealPlan(
     : STANDARD_MEALS;
   const warnings: string[] = [];
 
-  const meals: Meal[] = mealTemplate.map(({ type, label, split }) => {
+  let meals: Meal[] = mealTemplate.map(({ type, label, split }) => {
     const mealCalTarget = Math.round(targets.calories * split);
     const mealProteinTarget = Math.round(targets.proteinGrams * split);
     const mealCarbTarget = Math.round(targets.carbGrams * split);
+    const mealFatTarget = Math.round(targets.fatGrams * split);
     const available = filterFoods(type, profile);
-    const items = pickFoodsForMeal(available, mealCalTarget, mealProteinTarget, mealCarbTarget);
+    const rawItems = pickFoodsForMeal(
+      available,
+      mealCalTarget,
+      mealProteinTarget,
+      mealCarbTarget,
+      mealFatTarget,
+      profile
+    );
+    const items = scaleMealToTargets(
+      rawItems,
+      mealCalTarget,
+      mealProteinTarget,
+      mealCarbTarget,
+      mealFatTarget
+    );
     const totals = sumMacros(items);
 
     if (items.length === 0) {
@@ -208,8 +502,80 @@ export function generateMealPlan(
     };
   });
 
+  let mealPlanTotals = sumMealTotals(meals);
+
+  const perMealScales = solvePerMealScales(
+    meals.map((m) => m.totals),
+    targets
+  );
+
+  if (perMealScales) {
+    meals = meals.map((meal, i) => {
+      const scale = perMealScales[i];
+      return {
+        ...meal,
+        items: meal.items.map((item) => ({
+          ...item,
+          calories: Math.round(item.calories * scale * 10) / 10,
+          protein: Math.round(item.protein * scale * 10) / 10,
+          carbs: Math.round(item.carbs * scale * 10) / 10,
+          fat: Math.round(item.fat * scale * 10) / 10,
+        })),
+        totals: {
+          calories: Math.round(meal.totals.calories * scale),
+          proteinGrams: Math.round(meal.totals.proteinGrams * scale * 10) / 10,
+          carbGrams: Math.round(meal.totals.carbGrams * scale * 10) / 10,
+          fatGrams: Math.round(meal.totals.fatGrams * scale * 10) / 10,
+          protein: Math.round(meal.totals.protein * scale * 10) / 10,
+          carbs: Math.round(meal.totals.carbs * scale * 10) / 10,
+          fat: Math.round(meal.totals.fat * scale * 10) / 10,
+        },
+      };
+    });
+    mealPlanTotals = sumMealTotals(meals);
+  } else {
+    // Fallback: single daily scale to match calories only
+    const dailyCalDiff = targets.calories - mealPlanTotals.calories;
+    if (
+      Math.abs(dailyCalDiff) > 5 &&
+      mealPlanTotals.calories > 0 &&
+      Number.isFinite(targets.calories / mealPlanTotals.calories)
+    ) {
+      const dailyScale = targets.calories / mealPlanTotals.calories;
+      const clamped =
+        Math.max(MIN_DAILY_SCALE, Math.min(MAX_DAILY_SCALE, dailyScale));
+      meals = meals.map((meal) => ({
+        ...meal,
+        items: meal.items.map((item) => ({
+          ...item,
+          calories: Math.round(item.calories * clamped * 10) / 10,
+          protein: Math.round(item.protein * clamped * 10) / 10,
+          carbs: Math.round(item.carbs * clamped * 10) / 10,
+          fat: Math.round(item.fat * clamped * 10) / 10,
+        })),
+        totals: {
+          calories: Math.round(meal.totals.calories * clamped),
+          proteinGrams: Math.round(meal.totals.proteinGrams * clamped * 10) / 10,
+          carbGrams: Math.round(meal.totals.carbGrams * clamped * 10) / 10,
+          fatGrams: Math.round(meal.totals.fatGrams * clamped * 10) / 10,
+          protein: Math.round(meal.totals.protein * clamped * 10) / 10,
+          carbs: Math.round(meal.totals.carbs * clamped * 10) / 10,
+          fat: Math.round(meal.totals.fat * clamped * 10) / 10,
+        },
+      }));
+      mealPlanTotals = sumMealTotals(meals);
+    }
+  }
+
+  const alignmentWarning = buildAlignmentWarning(mealPlanTotals, targets);
+  const allWarnings = [...warnings, alignmentWarning].filter(Boolean).join(" ");
+
   return {
     meals,
-    conflictWarning: warnings.length > 0 ? warnings.join(" ") : undefined,
+    conflictWarning: allWarnings || undefined,
+    mealPlanSummary: {
+      totals: mealPlanTotals,
+      alignmentWarning,
+    },
   };
 }

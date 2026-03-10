@@ -14,8 +14,6 @@ import {
 } from "@/lib/profile";
 import {
   ALL_SEO_PAGES,
-  GOAL_SLUG,
-  STRATEGY_SLUG,
   macroSlug,
   mealPlanSlug,
   proteinSlug,
@@ -453,7 +451,7 @@ function buildMacroFAQs(
   const q1: FAQ = {
     q: `How many calories should a ${w} lb ${g} eat to ${GOAL_VERB[goal]}?`,
     a: goal === "maintain"
-      ? `A ${w} lb ${g} at moderate activity needs approximately ${targets.calories} calories per day to maintain bodyweight. This estimate comes from the Mifflin-St Jeor equation applied at a moderate activity multiplier (1.55). Your real maintenance may be 100–150 calories above or below this depending on individual metabolism and true daily activity — track your scale trend for 2 weeks to confirm.`
+      ? `A ${w} lb ${g} at moderate training needs approximately ${targets.calories} calories per day to maintain bodyweight. This estimate comes from the Mifflin-St Jeor equation applied at a moderate training multiplier (1.5). Your real maintenance may be 100–150 calories above or below this depending on individual metabolism and true daily activity — track your scale trend for 2 weeks to confirm.`
       : `A practical starting target is ${targets.calories} calories/day — a ${calDiff}-calorie ${goal === "build" ? "surplus above" : "deficit below"} your estimated TDEE of ${tdee}. This provides a meaningful signal for ${goal === "build" ? "muscle growth" : "fat loss"} without being aggressive enough to risk significant muscle loss or excessive fat gain. Adjust in 100-calorie steps after 2–3 weeks of data.`,
   };
 

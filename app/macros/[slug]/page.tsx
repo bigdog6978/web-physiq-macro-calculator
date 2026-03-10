@@ -70,11 +70,15 @@ export default async function MacroPage({
   const content = buildPageContent(config);
   const profile = configToProfile(config);
   const macroCalculation = calculateMacros(profile);
-  const { meals, conflictWarning } = generateMealPlan(macroCalculation.targets, profile);
+  const { meals, conflictWarning, mealPlanSummary } = generateMealPlan(
+    macroCalculation.targets,
+    profile
+  );
 
   const macroResult: MacroResult = {
     ...macroCalculation,
     meals,
+    mealPlanSummary,
     profile,
     explanation: macroCalculation.explanationSummary,
     ...(conflictWarning && { conflictWarning }),

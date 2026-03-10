@@ -23,7 +23,11 @@ export default function Home() {
   useEffect(() => {
     const backgrounds = ["/background/bkgd1.png", "/background/bkgd2.png"] as const;
     const randomIndex = Math.floor(Math.random() * backgrounds.length);
-    setHeroBackgroundImage(backgrounds[randomIndex]);
+    const backgroundTimeout = window.setTimeout(() => {
+      setHeroBackgroundImage(backgrounds[randomIndex]);
+    }, 0);
+
+    return () => window.clearTimeout(backgroundTimeout);
   }, []);
 
   const scrollToResults = () => {
@@ -97,9 +101,9 @@ export default function Home() {
           </p>
           <p>
             Your <strong className="text-[#F5F5F5]">TDEE</strong> (Total Daily Energy Expenditure) is BMR
-            multiplied by an activity factor—sedentary (1.2), light (1.375),
-            moderate (1.55), or very active (1.725). This is your maintenance
-            calories.
+            multiplied by an activity factor—sedentary (1.2), light activity (1.35),
+            moderate training (1.5), strength training (1.65), or endurance
+            training (1.75). This is your maintenance calories.
           </p>
           <p>
             <strong className="text-[#F5F5F5]">Goal adjustments</strong> are applied to TDEE: cut fat

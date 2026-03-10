@@ -14,6 +14,11 @@ import {
   PROTEIN_FROM_LEAN_MASS_G_PER_LB,
   RECOMP_BODY_FAT_THRESHOLDS,
 } from "@/constants/macroData";
+import {
+  getLeanMassKg,
+  getSafeWeightKg,
+  getValidBodyFatPercent,
+} from "@/lib/profile";
 import type {
   Goal,
   MacroCalculationBreakdown,
@@ -39,34 +44,19 @@ export function kgToLbs(kg: number): number {
 function sanitizeProfile(profile: UserProfile): UserProfile {
   return {
     ...profile,
-    weightKg: Number.isFinite(profile.weightKg)
-      ? Math.max(profile.weightKg, 1)
-      : 1,
+    weightKg: getSafeWeightKg(profile.weightKg),
     heightCm: Number.isFinite(profile.heightCm)
       ? Math.max(profile.heightCm, 100)
       : 100,
     age: Number.isFinite(profile.age) ? clamp(profile.age, 13, 100) : 30,
-    bodyFatPercent:
-      profile.bodyFatPercent !== undefined && Number.isFinite(profile.bodyFatPercent)
-        ? clamp(profile.bodyFatPercent, 3, 60)
-        : undefined,
+    bodyFatPercent: getValidBodyFatPercent(profile.bodyFatPercent),
   };
 }
 
 function hasBodyFat(profile: UserProfile): profile is UserProfile & {
   bodyFatPercent: number;
 } {
-  return (
-    profile.bodyFatPercent !== undefined &&
-    Number.isFinite(profile.bodyFatPercent) &&
-    profile.bodyFatPercent > 0 &&
-    profile.bodyFatPercent < 70
-  );
-}
-
-function getLeanMassKg(profile: UserProfile): number | undefined {
-  if (!hasBodyFat(profile)) return undefined;
-  return profile.weightKg * (1 - profile.bodyFatPercent / 100);
+  return profile.bodyFatPercent !== undefined;
 }
 
 export function calculateBMR(rawProfile: UserProfile): number {
@@ -120,29 +110,27 @@ function calculateProteinTarget(profile: UserProfile, weightLb: number): {
   leanBodyMassKg?: number;
 } {
   const minimumFloor = weightLb * MINIMUM_PROTEIN_G_PER_LB;
-  const leanMassKg = getLeanMassKg(profile);
+  const activityFloor = weightLb * ACTIVITY_PROTEIN_FLOOR_G_PER_LB[profile.activityLevel];
+  const bodyWeightAnchor =
+    weightLb * PROTEIN_FROM_BODY_WEIGHT_G_PER_LB[profile.goal][profile.activityLevel];
+  const leanMassKg = getLeanMassKg(profile.weightKg, profile.bodyFatPercent);
 
   if (leanMassKg) {
     const leanMassLb = kgToLbs(leanMassKg);
     const leanMassProtein =
       leanMassLb * PROTEIN_FROM_LEAN_MASS_G_PER_LB[profile.goal];
-    const activityFloor =
-      weightLb * ACTIVITY_PROTEIN_FLOOR_G_PER_LB[profile.activityLevel];
 
     return {
-      grams: Math.max(leanMassProtein, activityFloor, minimumFloor),
-      rule: `Protein uses lean mass for ${GOAL_LABELS[profile.goal].toLowerCase()} with an activity floor based on total body weight.`,
+      grams: Math.max(leanMassProtein, bodyWeightAnchor, activityFloor, minimumFloor),
+      rule: `Protein uses lean mass for ${GOAL_LABELS[profile.goal].toLowerCase()} but never drops below the body-weight anchor and activity floor.`,
       basis: "lean_mass",
       leanBodyMassKg: leanMassKg,
     };
   }
 
   return {
-    grams: Math.max(
-      weightLb * PROTEIN_FROM_BODY_WEIGHT_G_PER_LB[profile.goal][profile.activityLevel],
-      minimumFloor
-    ),
-    rule: `Protein uses total body weight because body fat % was not provided.`,
+    grams: Math.max(bodyWeightAnchor, activityFloor, minimumFloor),
+    rule: `Protein uses total body weight because body fat % was missing or outside the supported range.`,
     basis: "body_weight",
   };
 }
@@ -232,6 +220,12 @@ export interface CalculateMacrosResult {
 export function calculateMacros(rawProfile: UserProfile): CalculateMacrosResult {
   const profile = sanitizeProfile(rawProfile);
   const notes: string[] = [];
+  if (
+    rawProfile.bodyFatPercent !== undefined &&
+    getValidBodyFatPercent(rawProfile.bodyFatPercent) === undefined
+  ) {
+    notes.push("Body fat % was ignored because it was outside the supported range.");
+  }
   const weightLb = kgToLbs(profile.weightKg);
   const bmr = calculateBMR(profile);
   const tdee = roundInt(bmr * ACTIVITY_MULTIPLIERS[profile.activityLevel]);

@@ -119,11 +119,17 @@ export interface Meal {
   totals: MacroTargets;
 }
 
+export interface MealPlanSummary {
+  totals: MacroTargets;
+  alignmentWarning?: string;
+}
+
 export interface MacroResult {
   bmr: number;
   tdee: number;
   targets: MacroTargets;
   meals: Meal[];
+  mealPlanSummary?: MealPlanSummary;
   profile: UserProfile;
   macroProfileLabel: string;
   explanationSummary: string;

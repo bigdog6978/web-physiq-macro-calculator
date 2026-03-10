@@ -1,4 +1,4 @@
-import { normalizeUserProfile } from "@/lib/profile";
+import { normalizeStoredUserProfile } from "@/lib/profile";
 import type { UserProfile } from "@/types/macro";
 
 const PROFILE_STORAGE_KEY = "physiq_macro_profile";
@@ -9,7 +9,7 @@ export function loadStoredProfile(): UserProfile | null {
   try {
     const raw = window.localStorage.getItem(PROFILE_STORAGE_KEY);
     if (!raw) return null;
-    return normalizeUserProfile(JSON.parse(raw));
+    return normalizeStoredUserProfile(JSON.parse(raw));
   } catch {
     return null;
   }
