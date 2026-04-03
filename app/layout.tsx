@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import { SocialLinksBar } from "@/components/SocialLinksBar";
 import { Footer } from "@/components/Footer";
 import { ConsentProvider } from "@/components/consent/ConsentProvider";
 import { ConsentUI } from "@/components/consent/ConsentUI";
@@ -125,6 +126,7 @@ export default function RootLayout({
         <ThemeProvider>
           <ConsentProvider>
             <Header />
+            <SocialLinksBar />
             <main className="flex-1">{children}</main>
             <Footer />
             <ConsentUI />
