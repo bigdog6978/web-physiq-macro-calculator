@@ -25,7 +25,7 @@ export function SocialLinksBar() {
       role="region"
       aria-label="Social links"
     >
-      <div className="mx-auto flex max-w-6xl justify-center px-4 py-2 sm:justify-end">
+      <div className="mx-auto flex max-w-6xl justify-center px-4 pt-2 pb-1 sm:justify-end">
         <div className="flex items-center gap-2">
           <a
             href="https://x.com/PHYSIQMacros"

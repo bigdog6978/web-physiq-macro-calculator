@@ -54,7 +54,7 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 hidden bg-cover bg-center bg-no-repeat opacity-25 dark:block"
           style={{ backgroundImage: `url('${darkHeroBackgroundImage}')` }}
         />
-        <div className="relative z-10 mx-auto max-w-2xl px-4 py-8">
+        <div className="relative z-10 mx-auto max-w-2xl px-4 pt-4 pb-8">
       {/* Header: deliver the value proposition, let users get straight to the calculator */}
       <header className="mb-8 text-left">
         <h1 className="text-3xl font-bold text-foreground sm:text-4xl">

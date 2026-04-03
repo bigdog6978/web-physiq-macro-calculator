@@ -3,12 +3,12 @@
  * Edit here instead of hardcoding strips on every macro page.
  */
 export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
-  "cutting-macros": ["macros-for-fat-loss", "how-to-calculate-macros"],
-  "bulking-macros": ["macros-for-muscle-gain", "best-macro-split-for-muscle-gain"],
-  "maintenance-macros": ["macros-for-body-recomposition", "how-to-calculate-macros"],
+  "cutting-macros": ["why-macros-matter", "macros-for-fat-loss", "how-to-calculate-macros"],
+  "bulking-macros": ["why-macros-matter", "macros-for-muscle-gain", "best-macro-split-for-muscle-gain"],
+  "maintenance-macros": ["why-macros-matter", "macros-for-body-recomposition", "how-to-calculate-macros"],
   "keto-macros": ["keto-macros-explained", "low-carb-diet-macros"],
   "carnivore-macros": ["carnivore-macros-guide", "high-protein-diet-macros"],
-  "high-protein-macros": ["high-protein-diet-macros", "protein-per-pound"],
+  "high-protein-macros": ["why-macros-matter", "high-protein-diet-macros", "protein-per-pound"],
   "macros-for-men": ["best-macros-for-men", "macros-for-muscle-gain"],
   "macros-for-women": ["best-macros-for-women", "macros-for-fat-loss"],
   "keto-macro-calculator": ["keto-macros-explained", "macro-calculator-vs-calorie-calculator"],
