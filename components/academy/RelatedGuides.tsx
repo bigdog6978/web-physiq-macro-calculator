@@ -11,10 +11,10 @@ export function RelatedGuides({ articles, className = "" }: RelatedGuidesProps) 
 
   return (
     <section
-      className={`rounded-2xl border border-[#2A2A2A] bg-[#171717] p-6 ${className}`}
+      className={`rounded-2xl border border-card-border bg-card p-6 ${className}`}
       aria-labelledby="related-guides-heading"
     >
-      <h2 id="related-guides-heading" className="text-lg font-bold text-white mb-3">
+      <h2 id="related-guides-heading" className="text-lg font-bold text-foreground mb-3">
         Related guides
       </h2>
       <ul className="space-y-2">
@@ -22,7 +22,7 @@ export function RelatedGuides({ articles, className = "" }: RelatedGuidesProps) 
           <li key={a.slug}>
             <Link
               href={`/guides/${a.slug}`}
-              className="text-sm text-[#A3A3A3] hover:text-[#FF5F1F] transition-colors"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               {a.title}
             </Link>

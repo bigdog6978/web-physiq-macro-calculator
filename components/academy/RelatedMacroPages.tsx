@@ -21,10 +21,10 @@ export function RelatedMacroPages({ slugs, className = "" }: RelatedMacroPagesPr
 
   return (
     <section
-      className={`rounded-2xl border border-[#2A2A2A] bg-[#171717] p-6 ${className}`}
+      className={`rounded-2xl border border-card-border bg-card p-6 ${className}`}
       aria-labelledby="related-macro-pages-heading"
     >
-      <h2 id="related-macro-pages-heading" className="text-lg font-bold text-white mb-3">
+      <h2 id="related-macro-pages-heading" className="text-lg font-bold text-foreground mb-3">
         Related macro pages
       </h2>
       <ul className="space-y-2">
@@ -32,7 +32,7 @@ export function RelatedMacroPages({ slugs, className = "" }: RelatedMacroPagesPr
           <li key={item.slug}>
             <Link
               href={`/macros/${item.slug}`}
-              className="text-sm text-[#A3A3A3] hover:text-[#FF5F1F] transition-colors"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               {item.title}
             </Link>

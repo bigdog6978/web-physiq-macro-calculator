@@ -316,14 +316,14 @@ export function MacroCalculator({
   const btnBase =
     "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors";
   const btnActive =
-    "border-2 border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white";
+    "border-2 border-primary bg-primary-muted text-foreground dark:text-white";
   const btnInactive =
-    "bg-[#1A1A1A] text-[#737373] border-2 border-[#2A2A2A] hover:border-[#3A3A3A]";
+    "bg-card text-muted-foreground border-2 border-card-border hover:border-muted-foreground/25";
   const inputBase =
-    "rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3 text-base text-[#F5F5F5] placeholder-[#525252] focus:border-[#FF5F1F] focus:ring-1 focus:ring-[#FF5F1F] focus:outline-none";
-  const labelClass = "block text-sm font-medium text-[#F5F5F5] mb-2";
-  const labelClassSmall = "block text-sm font-medium text-[#F5F5F5] mb-1";
-  const helperClass = "mt-1 text-sm text-[#A3A3A3]";
+    "rounded-lg border border-card-border bg-input-bg px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none";
+  const labelClass = "block text-sm font-medium text-foreground mb-2";
+  const labelClassSmall = "block text-sm font-medium text-foreground mb-1";
+  const helperClass = "mt-1 text-sm text-muted-foreground";
 
   const hasErrors = Object.keys(errors).length > 0;
 
@@ -343,7 +343,7 @@ export function MacroCalculator({
         </p>
       )}
       <div>
-        <h2 className="text-[1.15rem] font-bold text-white mb-4">Body Stats</h2>
+        <h2 className="text-[1.15rem] font-bold text-foreground mb-4">Body Stats</h2>
         <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-3 sm:gap-6">
           <div className="min-w-0">
             <label className={labelClass}>Weight</label>
@@ -466,7 +466,7 @@ export function MacroCalculator({
         </div>
         <div className="min-w-0">
           <label htmlFor="bodyfat" className={labelClassSmall}>
-            Body Fat % <span className="text-[#737373]">(optional)</span>
+            Body Fat % <span className="text-muted-foreground">(optional)</span>
           </label>
           <input
             id="bodyfat"
@@ -510,7 +510,7 @@ export function MacroCalculator({
       </div>
 
       <div>
-        <h3 className="text-[1.15rem] font-bold text-white mb-2">Goal</h3>
+        <h3 className="text-[1.15rem] font-bold text-foreground mb-2">Goal</h3>
         <p className={helperClass}>Your goal affects calories and macro targets.</p>
         <div className="grid grid-cols-2 gap-2 mt-3">
           {GOALS.map((g) => {
@@ -530,22 +530,22 @@ export function MacroCalculator({
                 onClick={() => setGoal(g.id)}
                 className={`p-3 rounded-lg text-left border-2 transition-colors ${
                   isSelected
-                    ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white"
-                    : "border-[#2A2A2A] bg-[#1A1A1A] hover:border-[#3A3A3A]"
+                    ? "border-primary bg-primary-muted text-foreground dark:text-white"
+                    : "border-card-border bg-card hover:border-muted-foreground/25"
                 }`}
                 aria-pressed={isSelected}
               >
                 <div
                   className={`mb-2 flex h-8 w-8 items-center justify-center rounded-lg ${
                     isSelected
-                      ? "bg-[rgba(255,95,31,0.35)] text-[#FF5F1F]"
-                      : "bg-[#2A2A2A] text-[#737373]"
+                      ? "bg-primary-muted text-primary"
+                      : "bg-muted text-muted-foreground"
                   }`}
                 >
                   <Icon size={18} strokeWidth={2.5} />
                 </div>
-                <span className="block font-medium text-sm text-white">{g.label}</span>
-                <span className="block text-xs text-white/70 mt-0.5">
+                <span className="block font-medium text-sm text-foreground">{g.label}</span>
+                <span className="block text-xs text-muted-foreground mt-0.5">
                   {g.description}
                 </span>
               </button>
@@ -555,7 +555,7 @@ export function MacroCalculator({
       </div>
 
       <div>
-        <h3 className="text-[1.15rem] font-bold text-white mb-2">Activity Level</h3>
+        <h3 className="text-[1.15rem] font-bold text-foreground mb-2">Activity Level</h3>
         <p className={helperClass}>
           Your activity level affects calories, protein needs, and carb needs.
         </p>
@@ -569,13 +569,13 @@ export function MacroCalculator({
                 onClick={() => setActivityLevel(level.id)}
                 className={`px-4 py-3 rounded-lg text-sm font-medium border-2 transition-colors text-left ${
                   isSelected
-                    ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white"
-                    : "border-[#2A2A2A] bg-[#1A1A1A] text-[#A3A3A3] hover:border-[#3A3A3A]"
+                    ? "border-primary bg-primary-muted text-foreground dark:text-white"
+                    : "border-card-border bg-card text-muted-foreground hover:border-muted-foreground/25"
                 }`}
                 aria-pressed={isSelected}
               >
                 <span className="block">{level.label}</span>
-                <span className="block text-xs text-white/70 mt-1">
+                <span className="block text-xs text-muted-foreground mt-1">
                   {level.description}
                 </span>
               </button>
@@ -585,7 +585,7 @@ export function MacroCalculator({
       </div>
 
       <div>
-        <h3 className="text-[1.15rem] font-bold text-white mb-2">Eating Style</h3>
+        <h3 className="text-[1.15rem] font-bold text-foreground mb-2">Eating Style</h3>
         <p className={helperClass}>
           Your eating style affects meal suggestions and food choices. Keto and
           carnivore also adjust macro distribution.
@@ -598,13 +598,13 @@ export function MacroCalculator({
               onClick={() => setEatingStyle(style.id)}
               className={`p-3 rounded-lg text-left border-2 transition-colors ${
                 eatingStyle === style.id
-                  ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white"
-                  : "border-[#2A2A2A] bg-[#1A1A1A] text-[#A3A3A3] hover:border-[#3A3A3A]"
+                  ? "border-primary bg-primary-muted text-foreground dark:text-white"
+                  : "border-card-border bg-card text-muted-foreground hover:border-muted-foreground/25"
               }`}
               aria-pressed={eatingStyle === style.id}
             >
               <span className="block font-medium text-sm">{style.label}</span>
-              <span className="block text-xs text-white/70 mt-1">
+              <span className="block text-xs text-muted-foreground mt-1">
                 {style.description}
               </span>
             </button>
@@ -613,7 +613,7 @@ export function MacroCalculator({
       </div>
 
       <div>
-        <h3 className="text-[1.15rem] font-bold text-white mb-2">
+        <h3 className="text-[1.15rem] font-bold text-foreground mb-2">
           Dietary Restrictions &amp; Preferences
         </h3>
         <p className={helperClass}>
@@ -627,8 +627,8 @@ export function MacroCalculator({
               onClick={() => toggleModifier(modifier.id)}
               className={`px-3 py-2 rounded-full text-sm border-2 transition-colors ${
                 dietModifiers.includes(modifier.id)
-                  ? "border-[#FF5F1F] bg-[rgba(255,95,31,0.15)] text-white"
-                  : "border-[#2A2A2A] bg-[#1A1A1A] text-[#737373] hover:border-[#3A3A3A]"
+                  ? "border-primary bg-primary-muted text-foreground dark:text-white"
+                  : "border-card-border bg-card text-muted-foreground hover:border-muted-foreground/25"
               }`}
               aria-pressed={dietModifiers.includes(modifier.id)}
             >
@@ -648,7 +648,7 @@ export function MacroCalculator({
 
       <button
         type="submit"
-        className="w-full py-4 rounded-xl bg-[#FF5F1F] text-white font-semibold text-lg hover:bg-[#ff7a3d] focus:outline-none focus:ring-2 focus:ring-[#FF5F1F] focus:ring-offset-2 focus:ring-offset-[#0D0D0D] transition-colors"
+        className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-colors"
       >
         Calculate Macros
       </button>

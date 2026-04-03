@@ -97,7 +97,7 @@ export function ComingSoonModal({ open, onClose }: ComingSoonModalProps) {
 
       <div
         ref={modalRef}
-        className="relative z-[81] w-full max-w-md rounded-2xl border border-[#2A2A2A] bg-[#161616] p-6 shadow-2xl motion-safe:animate-in motion-safe:zoom-in-95 motion-safe:fade-in motion-safe:duration-150"
+        className="relative z-[81] w-full max-w-md rounded-2xl border border-card-border bg-[#161616] p-6 shadow-2xl motion-safe:animate-in motion-safe:zoom-in-95 motion-safe:fade-in motion-safe:duration-150"
       >
         <h3 id="coming-soon-title" className="text-xl font-bold text-white">
           Android App Coming Soon
@@ -116,7 +116,7 @@ export function ComingSoonModal({ open, onClose }: ComingSoonModalProps) {
 
         <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           {notified ? (
-            <p className="flex items-center gap-1.5 text-sm text-[#FF5F1F] sm:mr-auto">
+            <p className="flex items-center gap-1.5 text-sm text-primary sm:mr-auto">
               <span aria-hidden="true">✓</span> We'll let you know when it's
               live!
             </p>
@@ -124,7 +124,7 @@ export function ComingSoonModal({ open, onClose }: ComingSoonModalProps) {
             <button
               type="button"
               onClick={() => setNotified(true)}
-              className="inline-flex items-center justify-center rounded-xl border border-[#2A2A2A] px-4 py-2.5 text-sm font-semibold text-[#B5B5B5] hover:border-[#3A3A3A] hover:text-white transition-colors"
+              className="inline-flex items-center justify-center rounded-xl border border-card-border px-4 py-2.5 text-sm font-semibold text-[#B5B5B5] hover:border-[#3A3A3A] hover:text-white transition-colors"
             >
               Notify Me
             </button>
@@ -134,7 +134,7 @@ export function ComingSoonModal({ open, onClose }: ComingSoonModalProps) {
             ref={primaryButtonRef}
             type="button"
             onClick={() => fireClose("button")}
-            className="inline-flex items-center justify-center rounded-xl bg-[#FF5F1F] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#ff7a3d] transition-colors"
+            className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover transition-colors"
           >
             Got it
           </button>

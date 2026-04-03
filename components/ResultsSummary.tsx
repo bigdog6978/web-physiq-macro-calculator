@@ -55,15 +55,15 @@ function RadialDial({
         </svg>
         <div className="absolute inset-0 grid place-items-center place-content-center">
           <div className="flex flex-col items-center leading-tight translate-y-1">
-            <span className="text-2xl font-bold text-white tabular-nums">
+            <span className="text-2xl font-bold text-foreground tabular-nums">
               {value}
             </span>
-            <span className="text-xs text-[#9CA3AF] mt-px">{unit}</span>
+            <span className="text-xs text-muted-foreground mt-px">{unit}</span>
           </div>
         </div>
       </div>
-      <p className="mt-3 text-sm font-semibold text-white">{label}</p>
-      <p className="text-xs text-[#9CA3AF]">{value}{unit}</p>
+      <p className="mt-3 text-sm font-semibold text-foreground">{label}</p>
+      <p className="text-xs text-muted-foreground">{value}{unit}</p>
     </div>
   );
 }
@@ -79,7 +79,7 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
   const unitLabel = profile.weightUnit === "lb" ? "per lb" : "per kg";
 
   // Shared Physiq family palette (aligns with Macro Tracker)
-  const CALORIES_COLOR = "#FF5F1F";
+  const CALORIES_COLOR = "#e7ff00";
   const PROTEIN_COLOR = "#3B82F6";
   const CARBS_COLOR = "#84CC16";
   const FAT_COLOR = "#EAB308";
@@ -87,8 +87,8 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
   return (
     <div className="space-y-4">
       {/* Top card - Calories (matches Macro Tracker layout) */}
-      <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
-        <h2 className="text-lg font-bold text-white mb-4">Daily Target Calories</h2>
+      <div className="rounded-2xl border border-card-border bg-card p-6 shadow-sm dark:shadow-none">
+        <h2 className="text-lg font-bold text-foreground mb-4">Daily Target Calories</h2>
         <div className="flex flex-col sm:flex-row items-center gap-6">
           {/* Left: Large radial dial */}
           <div className="flex-shrink-0">
@@ -117,10 +117,10 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
               </svg>
               <div className="absolute inset-0 grid place-items-center place-content-center">
                 <div className="flex flex-col items-center leading-tight translate-y-1">
-                  <span className="text-3xl font-bold text-white tabular-nums">
+                  <span className="text-3xl font-bold text-foreground tabular-nums">
                     {targets.calories}
                   </span>
-                  <span className="text-sm text-[#9CA3AF] mt-px">cal/day</span>
+                  <span className="text-sm text-muted-foreground mt-px">cal/day</span>
                 </div>
               </div>
             </div>
@@ -130,16 +130,16 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
           <div className="flex-1 w-full sm:w-auto text-center sm:text-left">
             <div className="space-y-2">
               <div className="flex justify-between sm:block sm:space-y-1">
-                <span className="text-sm text-[#9CA3AF]">Target</span>
-                <span className="text-2xl font-bold text-white tabular-nums sm:block">
+                <span className="text-sm text-muted-foreground">Target</span>
+                <span className="text-2xl font-bold text-foreground tabular-nums sm:block">
                   {targets.calories}
                 </span>
               </div>
             </div>
-            <p className="mt-4 text-sm text-[#9CA3AF] leading-relaxed">
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
               {explanationSummary}
             </p>
-            <p className="mt-3 text-sm font-medium text-[#FF5F1F]">
+            <p className="mt-3 text-sm font-medium text-primary">
               {macroProfileLabel}
             </p>
           </div>
@@ -147,8 +147,8 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
       </div>
 
       {/* Bottom card - Macros (3 radial dials) */}
-      <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
-        <h2 className="text-lg font-bold text-white mb-4">Daily Target Macros</h2>
+      <div className="rounded-2xl border border-card-border bg-card p-6 shadow-sm dark:shadow-none">
+        <h2 className="text-lg font-bold text-foreground mb-4">Daily Target Macros</h2>
         <div className="grid grid-cols-3 gap-8">
           <RadialDial
             value={targets.proteinGrams}
@@ -177,18 +177,18 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3">
-        <p className="text-sm text-[#9CA3AF]">
-          Protein: <strong className="text-white">{targets.proteinGrams}gm</strong>{" "}
+      <div className="rounded-xl border border-card-border bg-card px-4 py-3 shadow-sm dark:shadow-none">
+        <p className="text-sm text-muted-foreground">
+          Protein: <strong className="text-foreground">{targets.proteinGrams}gm</strong>{" "}
           ({proteinPerUnit.toFixed(1)}gm {unitLabel} body weight)
         </p>
       </div>
 
-      <details className="rounded-xl border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3">
-        <summary className="cursor-pointer text-sm font-medium text-white">
+      <details className="rounded-xl border border-card-border bg-card px-4 py-3 shadow-sm dark:shadow-none">
+        <summary className="cursor-pointer text-sm font-medium text-foreground">
           How we calculated this
         </summary>
-        <div className="mt-3 space-y-2 text-sm text-[#9CA3AF]">
+        <div className="mt-3 space-y-2 text-sm text-muted-foreground">
           <p>
             Calories are based on BMR ({calculationBreakdown.bmr}) × activity for a
             TDEE of {calculationBreakdown.tdee}, then adjusted by{" "}

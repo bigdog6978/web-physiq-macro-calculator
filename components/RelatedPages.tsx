@@ -9,7 +9,7 @@ export function RelatedPages({ links }: RelatedPagesProps) {
   if (links.length === 0) return null;
 
   return (
-    <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
+    <div className="rounded-2xl border border-card-border bg-card p-6">
       <h2 className="text-lg font-bold text-white mb-4">
         Related Calculators &amp; Guides
       </h2>
@@ -18,9 +18,9 @@ export function RelatedPages({ links }: RelatedPagesProps) {
           <li key={link.slug}>
             <Link
               href={`/macros/${link.slug}`}
-              className="flex items-center gap-2 text-sm text-[#A3A3A3] hover:text-[#FF5F1F] transition-colors py-1"
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors py-1"
             >
-              <span className="text-[#FF5F1F] text-xs">→</span>
+              <span className="text-primary text-xs">→</span>
               {link.label}
             </Link>
           </li>

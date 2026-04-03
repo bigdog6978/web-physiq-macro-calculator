@@ -57,7 +57,7 @@ export function StickyMobileAppCTA({
         <button
           type="button"
           onClick={handleDismiss}
-          className="absolute -right-1 -top-4 flex h-11 w-11 items-center justify-center rounded-full text-[#A3A3A3] hover:text-white transition-colors"
+          className="absolute -right-1 -top-4 flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground hover:text-white transition-colors"
           aria-label="Dismiss app suggestion"
         >
           <span aria-hidden="true" className="text-base leading-none">✕</span>

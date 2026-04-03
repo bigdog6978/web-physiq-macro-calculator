@@ -50,31 +50,31 @@ export default async function AcademyCategoryPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <nav
-        className="mb-6 flex items-center gap-2 text-sm text-[#737373]"
+        className="mb-6 flex items-center gap-2 text-sm text-muted-foreground"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-white transition-colors">
+        <Link href="/" className="hover:text-foreground transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <Link href="/guides" className="hover:text-white transition-colors">
+        <Link href="/guides" className="hover:text-foreground transition-colors">
           Macro Academy
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-[#A3A3A3]">{cat.label}</span>
+        <span className="text-muted-foreground">{cat.label}</span>
       </nav>
 
       <header className="mb-10">
-        <h1 className="text-3xl font-bold text-white sm:text-4xl">{cat.label}</h1>
-        <p className="mt-3 text-[#A3A3A3] leading-relaxed max-w-2xl">
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{cat.label}</h1>
+        <p className="mt-3 text-muted-foreground leading-relaxed max-w-2xl">
           {cat.description}
         </p>
       </header>
 
       {articles.length === 0 ? (
-        <p className="text-sm text-[#737373]">
+        <p className="text-sm text-muted-foreground">
           Guides in this category are coming soon.{" "}
-          <Link href="/guides" className="text-[#FF5F1F] hover:text-[#ff7a3d]">
+          <Link href="/guides" className="text-primary hover:text-primary/90">
             Back to Macro Academy
           </Link>
         </p>
@@ -84,10 +84,10 @@ export default async function AcademyCategoryPage({
             <li key={a.slug}>
               <Link
                 href={`/guides/${a.slug}`}
-                className="block rounded-xl border border-[#2A2A2A] bg-[#171717] px-4 py-4 transition-colors hover:border-[#FF5F1F]/40 hover:bg-[#FF5F1F]/5"
+                className="block rounded-xl border border-card-border bg-card px-4 py-4 transition-colors hover:border-primary/40 hover:bg-primary-muted/40"
               >
-                <span className="font-medium text-[#F5F5F5]">{a.title}</span>
-                <p className="mt-1 text-sm text-[#A3A3A3] line-clamp-2">
+                <span className="font-medium text-foreground">{a.title}</span>
+                <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
                   {a.excerpt}
                 </p>
               </Link>

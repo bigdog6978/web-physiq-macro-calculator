@@ -67,10 +67,10 @@ export function FoodSearch() {
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-xl font-semibold text-[#F5F5F5]">
+          <h2 className="text-xl font-semibold text-foreground">
             USDA Food Database
           </h2>
-          <p className="text-sm text-[#A3A3A3]">
+          <p className="text-sm text-muted-foreground">
             Search any food to see macros per 100g. Generic foods are prioritized.
           </p>
         </div>
@@ -78,7 +78,7 @@ export function FoodSearch() {
           <button
             type="button"
             onClick={handleCloseResults}
-            className="flex shrink-0 items-center justify-center rounded-lg p-2 text-[#737373] hover:bg-[#2A2A2A] hover:text-white transition-colors"
+            className="flex shrink-0 items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-white transition-colors"
             aria-label="Close search results"
           >
             <X size={20} />
@@ -91,33 +91,33 @@ export function FoodSearch() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="e.g. eggs, chicken breast, strip steak"
-        className="w-full rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3 text-base text-[#F5F5F5] placeholder-[#525252] focus:border-[#FF5F1F] focus:ring-1 focus:ring-[#FF5F1F] focus:outline-none"
+        className="w-full rounded-lg border border-card-border bg-card px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
         aria-label="Search foods"
       />
 
       {loading && (
-        <p className="text-sm text-[#737373]">Searching...</p>
+        <p className="text-sm text-muted-foreground">Searching...</p>
       )}
 
       {!loading && query && (
         <>
           <ul className="space-y-2">
             {displayFoods.length === 0 ? (
-              <li className="text-sm text-[#737373]">No results found.</li>
+              <li className="text-sm text-muted-foreground">No results found.</li>
             ) : (
               displayFoods.map((food) => (
                 <li
                   key={food.fdcId}
-                  className="rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] p-3 text-sm"
+                  className="rounded-lg border border-card-border bg-card p-3 text-sm"
                 >
-                  <div className="font-medium text-[#F5F5F5]">{food.description}</div>
-                  <div className="mt-1 text-[#A3A3A3]">
+                  <div className="font-medium text-foreground">{food.description}</div>
+                  <div className="mt-1 text-muted-foreground">
                     Per 100g: {food.nutrients.calories} cal · P
                     {food.nutrients.protein}g · C{food.nutrients.carbs}g · F
                     {food.nutrients.fat}g
                   </div>
                   {food.servingSize && food.servingSizeUnit && (
-                    <div className="mt-0.5 text-[#737373] text-xs">
+                    <div className="mt-0.5 text-muted-foreground text-xs">
                       Serving: {food.servingSize} {food.servingSizeUnit}
                     </div>
                   )}
@@ -133,7 +133,7 @@ export function FoodSearch() {
             <button
               type="button"
               onClick={() => setShowBranded(true)}
-              className="text-sm text-[#FF5F1F] hover:text-[#ff7a3d] font-medium"
+              className="text-sm text-primary hover:text-primary/90 font-medium"
               aria-expanded={showBranded}
             >
               Show {brandedCount} branded result{brandedCount !== 1 ? "s" : ""}

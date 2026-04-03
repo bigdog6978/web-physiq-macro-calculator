@@ -43,16 +43,16 @@ export function NewsletterSignup({ source, className = "" }: NewsletterSignupPro
 
   return (
     <section
-      className={`rounded-2xl border border-[#2A2A2A] bg-[#171717] p-5 sm:p-6 ${className}`}
+      className={`rounded-2xl border border-card-border bg-[#171717] p-5 sm:p-6 ${className}`}
       aria-label="Newsletter signup"
     >
-      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#FF5F1F] mb-1">
+      <p className="text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">
         Free Macro Tips
       </p>
       <h3 className="text-lg font-bold text-white leading-snug">
         High-protein meal ideas and fat-loss strategies — weekly.
       </h3>
-      <p className="mt-1.5 text-sm text-[#A3A3A3]">
+      <p className="mt-1.5 text-sm text-muted-foreground">
         Practical macro coaching, nutrition tips, and meal ideas sent straight to
         your inbox. No fluff.
       </p>
@@ -64,7 +64,7 @@ export function NewsletterSignup({ source, className = "" }: NewsletterSignupPro
           </span>
           <div>
             <p className="text-sm font-semibold text-[#10B981]">You&apos;re in.</p>
-            <p className="text-xs text-[#A3A3A3] mt-0.5">
+            <p className="text-xs text-muted-foreground mt-0.5">
               Check your inbox — first tips coming soon.
             </p>
           </div>
@@ -77,7 +77,7 @@ export function NewsletterSignup({ source, className = "" }: NewsletterSignupPro
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-[#2A2A2A] bg-[#101010] px-4 py-2.5 text-sm text-[#F5F5F5] placeholder-[#555] focus:border-[#FF5F1F] focus:outline-none transition-colors"
+              className="w-full rounded-xl border border-card-border bg-input-bg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
               placeholder="your@email.com"
               aria-label="Email address"
               required
@@ -86,7 +86,7 @@ export function NewsletterSignup({ source, className = "" }: NewsletterSignupPro
             <button
               type="submit"
               disabled={loading}
-              className="shrink-0 rounded-xl bg-[#FF5F1F] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#ff7a3d] active:scale-[0.97] transition-all disabled:opacity-60"
+              className="shrink-0 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover active:scale-[0.97] transition-all disabled:opacity-60"
             >
               {loading ? "Subscribing…" : "Subscribe"}
             </button>

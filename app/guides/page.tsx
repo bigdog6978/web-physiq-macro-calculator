@@ -41,13 +41,13 @@ export default function MacroAcademyHubPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
       <header className="mb-12 max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-wider text-[#FF5F1F] mb-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
           Education
         </p>
-        <h1 className="text-3xl font-bold text-white sm:text-5xl sm:leading-tight">
+        <h1 className="text-3xl font-bold text-foreground sm:text-5xl sm:leading-tight">
           Macro Academy
         </h1>
-        <p className="mt-4 text-lg text-[#A3A3A3] leading-relaxed">
+        <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Clear, practical guides on macros, nutrition strategies, fat loss, muscle gain,
           body recomposition, and how to use the calculator—so you can decide with
           confidence and track with Physiq.
@@ -56,7 +56,7 @@ export default function MacroAcademyHubPage() {
 
       {featured.length > 0 && (
         <section className="mb-14" aria-labelledby="featured-heading">
-          <h2 id="featured-heading" className="text-xl font-bold text-white mb-4">
+          <h2 id="featured-heading" className="text-xl font-bold text-foreground mb-4">
             Featured guides
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -64,15 +64,15 @@ export default function MacroAcademyHubPage() {
               <Link
                 key={a.slug}
                 href={`/guides/${a.slug}`}
-                className="group flex flex-col rounded-2xl border border-[#2A2A2A] bg-[#171717] p-5 transition-all hover:border-[#FF5F1F]/45 hover:bg-[#FF5F1F]/5 hover:shadow-[0_0_0_1px_rgba(255,95,31,0.15)]"
+                className="group flex flex-col rounded-2xl border border-card-border bg-card p-5 shadow-sm transition-all hover:border-primary/45 hover:bg-primary-muted/40 hover:shadow-[0_0_0_1px_rgba(201,232,0,0.28)] dark:shadow-none"
               >
-                <span className="text-xs font-medium text-[#FF5F1F]/90 group-hover:text-[#FF5F1F]">
+                <span className="text-xs font-medium text-primary/90 group-hover:text-primary">
                   Featured
                 </span>
-                <span className="mt-2 font-semibold text-[#F5F5F5] group-hover:text-white">
+                <span className="mt-2 font-semibold text-foreground">
                   {a.title}
                 </span>
-                <span className="mt-2 line-clamp-2 text-sm text-[#A3A3A3]">
+                <span className="mt-2 line-clamp-2 text-sm text-muted-foreground">
                   {a.excerpt}
                 </span>
               </Link>
@@ -82,7 +82,7 @@ export default function MacroAcademyHubPage() {
       )}
 
       <section className="mb-14" aria-labelledby="categories-heading">
-        <h2 id="categories-heading" className="text-xl font-bold text-white mb-4">
+        <h2 id="categories-heading" className="text-xl font-bold text-foreground mb-4">
           Browse by topic
         </h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -92,17 +92,17 @@ export default function MacroAcademyHubPage() {
               <Link
                 key={c.id}
                 href={`/guides/category/${c.slug}`}
-                className="group flex aspect-square flex-col justify-between rounded-2xl border border-[#2A2A2A] bg-[#141414] p-4 transition-all hover:border-[#FF5F1F]/40 hover:bg-[#1a1410] sm:p-5"
+                className="group flex aspect-square flex-col justify-between rounded-2xl border border-card-border bg-muted/80 p-4 transition-all hover:border-primary/40 hover:bg-primary-muted/25 sm:p-5 dark:bg-card"
               >
                 <div>
-                  <h3 className="text-sm font-bold text-white leading-tight group-hover:text-[#FF5F1F] transition-colors">
+                  <h3 className="text-sm font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
                     {c.label}
                   </h3>
-                  <p className="mt-2 text-xs text-[#A3A3A3] leading-snug line-clamp-3">
+                  <p className="mt-2 text-xs text-muted-foreground leading-snug line-clamp-3">
                     {c.description}
                   </p>
                 </div>
-                <p className="text-[10px] font-medium uppercase tracking-wide text-[#737373]">
+                <p className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
                   {n > 0 ? `${n} guide${n === 1 ? "" : "s"}` : "Coming soon"}
                 </p>
               </Link>
@@ -112,7 +112,7 @@ export default function MacroAcademyHubPage() {
       </section>
 
       <section className="mb-14" aria-labelledby="all-guides-heading">
-        <h2 id="all-guides-heading" className="text-xl font-bold text-white mb-4">
+        <h2 id="all-guides-heading" className="text-xl font-bold text-foreground mb-4">
           All guides
         </h2>
         <ul className="space-y-3 max-w-3xl">
@@ -120,10 +120,10 @@ export default function MacroAcademyHubPage() {
             <li key={a.slug}>
               <Link
                 href={`/guides/${a.slug}`}
-                className="block rounded-xl border border-[#2A2A2A] bg-[#171717] px-4 py-3 transition-colors hover:border-[#FF5F1F]/40 hover:bg-[#FF5F1F]/5"
+                className="block rounded-xl border border-card-border bg-card px-4 py-3 transition-colors hover:border-primary/40 hover:bg-primary-muted/40"
               >
-                <span className="font-medium text-[#F5F5F5]">{a.title}</span>
-                <p className="mt-1 text-sm text-[#A3A3A3] line-clamp-1">{a.excerpt}</p>
+                <span className="font-medium text-foreground">{a.title}</span>
+                <p className="mt-1 text-sm text-muted-foreground line-clamp-1">{a.excerpt}</p>
               </Link>
             </li>
           ))}

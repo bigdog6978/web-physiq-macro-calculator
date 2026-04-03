@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConsentProvider } from "@/components/consent/ConsentProvider";
 import { ConsentUI } from "@/components/consent/ConsentUI";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { THEME_INIT_SCRIPT } from "@/app/theme-script";
 import { analyticsConfig } from "@/lib/analytics/config";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: [{ url: "/favicon/favicon.ico", sizes: "any" }],
+    shortcut: "/favicon/favicon.ico",
+  },
   title: "Free Macro Calculator | Daily Calories & Macros",
   description:
     "Calculate your calories and macros instantly. Free macro calculator for fat loss, muscle gain, keto, carnivore, Mediterranean, and more. No signup required.",
@@ -58,20 +65,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scheme-dark" style={{ colorScheme: "dark" }}>
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="color-scheme" content="dark" />
+        <meta name="color-scheme" content="light" />
+      </head>
+      <body className="min-h-screen min-w-0 overflow-x-hidden bg-background text-foreground antialiased flex flex-col">
+        {/* Avoid raw <script> in <head>: Next injects metadata tags and sibling order can mismatch on hydrate. */}
+        <Script
+          id="physiq-theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
         />
-        {GA_MEASUREMENT_ID && (
+        {GA_MEASUREMENT_ID ? (
           <>
-            <script
-              async
+            <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
             />
-            <script
+            <Script
+              id="ga-consent-inline"
+              strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];
@@ -89,22 +107,23 @@ export default function RootLayout({
               }}
             />
           </>
-        )}
-        {ADSENSE_CLIENT_ID && (
-          <script
-            async
+        ) : null}
+        {ADSENSE_CLIENT_ID ? (
+          <Script
+            id="adsense-loader"
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+            strategy="afterInteractive"
             crossOrigin="anonymous"
           />
-        )}
-      </head>
-      <body className="min-h-screen min-w-0 overflow-x-hidden bg-[#000000] text-[#F5F5F5] antialiased flex flex-col">
-        <ConsentProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <ConsentUI />
-        </ConsentProvider>
+        ) : null}
+        <ThemeProvider>
+          <ConsentProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <ConsentUI />
+          </ConsentProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

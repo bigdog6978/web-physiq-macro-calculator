@@ -117,14 +117,14 @@ export default async function AcademyGuidePage({
       />
 
       <nav
-        className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#737373]"
+        className="mb-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-white transition-colors">
+        <Link href="/" className="hover:text-foreground transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <Link href="/guides" className="hover:text-white transition-colors">
+        <Link href="/guides" className="hover:text-foreground transition-colors">
           Macro Academy
         </Link>
         {category && (
@@ -132,14 +132,14 @@ export default async function AcademyGuidePage({
             <span aria-hidden="true">›</span>
             <Link
               href={`/guides/category/${category.slug}`}
-              className="hover:text-white transition-colors"
+              className="hover:text-foreground transition-colors"
             >
               {category.label}
             </Link>
           </>
         )}
         <span aria-hidden="true">›</span>
-        <span className="text-[#A3A3A3] truncate max-w-[12rem] sm:max-w-none">
+        <span className="text-muted-foreground truncate max-w-[12rem] sm:max-w-none">
           {article.title}
         </span>
       </nav>
@@ -150,17 +150,17 @@ export default async function AcademyGuidePage({
             <p className="mb-2">
               <Link
                 href={`/guides/category/${category.slug}`}
-                className="text-xs font-semibold uppercase tracking-wide text-[#FF5F1F] hover:text-[#ff7a3d]"
+                className="text-xs font-semibold uppercase tracking-wide text-primary hover:text-primary/90"
               >
                 {category.label}
               </Link>
             </p>
           )}
-          <h1 className="text-3xl font-bold text-white sm:text-4xl">
+          <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
             {article.title}
           </h1>
-          <p className="mt-4 text-lg text-[#A3A3A3] leading-relaxed">{intro}</p>
-          <p className="mt-3 text-xs text-[#737373]">
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{intro}</p>
+          <p className="mt-3 text-xs text-muted-foreground">
             Updated {article.updatedAt}
             {article.author ? ` · ${article.author}` : ""}
           </p>

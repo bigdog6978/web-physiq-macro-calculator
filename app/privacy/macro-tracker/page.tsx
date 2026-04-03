@@ -10,10 +10,10 @@ export default function PrivacyMacroTrackerPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
       <h1 className="text-2xl font-bold text-white mb-2">Privacy Policy</h1>
-      <p className="text-[#A3A3A3] text-sm mb-8">Physiq: Macro Tracker</p>
-      <p className="text-[#737373] text-sm mb-8">Last Updated: February 24, 2026</p>
+      <p className="text-muted-foreground text-sm mb-8">Physiq: Macro Tracker</p>
+      <p className="text-muted-foreground text-sm mb-8">Last Updated: February 24, 2026</p>
 
-      <div className="max-w-none text-[#A3A3A3] space-y-6">
+      <div className="max-w-none text-muted-foreground space-y-6">
         <section>
           <h2 className="text-lg font-semibold text-white mb-2">1. INTRODUCTION</h2>
           <p>
@@ -137,13 +137,13 @@ export default function PrivacyMacroTrackerPage() {
           </p>
           <p className="mt-2 text-white">
             Physiq: Macro Tracker<br />
-            Email: <a href="mailto:support@physiqmacros.com" className="text-[#FF5F1F] hover:text-[#ff7a3d]">support@physiqmacros.com</a>
+            Email: <a href="mailto:support@physiqmacros.com" className="text-primary hover:text-primary/90">support@physiqmacros.com</a>
           </p>
         </section>
       </div>
 
       <p className="mt-8">
-        <Link href="/" className="text-[#FF5F1F] hover:text-[#ff7a3d] transition-colors">
+        <Link href="/" className="text-primary hover:text-primary/90 transition-colors">
           ← Back to Macro Calculator
         </Link>
       </p>

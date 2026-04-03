@@ -20,11 +20,15 @@ interface AppConversionCTAProps {
 }
 
 const containerStyles: Record<CTAPlacement, string> = {
-  hero: "rounded-2xl border border-[#FF5F1F]/30 bg-[#1f1410] p-5 sm:p-6",
-  inline_article: "rounded-2xl border border-[#2A2A2A] bg-[#171717] p-5 sm:p-6",
-  post_results: "rounded-2xl border border-[#FF5F1F]/30 bg-[#1A1A1A] p-5 sm:p-6",
-  bottom_page: "rounded-2xl border border-[#FF5F1F]/60 bg-[#FF5F1F]/8 p-5 sm:p-6",
-  sticky_mobile: "rounded-2xl border border-[#FF5F1F]/35 bg-[#111] px-4 py-3.5 shadow-xl",
+  hero: "rounded-2xl border border-primary/30 bg-primary-muted/50 p-5 sm:p-6 shadow-sm dark:shadow-none",
+  inline_article:
+    "rounded-2xl border border-card-border bg-card p-5 sm:p-6 shadow-sm dark:shadow-none",
+  post_results:
+    "rounded-2xl border border-primary/30 bg-card p-5 sm:p-6 shadow-sm dark:shadow-none",
+  bottom_page:
+    "rounded-2xl border border-primary/50 bg-primary-muted/60 p-5 sm:p-6 shadow-sm dark:shadow-none",
+  sticky_mobile:
+    "rounded-2xl border border-primary/35 bg-card px-4 py-3.5 shadow-xl dark:bg-muted",
 };
 
 // Map CTA placement → StoreButtons props. Size "large" is the tallest on all
@@ -108,13 +112,13 @@ export function AppConversionCTA({
     >
       {isBottomStoreCard && storeBtnProps ? (
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-[#FF5F1F]">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
             PHYSIQ MACRO TRACKER APP
           </p>
-          <h3 className="mt-1 text-base sm:text-lg font-bold text-white leading-snug">
+          <h3 className="mt-1 text-base sm:text-lg font-bold text-foreground leading-snug">
             {bottomHeadline}
           </h3>
-          <p className="mt-1.5 text-xs sm:text-sm text-[#A3A3A3] leading-snug">
+          <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-snug">
             {bottomSupportingLine}
           </p>
 
@@ -125,7 +129,7 @@ export function AppConversionCTA({
             {bottomBenefitChips.map((chip) => (
               <li
                 key={chip}
-                className="rounded-full border border-[#2E2E2E] bg-[#1C1C1C] px-2.5 py-1 text-[11px] sm:text-xs text-[#B7B7B7]"
+                className="rounded-full border border-card-border bg-muted px-2.5 py-1 text-[11px] sm:text-xs text-muted-foreground"
               >
                 {chip}
               </li>
@@ -143,13 +147,13 @@ export function AppConversionCTA({
         </div>
       ) : canShowStore && storeBtnProps ? (
         <div className="space-y-2">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-[#FF5F1F]">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
             Physiq Macro Tracker App
           </p>
-          <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
+          <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
             {conciseHeadline}
           </h3>
-          <p className="text-xs sm:text-sm text-[#A3A3A3] leading-snug">
+          <p className="text-xs sm:text-sm text-muted-foreground leading-snug">
             {supportingLine}
           </p>
           <div className="flex justify-center">
@@ -173,20 +177,20 @@ export function AppConversionCTA({
           >
             {/* Text block */}
             <div className="flex-1 min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-[#FF5F1F] mb-1">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">
                 {content.eyebrow}
               </p>
               <h3
                 className={
                   compact
-                    ? "text-sm font-bold text-white leading-snug"
-                    : "text-lg font-bold text-white leading-snug"
+                    ? "text-sm font-bold text-foreground leading-snug"
+                    : "text-lg font-bold text-foreground leading-snug"
                 }
               >
                 {content.headline}
               </h3>
               {!compact && content.copy && (
-                <p className="mt-1.5 text-sm text-[#A3A3A3] leading-relaxed">
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
                   {content.copy}
                 </p>
               )}
@@ -204,13 +208,13 @@ export function AppConversionCTA({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handlePrimaryClick}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-[#FF5F1F] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#ff7a3d] active:scale-[0.97] transition-all"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary-hover active:scale-[0.97] transition-all"
               >
                 {content.primaryLabel}
               </a>
 
               {!compact && content.trust && (
-                <p className="text-[11px] text-[#666] leading-none pl-0.5">
+                <p className="text-[11px] text-muted-foreground leading-none pl-0.5">
                   {content.trust}
                 </p>
               )}
@@ -225,7 +229,7 @@ export function AppConversionCTA({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSecondaryClick}
-                    className="inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-[#2A2A2A] px-5 py-2.5 text-sm font-semibold text-[#A3A3A3] hover:border-[#FF5F1F]/40 hover:text-white transition-colors"
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-card-border px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:border-primary/40 hover:text-foreground transition-colors"
                   >
                     {content.secondaryLabel}
                   </a>

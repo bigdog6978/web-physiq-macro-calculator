@@ -1,22 +1,75 @@
 @import "tailwindcss";
 
+/* Chartreuse bright: #e7ff00 — light-mode primary fill: #c9e800 */
 :root {
+  color-scheme: light;
+  --background: #f7f8fa;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-border: #e5e7eb;
+  --header-bg: #ffffff;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --input-bg: #f3f4f6;
+  --input-border: #e5e7eb;
+  /* Light: chartreuse fill + near-black text (WCAG) */
+  --primary: #c9e800;
+  --primary-hover: #b3cf00;
+  --primary-foreground: #0a0a0a;
+  --primary-muted: rgba(201, 232, 0, 0.2);
+  --accent-bright: #e7ff00;
+  --ring: #e7ff00;
+  --shadow-card: 0 1px 3px rgba(17, 24, 39, 0.06), 0 1px 2px rgba(17, 24, 39, 0.04);
+  --cta-surface: #fafafa;
+  --cta-surface-strong: #f3f4f6;
+  --chip-bg: #f3f4f6;
+  --chip-border: #e5e7eb;
+  --chip-text: #4b5563;
+  --success: #059669;
+  --success-muted: rgba(5, 150, 105, 0.12);
+  --warning: #d97706;
+  --warning-muted: rgba(217, 119, 6, 0.12);
+  --danger: #dc2626;
+  --protein: #c9e800;
+  --carbs: #2563eb;
+  --fat: #d97706;
+  --calories: #dc2626;
+}
+
+.dark {
+  color-scheme: dark;
   --background: #000000;
   --foreground: #f5f5f5;
-  --card: #1a1a1a;
+  --card: #171717;
   --card-border: #2a2a2a;
-  --primary: #ff5f1f;
-  --primary-muted: rgba(255, 95, 31, 0.15);
+  --header-bg: #0a0a0a;
+  --muted: #1a1a1a;
+  --muted-foreground: #a3a3a3;
   --text-secondary: #737373;
   --text-muted: #525252;
   --input-bg: #1a1a1a;
   --input-border: #2a2a2a;
+  /* Dark: bright chartreuse + black text on buttons */
+  --primary: #e7ff00;
+  --primary-hover: #d4eb00;
+  --primary-foreground: #000000;
+  --primary-muted: rgba(231, 255, 0, 0.12);
+  --accent-bright: #e7ff00;
+  --ring: #e7ff00;
+  --shadow-card: none;
+  --cta-surface: #1a1a1a;
+  --cta-surface-strong: #1f1f0a;
+  --chip-bg: #1c1c1c;
+  --chip-border: #2e2e2e;
+  --chip-text: #b7b7b7;
   --success: #34d399;
   --success-muted: rgba(52, 211, 153, 0.15);
   --warning: #fbbf24;
   --warning-muted: rgba(251, 191, 36, 0.15);
   --danger: #ef4444;
-  --protein: #ff5f1f;
+  --protein: #e7ff00;
   --carbs: #3b82f6;
   --fat: #fbbf24;
   --calories: #ef4444;
@@ -27,8 +80,15 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-border: var(--card-border);
+  --color-header-bg: var(--header-bg);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
   --color-primary-muted: var(--primary-muted);
+  --color-accent-bright: var(--accent-bright);
+  --color-ring: var(--ring);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-input-bg: var(--input-bg);
@@ -40,41 +100,42 @@
   --color-carbs: var(--carbs);
   --color-fat: var(--fat);
   --color-calories: var(--calories);
+  --shadow-card: var(--shadow-card);
 }
 
-/* Force dark theme - must override Tailwind preflight and browser defaults */
 @layer base {
   html {
-    color-scheme: dark;
-    -webkit-color-scheme: dark;
-    background-color: #000000 !important;
     overflow-x: hidden;
+    background-color: var(--background);
   }
 
   body {
-    background-color: #000000 !important;
-    color: #f5f5f5;
+    background-color: var(--background) !important;
+    color: var(--foreground);
     font-family: system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 
-  /* Override Preflight's transparent background on form controls for dark theme */
-  button,
+  .dark html,
+  html.dark {
+    background-color: var(--background);
+  }
+
   input,
   select,
   optgroup,
   textarea {
-    background-color: #1a1a1a;
-    color: #f5f5f5;
-    border-color: #2a2a2a;
+    background-color: var(--input-bg);
+    color: var(--foreground);
+    border-color: var(--input-border);
   }
 
   select option {
-    background-color: #1a1a1a;
-    color: #f5f5f5;
+    background-color: var(--card);
+    color: var(--foreground);
   }
 
   ::placeholder {
-    color: #525252;
+    color: var(--text-muted);
   }
 }

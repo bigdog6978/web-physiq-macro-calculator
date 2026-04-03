@@ -24,7 +24,7 @@ export function InteractiveCalculatorSection({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-[#2A2A2A] bg-[#1A1A1A] p-6">
+      <div className="rounded-2xl border border-card-border bg-card p-6">
         <MacroCalculator
           onResult={setResult}
           initialValues={initialValues}

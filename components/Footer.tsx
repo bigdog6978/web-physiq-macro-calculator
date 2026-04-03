@@ -8,24 +8,24 @@ const APP_STORE_URL =
   "https://apps.apple.com/app/physiq-macro-tracker/id6743434787";
 
 const linkClass =
-  "text-sm text-white/75 hover:text-white transition-colors";
+  "text-sm text-muted-foreground hover:text-foreground transition-colors";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-16 border-t border-[#FF5F1F]/40 bg-[#FF5F1F]/8">
+    <footer className="mt-16 border-t border-card-border bg-muted/40 dark:bg-primary-muted/30">
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
 
           {/* Brand block */}
           <div className="max-w-xs shrink-0">
-            <p className="font-semibold text-white">Physiq Macros</p>
-            <p className="mt-1.5 text-sm text-white/60 leading-relaxed">
+            <p className="font-semibold text-foreground">Physiq Macros</p>
+            <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
               Free macro calculator and nutrition guidance. Calculate here, track
               daily in the Physiq app.
             </p>
-            <p className="mt-3 text-xs text-white/40">
+            <p className="mt-3 text-xs text-muted-foreground/80">
               © {currentYear} Physiq Macro Tracker. All rights reserved.
             </p>
           </div>
@@ -66,7 +66,7 @@ export function Footer() {
               href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#FF5F1F] hover:text-[#ff7a3d] transition-colors font-medium"
+              className="text-sm text-primary font-medium hover:opacity-90 transition-opacity"
             >
               Download Physiq App
             </a>

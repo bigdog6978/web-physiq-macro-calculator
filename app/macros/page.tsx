@@ -118,19 +118,19 @@ export default function MacrosIndexPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
-      <nav className="mb-6 flex items-center gap-2 text-sm text-[#737373]" aria-label="Breadcrumb">
+      <nav className="mb-6 flex items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-white transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-[#A3A3A3]">Macro Guides</span>
+        <span className="text-muted-foreground">Macro Guides</span>
       </nav>
 
       <header className="mb-10">
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           Macro Guides, Protein Targets &amp; Meal Plans
         </h1>
-        <p className="mt-3 text-[#A3A3A3]">
+        <p className="mt-3 text-muted-foreground">
           Curated first-wave SEO system: {SEO_COUNTS.total} pages across pillars, clusters,
           weight-based macro targets, protein-intake pages, and calorie meal-plan pages.
         </p>
@@ -144,9 +144,9 @@ export default function MacrosIndexPage() {
             <li key={slug}>
               <Link
                 href={`/macros/${slug}`}
-                className="flex items-center gap-2 rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3 text-sm text-[#F5F5F5] hover:border-[#FF5F1F]/40 hover:bg-[#FF5F1F]/5 transition-colors"
+                className="flex items-center gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-foreground hover:border-primary/40 hover:bg-primary-muted/40 transition-colors"
               >
-                <span className="text-[#FF5F1F]">→</span>
+                <span className="text-primary">→</span>
                 {PILLAR_LABELS[slug] ?? slug}
               </Link>
             </li>
@@ -161,9 +161,9 @@ export default function MacrosIndexPage() {
             <li key={slug}>
               <Link
                 href={`/macros/${slug}`}
-                className="flex items-center gap-2 rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] px-4 py-3 text-sm text-[#F5F5F5] hover:border-[#FF5F1F]/40 hover:bg-[#FF5F1F]/5 transition-colors"
+                className="flex items-center gap-2 rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-foreground hover:border-primary/40 hover:bg-primary-muted/40 transition-colors"
               >
-                <span className="text-[#FF5F1F]">→</span>
+                <span className="text-primary">→</span>
                 {CLUSTER_LABELS[slug] ?? slug}
               </Link>
             </li>
@@ -179,7 +179,7 @@ export default function MacrosIndexPage() {
               <li key={slug}>
                 <Link
                   href={`/macros/${slug}`}
-                  className="block text-sm text-[#A3A3A3] hover:text-[#FF5F1F] transition-colors py-1"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors py-1"
                 >
                   {buildMicroLabel(slug)}
                 </Link>
@@ -196,7 +196,7 @@ export default function MacrosIndexPage() {
             <li key={slug}>
               <Link
                 href={`/macros/${slug}`}
-                className="block text-sm text-[#A3A3A3] hover:text-[#FF5F1F] transition-colors py-1"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors py-1"
               >
                 {buildMicroLabel(slug)}
               </Link>
@@ -212,7 +212,7 @@ export default function MacrosIndexPage() {
             <li key={slug}>
               <Link
                 href={`/macros/${slug}`}
-                className="block text-sm text-[#A3A3A3] hover:text-[#FF5F1F] transition-colors py-1"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors py-1"
               >
                 {buildMicroLabel(slug)}
               </Link>

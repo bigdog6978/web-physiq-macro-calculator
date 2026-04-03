@@ -10,10 +10,10 @@ export default function PrivacyMacroCalculatorPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
       <h1 className="text-2xl font-bold text-white mb-2">Privacy Policy</h1>
-      <p className="text-[#A3A3A3] text-sm mb-2">Physiq Macro Calculator (Website)</p>
-      <p className="text-[#737373] text-sm mb-8">Last Updated: February 24, 2026</p>
+      <p className="text-muted-foreground text-sm mb-2">Physiq Macro Calculator (Website)</p>
+      <p className="text-muted-foreground text-sm mb-8">Last Updated: February 24, 2026</p>
 
-      <div className="max-w-none text-[#A3A3A3] space-y-6">
+      <div className="max-w-none text-muted-foreground space-y-6">
         <section>
           <h2 className="text-lg font-semibold text-white mb-2">1. INTRODUCTION</h2>
           <p>
@@ -96,13 +96,13 @@ export default function PrivacyMacroCalculatorPage() {
           </p>
           <p className="mt-2">
             You can opt out of Google Analytics by visiting:{" "}
-            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[#FF5F1F] hover:text-[#ff7a3d] break-all">
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/90 break-all">
               https://tools.google.com/dlpage/gaoptout
             </a>
           </p>
           <p className="mt-2">
             Google&apos;s Privacy Policy:{" "}
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#FF5F1F] hover:text-[#ff7a3d] break-all">
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/90 break-all">
               https://policies.google.com/privacy
             </a>
           </p>
@@ -126,13 +126,13 @@ export default function PrivacyMacroCalculatorPage() {
           </p>
           <p className="mt-2">
             Users may opt out of personalized advertising by visiting:{" "}
-            <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#FF5F1F] hover:text-[#ff7a3d] break-all">
+            <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/90 break-all">
               https://adssettings.google.com
             </a>
           </p>
           <p className="mt-2">
             For more information:{" "}
-            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-[#FF5F1F] hover:text-[#ff7a3d] break-all">
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/90 break-all">
               https://policies.google.com/technologies/ads
             </a>
           </p>
@@ -229,13 +229,13 @@ export default function PrivacyMacroCalculatorPage() {
           </p>
           <p className="mt-2 text-white">
             Physiq Macro Calculator<br />
-            Email: <a href="mailto:support@physiqmacros.com" className="text-[#FF5F1F] hover:text-[#ff7a3d]">support@physiqmacros.com</a>
+            Email: <a href="mailto:support@physiqmacros.com" className="text-primary hover:text-primary/90">support@physiqmacros.com</a>
           </p>
         </section>
       </div>
 
       <p className="mt-8">
-        <Link href="/" className="text-[#FF5F1F] hover:text-[#ff7a3d] transition-colors">
+        <Link href="/" className="text-primary hover:text-primary/90 transition-colors">
           ← Back to Macro Calculator
         </Link>
       </p>

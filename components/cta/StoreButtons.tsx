@@ -98,7 +98,7 @@ export function StoreButtons({
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleIOSClick}
-          className={`inline-flex ${badgeHeight} items-center rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF5F1F] focus:ring-offset-2 focus:ring-offset-[#0D0D0D]`}
+          className={`inline-flex ${badgeHeight} items-center rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background`}
           aria-label="Download Physiq on the App Store"
         >
           <img
@@ -117,7 +117,7 @@ export function StoreButtons({
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleGoogleClick}
-            className={`inline-flex ${badgeHeight} items-center rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF5F1F] focus:ring-offset-2 focus:ring-offset-[#0D0D0D]`}
+            className={`inline-flex ${badgeHeight} items-center rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background`}
             aria-label="Download Physiq on Google Play"
           >
             <img
@@ -133,7 +133,7 @@ export function StoreButtons({
           <button
             type="button"
             onClick={handleGoogleClick}
-            className={`relative inline-flex ${badgeHeight} items-center rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF5F1F] focus:ring-offset-2 focus:ring-offset-[#0D0D0D]`}
+            className={`relative inline-flex ${badgeHeight} items-center rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background`}
             aria-label="Google Play — coming soon, tap for details"
           >
             <img
@@ -146,7 +146,7 @@ export function StoreButtons({
             {/* "Soon" chip — sits in the bottom-right corner of the badge */}
             <span
               aria-hidden="true"
-              className="absolute bottom-1 right-1.5 rounded-full bg-[#1A1A1A] border border-[#3A3A3A] px-1.5 py-px text-[9px] font-bold uppercase tracking-widest text-[#A3A3A3] leading-none"
+              className="absolute bottom-1 right-1.5 rounded-full bg-card border border-[#3A3A3A] px-1.5 py-px text-[9px] font-bold uppercase tracking-widest text-muted-foreground leading-none"
             >
               Soon
             </span>

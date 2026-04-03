@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 export default function DoNotSellPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="text-2xl font-bold text-white mb-2">
+      <h1 className="text-2xl font-bold text-foreground mb-2">
         Do Not Sell or Share My Personal Information
       </h1>
-      <p className="text-[#737373] text-sm mb-8">Physiq Macro Calculator</p>
+      <p className="text-muted-foreground text-sm mb-8">Physiq Macro Calculator</p>
 
-      <div className="max-w-none text-[#A3A3A3] space-y-6">
+      <div className="max-w-none text-muted-foreground space-y-6">
         <p>
           Under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA),
           the use of cookies for advertising purposes may be considered &quot;sale&quot; or
@@ -35,14 +35,14 @@ export default function DoNotSellPage() {
 
       <DoNotSellClient />
 
-      <p className="mt-8 text-[#A3A3A3]">
-        <Link href="/privacy/macro-calculator" className="text-[#FF5F1F] hover:text-[#ff7a3d] transition-colors">
+      <p className="mt-8 text-muted-foreground">
+        <Link href="/privacy/macro-calculator" className="text-primary hover:text-primary/90 transition-colors">
           Privacy Policy
         </Link>
       </p>
 
       <p className="mt-8">
-        <Link href="/" className="text-[#FF5F1F] hover:text-[#ff7a3d] transition-colors">
+        <Link href="/" className="text-primary hover:text-primary/90 transition-colors">
           ← Back to Macro Calculator
         </Link>
       </p>

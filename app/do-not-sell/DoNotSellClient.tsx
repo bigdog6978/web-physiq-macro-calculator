@@ -37,9 +37,9 @@ export function DoNotSellClient() {
   if (!mounted) return null;
 
   return (
-    <div className="mt-6 p-6 rounded-xl border-2 border-[#2A2A2A] bg-[#1A1A1A]">
-      <h2 className="text-lg font-semibold text-white mb-2">Opt out of sale/sharing</h2>
-      <p className="text-sm text-[#A3A3A3] mb-4">
+    <div className="mt-6 p-6 rounded-xl border-2 border-card-border bg-card">
+      <h2 className="text-lg font-semibold text-foreground mb-2">Opt out of sale/sharing</h2>
+      <p className="text-sm text-muted-foreground mb-4">
         Click below to opt out of the sale or sharing of your personal information for
         advertising purposes. This will disable advertising cookies.
       </p>
@@ -47,21 +47,21 @@ export function DoNotSellClient() {
         type="button"
         onClick={handleOptOut}
         disabled={optedOut}
-        className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF5F1F] focus:ring-offset-2 focus:ring-offset-[#0D0D0D] ${
+        className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background ${
           optedOut
-            ? "bg-[#2A2A2A] text-[#737373] cursor-not-allowed"
-            : "bg-[#FF5F1F] text-white hover:bg-[#ff7a3d]"
+            ? "bg-muted text-muted-foreground cursor-not-allowed"
+            : "bg-primary text-primary-foreground hover:bg-primary-hover"
         }`}
         aria-label="Opt out of sale or sharing of personal information"
       >
         {optedOut ? "You have opted out" : "Opt out of sale/sharing"}
       </button>
-      <p className="mt-4 text-sm text-[#737373]">
+      <p className="mt-4 text-sm text-muted-foreground">
         You can also manage your preferences at any time:{" "}
         <button
           type="button"
           onClick={openModal}
-          className="text-[#FF5F1F] hover:text-[#ff7a3d] underline"
+          className="text-primary hover:text-primary/90 underline"
         >
           Cookie Preferences
         </button>

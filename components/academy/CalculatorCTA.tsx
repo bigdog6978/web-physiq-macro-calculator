@@ -7,18 +7,18 @@ interface CalculatorCTAProps {
 export function CalculatorCTA({ className = "" }: CalculatorCTAProps) {
   return (
     <section
-      className={`rounded-2xl border border-[#FF5F1F]/35 bg-[#1f1410] p-6 ${className}`}
+      className={`rounded-2xl border border-primary/35 bg-primary-muted/50 p-6 shadow-sm dark:bg-primary-muted/30 ${className}`}
       aria-labelledby="calculator-cta-heading"
     >
-      <h2 id="calculator-cta-heading" className="text-lg font-bold text-white mb-2">
+      <h2 id="calculator-cta-heading" className="text-lg font-bold text-foreground mb-2">
         Try the free macro calculator
       </h2>
-      <p className="text-sm text-[#A3A3A3] mb-4 leading-relaxed">
+      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
         Set calories and macros for your goal in seconds—no signup required.
       </p>
       <Link
         href="/#calculator"
-        className="inline-flex items-center justify-center rounded-xl bg-[#FF5F1F] px-5 py-2.5 text-sm font-semibold text-black hover:bg-[#ff7a3d] transition-colors"
+        className="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary-hover transition-colors"
       >
         Open calculator
       </Link>

@@ -47,25 +47,25 @@ export function FAQ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-[#F5F5F5]">
+        <h2 className="text-xl font-semibold text-foreground">
           Frequently Asked Questions
         </h2>
         <div className="space-y-2">
           {FAQ_ITEMS.map((item, idx) => (
             <details
               key={idx}
-              className="group rounded-lg border border-[#2A2A2A] bg-[#1A1A1A] transition-colors hover:border-[#FF5F1F]/60 open:border-[#FF5F1F]/60 open:bg-[rgba(255,95,31,0.12)]"
+              className="group rounded-lg border border-card-border bg-card transition-colors hover:border-primary/60 open:border-primary/60 open:bg-primary-muted/50"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 font-medium text-[#F5F5F5] transition-colors select-none hover:bg-[rgba(255,95,31,0.12)]">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 font-medium text-foreground transition-colors select-none hover:bg-primary-muted/40">
                 {item.q}
                 <span
-                  className="text-[#737373] ml-4 shrink-0 transition-transform group-open:rotate-180"
+                  className="text-muted-foreground ml-4 shrink-0 transition-transform group-open:rotate-180"
                   aria-hidden="true"
                 >
                   ▼
                 </span>
               </summary>
-              <p className="px-4 pb-4 pt-1 text-sm text-[#A3A3A3] leading-relaxed">
+              <p className="px-4 pb-4 pt-1 text-sm text-muted-foreground leading-relaxed">
                 {item.a}
               </p>
             </details>

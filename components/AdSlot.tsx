@@ -44,7 +44,7 @@ export function AdSlot({
 
   return (
     <aside
-      className={`${variantStyles[variant]} w-full flex items-center justify-center rounded-xl border border-dashed border-[#2A2A2A] bg-[#111] text-xs text-[#555] ${className}`}
+      className={`${variantStyles[variant]} w-full flex items-center justify-center rounded-xl border border-dashed border-card-border bg-[#111] text-xs text-[#555] ${className}`}
       data-ad-slot={id}
       data-ad-variant={variant}
       aria-label="Advertisement"

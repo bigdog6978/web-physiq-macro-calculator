@@ -20,13 +20,13 @@ export function MacroAcademyEducationStrip({
 
   return (
     <section
-      className={`rounded-2xl border border-[#2A2A2A] bg-[#171717] p-6 ${className}`}
+      className={`rounded-2xl border border-card-border bg-card p-6 ${className}`}
       aria-labelledby="macro-academy-strip-heading"
     >
-      <h2 id="macro-academy-strip-heading" className="text-lg font-bold text-white mb-2">
+      <h2 id="macro-academy-strip-heading" className="text-lg font-bold text-foreground mb-2">
         Learn more in Macro Academy
       </h2>
-      <p className="text-sm text-[#A3A3A3] mb-4">
+      <p className="text-sm text-muted-foreground mb-4">
         Deeper explainers on macros, strategies, and how to use the calculator.
       </p>
       <ul className="space-y-2 mb-4">
@@ -34,7 +34,7 @@ export function MacroAcademyEducationStrip({
           <li key={g.slug}>
             <Link
               href={`/guides/${g.slug}`}
-              className="text-sm text-[#FF5F1F] hover:text-[#ff7a3d] transition-colors"
+              className="text-sm text-primary hover:text-primary/90 transition-colors"
             >
               {g.title}
             </Link>
@@ -43,7 +43,7 @@ export function MacroAcademyEducationStrip({
       </ul>
       <Link
         href="/guides"
-        className="text-sm font-medium text-[#A3A3A3] hover:text-white transition-colors"
+        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
       >
         Browse Macro Academy →
       </Link>
