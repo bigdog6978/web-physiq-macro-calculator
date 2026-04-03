@@ -1,0 +1,665 @@
+import type { AcademyArticle } from "./types";
+
+/** Representative programmatic page for body recomposition (micro URL). */
+export const RECOMP_MACRO_SLUG = "180-pound-male-recomp-standard-macros";
+
+/**
+ * Single registry for Macro Academy. Add rows here; published entries
+ * appear on /guides, category pages, and sitemap.
+ */
+export const ACADEMY_ARTICLES: AcademyArticle[] = [
+  // ----- Original evergreen guides (kept; mesh updated for new pillars) -----
+  {
+    slug: "fat-loss-macros",
+    title: "How to Calculate Macros for Fat Loss",
+    categoryId: "fat-loss",
+    tags: ["cutting", "deficit"],
+    excerpt:
+      "A practical framework for fat-loss macros: calorie deficit sizing, protein targets, carb/fat tradeoffs, and adjustment timing.",
+    metaTitle: "How to Calculate Macros for Fat Loss | Physiq",
+    metaDescription:
+      "A practical framework for fat-loss macros: calorie deficit sizing, protein targets, carb/fat tradeoffs, and adjustment timing.",
+    publishedAt: "2024-06-01",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    relatedGuideSlugs: [
+      "macros-for-fat-loss",
+      "how-to-calculate-macros",
+      "protein-per-pound",
+    ],
+    relatedMacroSlugs: ["cutting-macros", "high-protein-macros", "keto-macros"],
+    body: `## Start with a sustainable deficit
+
+Start with maintenance calories (TDEE), then apply a 10–20% deficit. Most people do best around **15%** because it is aggressive enough to progress but still sustainable for training and adherence.
+
+## Protein first
+
+Keep protein high (commonly around **0.8–1.1g per lb** bodyweight), then allocate remaining calories between carbs and fat based on preference and training quality.
+
+## Adjust on trends, not single days
+
+Track weekly trends, not daily fluctuations. If scale trend stalls for 2–3 weeks, adjust by ~100–150 calories and reassess before making another change.`,
+  },
+  {
+    slug: "protein-per-pound",
+    title: "Protein Intake per Pound Explained",
+    categoryId: "basics",
+    tags: ["protein"],
+    excerpt:
+      "How much protein per pound should you eat for fat loss, maintenance, and muscle gain? Practical intake ranges with implementation guidance.",
+    metaTitle: "Protein Intake per Pound Explained | Physiq",
+    metaDescription:
+      "How much protein per pound should you eat for fat loss, maintenance, and muscle gain? Practical intake ranges with implementation guidance.",
+    publishedAt: "2024-06-01",
+    updatedAt: "2026-04-03",
+    featured: false,
+    status: "published",
+    relatedGuideSlugs: [
+      "what-are-macros",
+      "how-to-calculate-macros",
+      "high-protein-diet-macros",
+    ],
+    relatedMacroSlugs: [
+      "protein-intake-for-180-pound-male",
+      "high-protein-macros",
+      "high-protein-macro-calculator",
+    ],
+    body: `Protein recommendations are often easiest to apply on a **per-pound** basis. A common practical range for active adults is roughly **0.8–1.1g/lb**, with higher intake often helpful during calorie deficits.
+
+## Spread it out
+
+Distribution matters: spreading protein across **3–5 meals** improves consistency and can support recovery and appetite control better than one large serving.
+
+## Make it repeatable
+
+The best target is one you can hit daily. Use the [Macro Calculator](/#calculator) to set grams, then build simple repeatable meals around that anchor.`,
+  },
+  {
+    slug: "keto-macros-explained",
+    title: "Keto Macros Explained",
+    categoryId: "diet-strategies",
+    tags: ["keto", "low-carb"],
+    excerpt:
+      "Understand keto macro setup: carb ceilings, protein adequacy, fat allocation, and when to adjust based on adherence and results.",
+    metaTitle: "Keto Macros Explained | Physiq",
+    metaDescription:
+      "Understand keto macro setup: carb ceilings, protein adequacy, fat allocation, and when to adjust based on adherence and results.",
+    publishedAt: "2024-06-01",
+    updatedAt: "2026-04-03",
+    featured: false,
+    status: "published",
+    relatedGuideSlugs: [
+      "low-carb-diet-macros",
+      "macro-calculator-vs-calorie-calculator",
+      "carnivore-macros-guide",
+    ],
+    relatedMacroSlugs: ["keto-macros", "keto-macro-calculator", "carnivore-macros"],
+    body: `Keto macros typically cap carbs to very low levels while increasing fat intake. Protein remains adequate, not extreme, to support lean mass without crowding out fat calories.
+
+## Give it time
+
+Most people need consistency for several weeks before evaluating whether keto improves adherence and energy for their routine. Electrolytes, hydration, and food quality matter as much as macro percentages.
+
+## If progress stalls
+
+If progress stalls, adjust **total calories** first before changing the carb ceiling. Keep changes small and review trend data over 2–3 weeks.`,
+  },
+  {
+    slug: "carnivore-macros-guide",
+    title: "Carnivore Macros Guide",
+    categoryId: "diet-strategies",
+    tags: ["carnivore"],
+    excerpt:
+      "Carnivore macro framework: protein/fat balance, calorie control, adherence considerations, and practical adjustment checkpoints.",
+    metaTitle: "Carnivore Macros Guide | Physiq",
+    metaDescription:
+      "Carnivore macro framework: protein/fat balance, calorie control, adherence considerations, and practical adjustment checkpoints.",
+    publishedAt: "2024-06-01",
+    updatedAt: "2026-04-03",
+    status: "published",
+    relatedGuideSlugs: [
+      "high-protein-diet-macros",
+      "keto-macros-explained",
+      "low-carb-diet-macros",
+    ],
+    relatedMacroSlugs: ["carnivore-macros", "carnivore-macro-calculator", "keto-macros"],
+    body: `Carnivore macros remove carbohydrate-heavy plant sources and focus intake on **animal protein and fat**. This can simplify decision-making for some users.
+
+## Calories and adherence still rule
+
+Macro success still depends on calories, protein sufficiency, and long-term adherence. Use objective metrics (weight trend, training output, appetite) to evaluate effectiveness.
+
+## Troubleshooting
+
+If progress is inconsistent, check total calories and food consistency before making major strategy changes.`,
+  },
+  {
+    slug: "best-macro-split-for-muscle-gain",
+    title: "Best Macro Split for Muscle Gain",
+    categoryId: "muscle-gain",
+    tags: ["bulking", "training"],
+    excerpt:
+      "A practical muscle-gain macro split framework: surplus sizing, protein targets, carb emphasis for training, and adjustment cadence.",
+    metaTitle: "Best Macro Split for Muscle Gain | Physiq",
+    metaDescription:
+      "A practical muscle-gain macro split framework: surplus sizing, protein targets, carb emphasis for training, and adjustment cadence.",
+    publishedAt: "2024-06-01",
+    updatedAt: "2026-04-03",
+    status: "published",
+    relatedGuideSlugs: [
+      "macros-for-muscle-gain",
+      "high-protein-diet-macros",
+      "best-macros-for-men",
+    ],
+    relatedMacroSlugs: ["bulking-macros", "bulking-macro-calculator", "high-protein-macros"],
+    body: `Lean bulking typically works best with a **controlled calorie surplus** (often around 5–12%), high protein consistency, and enough carbohydrates to support training volume.
+
+## Avoid oversized surpluses
+
+Bigger surpluses do not necessarily accelerate muscle gain proportionally—they usually increase fat gain. Start conservative, then adjust with measured data.
+
+## Review every few weeks
+
+Review bodyweight trend and gym performance every **2–3 weeks** and adjust calories in small steps rather than large jumps.`,
+  },
+
+  // ----- Pillar articles (batch 2026) -----
+  {
+    slug: "how-to-calculate-macros",
+    title: "How to Calculate Macros",
+    categoryId: "basics",
+    tags: ["basics", "calculator"],
+    excerpt:
+      "Learn how to calculate macros step by step: calories first, then protein, fats, and carbs—plus when to use a macro calculator.",
+    metaTitle: "How to Calculate Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Step-by-step: estimate calories, set protein, allocate fats and carbs. Use a macro calculator for personalized daily targets.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    featured: true,
+    status: "published",
+    relatedGuideSlugs: [
+      "what-are-macros",
+      "macros-for-fat-loss",
+      "macros-for-muscle-gain",
+      "macro-calculator-vs-calorie-calculator",
+    ],
+    relatedMacroSlugs: ["cutting-macros", "bulking-macros", "high-protein-macros", "keto-macros"],
+    heroIntro:
+      "If you want to lose fat, build muscle, or maintain your weight, learning how to calculate macros is one of the most effective ways to control your nutrition.",
+    body: `If you want to lose fat, build muscle, or maintain your weight, learning how to calculate macros is one of the most effective ways to control your nutrition. Macros, short for macronutrients, are protein, carbohydrates, and fats. The right macro balance helps control calories, improve body composition, support training, and maintain energy levels.
+
+Many people try to diet by just cutting calories, but calculating macros gives you much more control over how your body looks, performs, and recovers.
+
+## Step 1: Determine Your Calories
+
+Before calculating macros, you need to estimate how many calories you should eat per day. This depends on:
+
+- Body weight
+- Height
+- Age
+- Gender
+- Activity level
+- Goal (fat loss, muscle gain, maintenance)
+
+Calories determine whether you lose weight, gain weight, or maintain your weight. Macros determine what that weight is made of — fat or muscle.
+
+## Step 2: Set Your Protein
+
+Protein is the most important macro for body composition. It helps:
+
+- Build muscle
+- Maintain muscle while dieting
+- Improve recovery
+- Keep you full
+
+Typical protein recommendations:
+
+- Fat loss: 0.8–1.0g per lb body weight
+- Muscle gain: 0.8–1.0g per lb
+- Maintenance: 0.7–0.9g per lb
+
+## Step 3: Set Your Fats
+
+Fat is important for hormones, brain function, vitamin absorption, and overall health. Most macro plans recommend fat intake around 20–30% of total calories.
+
+## Step 4: Fill Remaining Calories With Carbs
+
+Carbohydrates fuel workouts, training performance, recovery, and daily energy. Once protein and fats are set, the remaining calories go toward carbs.
+
+## Use a Macro Calculator
+
+Doing this manually can be confusing. A macro calculator automatically calculates your macros based on your body size, activity level, and goal.
+
+👉 Use the **[Macro Calculator](/#calculator)** to calculate your personalized daily macros.`,
+  },
+  {
+    slug: "what-are-macros",
+    title: "What Are Macros?",
+    categoryId: "basics",
+    tags: ["basics", "macros-101"],
+    excerpt:
+      "Macros (macronutrients) are protein, carbs, and fats—what they do, calories per gram, and why macro targets beat calories alone.",
+    metaTitle: "What Are Macros? | Macro Academy | Physiq",
+    metaDescription:
+      "Protein, carbohydrates, and fats explained: roles, calories per gram, and why tracking macros improves body composition.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    featured: true,
+    status: "published",
+    relatedGuideSlugs: [
+      "how-to-calculate-macros",
+      "macros-for-fat-loss",
+      "macros-for-muscle-gain",
+      "high-protein-diet-macros",
+    ],
+    relatedMacroSlugs: [
+      "cutting-macros",
+      "bulking-macros",
+      RECOMP_MACRO_SLUG,
+      "high-protein-macros",
+    ],
+    heroIntro:
+      "Macros, short for macronutrients, are the three main nutrients your body needs in large amounts.",
+    body: `Macros, short for macronutrients, are the three main nutrients your body needs in large amounts:
+
+- Protein
+- Carbohydrates
+- Fats
+
+Tracking macros means tracking how many grams of protein, carbs, and fats you eat each day.
+
+## Protein
+
+Protein is used for:
+
+- Muscle growth
+- Muscle repair
+- Recovery
+- Immune function
+- Hair, skin, and nails
+
+Protein contains 4 calories per gram and is the most important macro for fat loss and muscle gain.
+
+## Carbohydrates
+
+Carbohydrates are your body's primary energy source. Carbs fuel:
+
+- Workouts
+- Running
+- Lifting
+- Sports
+- Brain function
+- Daily movement
+
+Carbs also contain 4 calories per gram.
+
+## Fats
+
+Fats are important for:
+
+- Hormone production
+- Brain health
+- Joint health
+- Vitamin absorption
+- Long-term energy
+
+Fat contains 9 calories per gram.
+
+## Calories vs Macros
+
+Calories determine your weight change.
+Macros determine your body composition and performance.
+
+That is why many people use a **macro calculator instead of just counting calories**.
+
+👉 Use the [Macro Calculator](/#calculator) to determine your daily macros.`,
+  },
+  {
+    slug: "macros-for-fat-loss",
+    title: "Macros for Fat Loss",
+    categoryId: "fat-loss",
+    tags: ["cutting", "deficit"],
+    excerpt:
+      "Fat loss comes from a calorie deficit; macros determine whether you lose mostly fat or muscle. Protein, carbs, and fats for cutting.",
+    metaTitle: "Macros for Fat Loss | Macro Academy | Physiq",
+    metaDescription:
+      "Fat loss macro guidelines: deficit, high protein, sustainable carbs and fats—plus how to stay consistent.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    featured: true,
+    status: "published",
+    relatedGuideSlugs: [
+      "how-to-calculate-macros",
+      "what-are-macros",
+      "high-protein-diet-macros",
+      "low-carb-diet-macros",
+    ],
+    relatedMacroSlugs: [
+      "cutting-macros",
+      "high-protein-macros",
+      "keto-macros",
+      "cutting-macro-calculator",
+    ],
+    heroIntro:
+      "If your goal is fat loss, the most important factor is a calorie deficit. However, macros still matter because they determine whether you lose fat, muscle, or both.",
+    body: `If your goal is fat loss, the most important factor is a calorie deficit. However, macros still matter because they determine whether you lose fat, muscle, or both.
+
+## Fat Loss Macro Guidelines
+
+Typical fat loss macro setup:
+
+- Protein: High
+- Carbs: Moderate
+- Fat: Moderate to Low
+- Calories: Deficit
+
+High protein is critical during fat loss because it helps preserve muscle while losing weight.
+
+## Why Protein Matters for Fat Loss
+
+High protein intake:
+
+- Preserves muscle
+- Reduces hunger
+- Improves metabolism
+- Improves body composition
+
+Most fat loss macro plans recommend 0.8–1.0g protein per lb body weight.
+
+## Consistency Is More Important Than Perfection
+
+The best macro plan for fat loss is one that:
+
+- Keeps you in a calorie deficit
+- Provides enough protein
+- Supports workouts
+- Is easy to maintain
+
+👉 Use the **[Macro Calculator](/#calculator)** to determine your fat loss macros.`,
+  },
+  {
+    slug: "macros-for-muscle-gain",
+    title: "Macros for Muscle Gain",
+    categoryId: "muscle-gain",
+    tags: ["bulking", "muscle"],
+    excerpt:
+      "Muscle gain macros: slight calorie surplus, high protein, carbs for training, and practical surplus sizing.",
+    metaTitle: "Macros for Muscle Gain | Macro Academy | Physiq",
+    metaDescription:
+      "How to set macros for muscle gain: surplus, protein targets, carbs for performance, and adjustment tips.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    status: "published",
+    relatedGuideSlugs: [
+      "how-to-calculate-macros",
+      "what-are-macros",
+      "macros-for-body-recomposition",
+      "high-protein-diet-macros",
+    ],
+    relatedMacroSlugs: [
+      "bulking-macros",
+      "bulking-macro-calculator",
+      "high-protein-macros",
+      "macros-for-men",
+    ],
+    heroIntro:
+      "To build muscle, your body needs enough calories, protein, carbs, and fats to support training and recovery.",
+    body: `To build muscle, your body needs enough calories, protein, carbs, and fats to support training and recovery.
+
+## Muscle Gain Macro Guidelines
+
+Typical muscle gain macro setup:
+
+- Calories: Slight surplus
+- Protein: High
+- Carbs: High
+- Fat: Moderate
+
+## Calories for Muscle Gain
+
+You need a calorie surplus to build muscle. Usually 200–300 calories above maintenance is enough.
+
+## Protein for Muscle Growth
+
+Protein provides the building blocks for muscle. Most people should aim for 0.8–1.0g protein per lb body weight.
+
+## Carbs for Training
+
+Carbs are very important for muscle gain because they fuel training performance and recovery.
+
+👉 Use the **[Macro Calculator](/#calculator)** to calculate your muscle gain macros.`,
+  },
+  {
+    slug: "macros-for-body-recomposition",
+    title: "Macros for Body Recomposition",
+    categoryId: "body-recomposition",
+    tags: ["recomp", "protein"],
+    excerpt:
+      "Body recomposition: calories near maintenance, high protein, and who benefits most from losing fat and building muscle together.",
+    metaTitle: "Macros for Body Recomposition | Macro Academy | Physiq",
+    metaDescription:
+      "Recomposition macro strategy: maintenance calories, protein-first setup, and realistic expectations.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    status: "published",
+    relatedGuideSlugs: [
+      "how-to-calculate-macros",
+      "macros-for-fat-loss",
+      "macros-for-muscle-gain",
+      "high-protein-diet-macros",
+    ],
+    relatedMacroSlugs: [
+      RECOMP_MACRO_SLUG,
+      "high-protein-macros",
+      "maintenance-macros",
+      "macros-for-women",
+    ],
+    heroIntro:
+      "Body recomposition means losing fat and building muscle at the same time. This works best for beginners, people returning to training, and people with higher body fat.",
+    body: `Body recomposition means losing fat and building muscle at the same time. This works best for beginners, people returning to training, and people with higher body fat.
+
+## Recomposition Macro Strategy
+
+Typical recomposition macros:
+
+- Calories: Around maintenance
+- Protein: High
+- Carbs: Moderate
+- Fat: Moderate
+
+Protein is the most important macro for body recomposition.
+
+👉 Use the **[Macro Calculator](/#calculator)** to determine your recomposition macros.`,
+  },
+  {
+    slug: "high-protein-diet-macros",
+    title: "High Protein Diet Macros",
+    categoryId: "diet-strategies",
+    tags: ["protein", "diet"],
+    excerpt:
+      "Why high-protein diets work for fat loss and muscle gain, typical protein ranges per lb, and how to set macros.",
+    metaTitle: "High Protein Diet Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Benefits of high protein macros, practical intake ranges, and how to calculate high-protein targets.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    status: "published",
+    relatedGuideSlugs: [
+      "macros-for-fat-loss",
+      "macros-for-muscle-gain",
+      "what-are-macros",
+      "low-carb-diet-macros",
+    ],
+    relatedMacroSlugs: [
+      "high-protein-macros",
+      "cutting-macros",
+      "bulking-macros",
+      RECOMP_MACRO_SLUG,
+    ],
+    heroIntro:
+      "A high protein diet is commonly used for fat loss, muscle building, and body recomposition.",
+    body: `A high protein diet is commonly used for fat loss, muscle building, and body recomposition.
+
+## Benefits of High Protein Diet
+
+- Preserves muscle during fat loss
+- Keeps you full
+- Improves recovery
+- Helps build muscle
+- Improves metabolism
+
+Typical recommendation:
+0.8–1.0g protein per lb body weight.
+
+👉 Use the **[Macro Calculator](/#calculator)** to calculate high protein macros.`,
+  },
+  {
+    slug: "low-carb-diet-macros",
+    title: "Low Carb Diet Macros",
+    categoryId: "diet-strategies",
+    tags: ["low-carb", "keto"],
+    excerpt:
+      "Low carb macro setups: who they suit, fat and protein emphasis, and training considerations.",
+    metaTitle: "Low Carb Diet Macros | Macro Academy | Physiq",
+    metaDescription:
+      "How to think about low carb macros for fat loss and appetite control—plus when keto-style setups make sense.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    status: "published",
+    relatedGuideSlugs: [
+      "macros-for-fat-loss",
+      "high-protein-diet-macros",
+      "what-are-macros",
+      "macros-for-body-recomposition",
+    ],
+    relatedMacroSlugs: ["keto-macros", "keto-macro-calculator", "cutting-macros", "maintenance-macros"],
+    heroIntro:
+      "Low carb diets reduce carbohydrate intake and increase fat and protein intake. Low carb diets are often used for fat loss and appetite control.",
+    body: `Low carb diets reduce carbohydrate intake and increase fat and protein intake. Low carb diets are often used for fat loss and appetite control.
+
+Low carb diets may work well for people who prefer fatty foods or have low activity levels, but they may not be ideal for athletes or high-volume training.
+
+👉 Use the **[Macro Calculator](/#calculator)** to calculate low carb macros.`,
+  },
+  {
+    slug: "macro-calculator-vs-calorie-calculator",
+    title: "Macro Calculator vs Calorie Calculator",
+    categoryId: "comparisons",
+    tags: ["calculator", "comparison"],
+    excerpt:
+      "Calorie calculators give you a daily energy target. Macro calculators add protein, carbs, and fat—better for composition and performance.",
+    metaTitle: "Macro Calculator vs Calorie Calculator | Macro Academy | Physiq",
+    metaDescription:
+      "Understand the difference between calorie-only targets and full macro targets—and when each makes sense.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    featured: true,
+    status: "published",
+    relatedGuideSlugs: [
+      "what-are-macros",
+      "how-to-calculate-macros",
+      "macros-for-fat-loss",
+      "macros-for-muscle-gain",
+    ],
+    relatedMacroSlugs: [
+      "cutting-macros",
+      "bulking-macros",
+      RECOMP_MACRO_SLUG,
+      "maintenance-macros",
+    ],
+    heroIntro:
+      "A calorie calculator tells you how many calories to eat per day. A macro calculator tells you calories plus protein, carbs, and fat targets.",
+    body: `A calorie calculator tells you how many calories to eat per day. A macro calculator tells you calories plus protein, carbs, and fat targets.
+
+Macros give you more control over body composition and performance than calories alone.
+
+👉 Use the **[Macro Calculator](/#calculator)** to determine your macros.`,
+  },
+  {
+    slug: "best-macros-for-women",
+    title: "Best Macros for Women",
+    categoryId: "women",
+    tags: ["women"],
+    excerpt:
+      "How to think about macros for women: protein, fat percentage, carbs from remaining calories, and personalization.",
+    metaTitle: "Best Macros for Women | Macro Academy | Physiq",
+    metaDescription:
+      "General macro guidelines for women: protein per lb, fat as a percent of calories, and carbs from the remainder.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    status: "published",
+    relatedGuideSlugs: [
+      "macros-for-fat-loss",
+      "macros-for-muscle-gain",
+      "what-are-macros",
+      "how-to-calculate-macros",
+    ],
+    relatedMacroSlugs: [
+      "macros-for-women",
+      "bulking-macros",
+      "maintenance-macros",
+      "high-protein-macros",
+    ],
+    heroIntro:
+      "The best macros for women depend on body weight, activity level, and goals.",
+    body: `The best macros for women depend on body weight, activity level, and goals.
+
+General guidelines:
+
+- Protein: 0.8–1.0g per lb body weight
+- Fat: 20–30% of calories
+- Carbs: Remaining calories
+
+👉 Use the **[Macro Calculator](/#calculator)** for women to determine personalized macros.`,
+  },
+  {
+    slug: "best-macros-for-men",
+    title: "Best Macros for Men",
+    categoryId: "men",
+    tags: ["men"],
+    excerpt:
+      "Macro guidelines for men: higher calorie needs for many, protein per lb, and balancing fats and carbs.",
+    metaTitle: "Best Macros for Men | Macro Academy | Physiq",
+    metaDescription:
+      "How to set macros for men: protein targets, fat percentage, carbs from remaining calories, and training context.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    status: "published",
+    relatedGuideSlugs: [
+      "macros-for-fat-loss",
+      "macros-for-muscle-gain",
+      "what-are-macros",
+      "how-to-calculate-macros",
+    ],
+    relatedMacroSlugs: [
+      "macros-for-men",
+      "bulking-macros",
+      "bulking-macro-calculator",
+      "maintenance-macros",
+    ],
+    heroIntro:
+      "Macros for men depend on body size, activity level, and goals. Men typically require more calories and carbs due to higher muscle mass and activity.",
+    body: `Macros for men depend on body size, activity level, and goals. Men typically require more calories and carbs due to higher muscle mass and activity.
+
+General guidelines:
+
+- Protein: 0.8–1.0g per lb body weight
+- Fat: 20–30% of calories
+- Carbs: Remaining calories
+
+👉 Use the **[Macro Calculator](/#calculator)** for men to determine your macros.`,
+  },
+];

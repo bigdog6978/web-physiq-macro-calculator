@@ -13,6 +13,7 @@ import { AdSlot } from "@/components/AdSlot";
 import { RelatedPages } from "@/components/RelatedPages";
 import { InteractiveCalculatorSection } from "@/components/seo/InteractiveCalculatorSection";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
+import { MacroAcademyEducationStrip } from "@/components/academy/MacroAcademyEducationStrip";
 import type { MacroResult } from "@/types/macro";
 
 const BASE_URL =
@@ -166,6 +167,8 @@ export default async function MacroPage({
           <AdSlot id="mid-article" variant="mid_content" className="mb-8" />
 
           {/* Interactive calculator — client island, prefilled with page params */}
+          <MacroAcademyEducationStrip macroSlug={slug} className="mb-10" />
+
           <section className="mb-10">
             <h2 className="text-xl font-bold text-white mb-2">
               Adjust Your Macros

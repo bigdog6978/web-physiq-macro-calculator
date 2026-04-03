@@ -1,46 +1,139 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ACADEMY_CATEGORIES } from "@/lib/academy/categories";
+import {
+  countPublishedByCategoryId,
+  getFeaturedArticles,
+  getPublishedArticles,
+} from "@/lib/academy/queries";
+import { CalculatorCTA } from "@/components/academy/CalculatorCTA";
+import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://physiqmacros.com";
 
 export const metadata: Metadata = {
-  title: "Macro Nutrition Guides | Physiq",
+  title: "Macro Academy | Physiq Macros",
   description:
-    "Authority guides on fat-loss macros, protein intake per pound, keto macros, carnivore macros, and muscle-gain macro splits.",
+    "Learn macros, nutrition strategies, fat loss, muscle gain, and body recomposition—plus how to use the free calculator. Educational guides from Physiq.",
   alternates: { canonical: `${BASE_URL}/guides` },
+  openGraph: {
+    title: "Macro Academy | Physiq Macros",
+    description:
+      "Educational guides on macros, goals, and diet strategies—built to pair with the free calculator.",
+    url: `${BASE_URL}/guides`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Macro Academy | Physiq Macros",
+    description:
+      "Educational guides on macros, goals, and diet strategies—built to pair with the free calculator.",
+  },
+  robots: { index: true, follow: true },
 };
 
-const GUIDES = [
-  { href: "/guides/fat-loss-macros", label: "How to Calculate Macros for Fat Loss" },
-  { href: "/guides/protein-per-pound", label: "Protein Intake per Pound Explained" },
-  { href: "/guides/keto-macros-explained", label: "Keto Macros Explained" },
-  { href: "/guides/carnivore-macros-guide", label: "Carnivore Macros Guide" },
-  {
-    href: "/guides/best-macro-split-for-muscle-gain",
-    label: "Best Macro Split for Muscle Gain",
-  },
-];
+export default function MacroAcademyHubPage() {
+  const featured = getFeaturedArticles();
+  const all = getPublishedArticles().sort((a, b) =>
+    b.updatedAt.localeCompare(a.updatedAt)
+  );
 
-export default function GuidesIndexPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-3xl font-bold text-white sm:text-4xl">Macro Nutrition Guides</h1>
-      <p className="mt-3 text-[#A3A3A3]">
-        Evidence-aligned explainers that support the calculator and micro pages.
-      </p>
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+      <header className="mb-12 max-w-3xl">
+        <p className="text-xs font-semibold uppercase tracking-wider text-[#FF5F1F] mb-3">
+          Education
+        </p>
+        <h1 className="text-3xl font-bold text-white sm:text-5xl sm:leading-tight">
+          Macro Academy
+        </h1>
+        <p className="mt-4 text-lg text-[#A3A3A3] leading-relaxed">
+          Clear, practical guides on macros, nutrition strategies, fat loss, muscle gain,
+          body recomposition, and how to use the calculator—so you can decide with
+          confidence and track with Physiq.
+        </p>
+      </header>
 
-      <ul className="mt-8 space-y-3">
-        {GUIDES.map((guide) => (
-          <li key={guide.href}>
-            <Link
-              href={guide.href}
-              className="block rounded-xl border border-[#2A2A2A] bg-[#171717] px-4 py-3 text-sm text-[#F5F5F5] hover:border-[#FF5F1F]/40 hover:bg-[#FF5F1F]/5 transition-colors"
-            >
-              {guide.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+      {featured.length > 0 && (
+        <section className="mb-14" aria-labelledby="featured-heading">
+          <h2 id="featured-heading" className="text-xl font-bold text-white mb-4">
+            Featured guides
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((a) => (
+              <Link
+                key={a.slug}
+                href={`/guides/${a.slug}`}
+                className="group flex flex-col rounded-2xl border border-[#2A2A2A] bg-[#171717] p-5 transition-all hover:border-[#FF5F1F]/45 hover:bg-[#FF5F1F]/5 hover:shadow-[0_0_0_1px_rgba(255,95,31,0.15)]"
+              >
+                <span className="text-xs font-medium text-[#FF5F1F]/90 group-hover:text-[#FF5F1F]">
+                  Featured
+                </span>
+                <span className="mt-2 font-semibold text-[#F5F5F5] group-hover:text-white">
+                  {a.title}
+                </span>
+                <span className="mt-2 line-clamp-2 text-sm text-[#A3A3A3]">
+                  {a.excerpt}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="mb-14" aria-labelledby="categories-heading">
+        <h2 id="categories-heading" className="text-xl font-bold text-white mb-4">
+          Browse by topic
+        </h2>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {ACADEMY_CATEGORIES.map((c) => {
+            const n = countPublishedByCategoryId(c.id);
+            return (
+              <Link
+                key={c.id}
+                href={`/guides/category/${c.slug}`}
+                className="group flex aspect-square flex-col justify-between rounded-2xl border border-[#2A2A2A] bg-[#141414] p-4 transition-all hover:border-[#FF5F1F]/40 hover:bg-[#1a1410] sm:p-5"
+              >
+                <div>
+                  <h3 className="text-sm font-bold text-white leading-tight group-hover:text-[#FF5F1F] transition-colors">
+                    {c.label}
+                  </h3>
+                  <p className="mt-2 text-xs text-[#A3A3A3] leading-snug line-clamp-3">
+                    {c.description}
+                  </p>
+                </div>
+                <p className="text-[10px] font-medium uppercase tracking-wide text-[#737373]">
+                  {n > 0 ? `${n} guide${n === 1 ? "" : "s"}` : "Coming soon"}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mb-14" aria-labelledby="all-guides-heading">
+        <h2 id="all-guides-heading" className="text-xl font-bold text-white mb-4">
+          All guides
+        </h2>
+        <ul className="space-y-3 max-w-3xl">
+          {all.map((a) => (
+            <li key={a.slug}>
+              <Link
+                href={`/guides/${a.slug}`}
+                className="block rounded-xl border border-[#2A2A2A] bg-[#171717] px-4 py-3 transition-colors hover:border-[#FF5F1F]/40 hover:bg-[#FF5F1F]/5"
+              >
+                <span className="font-medium text-[#F5F5F5]">{a.title}</span>
+                <p className="mt-1 text-sm text-[#A3A3A3] line-clamp-1">{a.excerpt}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <div className="grid gap-8 lg:grid-cols-2 max-w-4xl">
+        <CalculatorCTA />
+        <AppConversionCTA placement="inline_article" pageType="seo" showStoreButtons />
+      </div>
+    </div>
   );
 }

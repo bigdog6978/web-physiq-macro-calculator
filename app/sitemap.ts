@@ -1,18 +1,34 @@
 import type { MetadataRoute } from "next";
+import { ACADEMY_CATEGORIES } from "@/lib/academy/categories";
+import { getPublishedSlugs } from "@/lib/academy/queries";
 import { ALL_SEO_PAGES } from "@/lib/seo/pages";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_URL || "https://physiqmacros.com";
 
+const ACADEMY_GUIDE_ROUTES: MetadataRoute.Sitemap = getPublishedSlugs().map(
+  (slug) => ({
+    url: `${BASE}/guides/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  })
+);
+
+const ACADEMY_CATEGORY_ROUTES: MetadataRoute.Sitemap = ACADEMY_CATEGORIES.map(
+  (c) => ({
+    url: `${BASE}/guides/category/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.72,
+  })
+);
+
 const STATIC_ROUTES: MetadataRoute.Sitemap = [
   { url: BASE, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
   { url: `${BASE}/macros`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
-  // Authority guides
   { url: `${BASE}/guides`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-  { url: `${BASE}/guides/fat-loss-macros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-  { url: `${BASE}/guides/protein-per-pound`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-  { url: `${BASE}/guides/keto-macros-explained`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-  { url: `${BASE}/guides/carnivore-macros-guide`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-  { url: `${BASE}/guides/best-macro-split-for-muscle-gain`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
+  ...ACADEMY_GUIDE_ROUTES,
+  ...ACADEMY_CATEGORY_ROUTES,
   // Legal / compliance
   { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   { url: `${BASE}/privacy-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },

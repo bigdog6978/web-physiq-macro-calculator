@@ -42,7 +42,7 @@ export function Footer() {
               Macro Guides
             </Link>
             <Link href="/guides" className={linkClass}>
-              Nutrition Guides
+              Macro Academy
             </Link>
             <Link href="/privacy/macro-calculator" className={linkClass}>
               Calculator Privacy Policy
