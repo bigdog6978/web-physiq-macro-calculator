@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { THEME_INIT_SCRIPT } from "@/app/theme-script";
 import { analyticsConfig } from "@/lib/analytics/config";
 
+// Favicon: files in `public/favicon/` only; `/favicon.ico` → `/favicon/favicon.ico` (next.config redirects).
 export const metadata: Metadata = {
   manifest: "/favicon/site.webmanifest",
   icons: {
