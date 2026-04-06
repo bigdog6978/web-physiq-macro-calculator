@@ -21,7 +21,7 @@ export function MealPlan({ result }: MealPlanProps) {
 
       {conflictWarning && (
         <div
-          className="rounded-lg border border-[#FBBF24]/50 bg-[rgba(251,191,36,0.15)] px-4 py-3 text-sm text-[#FBBF24]"
+          className="rounded-lg border border-[#FBBF24]/50 bg-[rgba(251,191,36,0.15)] px-4 py-3 text-sm text-black dark:text-zinc-100"
           role="alert"
         >
           {conflictWarning}
