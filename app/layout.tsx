@@ -9,27 +9,26 @@ import { ConsentUI } from "@/components/consent/ConsentUI";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { THEME_INIT_SCRIPT } from "@/app/theme-script";
 import { analyticsConfig } from "@/lib/analytics/config";
+import { faviconPaths } from "@/lib/seo/faviconPaths";
+import { getSiteOrigin } from "@/lib/seo/siteOrigin";
 
-// Favicon: files in `public/favicon/` only; `/favicon.ico` → `/favicon/favicon.ico` (next.config redirects).
 export const metadata: Metadata = {
-  manifest: "/favicon/site.webmanifest",
+  manifest: faviconPaths.manifest,
   icons: {
     icon: [
-      { url: "/favicon/favicon.ico", sizes: "any" },
-      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: faviconPaths.png32, sizes: "32x32", type: "image/png" },
+      { url: faviconPaths.png16, sizes: "16x16", type: "image/png" },
+      { url: faviconPaths.ico, sizes: "any" },
     ],
-    apple: "/favicon/apple-touch-icon.png",
-    shortcut: "/favicon/favicon.ico",
+    apple: faviconPaths.apple,
+    shortcut: faviconPaths.png32,
   },
   title: "Free Macro Calculator | Daily Calories & Macros",
   description:
     "Calculate your calories and macros instantly. Free macro calculator for fat loss, muscle gain, keto, carnivore, Mediterranean, and more. No signup required.",
   keywords:
     "macro calculator, calorie calculator, TDEE calculator, keto macros, carnivore macros, macro calculator free",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || "https://physiqmacros.com"
-  ),
+  metadataBase: new URL(getSiteOrigin()),
   openGraph: {
     title: "Free Macro Calculator | Daily Calories & Macros",
     description:
