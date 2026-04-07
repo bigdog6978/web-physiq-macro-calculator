@@ -42,7 +42,7 @@ function isModifierCompatible(
   modifiers: DietModifier[]
 ): boolean {
   for (const mod of modifiers) {
-    if (mod === "intermittent_fasting") continue;
+    if (mod === "intermittent_fasting" || mod === "low_glycemic") continue;
     if (mod === "halal" && /(bacon|pork)/i.test(food.name)) return false;
     if (mod === "kosher" && /(pork|shellfish|shrimp|bacon)/i.test(food.name)) {
       return false;
@@ -89,22 +89,78 @@ function isMediterraneanPriority(food: FoodTemplate): boolean {
   );
 }
 
-/** Lower = better for tie-breaking; style-preferred foods get 0 so they win when scores are equal. */
-function getStyleRank(food: FoodTemplate, profile: UserProfile): number {
+/**
+ * Lower = better for tie-breaking after macro scores match.
+ * Mediterranean tier is weighted above glycemic tier so eating style stays primary.
+ */
+function getGlycemicRank(food: FoodTemplate, profile: UserProfile, dailyCarbGrams: number): number {
+  if (!lowGlycemicScoringActive(profile, dailyCarbGrams)) return 0;
+  if (food.tags.includes("low_glycemic_friendly")) return 0;
+  if (food.tags.includes("high_glycemic_carb")) return 2;
+  return 1;
+}
+
+function getStyleRank(
+  food: FoodTemplate,
+  profile: UserProfile,
+  dailyCarbGrams: number
+): number {
+  let rank = 0;
   if (profile.eatingStyle === "mediterranean") {
-    return isMediterraneanPriority(food) ? 0 : 1;
+    rank = isMediterraneanPriority(food) ? 0 : 1;
   }
-  return 0;
+  if (lowGlycemicScoringActive(profile, dailyCarbGrams)) {
+    rank = rank * 10 + getGlycemicRank(food, profile, dailyCarbGrams);
+  }
+  return rank;
 }
 
 /** Score penalty for non-style-preferred foods so switching style changes the plan (lower score = better). */
 const STYLE_PENALTY = 80;
+
+/** Bias carb picks when daily carbs are meaningful; smaller than STYLE_PENALTY so macro fit still dominates. */
+const LOW_GI_CARB_THRESHOLD_G = 15;
+const LOW_GI_FRIENDLY_BONUS = -38;
+const HIGH_GI_CARB_PENALTY = 55;
+
+function lowGlycemicScoringActive(
+  profile: UserProfile,
+  dailyCarbGrams: number
+): boolean {
+  return (
+    profile.dietModifiers.includes("low_glycemic") &&
+    profile.eatingStyle !== "carnivore" &&
+    dailyCarbGrams > LOW_GI_CARB_THRESHOLD_G
+  );
+}
+
+function glycemicScoreAdjustment(
+  food: FoodTemplate,
+  profile: UserProfile,
+  dailyCarbGrams: number
+): number {
+  if (!lowGlycemicScoringActive(profile, dailyCarbGrams)) return 0;
+  if (food.tags.includes("high_glycemic_carb")) return HIGH_GI_CARB_PENALTY;
+  if (food.tags.includes("low_glycemic_friendly")) return LOW_GI_FRIENDLY_BONUS;
+  return 0;
+}
 
 function styleScoreAdjustment(food: FoodTemplate, profile: UserProfile): number {
   if (profile.eatingStyle === "mediterranean" && !isMediterraneanPriority(food)) {
     return STYLE_PENALTY;
   }
   return 0;
+}
+
+function mealPickScoreAdjustment(
+  food: FoodTemplate,
+  profile: UserProfile,
+  dailyCarbGrams: number
+): number {
+  return (
+    styleScoreAdjustment(food, profile) +
+    glycemicScoreAdjustment(food, profile, dailyCarbGrams)
+  );
 }
 
 function filterFoods(
@@ -181,7 +237,8 @@ function pickFoodsForMeal(
   targetProtein: number,
   targetCarbs: number,
   targetFat: number,
-  profile: UserProfile
+  profile: UserProfile,
+  dailyCarbGrams: number
 ): MealItem[] {
   if (available.length === 0) return [];
 
@@ -207,7 +264,7 @@ function pickFoodsForMeal(
             targetProtein,
             targetCarbs,
             targetFat
-          ) + styleScoreAdjustment(a, profile);
+          ) + mealPickScoreAdjustment(a, profile, dailyCarbGrams);
         const bScore =
           scoreFoodForTargets(
             totalCals,
@@ -219,10 +276,10 @@ function pickFoodsForMeal(
             targetProtein,
             targetCarbs,
             targetFat
-          ) + styleScoreAdjustment(b, profile);
+          ) + mealPickScoreAdjustment(b, profile, dailyCarbGrams);
         const scoreDiff = aScore - bScore;
         if (scoreDiff !== 0) return scoreDiff;
-        return getStyleRank(a, profile) - getStyleRank(b, profile);
+        return getStyleRank(a, profile, dailyCarbGrams) - getStyleRank(b, profile, dailyCarbGrams);
       })
       .find(
         (f) =>
@@ -478,7 +535,8 @@ export function generateMealPlan(
       mealProteinTarget,
       mealCarbTarget,
       mealFatTarget,
-      profile
+      profile,
+      targets.carbGrams
     );
     const items = scaleMealToTargets(
       rawItems,

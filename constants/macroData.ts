@@ -85,6 +85,7 @@ export const DIET_MODIFIERS: { id: DietModifier; label: string }[] = [
   { id: "soy_free", label: "Soy-Free" },
   { id: "shellfish_free", label: "Shellfish-Free" },
   { id: "intermittent_fasting", label: "Intermittent Fasting" },
+  { id: "low_glycemic", label: "Low Glycemic" },
   { id: "halal", label: "Halal" },
   { id: "kosher", label: "Kosher" },
 ];

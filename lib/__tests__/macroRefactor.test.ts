@@ -290,4 +290,73 @@ describe("meal plan integration", () => {
     expect(Math.abs(tot.carbGrams - t.carbGrams)).toBeLessThanOrEqual(15);
     expect(Math.abs(tot.fatGrams - t.fatGrams)).toBeLessThanOrEqual(15);
   });
+
+  it("keeps a full meal plan when low glycemic is selected (no per-food tag requirement)", () => {
+    const targets = {
+      calories: 2400,
+      proteinGrams: 150,
+      carbGrams: 260,
+      fatGrams: 85,
+      protein: 150,
+      carbs: 260,
+      fat: 85,
+    };
+    const plan = generateMealPlan(
+      targets,
+      buildProfile({ dietModifiers: ["low_glycemic"], eatingStyle: "standard" })
+    );
+    expect(plan.meals.length).toBe(4);
+    expect(plan.meals.every((m) => m.items.length > 0)).toBe(true);
+  });
+
+  it("does not change carnivore meal pool when low glycemic is also selected", () => {
+    const profile = buildProfile({
+      eatingStyle: "carnivore",
+      dietModifiers: ["low_glycemic"],
+    });
+    const macroResult = calculateMacros(profile);
+    const plan = generateMealPlan(macroResult.targets, profile);
+    const names = plan.meals.flatMap((m) => m.items.map((i) => i.name)).join(" ");
+    expect(names).not.toMatch(/Oatmeal|Quinoa|Brown Rice|Banana|Lentils/i);
+    expect(names.length).toBeGreaterThan(0);
+  });
+
+  it("biases toward lower-GI carb tags when daily carbs are meaningful", () => {
+    const targets = {
+      calories: 2800,
+      proteinGrams: 165,
+      carbGrams: 340,
+      fatGrams: 95,
+      protein: 165,
+      carbs: 340,
+      fat: 95,
+    };
+    const lowGiPreferred = new Set([
+      "Oatmeal",
+      "Brown Rice",
+      "Quinoa",
+      "Sweet Potato",
+      "Lentils",
+      "Black Beans",
+      "Chickpea Salad",
+      "Edamame",
+      "Tempeh",
+    ]);
+    const highGiCarbs = new Set(["Banana", "Avocado Toast", "Rice Cakes (2)"]);
+    const score = (names: string[]) =>
+      names.filter((n) => lowGiPreferred.has(n)).length -
+      names.filter((n) => highGiCarbs.has(n)).length;
+
+    const baseline = generateMealPlan(
+      targets,
+      buildProfile({ eatingStyle: "standard", dietModifiers: [] })
+    );
+    const withLowGlycemic = generateMealPlan(
+      targets,
+      buildProfile({ eatingStyle: "standard", dietModifiers: ["low_glycemic"] })
+    );
+    const baseNames = baseline.meals.flatMap((m) => m.items.map((i) => i.name));
+    const lgNames = withLowGlycemic.meals.flatMap((m) => m.items.map((i) => i.name));
+    expect(score(lgNames)).toBeGreaterThanOrEqual(score(baseNames));
+  });
 });

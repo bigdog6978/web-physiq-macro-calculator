@@ -33,6 +33,7 @@ export type DietModifier =
   | "soy_free"
   | "shellfish_free"
   | "intermittent_fasting"
+  | "low_glycemic"
   | "halal"
   | "kosher";
 
