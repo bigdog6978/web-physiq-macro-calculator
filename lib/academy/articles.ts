@@ -26,6 +26,7 @@ export const ACADEMY_ARTICLES: AcademyArticle[] = [
     status: "published",
     relatedGuideSlugs: [
       "macros-for-fat-loss",
+      "protein-sparing-modified-fasting",
       "how-to-calculate-macros",
       "protein-per-pound",
     ],
@@ -186,6 +187,7 @@ Review bodyweight trend and gym performance every **2–3 weeks** and adjust cal
       "what-are-macros",
       "macros-for-fat-loss",
       "macros-for-muscle-gain",
+      "protein-sparing-modified-fasting",
       "macro-calculator-vs-calorie-calculator",
     ],
     relatedMacroSlugs: ["cutting-macros", "bulking-macros", "high-protein-macros", "keto-macros"],
@@ -501,6 +503,7 @@ If you understand macros, you understand how nutrition works.
       "how-to-calculate-macros",
       "what-are-macros",
       "high-protein-diet-macros",
+      "protein-sparing-modified-fasting",
       "low-carb-diet-macros",
     ],
     relatedMacroSlugs: [
@@ -660,6 +663,7 @@ Protein is the most important macro for body recomposition.
       "macros-for-fat-loss",
       "macros-for-muscle-gain",
       "what-are-macros",
+      "protein-sparing-modified-fasting",
       "low-carb-diet-macros",
     ],
     relatedMacroSlugs: [
@@ -824,5 +828,187 @@ General guidelines:
 - Carbs: Remaining calories
 
 👉 Use the **[Macro Calculator](/#calculator)** for men to determine your macros.`,
+  },
+  {
+    slug: "protein-sparing-modified-fasting",
+    title: "Protein Sparing Modified Fasting (PSMF)",
+    categoryId: "fat-loss",
+    tags: ["psmf", "fat-loss", "high-protein", "deficit", "very-low-calorie"],
+    excerpt:
+      "PSMF is an aggressive short-term approach: very low calories with high protein and minimal carbs and fat to maximize fat loss while limiting muscle loss. Not for long-term use.",
+    metaTitle: "PSMF (Protein Sparing Modified Fast) | Macro Academy | Physiq",
+    metaDescription:
+      "What PSMF is, how it works, benefits and risks, who should avoid it, and how it compares to sustainable macro-based fat loss—plus trusted sources.",
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Protein Sparing Modified Fasting (PSMF) is an aggressive, short-term strategy for rapid fat loss while prioritizing protein to help preserve lean mass. It is not a long-term lifestyle and often belongs under professional supervision.",
+    relatedGuideSlugs: [
+      "macros-for-fat-loss",
+      "high-protein-diet-macros",
+      "how-to-calculate-macros",
+      "what-are-macros",
+      "fat-loss-macros",
+      "low-carb-diet-macros",
+    ],
+    relatedMacroSlugs: [
+      "cutting-macros",
+      "high-protein-macros",
+      "keto-macros",
+      "maintenance-macros",
+      "cutting-macro-calculator",
+      "high-protein-macro-calculator",
+    ],
+    body: `Protein Sparing Modified Fasting (PSMF) is an aggressive, short-term dieting strategy designed to maximize fat loss while preserving lean muscle mass. It involves consuming very low calories while prioritizing high protein intake and minimizing carbohydrates and fats.
+
+PSMF is often used for rapid fat loss in specific situations, but it is not intended to be a long-term diet. Because of its restrictive nature, it should be approached carefully and, in many clinical contexts, under professional guidance.
+
+## What Is PSMF?
+
+PSMF is a structured low-calorie diet that focuses on:
+
+- Very high protein intake
+- Extremely low carbohydrates
+- Very low fat intake
+- Minimal total calories
+
+The goal is to create a large calorie deficit while providing enough protein to help **spare** muscle mass.
+
+### Typical PSMF structure
+
+- **Protein:** High (lean sources only)
+- **Carbs:** Very low
+- **Fat:** Very low
+- **Calories:** Very low
+
+This pattern encourages the body to rely more heavily on stored body fat for energy while protein supports lean tissue.
+
+## How PSMF Works
+
+PSMF combines two key mechanisms:
+
+### 1. Large calorie deficit
+
+PSMF significantly reduces calorie intake, increasing reliance on stored fat for energy.
+
+### 2. Muscle preservation through protein
+
+Higher protein intake can help:
+
+- Preserve lean muscle mass
+- Reduce muscle breakdown
+- Support metabolic rate compared with very low protein crash diets
+
+This protein emphasis is a major difference from unstructured crash dieting.
+
+## Best Use Cases for PSMF
+
+PSMF is not for everyone. It is typically discussed in contexts such as:
+
+1. **Rapid fat loss phases** — short windows where faster loss is a priority.
+2. **Higher body fat levels** — more stored energy to draw from; individual assessment still matters.
+3. **Plateau breaking** — occasionally used strategically (not casually).
+4. **Short-term cutting** — e.g. bodybuilding prep (brief), weight-class sports, or time-bound events.
+
+## Benefits of PSMF
+
+1. **Rapid fat loss** — large deficits can move scale and fat mass quickly.
+2. **Muscle retention (vs. naive crash diets)** — protein-first framing is designed to protect lean mass more than protein-poor very low calorie approaches.
+3. **Insulin sensitivity** — very low carbohydrate intake may improve glycemic control in some people (individual response varies).
+4. **Structure** — clear rules can simplify decisions during a short phase.
+
+## Risks and Considerations
+
+PSMF is aggressive and comes with real downsides:
+
+1. **Nutrient deficiencies** — limited food variety raises risk for vitamin and mineral gaps; supervised protocols often use targeted supplementation.
+2. **Low energy and fatigue** — training performance, focus, and daily energy can suffer.
+3. **Hormonal stress** — prolonged or repeated use increases concern; length and context matter.
+4. **Muscle loss if executed poorly** — inadequate protein, excessive deficit without structure, or dropping training can still yield lean mass loss.
+5. **Not sustainable** — PSMF is a short-term tool, not a permanent eating pattern.
+
+## Who Should NOT Use PSMF
+
+PSMF is generally a poor fit or contraindicated without medical oversight for:
+
+- Very lean individuals
+- Beginners with no structured nutrition experience
+- Anyone with medical conditions unless a qualified clinician approves and monitors the plan
+- Pregnancy or breastfeeding
+- Anyone with a history of disordered eating
+
+## How Long Should You Do PSMF?
+
+Typical discussions involve **short cycles** (often on the order of **1–6 weeks**, highly individual). Longer use increases risk and should only occur with careful monitoring.
+
+## PSMF vs traditional fat loss diets
+
+**PSMF-style approach**
+
+- Calories: very low
+- Sustainability: low (by design)
+- Speed: often fast
+
+**Standard fat loss (macro-based deficit)**
+
+- Calories: moderate deficit
+- Sustainability: higher for most people
+- Speed: moderate
+
+PSMF can be faster; sustainable macro dieting usually wins for long-term adherence and lifestyle fit. For a sustainable framework, read [Macros for Fat Loss](/guides/macros-for-fat-loss) and [How to Calculate Macros for Fat Loss](/guides/fat-loss-macros).
+
+## PSMF vs macro-based dieting
+
+Tracking macros tends to offer:
+
+- More flexibility
+- Better long-term adherence for many people
+- Sustainable fat loss pacing
+- Easier balanced micronutrient intake across foods
+
+PSMF is a **specialized short-term tool**; macro tracking is usually the better **long-term system**. Start with [What Are Macros?](/guides/what-are-macros) and [How to Calculate Macros](/guides/how-to-calculate-macros).
+
+👉 Use the **[Macro Calculator](/#calculator)** to build a sustainable macro plan for your goal, activity level, and preferences. The calculator also includes **PSMF (protein-sparing)** as an optional eating style for educational targets—treat it as short-term and read the in-app medical notice.
+
+## When to choose macros over PSMF
+
+Most people do best with:
+
+- A moderate calorie deficit
+- High protein
+- Balanced carbs and fats for training and adherence
+- Consistent tracking and gradual adjustments
+
+Consider PSMF only when rapid fat loss is truly required, the timeline is short, risks are understood, and ideally when a qualified professional is involved.
+
+### Related guides
+
+- [Macros for Fat Loss](/guides/macros-for-fat-loss)
+- [High Protein Diet Macros](/guides/high-protein-diet-macros)
+- [How to Calculate Macros](/guides/how-to-calculate-macros)
+- [What Are Macros?](/guides/what-are-macros)
+
+### Popular macro pages
+
+- [Cutting macros](/macros/cutting-macros)
+- [High protein macros](/macros/high-protein-macros)
+- [Keto macros](/macros/keto-macros) (low-carb hub)
+- [Maintenance macros](/macros/maintenance-macros) (recomposition context)
+- [Cutting macro calculator](/macros/cutting-macro-calculator)
+- [High protein macro calculator](/macros/high-protein-macro-calculator)
+
+## Sources and references
+
+- [Nutrients — review of protein-sparing therapies and George Blackburn’s contributions to nutrition science (PMC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5809291/)
+- [Cleveland Clinic — Protein-Sparing Modified Fast Diet](https://health.clevelandclinic.org/protein-sparing-modified-fast-diet/)
+- [NIH NIDDK — Understanding adult overweight and obesity](https://www.niddk.nih.gov/health-information/weight-management/adult-overweight-obesity)
+- [NIH NHLBI — Overweight and obesity](https://www.nhlbi.nih.gov/health/overweight-and-obesity)
+- [Helms ER, et al. — Evidence-based recommendations for natural bodybuilding contest preparation (PubMed)](https://pubmed.ncbi.nlm.nih.gov/24864135/)
+- [Higher protein intake during caloric restriction and lean mass (PubMed)](https://pubmed.ncbi.nlm.nih.gov/35538903/)
+
+> **Important:** This article is for **educational purposes only** and does **not** constitute medical advice. Always consult a qualified healthcare professional before starting an aggressive or restrictive diet.`,
   },
 ];
