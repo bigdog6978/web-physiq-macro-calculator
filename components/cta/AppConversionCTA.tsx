@@ -106,7 +106,7 @@ export function AppConversionCTA({
 
   return (
     <div
-      className={`${containerStyles[placement]} ${canShowStore ? "p-4 sm:p-4" : ""} ${className}`}
+      className={`@container ${containerStyles[placement]} ${canShowStore ? "p-4 sm:p-4" : ""} ${className}`}
       role="complementary"
       aria-label={landmarkLabels[placement]}
     >
@@ -172,11 +172,11 @@ export function AppConversionCTA({
             className={
               compact
                 ? "flex items-center justify-between gap-3"
-                : "flex flex-col sm:flex-row sm:items-start gap-5"
+                : "flex flex-col gap-5 @md:flex-row @md:items-start"
             }
           >
-            {/* Text block */}
-            <div className="flex-1 min-w-0">
+            {/* Text block: stack in narrow sidebars; row when container width reaches @md */}
+            <div className="min-w-0 flex-1">
               <p className="text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">
                 {content.eyebrow}
               </p>
@@ -200,7 +200,7 @@ export function AppConversionCTA({
               className={
                 compact
                   ? "flex items-center gap-2 shrink-0"
-                  : "flex flex-col gap-2.5 shrink-0 sm:items-start"
+                  : "flex w-full shrink-0 flex-col gap-2.5 @md:w-auto @md:items-start"
               }
             >
               <a
@@ -208,7 +208,7 @@ export function AppConversionCTA({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handlePrimaryClick}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary-hover active:scale-[0.97] transition-all"
+                className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary-hover active:scale-[0.97] transition-all @md:w-auto"
               >
                 {content.primaryLabel}
               </a>
@@ -229,7 +229,7 @@ export function AppConversionCTA({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSecondaryClick}
-                    className="inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-card-border px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:border-primary/40 hover:text-foreground transition-colors"
+                    className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-xl border border-card-border px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:border-primary/40 hover:text-foreground transition-colors @md:w-auto"
                   >
                     {content.secondaryLabel}
                   </a>
