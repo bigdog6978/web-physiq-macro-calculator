@@ -43,6 +43,7 @@ export const STRATEGY_LABEL: Record<MacroStrategy, string> = {
   paleo: "Paleo",
   keto: "Keto",
   carnivore: "Carnivore",
+  psmf: "PSMF (protein-sparing)",
   high_protein: "Standard",
   low_carb: "Keto",
   low_fat: "Standard",

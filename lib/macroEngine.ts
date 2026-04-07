@@ -12,6 +12,7 @@ import {
   MINIMUM_PROTEIN_G_PER_LB,
   PROTEIN_FROM_BODY_WEIGHT_G_PER_LB,
   PROTEIN_FROM_LEAN_MASS_G_PER_LB,
+  PSMF_TDEE_FRACTION,
   RECOMP_BODY_FAT_THRESHOLDS,
 } from "@/constants/macroData";
 import {
@@ -19,6 +20,7 @@ import {
   getSafeWeightKg,
   getValidBodyFatPercent,
 } from "@/lib/profile";
+import { PSMF_ENGINE_NOTES } from "@/lib/psmfContent";
 import type {
   Goal,
   MacroCalculationBreakdown,
@@ -207,6 +209,132 @@ function finalizeTargets(
   };
 }
 
+function calculateMacrosPsmf(
+  profile: UserProfile,
+  ctx: { bmr: number; tdee: number; weightLb: number; notes: string[] }
+): CalculateMacrosResult {
+  const { bmr, tdee, weightLb, notes } = ctx;
+  const calorieFloor = CALORIE_FLOORS[profile.sex];
+  const carbCap = EATING_STYLE_CARB_CAPS.psmf ?? 28;
+  const fatPerLb = FAT_MINIMUM_G_PER_LB.psmf;
+
+  const tdeeFracTarget = roundInt(tdee * PSMF_TDEE_FRACTION);
+  let calorieTarget = Math.max(calorieFloor, tdeeFracTarget);
+
+  const leanMassKg = getLeanMassKg(profile.weightKg, profile.bodyFatPercent);
+
+  let proteinGrams: number;
+  let proteinRule: string;
+  let bodyComp: "lean_mass" | "body_weight";
+
+  if (leanMassKg !== undefined && leanMassKg > 0) {
+    const lbmLb = kgToLbs(leanMassKg);
+    proteinGrams = roundInt(
+      Math.max(
+        lbmLb * 1.2,
+        weightLb * 1.0,
+        weightLb * MINIMUM_PROTEIN_G_PER_LB
+      )
+    );
+    proteinRule = `PSMF targets high protein (~1.2g per lb lean mass; LBM ~${roundInt(lbmLb)} lb) to emphasize lean-mass preservation during a short-term deficit.`;
+    bodyComp = "lean_mass";
+  } else {
+    proteinGrams = roundInt(
+      Math.max(weightLb * 1.05, weightLb * MINIMUM_PROTEIN_G_PER_LB)
+    );
+    proteinRule =
+      "PSMF uses ~1.05g protein per lb body weight when lean mass is unknown; add a supported body fat % for a lean-mass-based target.";
+    bodyComp = "body_weight";
+  }
+
+  const hardFatFloor = weightLb * fatPerLb;
+  const fatGrams = Math.max(roundInt(hardFatFloor), 15);
+  const carbGrams = carbCap;
+
+  let requiredCals = proteinGrams * 4 + carbGrams * 4 + fatGrams * 9;
+
+  if (tdeeFracTarget < calorieFloor && calorieTarget === calorieFloor) {
+    notes.push(
+      "The calorie safety floor limited how deep the PSMF deficit could go versus a fixed fraction of TDEE; individualized medical guidance is important for very-low-calorie plans."
+    );
+  }
+
+  if (requiredCals > calorieTarget) {
+    calorieTarget = requiredCals;
+    notes.push(
+      "Calories were raised to fit PSMF protein plus essential fat and the carb cap (protein-sparing priority over a stricter deficit)."
+    );
+  }
+
+  const maxProteinByCal = (calorieTarget - carbGrams * 4 - fatGrams * 9) / 4;
+  if (proteinGrams > maxProteinByCal) {
+    proteinGrams = Math.max(
+      roundInt(weightLb * MINIMUM_PROTEIN_G_PER_LB),
+      roundInt(maxProteinByCal)
+    );
+    notes.push(
+      "Protein was trimmed slightly so macros fit the calorie target with the PSMF fat floor and carb cap."
+    );
+    requiredCals = proteinGrams * 4 + carbGrams * 4 + fatGrams * 9;
+    if (requiredCals > calorieTarget) {
+      calorieTarget = roundInt(requiredCals);
+    }
+  }
+
+  if (profile.goal === "build" || profile.goal === "maintain") {
+    notes.push(
+      "PSMF is a short-term fat-loss pattern and is a poor fit for sustained muscle gain or maintenance; consider another eating style for those goals."
+    );
+  }
+
+  notes.push(
+    "For PSMF, the goal-based calorie percentage in the breakdown is for reference; the active calorie target follows the PSMF TDEE fraction and feasibility adjustments."
+  );
+
+  for (const line of PSMF_ENGINE_NOTES) {
+    notes.push(line);
+  }
+
+  const calorieAdjustmentPercent = getGoalAdjustmentPercent(profile);
+  const carbRule = `Carbs are capped around ${carbCap}g per day for PSMF-style ketogenic energy restriction.`;
+  const fatRule = `PSMF keeps dietary fat near an essential floor (~${fatPerLb.toFixed(2)}g per lb body weight, minimum ~15g/day) rather than standard balanced-fat targets.`;
+  const eatingStyleAdjustment = `PSMF targets a large deficit (about ${Math.round(PSMF_TDEE_FRACTION * 100)}% of TDEE before feasibility adjustments), caps daily carbs near ${carbCap}g, minimizes fat, and prioritizes high protein.`;
+
+  const targets = finalizeTargets(proteinGrams, carbGrams, fatGrams);
+  const percentages = calculateMacroPercentages(targets);
+
+  return {
+    bmr,
+    tdee,
+    targets,
+    macroProfileLabel: createMacroProfileLabel(targets),
+    explanationSummary:
+      "Your macros use a PSMF-style pattern: a low calorie target versus TDEE, high protein, very low carbs, and minimal fat. This is for short-term, educational planning—not medical care.",
+    explanation:
+      "Your macros use a PSMF-style pattern: a low calorie target versus TDEE, high protein, very low carbs, and minimal fat. This is for short-term, educational planning—not medical care.",
+    calculationBreakdown: {
+      bodyCompositionBasis: bodyComp,
+      leanBodyMassKg:
+        leanMassKg !== undefined && leanMassKg > 0
+          ? roundInt(leanMassKg * 10) / 10
+          : undefined,
+      bmr,
+      tdee,
+      calorieAdjustmentPercent,
+      calorieAdjustmentLabel: getGoalAdjustmentLabel(
+        profile.goal,
+        calorieAdjustmentPercent
+      ),
+      proteinRule,
+      fatRule,
+      carbRule,
+      eatingStyleAdjustment,
+      percentages,
+      notes,
+    },
+  };
+}
+
 export interface CalculateMacrosResult {
   bmr: number;
   tdee: number;
@@ -229,6 +357,10 @@ export function calculateMacros(rawProfile: UserProfile): CalculateMacrosResult 
   const weightLb = kgToLbs(profile.weightKg);
   const bmr = calculateBMR(profile);
   const tdee = roundInt(bmr * ACTIVITY_MULTIPLIERS[profile.activityLevel]);
+
+  if (profile.eatingStyle === "psmf") {
+    return calculateMacrosPsmf(profile, { bmr, tdee, weightLb, notes });
+  }
 
   const calorieAdjustmentPercent = getGoalAdjustmentPercent(profile);
   let calorieTarget = roundInt(tdee * (1 + calorieAdjustmentPercent));
@@ -315,9 +447,9 @@ export function calculateMacros(rawProfile: UserProfile): CalculateMacrosResult 
     targets,
     macroProfileLabel: createMacroProfileLabel(targets),
     explanationSummary:
-      "Your macros are based on your body stats, goal, and activity level. Your eating style changes the foods and meal suggestions, and keto/carnivore also adjust carb intake.",
+      "Your macros are based on your body stats, goal, and activity level. Eating style shapes meal suggestions; keto, carnivore, and PSMF also change how carbs and fat are set.",
     explanation:
-      "Your macros are based on your body stats, goal, and activity level. Your eating style changes the foods and meal suggestions, and keto/carnivore also adjust carb intake.",
+      "Your macros are based on your body stats, goal, and activity level. Eating style shapes meal suggestions; keto, carnivore, and PSMF also change how carbs and fat are set.",
     calculationBreakdown: {
       bodyCompositionBasis: proteinTarget.basis,
       leanBodyMassKg: proteinTarget.leanBodyMassKg

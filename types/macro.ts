@@ -10,7 +10,8 @@ export type EatingStyle =
   | "vegetarian"
   | "paleo"
   | "keto"
-  | "carnivore";
+  | "carnivore"
+  | "psmf";
 
 export type LegacyMacroStrategy =
   | "high_protein"

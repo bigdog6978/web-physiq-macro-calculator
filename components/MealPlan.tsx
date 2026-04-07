@@ -19,6 +19,13 @@ export function MealPlan({ result }: MealPlanProps) {
     <div className="space-y-4">
       <h2 className="text-lg font-bold text-foreground">Sample Meal Plan</h2>
 
+      {result.profile.eatingStyle === "psmf" && (
+        <p className="text-sm text-muted-foreground border-l-2 border-primary/50 pl-3 py-2 rounded-r-md bg-primary-muted/30">
+          Foods are filtered for a PSMF-style plan (lean protein, low carb, low added fat). Review the PSMF disclaimer
+          and sources in your macro results above. Not medical advice.
+        </p>
+      )}
+
       {conflictWarning && (
         <div
           className="rounded-lg border border-primary/45 bg-primary-muted px-4 py-3 text-sm text-foreground"

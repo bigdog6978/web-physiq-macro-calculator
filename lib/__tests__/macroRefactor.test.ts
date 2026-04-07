@@ -360,3 +360,39 @@ describe("meal plan integration", () => {
     expect(score(lgNames)).toBeGreaterThanOrEqual(score(baseNames));
   });
 });
+
+describe("PSMF eating style", () => {
+  it("produces higher protein share and lower carbs than standard for the same profile", () => {
+    const base = buildProfile({ eatingStyle: "standard" });
+    const psmf = buildProfile({ eatingStyle: "psmf" });
+    const a = calculateMacros(base);
+    const b = calculateMacros(psmf);
+    const proteinShare = (r: ReturnType<typeof calculateMacros>) =>
+      (r.targets.proteinGrams * 4) / Math.max(r.targets.calories, 1);
+    expect(proteinShare(b)).toBeGreaterThan(proteinShare(a));
+    expect(b.targets.carbGrams).toBeLessThan(a.targets.carbGrams);
+  });
+
+  it("keeps PSMF calories meaningfully below TDEE and adds medical-disclaimer notes", () => {
+    const profile = buildProfile({
+      eatingStyle: "psmf",
+      sex: "male",
+      weightKg: lbsToKg(200),
+      heightCm: 183,
+      age: 32,
+      activityLevel: "moderate_training",
+    });
+    const r = calculateMacros(profile);
+    expect(r.targets.calories).toBeLessThanOrEqual(r.tdee);
+    expect(r.targets.calories).toBeLessThan(r.tdee * 0.8);
+    expect(r.calculationBreakdown.notes.some((n) => n.includes("medical advice"))).toBe(true);
+  });
+
+  it("generates a non-empty meal plan for PSMF", () => {
+    const profile = buildProfile({ eatingStyle: "psmf" });
+    const macroResult = calculateMacros(profile);
+    const plan = generateMealPlan(macroResult.targets, profile);
+    expect(plan.meals.length).toBeGreaterThan(0);
+    expect(plan.meals.some((m) => m.items.length > 0)).toBe(true);
+  });
+});

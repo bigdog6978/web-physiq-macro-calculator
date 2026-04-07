@@ -75,6 +75,12 @@ export const EATING_STYLES: {
     label: "Carnivore",
     description: "Animal-based meals with near-zero carbohydrate intake.",
   },
+  {
+    id: "psmf",
+    label: "PSMF (protein-sparing)",
+    description:
+      "A short-term, very low-calorie pattern relative to your TDEE with protein emphasized to help spare lean mass while fat and carbs are kept minimal. Intended for aggressive fat loss, not maintenance or muscle-building surpluses. This calculator is educational only and not a substitute for medical advice.",
+  },
 ];
 
 export const DIET_MODIFIERS: { id: DietModifier; label: string }[] = [
@@ -207,6 +213,8 @@ export const FAT_MINIMUM_G_PER_LB: Record<EatingStyle, number> = {
   paleo: 0.3,
   keto: 0.5,
   carnivore: 0.45,
+  /** Essential-fat floor only; PSMF keeps dietary fat minimal vs standard 0.3 g/lb. */
+  psmf: 0.12,
 };
 
 export const CALORIE_FLOORS: Record<Sex, number> = {
@@ -222,7 +230,12 @@ export const MINIMUM_FAT_CALORIE_PERCENT = 0.2;
 export const EATING_STYLE_CARB_CAPS: Partial<Record<EatingStyle, number>> = {
   keto: 30,
   carnivore: 5,
+  /** PSMF: low daily carb total (often ~20–40g in clinical-style protocols). */
+  psmf: 28,
 };
+
+/** Calorie target ≈ this fraction of TDEE before PSMF protein/fat/carb feasibility bumps. */
+export const PSMF_TDEE_FRACTION = 0.55;
 
 export const LEGACY_EATING_STYLE_MAP: Record<LegacyMacroStrategy, EatingStyle> = {
   high_protein: "standard",

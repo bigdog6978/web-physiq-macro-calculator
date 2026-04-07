@@ -1,5 +1,6 @@
 import type { MacroResult } from "@/types/macro";
 import { kgToLbs } from "@/lib/macroEngine";
+import { PsmfEducationPanel } from "@/components/PsmfEducationPanel";
 
 interface ResultsSummaryProps {
   result: MacroResult;
@@ -86,6 +87,8 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
 
   return (
     <div className="space-y-4">
+      {profile.eatingStyle === "psmf" && <PsmfEducationPanel />}
+
       {/* Top card - Calories (matches Macro Tracker layout) */}
       <div className="rounded-2xl border border-card-border bg-card p-6 shadow-sm dark:shadow-none">
         <h2 className="text-lg font-bold text-foreground mb-4">Daily Target Calories</h2>
@@ -189,12 +192,20 @@ export function ResultsSummary({ result }: ResultsSummaryProps) {
           How we calculated this
         </summary>
         <div className="mt-3 space-y-2 text-sm text-muted-foreground">
-          <p>
-            Calories are based on BMR ({calculationBreakdown.bmr}) × activity for a
-            TDEE of {calculationBreakdown.tdee}, then adjusted by{" "}
-            {Math.round(calculationBreakdown.calorieAdjustmentPercent * 100)}% for
-            your goal.
-          </p>
+          {profile.eatingStyle === "psmf" ? (
+            <p>
+              For PSMF, calories target a large deficit versus TDEE (about 55% before raising for protein, essential fat,
+              and the carb cap). The goal-based percentage below is for reference; the active target follows PSMF rules
+              and the notes.
+            </p>
+          ) : (
+            <p>
+              Calories are based on BMR ({calculationBreakdown.bmr}) × activity for a
+              TDEE of {calculationBreakdown.tdee}, then adjusted by{" "}
+              {Math.round(calculationBreakdown.calorieAdjustmentPercent * 100)}% for
+              your goal.
+            </p>
+          )}
           <p>{calculationBreakdown.proteinRule}</p>
           <p>{calculationBreakdown.fatRule}</p>
           <p>{calculationBreakdown.carbRule}</p>

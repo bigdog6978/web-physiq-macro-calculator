@@ -24,6 +24,7 @@ import { generateMealPlan } from "@/lib/mealPlanEngine";
 import { trackEvent } from "@/lib/analytics/client";
 import { normalizeUserProfile } from "@/lib/profile";
 import { loadStoredProfile, saveStoredProfile } from "@/lib/profileStorage";
+import { PsmfEducationPanel } from "@/components/PsmfEducationPanel";
 
 const schema = z.object({
   weightKg: z.number().min(23, "Weight too low").max(272, "Weight too high"),
@@ -587,8 +588,8 @@ export function MacroCalculator({
       <div>
         <h3 className="text-[1.15rem] font-bold text-foreground mb-2">Eating Style</h3>
         <p className={helperClass}>
-          Your eating style affects meal suggestions and food choices. Keto and
-          carnivore also adjust macro distribution.
+          Your eating style affects meal suggestions and food choices. Keto, carnivore, and
+          PSMF also change how carbs and fat are set (PSMF adds a large deficit versus TDEE).
         </p>
         <div className="grid grid-cols-2 gap-2 mt-3">
           {EATING_STYLES.map((style) => (
@@ -610,6 +611,21 @@ export function MacroCalculator({
             </button>
           ))}
         </div>
+        {eatingStyle === "psmf" && (
+          <div className="mt-4 space-y-3">
+            {(goal === "build" || goal === "maintain") && (
+              <div
+                className="rounded-lg border border-[#F59E0B] bg-[rgba(245,158,11,0.12)] px-4 py-3 text-sm text-foreground"
+                role="status"
+              >
+                <strong className="font-semibold">Goal mismatch:</strong> PSMF is a short-term fat-loss pattern and
+                does not match a build or maintenance goal. Consider another eating style for surpluses or steady
+                weight.
+              </div>
+            )}
+            <PsmfEducationPanel />
+          </div>
+        )}
       </div>
 
       <div>

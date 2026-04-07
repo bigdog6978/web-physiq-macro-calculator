@@ -77,6 +77,15 @@ function isKetoCompatible(food: FoodTemplate): boolean {
   return food.carbs <= 10;
 }
 
+/** Lean protein + low-carb veg; excludes tagged offenders and higher-fat portions. */
+function isPsmfCompatible(food: FoodTemplate): boolean {
+  return (
+    !food.tags.includes("psmf_avoid") &&
+    food.carbs <= 10 &&
+    food.fat <= 12
+  );
+}
+
 function isPaleoCompatible(food: FoodTemplate): boolean {
   return !/(rice|quinoa|beans|oatmeal|toast|yogurt|cheese|cottage)/i.test(
     food.name
@@ -149,6 +158,9 @@ function styleScoreAdjustment(food: FoodTemplate, profile: UserProfile): number 
   if (profile.eatingStyle === "mediterranean" && !isMediterraneanPriority(food)) {
     return STYLE_PENALTY;
   }
+  if (profile.eatingStyle === "psmf" && !food.tags.includes("psmf_friendly")) {
+    return 45;
+  }
   return 0;
 }
 
@@ -176,6 +188,13 @@ function filterFoods(
   }
   if (profile.eatingStyle === "keto") {
     foods = foods.filter((f) => isKetoCompatible(f));
+  }
+  if (profile.eatingStyle === "psmf") {
+    foods = foods.filter((f) => isPsmfCompatible(f));
+    foods = [
+      ...foods.filter((f) => f.tags.includes("psmf_friendly")),
+      ...foods.filter((f) => !f.tags.includes("psmf_friendly")),
+    ];
   }
   if (profile.eatingStyle === "vegan") {
     foods = foods.filter((f) => f.tags.includes("vegan"));
