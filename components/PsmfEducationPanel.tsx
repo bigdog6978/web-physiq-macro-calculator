@@ -30,7 +30,7 @@ export function PsmfEducationPanel() {
             <li key={s.href} className="text-muted-foreground">
               <a
                 href={s.href}
-                className="text-primary underline underline-offset-2 hover:opacity-90"
+                className="rounded-sm text-foreground underline decoration-2 decoration-primary underline-offset-2 hover:decoration-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 target="_blank"
                 rel="noopener noreferrer"
               >
