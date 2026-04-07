@@ -119,7 +119,7 @@ export default function MacrosIndexPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <nav className="mb-6 flex items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-white transition-colors">
+        <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
@@ -127,7 +127,7 @@ export default function MacrosIndexPage() {
       </nav>
 
       <header className="mb-10">
-        <h1 className="text-3xl font-bold text-white sm:text-4xl">
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
           Macro Guides, Protein Targets &amp; Meal Plans
         </h1>
         <p className="mt-3 text-muted-foreground">
@@ -138,7 +138,7 @@ export default function MacrosIndexPage() {
       </header>
 
       <section className="mb-10">
-        <h2 className="text-xl font-bold text-white mb-4">Specialty Calculators</h2>
+        <h2 className="text-xl font-bold text-foreground mb-4">Specialty Calculators</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {PILLAR_SLUGS.map((slug) => (
             <li key={slug}>
@@ -155,7 +155,7 @@ export default function MacrosIndexPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="text-xl font-bold text-white mb-4">Core Macro Guides</h2>
+        <h2 className="text-xl font-bold text-foreground mb-4">Core Macro Guides</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {CLUSTER_SLUGS.map((slug) => (
             <li key={slug}>
@@ -173,7 +173,7 @@ export default function MacrosIndexPage() {
 
       {macroMicroGroups.map((group) => (
         <section key={group.label} className="mb-8">
-          <h2 className="text-lg font-semibold text-white mb-3">{group.label}</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">{group.label}</h2>
           <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {group.slugs.map((slug) => (
               <li key={slug}>
@@ -190,7 +190,7 @@ export default function MacrosIndexPage() {
       ))}
 
       <section className="mb-8">
-        <h2 className="text-lg font-semibold text-white mb-3">Protein Intake Pages</h2>
+        <h2 className="text-lg font-semibold text-foreground mb-3">Protein Intake Pages</h2>
         <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {proteinPages.map((slug) => (
             <li key={slug}>
@@ -206,7 +206,7 @@ export default function MacrosIndexPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="text-lg font-semibold text-white mb-3">Calorie Meal-Plan Pages</h2>
+        <h2 className="text-lg font-semibold text-foreground mb-3">Calorie Meal-Plan Pages</h2>
         <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {mealPlanPages.map((slug) => (
             <li key={slug}>

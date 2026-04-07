@@ -3,6 +3,29 @@
  * Not clinical guidance; keep tone educational.
  */
 
+/** Modal title on the Macro Calculator eating-style card (ⓘ). */
+export const PSMF_EATING_STYLE_INFO_TITLE = "About PSMF (protein-sparing)";
+
+/**
+ * Markdown body for the calculator info modal: full context + disclaimer.
+ * Keep in sync with PsmfEducationPanel themes where practical.
+ */
+export const PSMF_EATING_STYLE_INFO_BODY = `PSMF is a **short-term, very low-calorie** pattern relative to your estimated TDEE. It **prioritizes protein** to help spare lean mass while **carbohydrates and dietary fat are kept minimal**. It is intended for **aggressive fat loss**, not for maintenance or muscle-building surpluses.
+
+### In this calculator
+
+Selecting PSMF adjusts sample macro targets and meal suggestions toward that pattern. This is **educational only** and **not a substitute for medical advice**.
+
+### Before you start
+
+- Not appropriate for everyone (for example pregnancy, eating disorders, adolescents, or certain medications—the list is not exhaustive).
+- **Short-term use**; pay attention to hydration, **electrolytes**, and micronutrients—often with professional guidance.
+- Consult a **physician or registered dietitian** before starting a very-low-calorie or protein-sparing plan.
+
+### Learn more
+
+Read the full guide: [Protein Sparing Modified Fasting (PSMF)](/guides/protein-sparing-modified-fasting).`;
+
 export const PSMF_ENGINE_NOTES: string[] = [
   "PSMF is not medical advice. Consult a physician or registered dietitian before starting a very-low-calorie or protein-sparing plan.",
   "PSMF is intended for short-term use. Pay attention to hydration, electrolytes, and micronutrients (often with professional guidance).",

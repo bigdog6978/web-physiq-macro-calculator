@@ -35,10 +35,14 @@ export const GOALS: {
   },
 ];
 
+/** Optional: show an info icon on the eating-style card (content lives in lib/psmfContent). */
+export type EatingStyleInfoModalId = "psmf";
+
 export const EATING_STYLES: {
   id: EatingStyle;
   label: string;
   description: string;
+  infoModal?: EatingStyleInfoModalId;
 }[] = [
   {
     id: "standard",
@@ -79,7 +83,8 @@ export const EATING_STYLES: {
     id: "psmf",
     label: "PSMF (protein-sparing)",
     description:
-      "A short-term, very low-calorie pattern relative to your TDEE with protein emphasized to help spare lean mass while fat and carbs are kept minimal. Intended for aggressive fat loss, not maintenance or muscle-building surpluses. This calculator is educational only and not a substitute for medical advice.",
+      "Very low-calorie, high-protein, minimal carbs and fat—for short-term aggressive fat loss.",
+    infoModal: "psmf",
   },
 ];
 

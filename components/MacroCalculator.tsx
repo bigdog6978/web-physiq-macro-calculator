@@ -12,7 +12,7 @@ import {
   type UserProfile,
   type WeightUnit,
 } from "@/types/macro";
-import { TrendingDown, TrendingUp, Minus, RefreshCw } from "lucide-react";
+import { TrendingDown, TrendingUp, Minus, RefreshCw, Info } from "lucide-react";
 import {
   ACTIVITY_LEVELS,
   DIET_MODIFIERS,
@@ -24,7 +24,7 @@ import { generateMealPlan } from "@/lib/mealPlanEngine";
 import { trackEvent } from "@/lib/analytics/client";
 import { normalizeUserProfile } from "@/lib/profile";
 import { loadStoredProfile, saveStoredProfile } from "@/lib/profileStorage";
-import { PsmfEducationPanel } from "@/components/PsmfEducationPanel";
+import { PSMF_INFO_DIALOG_ID, PsmfInfoModal } from "@/components/PsmfInfoModal";
 
 const schema = z.object({
   weightKg: z.number().min(23, "Weight too low").max(272, "Weight too high"),
@@ -124,6 +124,7 @@ export function MacroCalculator({
   const [eatingStyle, setEatingStyle] = useState<UserProfile["eatingStyle"]>(
     initialProfile.eatingStyle
   );
+  const [psmfInfoOpen, setPsmfInfoOpen] = useState(false);
   const [dietModifiers, setDietModifiers] = useState<UserProfile["dietModifiers"]>(
     initialProfile.dietModifiers
   );
@@ -592,25 +593,48 @@ export function MacroCalculator({
           PSMF also change how carbs and fat are set (PSMF adds a large deficit versus TDEE).
         </p>
         <div className="grid grid-cols-2 gap-2 mt-3">
-          {EATING_STYLES.map((style) => (
-            <button
-              key={style.id}
-              type="button"
-              onClick={() => setEatingStyle(style.id)}
-              className={`p-3 rounded-lg text-left border-2 transition-colors ${
-                eatingStyle === style.id
-                  ? "border-primary bg-primary-muted text-foreground dark:text-white"
-                  : "border-card-border bg-card text-muted-foreground hover:border-muted-foreground/25"
-              }`}
-              aria-pressed={eatingStyle === style.id}
-            >
-              <span className="block font-medium text-sm">{style.label}</span>
-              <span className="block text-xs text-muted-foreground mt-1">
-                {style.description}
-              </span>
-            </button>
-          ))}
+          {EATING_STYLES.map((style) => {
+            const isSelected = eatingStyle === style.id;
+            const cardClass = `relative overflow-hidden rounded-lg border-2 transition-colors ${
+              isSelected
+                ? "border-primary bg-primary-muted text-foreground dark:text-white"
+                : "border-card-border bg-card text-muted-foreground hover:border-muted-foreground/25"
+            }`;
+            return (
+              <div key={style.id} className={cardClass}>
+                <button
+                  type="button"
+                  onClick={() => setEatingStyle(style.id)}
+                  className={`w-full rounded-lg p-3 text-left ${
+                    style.infoModal ? "pr-11" : ""
+                  }`}
+                  aria-pressed={isSelected}
+                >
+                  <span className="block font-medium text-sm">{style.label}</span>
+                  <span className="block text-xs text-muted-foreground mt-1">
+                    {style.description}
+                  </span>
+                </button>
+                {style.infoModal === "psmf" && (
+                  <button
+                    type="button"
+                    className="absolute right-2 top-2 rounded-md p-1.5 text-muted-foreground hover:bg-primary-muted/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    aria-label="About PSMF (protein-sparing)"
+                    aria-expanded={psmfInfoOpen}
+                    aria-controls={PSMF_INFO_DIALOG_ID}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setPsmfInfoOpen(true);
+                    }}
+                  >
+                    <Info className="h-4 w-4 shrink-0" aria-hidden />
+                  </button>
+                )}
+              </div>
+            );
+          })}
         </div>
+        <PsmfInfoModal open={psmfInfoOpen} onClose={() => setPsmfInfoOpen(false)} />
         {eatingStyle === "psmf" && (
           <div className="mt-4 space-y-3">
             {(goal === "build" || goal === "maintain") && (
@@ -623,7 +647,10 @@ export function MacroCalculator({
                 weight.
               </div>
             )}
-            <PsmfEducationPanel />
+            <p className="text-xs text-muted-foreground">
+              Full details and medical disclaimer: use the information button on the PSMF card, or see the notice
+              after you calculate.
+            </p>
           </div>
         )}
       </div>
