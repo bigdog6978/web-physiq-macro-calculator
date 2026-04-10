@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { MacroCalculator } from "@/components/MacroCalculator";
 import { ResultsSummary } from "@/components/ResultsSummary";
@@ -13,6 +14,16 @@ import { PostResultsContinuation } from "@/components/cta/PostResultsContinuatio
 import type { MacroResult } from "@/types/macro";
 
 const LIGHT_HERO_BG = "/background/ltmdbckgd.png";
+
+const SIDEBAR_SCREENSHOTS = [
+  "/sidebar/sidebar0.png",
+  "/sidebar/sidebar1.png",
+  "/sidebar/sidebar2.png",
+  "/sidebar/sidebar3.png",
+] as const;
+
+const SIDEBAR_IMAGE_WIDTH = 1242;
+const SIDEBAR_IMAGE_HEIGHT = 2688;
 
 export default function Home() {
   const [result, setResult] = useState<MacroResult | null>(null);
@@ -54,9 +65,9 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 hidden bg-cover bg-center bg-no-repeat opacity-25 dark:block"
           style={{ backgroundImage: `url('${darkHeroBackgroundImage}')` }}
         />
-        <div className="relative z-10 mx-auto max-w-2xl px-4 pt-4 pb-8">
+        <div className="relative z-10 mx-auto max-w-2xl px-4 pt-4 pb-8 lg:max-w-5xl">
       {/* Header: deliver the value proposition, let users get straight to the calculator */}
-      <header className="mb-8 text-left">
+      <header className="mb-8 max-w-2xl text-left">
         <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
           Calculate Your Perfect Macros — Free
         </h1>
@@ -65,13 +76,31 @@ export default function Home() {
         </p>
       </header>
 
-      <section
-        id="calculator"
-        ref={calculatorRef}
-        className="rounded-2xl border-2 border-primary/50 bg-card p-6 mb-8 shadow-sm dark:shadow-none"
-      >
-        <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
-      </section>
+      <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6">
+        <section
+          id="calculator"
+          ref={calculatorRef}
+          className="w-full min-w-0 flex-1 rounded-2xl border-2 border-primary/50 bg-card p-6 shadow-sm dark:shadow-none lg:max-w-2xl"
+        >
+          <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
+        </section>
+        <aside
+          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-60"
+          aria-hidden="true"
+        >
+          {SIDEBAR_SCREENSHOTS.map((src) => (
+            <Image
+              key={src}
+              src={src}
+              alt=""
+              width={SIDEBAR_IMAGE_WIDTH}
+              height={SIDEBAR_IMAGE_HEIGHT}
+              className="h-auto w-full rounded-lg border border-card-border shadow-sm"
+              sizes="(max-width: 1023px) 0px, 240px"
+            />
+          ))}
+        </aside>
+      </div>
 
       <AppConversionCTA
         placement="hero"
