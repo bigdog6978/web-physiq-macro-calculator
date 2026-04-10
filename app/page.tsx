@@ -32,7 +32,7 @@ const SIDEBAR_RIGHT = [
 const SIDEBAR_IMAGE_WIDTH = 1242;
 const SIDEBAR_IMAGE_HEIGHT = 2688;
 
-const SIDEBAR_IMAGE_SIZES = "(max-width: 1023px) 0px, 180px";
+const SIDEBAR_IMAGE_SIZES = "(max-width: 1023px) 0px, 135px";
 
 function SidebarScreenshotStack({ paths }: { paths: readonly string[] }) {
   const handleAppStoreNav = () => {
@@ -109,7 +109,7 @@ export default function Home() {
         />
         <div className="relative z-10 mx-auto max-w-2xl px-4 pt-4 pb-8 lg:max-w-7xl">
       {/* Header: deliver the value proposition, let users get straight to the calculator */}
-      <header className="mb-8 max-w-2xl text-left">
+      <header className="mb-8 max-w-2xl text-left lg:ml-[calc(135px+1.5rem)]">
         <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
           Calculate Your Perfect Macros — Free
         </h1>
@@ -120,7 +120,7 @@ export default function Home() {
 
       <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6">
         <aside
-          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[180px]"
+          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[135px]"
           aria-label="App screenshots — links to App Store"
         >
           <SidebarScreenshotStack paths={SIDEBAR_LEFT} />
@@ -133,7 +133,7 @@ export default function Home() {
           <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
         </section>
         <aside
-          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[180px]"
+          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[135px]"
           aria-label="App screenshots — links to App Store"
         >
           <SidebarScreenshotStack paths={SIDEBAR_RIGHT} />
