@@ -10,6 +10,8 @@ import { FAQ } from "@/components/FAQ";
 import { AdSlot } from "@/components/AdSlot";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 import { PostResultsContinuation } from "@/components/cta/PostResultsContinuation";
+import { trackEvent } from "@/lib/analytics/client";
+import { STORE_LINKS } from "@/lib/config/storeLinks";
 // AppCTA unused directly here — AppConversionCTA used instead
 import type { MacroResult } from "@/types/macro";
 
@@ -33,20 +35,35 @@ const SIDEBAR_IMAGE_HEIGHT = 2688;
 const SIDEBAR_IMAGE_SIZES = "(max-width: 1023px) 0px, 180px";
 
 function SidebarScreenshotStack({ paths }: { paths: readonly string[] }) {
+  const handleAppStoreNav = () => {
+    trackEvent("app_store_click", {
+      page_type: "home",
+      page_family: "core",
+      placement: "calculator_sidebar",
+    });
+  };
+
   return paths.map((src) => (
-    <div
+    <a
       key={src}
-      className="overflow-hidden rounded-xl border-2 border-primary bg-card p-1.5 shadow-lg dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
+      href={STORE_LINKS.ios}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={handleAppStoreNav}
+      aria-label="Open Physiq on the App Store"
+      className="group block rounded-xl outline-none transition duration-200 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-2xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:translate-y-0 active:scale-[0.99]"
     >
-      <Image
-        src={src}
-        alt=""
-        width={SIDEBAR_IMAGE_WIDTH}
-        height={SIDEBAR_IMAGE_HEIGHT}
-        className="h-auto w-full rounded-lg shadow-md"
-        sizes={SIDEBAR_IMAGE_SIZES}
-      />
-    </div>
+      <div className="overflow-hidden rounded-xl border-2 border-primary bg-card p-1.5 shadow-lg transition-shadow duration-200 group-hover:shadow-xl dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] dark:group-hover:shadow-[0_16px_48px_rgba(0,0,0,0.55)]">
+        <Image
+          src={src}
+          alt=""
+          width={SIDEBAR_IMAGE_WIDTH}
+          height={SIDEBAR_IMAGE_HEIGHT}
+          className="h-auto w-full rounded-lg shadow-md transition duration-200 ease-out group-hover:brightness-[1.06]"
+          sizes={SIDEBAR_IMAGE_SIZES}
+        />
+      </div>
+    </a>
   ));
 }
 
@@ -104,7 +121,7 @@ export default function Home() {
       <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6">
         <aside
           className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[180px]"
-          aria-hidden="true"
+          aria-label="App screenshots — links to App Store"
         >
           <SidebarScreenshotStack paths={SIDEBAR_LEFT} />
         </aside>
@@ -117,7 +134,7 @@ export default function Home() {
         </section>
         <aside
           className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[180px]"
-          aria-hidden="true"
+          aria-label="App screenshots — links to App Store"
         >
           <SidebarScreenshotStack paths={SIDEBAR_RIGHT} />
         </aside>
