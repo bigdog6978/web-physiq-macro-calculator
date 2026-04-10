@@ -11,7 +11,7 @@ const themeToggleWrap =
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-[#e7ff00] bg-black shadow-none">
+    <header className="sticky top-0 z-50 border-b-2 border-[#e7ff00] bg-black shadow-lg shadow-black/40">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-3">
         <div className="flex w-full items-center justify-between md:w-auto md:justify-start">
           <Link

@@ -15,15 +15,40 @@ import type { MacroResult } from "@/types/macro";
 
 const LIGHT_HERO_BG = "/background/ltmdbckgd.png";
 
-const SIDEBAR_SCREENSHOTS = [
-  "/sidebar/sidebar0.png",
+const SIDEBAR_LEFT = [
   "/sidebar/sidebar1.png",
   "/sidebar/sidebar2.png",
   "/sidebar/sidebar3.png",
 ] as const;
 
+const SIDEBAR_RIGHT = [
+  "/sidebar/sidebar4.png",
+  "/sidebar/sidebar5.png",
+  "/sidebar/sidebar6.png",
+] as const;
+
 const SIDEBAR_IMAGE_WIDTH = 1242;
 const SIDEBAR_IMAGE_HEIGHT = 2688;
+
+const SIDEBAR_IMAGE_SIZES = "(max-width: 1023px) 0px, 180px";
+
+function SidebarScreenshotStack({ paths }: { paths: readonly string[] }) {
+  return paths.map((src) => (
+    <div
+      key={src}
+      className="overflow-hidden rounded-xl border-2 border-primary bg-card p-1.5 shadow-lg dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
+    >
+      <Image
+        src={src}
+        alt=""
+        width={SIDEBAR_IMAGE_WIDTH}
+        height={SIDEBAR_IMAGE_HEIGHT}
+        className="h-auto w-full rounded-lg shadow-md"
+        sizes={SIDEBAR_IMAGE_SIZES}
+      />
+    </div>
+  ));
+}
 
 export default function Home() {
   const [result, setResult] = useState<MacroResult | null>(null);
@@ -65,7 +90,7 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 hidden bg-cover bg-center bg-no-repeat opacity-25 dark:block"
           style={{ backgroundImage: `url('${darkHeroBackgroundImage}')` }}
         />
-        <div className="relative z-10 mx-auto max-w-2xl px-4 pt-4 pb-8 lg:max-w-5xl">
+        <div className="relative z-10 mx-auto max-w-2xl px-4 pt-4 pb-8 lg:max-w-7xl">
       {/* Header: deliver the value proposition, let users get straight to the calculator */}
       <header className="mb-8 max-w-2xl text-left">
         <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
@@ -77,6 +102,12 @@ export default function Home() {
       </header>
 
       <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6">
+        <aside
+          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[180px]"
+          aria-hidden="true"
+        >
+          <SidebarScreenshotStack paths={SIDEBAR_LEFT} />
+        </aside>
         <section
           id="calculator"
           ref={calculatorRef}
@@ -85,20 +116,10 @@ export default function Home() {
           <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
         </section>
         <aside
-          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-60"
+          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[180px]"
           aria-hidden="true"
         >
-          {SIDEBAR_SCREENSHOTS.map((src) => (
-            <Image
-              key={src}
-              src={src}
-              alt=""
-              width={SIDEBAR_IMAGE_WIDTH}
-              height={SIDEBAR_IMAGE_HEIGHT}
-              className="h-auto w-full rounded-lg border border-card-border shadow-sm"
-              sizes="(max-width: 1023px) 0px, 240px"
-            />
-          ))}
+          <SidebarScreenshotStack paths={SIDEBAR_RIGHT} />
         </aside>
       </div>
 
