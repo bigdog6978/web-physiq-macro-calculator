@@ -58,7 +58,7 @@ export default function Home() {
       {/* Header: deliver the value proposition, let users get straight to the calculator */}
       <header className="mb-8 text-left">
         <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
-          Calculate Your Daily Macros
+          Calculate Your Perfect Macros — Free
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
           Get personalized calorie and macro targets based on your body stats, goal, activity level, and eating style.
