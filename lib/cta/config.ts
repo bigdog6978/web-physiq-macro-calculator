@@ -7,7 +7,7 @@ export type CTAPlacement =
   | "bottom_page"
   | "sticky_mobile";
 
-export type CTAPageType = "home" | "seo" | "legal";
+export type CTAPageType = "home" | "seo" | "legal" | "marketing";
 
 export interface CTAContent {
   eyebrow: string;

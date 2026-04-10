@@ -118,47 +118,46 @@ export default function Home() {
         </p>
       </header>
 
-      <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6">
+      <div className="mb-8 flex flex-col gap-8 lg:grid lg:grid-cols-[135px_minmax(0,42rem)_135px] lg:items-start lg:gap-x-6 lg:gap-y-8">
         <aside
-          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[135px]"
+          className="hidden shrink-0 flex-col gap-4 self-start lg:flex lg:w-[135px] lg:col-start-1 lg:row-start-1"
           aria-label="App screenshots — links to App Store"
         >
           <SidebarScreenshotStack paths={SIDEBAR_LEFT} />
         </aside>
-        <section
-          id="calculator"
-          ref={calculatorRef}
-          className="w-full min-w-0 flex-1 rounded-2xl border-2 border-primary/50 bg-card p-6 shadow-sm dark:shadow-none lg:max-w-2xl"
-        >
-          <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
-        </section>
+        <div className="flex min-w-0 w-full flex-col gap-8 lg:col-start-2 lg:row-start-1">
+          <section
+            id="calculator"
+            ref={calculatorRef}
+            className="w-full min-w-0 rounded-2xl border-2 border-primary/50 bg-card p-6 shadow-sm dark:shadow-none"
+          >
+            <MacroCalculator onResult={handleResult} analyticsContext={{ page_type: "home" }} />
+          </section>
+          <AppConversionCTA
+            placement="hero"
+            pageType="home"
+            showStoreButtons
+            className="w-full !bg-white border-card-border dark:!bg-card"
+          />
+          {/* Results + post-results CTA appear only after a calculation */}
+          {result && (
+            <section ref={resultsRef} className="space-y-10">
+              <ResultsSummary result={result} />
+              <MealPlan result={result} />
+              <PostResultsContinuation />
+            </section>
+          )}
+          <section className="w-full rounded-2xl border-2 border-primary/50 bg-card p-6 shadow-sm dark:shadow-none">
+            <FoodSearch />
+          </section>
+        </div>
         <aside
-          className="hidden shrink-0 flex-col gap-4 lg:flex lg:w-[135px]"
+          className="hidden shrink-0 flex-col gap-4 self-start lg:flex lg:w-[135px] lg:col-start-3 lg:row-start-1"
           aria-label="App screenshots — links to App Store"
         >
           <SidebarScreenshotStack paths={SIDEBAR_RIGHT} />
         </aside>
       </div>
-
-      <AppConversionCTA
-        placement="hero"
-        pageType="home"
-        showStoreButtons
-        className="mb-8 !bg-white border-card-border dark:!bg-card"
-      />
-
-      {/* Results + post-results CTA appear only after a calculation */}
-      {result && (
-        <section ref={resultsRef} className="space-y-10 mb-12">
-          <ResultsSummary result={result} />
-          <MealPlan result={result} />
-          <PostResultsContinuation />
-        </section>
-      )}
-
-          <section className="rounded-2xl border-2 border-primary/50 bg-card p-6 mb-10 shadow-sm dark:shadow-none">
-            <FoodSearch />
-          </section>
         </div>
       </div>
 

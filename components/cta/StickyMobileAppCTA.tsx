@@ -5,7 +5,7 @@ import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 import { trackEvent } from "@/lib/analytics/client";
 
 interface StickyMobileAppCTAProps {
-  pageType: "home" | "seo" | "legal";
+  pageType: "home" | "seo" | "legal" | "marketing";
   /** Scroll depth in px before the sticky appears. Defaults to 600. */
   scrollThreshold?: number;
 }

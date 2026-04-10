@@ -27,6 +27,12 @@ const STATIC_ROUTES: MetadataRoute.Sitemap = [
   { url: BASE, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
   { url: `${BASE}/macros`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
   { url: `${BASE}/guides`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+  {
+    url: `${BASE}/get-the-app`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  },
   ...ACADEMY_GUIDE_ROUTES,
   ...ACADEMY_CATEGORY_ROUTES,
   // Legal / compliance

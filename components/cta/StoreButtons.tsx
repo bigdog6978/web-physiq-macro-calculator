@@ -13,7 +13,7 @@ interface StoreButtonsProps {
   size: StoreButtonSize;
   layout: StoreButtonLayout;
   context: StoreButtonContext;
-  pageType: "home" | "seo" | "legal";
+  pageType: "home" | "seo" | "legal" | "marketing";
   pageFamily?: string;
   className?: string;
 }

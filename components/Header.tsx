@@ -37,6 +37,9 @@ export function Header() {
             className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-sm md:w-auto md:justify-end"
             aria-label="Main"
           >
+            <Link href="/get-the-app" className={navLink}>
+              Get the App
+            </Link>
             <Link href="/guides" className={navLink}>
               Macro Academy
             </Link>
