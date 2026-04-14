@@ -44,7 +44,7 @@ export default function GetTheAppPage() {
           <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
             Physiq Macro Tracker App
           </p>
-          <h1 className="mt-1 text-2xl font-bold text-foreground leading-snug sm:text-3xl">
+          <h1 className="mt-1 text-2xl font-bold leading-snug text-black dark:text-foreground sm:text-3xl">
             Calculate here. Track daily in Physiq: Macro Tracker.
           </h1>
           <p className="mt-2 text-base text-muted-foreground leading-relaxed">

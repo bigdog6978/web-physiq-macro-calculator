@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import { ConsentReopenLink } from "@/components/consent/ConsentReopenLink";
-
-const APP_STORE_URL =
-  process.env.NEXT_PUBLIC_APP_STORE_URL ??
-  "https://apps.apple.com/app/physiq-macro-tracker/id6743434787";
+import { STORE_LINKS } from "@/lib/config/storeLinks";
 
 const linkClass =
   "text-sm text-primary hover:text-accent-bright transition-colors";
@@ -65,7 +62,7 @@ export function Footer() {
               <ConsentReopenLink className="!text-primary hover:!text-accent-bright focus:ring-primary focus:ring-offset-2 focus:ring-offset-black" />
             </div>
             <a
-              href={APP_STORE_URL}
+              href={STORE_LINKS.ios}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-primary hover:text-accent-bright transition-colors"

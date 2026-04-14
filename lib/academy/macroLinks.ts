@@ -4,33 +4,69 @@
  */
 export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
   "cutting-macros": [
-    "protein-sparing-modified-fasting",
+    "intermittent-fasting-macros",
+    "vegetarian-macros",
     "macros-for-fat-loss",
-    "how-to-calculate-macros",
   ],
-  "bulking-macros": ["why-macros-matter", "macros-for-muscle-gain", "best-macro-split-for-muscle-gain"],
-  "maintenance-macros": ["why-macros-matter", "macros-for-body-recomposition", "how-to-calculate-macros"],
-  "keto-macros": ["keto-macros-explained", "low-carb-diet-macros"],
-  "carnivore-macros": ["carnivore-macros-guide", "high-protein-diet-macros"],
+  "bulking-macros": [
+    "vegetarian-macros",
+    "intermittent-fasting-macros",
+    "macros-for-muscle-gain",
+  ],
+  "maintenance-macros": [
+    "reverse-diet-macros",
+    "intermittent-fasting-macros",
+    "macros-for-body-recomposition",
+  ],
+  "keto-macros": [
+    "intermittent-fasting-macros",
+    "vegetarian-macros",
+    "keto-macros-explained",
+  ],
+  "carnivore-macros": [
+    "intermittent-fasting-macros",
+    "carnivore-macros-guide",
+    "high-protein-diet-macros",
+  ],
   "high-protein-macros": [
-    "protein-sparing-modified-fasting",
+    "vegetarian-macros",
+    "intermittent-fasting-macros",
     "high-protein-diet-macros",
-    "protein-per-pound",
   ],
-  "macros-for-men": ["best-macros-for-men", "macros-for-muscle-gain"],
-  "macros-for-women": ["best-macros-for-women", "macros-for-fat-loss"],
-  "keto-macro-calculator": ["keto-macros-explained", "macro-calculator-vs-calorie-calculator"],
-  "carnivore-macro-calculator": ["carnivore-macros-guide", "high-protein-diet-macros"],
+  "macros-for-men": [
+    "intermittent-fasting-macros",
+    "vegetarian-macros",
+    "best-macros-for-men",
+  ],
+  "macros-for-women": [
+    "intermittent-fasting-macros",
+    "reverse-diet-macros",
+    "best-macros-for-women",
+  ],
+  "keto-macro-calculator": [
+    "intermittent-fasting-macros",
+    "vegetarian-macros",
+    "keto-macros-explained",
+  ],
+  "carnivore-macro-calculator": [
+    "intermittent-fasting-macros",
+    "carnivore-macros-guide",
+    "high-protein-diet-macros",
+  ],
   "cutting-macro-calculator": [
-    "protein-sparing-modified-fasting",
+    "intermittent-fasting-macros",
+    "reverse-diet-macros",
     "macros-for-fat-loss",
-    "macro-calculator-vs-calorie-calculator",
   ],
-  "bulking-macro-calculator": ["macros-for-muscle-gain", "best-macro-split-for-muscle-gain"],
+  "bulking-macro-calculator": [
+    "vegetarian-macros",
+    "intermittent-fasting-macros",
+    "macros-for-muscle-gain",
+  ],
   "high-protein-macro-calculator": [
-    "protein-sparing-modified-fasting",
+    "vegetarian-macros",
+    "intermittent-fasting-macros",
     "high-protein-diet-macros",
-    "protein-per-pound",
   ],
 };
 

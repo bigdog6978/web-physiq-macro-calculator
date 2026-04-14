@@ -108,23 +108,19 @@ export default function Home() {
           style={{ backgroundImage: `url('${darkHeroBackgroundImage}')` }}
         />
         <div className="relative z-10 mx-auto max-w-2xl px-4 pt-4 pb-8 lg:max-w-7xl">
-      {/* Header: deliver the value proposition, let users get straight to the calculator */}
-      <header className="mb-8 max-w-2xl text-left lg:ml-[calc(135px+1.5rem)]">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
-          Calculate Your Perfect Macros — Free
-        </h1>
-        <p className="mt-2 text-lg text-muted-foreground">
-          Get personalized calorie and macro targets based on your body stats, goal, activity level, and eating style.
-        </p>
-      </header>
+      <div className="mb-8 flex flex-col gap-8">
+        {/* Centered in the content area; calculator block uses its own grid below */}
+        <header className="mx-auto max-w-2xl text-center">
+          <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
+            Calculate Your Perfect Macros — Free
+          </h1>
+          <p className="mt-2 text-lg text-muted-foreground">
+            Get personalized calorie and macro targets based on your body stats, goal, activity level, and eating style.
+          </p>
+        </header>
 
-      <div className="mb-8 flex flex-col gap-8 lg:grid lg:grid-cols-[135px_minmax(0,42rem)_135px] lg:items-start lg:gap-x-6 lg:gap-y-8">
-        <aside
-          className="hidden shrink-0 flex-col gap-4 self-start lg:flex lg:w-[135px] lg:col-start-1 lg:row-start-1"
-          aria-label="App screenshots — links to App Store"
-        >
-          <SidebarScreenshotStack paths={SIDEBAR_LEFT} />
-        </aside>
+        {/* Three columns centered in max-w-7xl when narrower than container */}
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[135px_minmax(0,42rem)_135px] lg:items-start lg:justify-center lg:gap-x-6">
         <div className="flex min-w-0 w-full flex-col gap-8 lg:col-start-2 lg:row-start-1">
           <section
             id="calculator"
@@ -151,12 +147,20 @@ export default function Home() {
             <FoodSearch />
           </section>
         </div>
+
+        <aside
+          className="hidden shrink-0 flex-col gap-4 self-start lg:flex lg:w-[135px] lg:col-start-1 lg:row-start-1"
+          aria-label="App screenshots — links to App Store"
+        >
+          <SidebarScreenshotStack paths={SIDEBAR_LEFT} />
+        </aside>
         <aside
           className="hidden shrink-0 flex-col gap-4 self-start lg:flex lg:w-[135px] lg:col-start-3 lg:row-start-1"
           aria-label="App screenshots — links to App Store"
         >
           <SidebarScreenshotStack paths={SIDEBAR_RIGHT} />
         </aside>
+        </div>
       </div>
         </div>
       </div>

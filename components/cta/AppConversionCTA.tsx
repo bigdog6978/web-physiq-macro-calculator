@@ -73,6 +73,11 @@ export function AppConversionCTA({
   const conciseHeadline = "Calculate here. Track daily in Physiq: Macro Tracker.";
   const supportingLine = "Save your macro targets and track your food in seconds.";
   const isBottomStoreCard = canShowStore && placement === "bottom_page";
+  /** Product page: white promo panel + chartreuse border, matches app store marketing card. */
+  const isMarketingBottomStoreCard =
+    isBottomStoreCard && pageType === "marketing";
+  const storeCardTitleClass =
+    "font-bold leading-snug text-black dark:text-foreground";
   const bottomHeadline =
     "Consistency wins. Track it with the Physiq Macro Tracker.";
   const bottomSupportingLine =
@@ -104,53 +109,84 @@ export function AppConversionCTA({
     onSecondaryClick?.();
   };
 
+  const containerClassName = isMarketingBottomStoreCard
+    ? "rounded-2xl border-2 border-primary bg-white p-5 shadow-sm sm:p-6 dark:bg-white"
+    : containerStyles[placement];
+
+  const storeCardPaddingTweak =
+    canShowStore && !isMarketingBottomStoreCard ? "p-4 sm:p-4" : "";
+
   return (
     <div
-      className={`@container ${containerStyles[placement]} ${canShowStore ? "p-4 sm:p-4" : ""} ${className}`}
+      className={`@container ${containerClassName} ${storeCardPaddingTweak} ${className}`}
       role="complementary"
       aria-label={landmarkLabels[placement]}
     >
       {isBottomStoreCard && storeBtnProps ? (
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
-            PHYSIQ MACRO TRACKER APP
-          </p>
-          <h3 className="mt-1 text-base sm:text-lg font-bold text-foreground leading-snug">
-            {bottomHeadline}
-          </h3>
-          <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-snug">
-            {bottomSupportingLine}
-          </p>
-
-          <ul
-            className="mt-3 flex flex-wrap justify-center gap-2"
-            aria-label="App benefits"
-          >
-            {bottomBenefitChips.map((chip) => (
-              <li
-                key={chip}
-                className="rounded-full border border-card-border bg-muted px-2.5 py-1 text-[11px] sm:text-xs text-muted-foreground"
-              >
-                {chip}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-3.5 flex justify-center">
-            <StoreButtons
-              size={storeBtnProps.size}
-              layout="horizontal"
-              context={storeBtnProps.context}
-              pageType={pageType}
-            />
+        isMarketingBottomStoreCard ? (
+          <div className="space-y-2 text-left">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+              PHYSIQ MACRO TRACKER APP
+            </p>
+            <h3 className={`text-base sm:text-lg ${storeCardTitleClass}`}>
+              {conciseHeadline}
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-snug">
+              {supportingLine}
+            </p>
+            <div className="flex justify-center pt-1">
+              <StoreButtons
+                size={storeBtnProps.size}
+                layout="horizontal"
+                context={storeBtnProps.context}
+                pageType={pageType}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+              PHYSIQ MACRO TRACKER APP
+            </p>
+            <h3
+              className={`mt-1 text-base sm:text-lg ${storeCardTitleClass}`}
+            >
+              {bottomHeadline}
+            </h3>
+            <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-snug">
+              {bottomSupportingLine}
+            </p>
+
+            <ul
+              className="mt-3 flex flex-wrap justify-center gap-2"
+              aria-label="App benefits"
+            >
+              {bottomBenefitChips.map((chip) => (
+                <li
+                  key={chip}
+                  className="rounded-full border border-card-border bg-muted px-2.5 py-1 text-[11px] sm:text-xs text-muted-foreground"
+                >
+                  {chip}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-3.5 flex justify-center">
+              <StoreButtons
+                size={storeBtnProps.size}
+                layout="horizontal"
+                context={storeBtnProps.context}
+                pageType={pageType}
+              />
+            </div>
+          </div>
+        )
       ) : canShowStore && storeBtnProps ? (
         <div className="space-y-2">
           <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
             Physiq Macro Tracker App
           </p>
-          <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
+          <h3 className={`text-base sm:text-lg ${storeCardTitleClass}`}>
             {conciseHeadline}
           </h3>
           <p className="text-xs sm:text-sm text-muted-foreground leading-snug">
