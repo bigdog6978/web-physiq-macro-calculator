@@ -4,9 +4,9 @@
  */
 export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
   "cutting-macros": [
+    "psmf-fast-fat-loss-guide",
+    "psmf-vs-carnivore-fat-loss",
     "beer-belly-visible-abs-strategy",
-    "dad-bod-recomp-blueprint",
-    "beer-belly-macros-for-men",
   ],
   "bulking-macros": [
     "lean-mass-strategy-busy-dads",
@@ -24,13 +24,13 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "keto-macros-explained",
   ],
   "carnivore-macros": [
-    "intermittent-fasting-macros",
+    "carnivore-cutting-macros",
+    "carnivore-fat-loss-plateau-fixes",
     "carnivore-macros-guide",
-    "high-protein-diet-macros",
   ],
   "high-protein-macros": [
-    "high-protein-grocery-list-ranked",
-    "protein-hacks-no-cooking",
+    "how-to-set-psmf-macros",
+    "psmf-fast-fat-loss-guide",
     "high-protein-diet-macros",
   ],
   "macros-for-men": [
@@ -49,9 +49,9 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "keto-macros-explained",
   ],
   "carnivore-macro-calculator": [
-    "intermittent-fasting-macros",
+    "carnivore-cutting-macros",
+    "carnivore-fat-loss-plateau-fixes",
     "carnivore-macros-guide",
-    "high-protein-diet-macros",
   ],
   "cutting-macro-calculator": [
     "beer-belly-macros-for-men",
@@ -64,8 +64,8 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "macros-for-muscle-gain",
   ],
   "high-protein-macro-calculator": [
-    "high-protein-grocery-list-ranked",
-    "protein-hacks-no-cooking",
+    "how-to-set-psmf-macros",
+    "psmf-refeed-strategy",
     "high-protein-diet-macros",
   ],
 };
