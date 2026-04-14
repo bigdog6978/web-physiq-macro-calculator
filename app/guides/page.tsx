@@ -14,7 +14,7 @@ import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://physiqmacros.com";
 
 const CATEGORY_CARD_IMAGES: Partial<Record<string, string>> = {
-  basics: "/images/guides/cards/basics.png",
+  basics: "/images/guides/cards/bascis1.png",
   "fat-loss": "/images/guides/cards/fatloss.png",
   "muscle-gain": "/images/guides/cards/musclegain.png",
   "body-recomposition": "/images/guides/cards/recomp.png",
