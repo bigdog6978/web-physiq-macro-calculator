@@ -4,14 +4,14 @@
  */
 export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
   "cutting-macros": [
-    "women-fat-loss-stall-real-reasons",
-    "women-cardio-not-enough-macros-strength",
+    "beer-belly-macros-for-men",
+    "dad-bod-myths-men-stuck",
     "macro-mistakes-stalling-fat-loss",
   ],
   "bulking-macros": [
-    "carb-cycling-macros",
-    "intermittent-fasting-macros",
+    "lean-mass-strategy-busy-dads",
     "macros-for-muscle-gain",
+    "carb-cycling-macros",
   ],
   "maintenance-macros": [
     "macro-tracker-burnout-guide",
@@ -34,9 +34,9 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "high-protein-diet-macros",
   ],
   "macros-for-men": [
-    "intermittent-fasting-macros",
-    "vegetarian-macros",
-    "best-macros-for-men",
+    "dad-bod-to-athletic-truth",
+    "men-skinny-fat-35-plus",
+    "dad-bod-myths-men-stuck",
   ],
   "macros-for-women": [
     "women-scale-up-fat-down-explained",
@@ -54,8 +54,8 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "high-protein-diet-macros",
   ],
   "cutting-macro-calculator": [
-    "women-fat-loss-stall-real-reasons",
-    "women-scale-up-fat-down-explained",
+    "beer-belly-macros-for-men",
+    "dad-bod-to-athletic-truth",
     "macros-for-fat-loss",
   ],
   "bulking-macro-calculator": [
