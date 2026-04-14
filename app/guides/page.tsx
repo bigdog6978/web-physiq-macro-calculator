@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ACADEMY_CATEGORIES } from "@/lib/academy/categories";
 import {
@@ -10,6 +11,17 @@ import { CalculatorCTA } from "@/components/academy/CalculatorCTA";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://physiqmacros.com";
+
+const CATEGORY_CARD_IMAGES: Partial<Record<string, string>> = {
+  basics: "/images/guides/basics.png",
+  "fat-loss": "/images/guides/cards/fatloss.png",
+  "muscle-gain": "/images/guides/cards/musclegain.png",
+  "body-recomposition": "/images/guides/cards/recomp.png",
+  "diet-strategies": "/images/guides/cards/dietstrategies.png",
+  men: "/images/guides/cards/men.png",
+  women: "/images/guides/cards/women.png",
+  comparisons: "/images/guides/cards/comparisson.png",
+};
 
 export const metadata: Metadata = {
   title: "Macro Academy | Physiq Macros",
@@ -88,6 +100,7 @@ export default function MacroAcademyHubPage() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {ACADEMY_CATEGORIES.map((c) => {
             const n = countPublishedByCategoryId(c.id);
+            const imagePath = CATEGORY_CARD_IMAGES[c.id];
             return (
               <Link
                 key={c.id}
@@ -95,6 +108,17 @@ export default function MacroAcademyHubPage() {
                 className="group flex aspect-square flex-col justify-between rounded-2xl border border-card-border bg-muted/80 p-4 transition-all hover:border-primary/40 hover:bg-primary-muted/25 sm:p-5 dark:bg-card"
               >
                 <div>
+                  {imagePath ? (
+                    <div className="mb-2 overflow-hidden rounded-lg border border-card-border bg-card">
+                      <Image
+                        src={imagePath}
+                        alt={`${c.label} category card`}
+                        width={320}
+                        height={180}
+                        className="h-16 w-full object-cover"
+                      />
+                    </div>
+                  ) : null}
                   <h3 className="text-sm font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
                     {c.label}
                   </h3>
