@@ -4,9 +4,9 @@
  */
 export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
   "cutting-macros": [
-    "muscle-retention-while-cutting-macros",
-    "macro-tracking-accuracy-guide",
-    "macros-for-fat-loss",
+    "women-fat-loss-stall-real-reasons",
+    "women-cardio-not-enough-macros-strength",
+    "macro-mistakes-stalling-fat-loss",
   ],
   "bulking-macros": [
     "carb-cycling-macros",
@@ -14,9 +14,9 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "macros-for-muscle-gain",
   ],
   "maintenance-macros": [
+    "macro-tracker-burnout-guide",
+    "what-i-eat-day-hit-macros-template",
     "activity-level-neat-tdee-macros",
-    "maintenance-macros-guide",
-    "macros-for-body-recomposition",
   ],
   "keto-macros": [
     "intermittent-fasting-macros",
@@ -29,9 +29,9 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "high-protein-diet-macros",
   ],
   "high-protein-macros": [
-    "fiber-and-macros",
+    "high-protein-grocery-list-ranked",
+    "protein-hacks-no-cooking",
     "high-protein-diet-macros",
-    "vegetarian-macros",
   ],
   "macros-for-men": [
     "intermittent-fasting-macros",
@@ -39,9 +39,9 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "best-macros-for-men",
   ],
   "macros-for-women": [
-    "menstrual-cycle-macros",
+    "women-scale-up-fat-down-explained",
+    "women-fat-loss-hormone-myths",
     "best-macros-for-women",
-    "reverse-diet-macros",
   ],
   "keto-macro-calculator": [
     "intermittent-fasting-macros",
@@ -54,8 +54,8 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "high-protein-diet-macros",
   ],
   "cutting-macro-calculator": [
-    "muscle-retention-while-cutting-macros",
-    "macro-tracking-accuracy-guide",
+    "women-fat-loss-stall-real-reasons",
+    "women-scale-up-fat-down-explained",
     "macros-for-fat-loss",
   ],
   "bulking-macro-calculator": [
@@ -64,8 +64,8 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "macros-for-muscle-gain",
   ],
   "high-protein-macro-calculator": [
-    "fiber-and-macros",
-    "macro-tracking-accuracy-guide",
+    "high-protein-grocery-list-ranked",
+    "protein-hacks-no-cooking",
     "high-protein-diet-macros",
   ],
 };

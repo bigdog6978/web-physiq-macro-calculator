@@ -41,7 +41,7 @@ export default function MacroAcademyHubPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
       <header className="mb-12 max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-[#b3cf00] dark:text-primary mb-3">
           Education
         </p>
         <h1 className="text-3xl font-bold text-foreground sm:text-5xl sm:leading-tight">
@@ -66,7 +66,7 @@ export default function MacroAcademyHubPage() {
                 href={`/guides/${a.slug}`}
                 className="group flex flex-col rounded-2xl border border-card-border bg-card p-5 shadow-sm transition-all hover:border-primary/45 hover:bg-primary-muted/40 hover:shadow-[0_0_0_1px_rgba(201,232,0,0.28)] dark:shadow-none"
               >
-                <span className="text-xs font-medium text-primary/90 group-hover:text-primary">
+                <span className="text-xs font-medium text-[#b3cf00] dark:text-primary/90 group-hover:text-[#9db500] dark:group-hover:text-primary">
                   Featured
                 </span>
                 <span className="mt-2 font-semibold text-foreground">

@@ -50,18 +50,18 @@ export default async function AcademyCategoryPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <nav
-        className="mb-6 flex items-center gap-2 text-sm text-muted-foreground"
+        className="mb-6 flex items-center gap-2 text-sm text-[#8a9e00] dark:text-muted-foreground"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-foreground transition-colors">
+        <Link href="/" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <Link href="/guides" className="hover:text-foreground transition-colors">
+        <Link href="/guides" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
           Macro Academy
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-muted-foreground">{cat.label}</span>
+        <span className="text-[#8a9e00] dark:text-muted-foreground">{cat.label}</span>
       </nav>
 
       <header className="mb-10">
