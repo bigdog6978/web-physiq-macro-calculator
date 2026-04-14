@@ -7,13 +7,14 @@ import {
   getFeaturedArticles,
   getPublishedArticles,
 } from "@/lib/academy/queries";
+import { buildBreadcrumbSchema } from "@/lib/seo/schema";
 import { CalculatorCTA } from "@/components/academy/CalculatorCTA";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://physiqmacros.com";
 
 const CATEGORY_CARD_IMAGES: Partial<Record<string, string>> = {
-  basics: "/images/guides/basics.png",
+  basics: "/images/guides/cards/basics.png",
   "fat-loss": "/images/guides/cards/fatloss.png",
   "muscle-gain": "/images/guides/cards/musclegain.png",
   "body-recomposition": "/images/guides/cards/recomp.png",
@@ -49,9 +50,29 @@ export default function MacroAcademyHubPage() {
   const all = getPublishedArticles().sort((a, b) =>
     b.updatedAt.localeCompare(a.updatedAt)
   );
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", url: BASE_URL },
+    { name: "Macro Academy", url: `${BASE_URL}/guides` },
+  ]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+    <div className="mx-auto max-w-6xl px-4 pt-4 pb-10 sm:pt-6 sm:pb-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <nav
+        className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#8a9e00] dark:text-muted-foreground"
+        aria-label="Breadcrumb"
+      >
+        <Link href="/" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+          Home
+        </Link>
+        <span aria-hidden="true">›</span>
+        <span className="text-[#8a9e00] dark:text-muted-foreground">
+          Macro Academy
+        </span>
+      </nav>
       <header className="mb-12 max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-wider text-[#b3cf00] dark:text-primary mb-3">
           Education
@@ -65,6 +86,48 @@ export default function MacroAcademyHubPage() {
           confidence and track with Physiq.
         </p>
       </header>
+
+      <section className="mb-14" aria-labelledby="categories-heading">
+        <h2 id="categories-heading" className="text-xl font-bold text-foreground mb-4">
+          Browse by topic
+        </h2>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {ACADEMY_CATEGORIES.map((c) => {
+            const n = countPublishedByCategoryId(c.id);
+            const imagePath = CATEGORY_CARD_IMAGES[c.id];
+            return (
+              <Link
+                key={c.id}
+                href={`/guides/category/${c.slug}`}
+                className="group flex aspect-square flex-col justify-between rounded-2xl border border-card-border bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md sm:p-6 dark:bg-card dark:shadow-none dark:hover:translate-y-0 dark:hover:shadow-none"
+              >
+                <div>
+                  {imagePath ? (
+                    <div className="mb-3 overflow-hidden rounded-lg border border-card-border bg-card">
+                      <Image
+                        src={imagePath}
+                        alt={`${c.label} category card`}
+                        width={320}
+                        height={180}
+                        className="h-24 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  ) : null}
+                  <h3 className="text-sm font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+                    {c.label}
+                  </h3>
+                  <p className="mt-2 text-xs text-muted-foreground leading-snug line-clamp-3">
+                    {c.description}
+                  </p>
+                </div>
+                <p className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                  {n > 0 ? `${n} guide${n === 1 ? "" : "s"}` : "Coming soon"}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
 
       {featured.length > 0 && (
         <section className="mb-14" aria-labelledby="featured-heading">
@@ -92,48 +155,6 @@ export default function MacroAcademyHubPage() {
           </div>
         </section>
       )}
-
-      <section className="mb-14" aria-labelledby="categories-heading">
-        <h2 id="categories-heading" className="text-xl font-bold text-foreground mb-4">
-          Browse by topic
-        </h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {ACADEMY_CATEGORIES.map((c) => {
-            const n = countPublishedByCategoryId(c.id);
-            const imagePath = CATEGORY_CARD_IMAGES[c.id];
-            return (
-              <Link
-                key={c.id}
-                href={`/guides/category/${c.slug}`}
-                className="group flex aspect-square flex-col justify-between rounded-2xl border border-card-border bg-muted/80 p-4 transition-all hover:border-primary/40 hover:bg-primary-muted/25 sm:p-5 dark:bg-card"
-              >
-                <div>
-                  {imagePath ? (
-                    <div className="mb-2 overflow-hidden rounded-lg border border-card-border bg-card">
-                      <Image
-                        src={imagePath}
-                        alt={`${c.label} category card`}
-                        width={320}
-                        height={180}
-                        className="h-16 w-full object-cover"
-                      />
-                    </div>
-                  ) : null}
-                  <h3 className="text-sm font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
-                    {c.label}
-                  </h3>
-                  <p className="mt-2 text-xs text-muted-foreground leading-snug line-clamp-3">
-                    {c.description}
-                  </p>
-                </div>
-                <p className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-                  {n > 0 ? `${n} guide${n === 1 ? "" : "s"}` : "Coming soon"}
-                </p>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
 
       <section className="mb-14" aria-labelledby="all-guides-heading">
         <h2 id="all-guides-heading" className="text-xl font-bold text-foreground mb-4">
