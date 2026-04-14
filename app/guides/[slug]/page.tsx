@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/academy/ArticleBody";
+import { ArticleShareBar } from "@/components/academy/ArticleShareBar";
 import { CalculatorCTA } from "@/components/academy/CalculatorCTA";
 import { RelatedGuides } from "@/components/academy/RelatedGuides";
 import { RelatedMacroPages } from "@/components/academy/RelatedMacroPages";
@@ -164,6 +165,11 @@ export default async function AcademyGuidePage({
             Updated {article.updatedAt}
             {article.author ? ` · ${article.author}` : ""}
           </p>
+          <ArticleShareBar
+            url={url}
+            title={article.title}
+            description={article.metaDescription ?? article.excerpt}
+          />
         </header>
 
         <ArticleBody markdown={article.body} />

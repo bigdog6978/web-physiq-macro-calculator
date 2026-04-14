@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ACADEMY_CATEGORIES } from "@/lib/academy/categories";
+import { CATEGORY_IMAGE_MAP } from "@/lib/academy/categoryImages";
 import {
   countPublishedByCategoryId,
   getFeaturedArticles,
@@ -12,17 +13,6 @@ import { CalculatorCTA } from "@/components/academy/CalculatorCTA";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://physiqmacros.com";
-
-const CATEGORY_CARD_IMAGES: Partial<Record<string, string>> = {
-  basics: "/images/guides/cards/bascis1.png",
-  "fat-loss": "/images/guides/cards/fatloss.png",
-  "muscle-gain": "/images/guides/cards/musclegain.png",
-  "body-recomposition": "/images/guides/cards/recomp.png",
-  "diet-strategies": "/images/guides/cards/dietstrategies.png",
-  men: "/images/guides/cards/men.png",
-  women: "/images/guides/cards/women.png",
-  comparisons: "/images/guides/cards/comparisson.png",
-};
 
 export const metadata: Metadata = {
   title: "Macro Academy | Physiq Macros",
@@ -94,7 +84,7 @@ export default function MacroAcademyHubPage() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {ACADEMY_CATEGORIES.map((c) => {
             const n = countPublishedByCategoryId(c.id);
-            const imagePath = CATEGORY_CARD_IMAGES[c.id];
+            const imagePath = CATEGORY_IMAGE_MAP[c.id];
             return (
               <Link
                 key={c.id}

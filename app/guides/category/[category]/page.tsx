@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ACADEMY_CATEGORIES, getCategoryBySlug } from "@/lib/academy/categories";
+import { CATEGORY_HERO_CONFIG, CATEGORY_IMAGE_MAP } from "@/lib/academy/categoryImages";
 import { getArticlesByCategorySlug } from "@/lib/academy/queries";
 import { CalculatorCTA } from "@/components/academy/CalculatorCTA";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
@@ -46,6 +48,8 @@ export default async function AcademyCategoryPage({
   if (!cat) notFound();
 
   const articles = getArticlesByCategorySlug(cat.slug);
+  const heroImage = CATEGORY_IMAGE_MAP[cat.id];
+  const flipHero = CATEGORY_HERO_CONFIG[cat.id]?.flipHero ?? false;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
@@ -64,12 +68,34 @@ export default async function AcademyCategoryPage({
         <span className="text-[#8a9e00] dark:text-muted-foreground">{cat.label}</span>
       </nav>
 
-      <header className="mb-10">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{cat.label}</h1>
-        <p className="mt-3 text-muted-foreground leading-relaxed max-w-2xl">
-          {cat.description}
-        </p>
-      </header>
+      {heroImage ? (
+        <header className="mb-10">
+          <div className="relative overflow-hidden rounded-2xl border border-card-border">
+            <Image
+              src={heroImage}
+              alt={`${cat.label} category hero`}
+              width={1200}
+              height={360}
+              className={`h-44 w-full object-cover sm:h-56 ${flipHero ? "-scale-x-100" : ""}`}
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/10" />
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">
+              <h1 className="text-2xl font-bold text-white sm:text-4xl">{cat.label}</h1>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
+                {cat.description}
+              </p>
+            </div>
+          </div>
+        </header>
+      ) : (
+        <header className="mb-10">
+          <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{cat.label}</h1>
+          <p className="mt-3 max-w-2xl text-muted-foreground leading-relaxed">
+            {cat.description}
+          </p>
+        </header>
+      )}
 
       {articles.length === 0 ? (
         <p className="text-sm text-muted-foreground">
