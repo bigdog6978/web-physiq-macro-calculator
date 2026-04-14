@@ -4,9 +4,9 @@
  */
 export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
   "cutting-macros": [
+    "beer-belly-visible-abs-strategy",
+    "dad-bod-recomp-blueprint",
     "beer-belly-macros-for-men",
-    "dad-bod-myths-men-stuck",
-    "macro-mistakes-stalling-fat-loss",
   ],
   "bulking-macros": [
     "lean-mass-strategy-busy-dads",
@@ -14,8 +14,8 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "carb-cycling-macros",
   ],
   "maintenance-macros": [
-    "macro-tracker-burnout-guide",
-    "what-i-eat-day-hit-macros-template",
+    "men-under-recovered-rebuild-energy",
+    "men-macro-mistakes-low-energy",
     "activity-level-neat-tdee-macros",
   ],
   "keto-macros": [
@@ -34,8 +34,8 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "high-protein-diet-macros",
   ],
   "macros-for-men": [
-    "dad-bod-to-athletic-truth",
-    "men-skinny-fat-35-plus",
+    "dad-bod-recomp-blueprint",
+    "skinny-fat-recomp-men-30-plus",
     "dad-bod-myths-men-stuck",
   ],
   "macros-for-women": [
