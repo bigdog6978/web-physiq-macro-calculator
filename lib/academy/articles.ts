@@ -2522,4 +2522,1504 @@ Women and men both recomp, but **hormonal cycles**, **bone health**, and **stres
 **Bottom line:** Intermediate recomposition is **patient training** plus **protein-first macros** near **maintenance or a mild deficit**, with **mini-cuts** or **lean bulks** when the data—not hope—says to switch phases.`,
   },
 
+  {
+    slug: "muscle-retention-while-cutting-macros",
+    title: "How to Keep Muscle While Cutting: Macros That Protect Lean Mass",
+    categoryId: "fat-loss",
+    tags: ["cutting", "muscle-retention", "protein"],
+    excerpt:
+      "Keep muscle in a deficit: protein ranges, deficit sizing, lifting stimulus, recovery, and weekly adjustments without bro-science.",
+    metaTitle: "Muscle Retention While Cutting Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Muscle-sparing cut macros: high protein, moderate deficit, lift with intent. Set targets in the Macro Calculator; adjust using weekly trends. Great for lifters.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Fat loss should not cost you the muscle you trained for. This guide anchors protein, training, and sane deficits so strength and shape stay with you.",
+    relatedGuideSlugs: [
+      "macros-for-fat-loss",
+      "protein-per-pound",
+      "how-to-calculate-macros",
+      "fat-loss-plateau-macros",
+      "lean-bulk-macros",
+      "high-protein-diet-macros",
+      "macro-meal-planning",
+      "macro-tracking-accuracy-guide"
+    ],
+    relatedMacroSlugs: [
+      "cutting-macros",
+      "cutting-macro-calculator",
+      "high-protein-macros",
+      "high-protein-macro-calculator",
+      "150-pound-female-cutting-standard-macros",
+      "180-pound-male-cutting-standard-macros",
+      "macros-for-men",
+      "macros-for-women"
+    ],
+    body: `## The real goal on a cut
+
+Most people say they want to **lose weight**, but what they usually want from a cut is **fat loss** while **keeping muscle**. Muscle supports strength, shape, and long-term quality of life for many trainees. In a calorie deficit, recovery is tighter and building new tissue is harder, so **training quality** and **protein** are your best tools to signal the body to keep what you have.
+
+Read [Macros for Fat Loss](/guides/macros-for-fat-loss) for the full playbook, then use this guide when **lean mass** is the non-negotiable outcome. For **why macros beat vague advice**, see [Why Macros Matter](/guides/why-macros-matter).
+
+## Why muscle is at risk in a deficit
+
+A deficit means you eat fewer calories than you burn. For some people that nudges the body toward **breaking down lean tissue** if the overall stress budget is too high relative to fuel and stimulus. Risk tends to rise when **protein** is inconsistent, **lifting** drops off, the **deficit** is very large for long stretches, or **sleep** and **stress** undermine recovery.
+
+This is **general fitness education**, not a guarantee of what your body will do.
+
+## Protein: the anchor macro
+
+For lifters, **daily protein** is usually the first macro to protect on a cut. Practical ranges often land near **roughly 0.8g to 1.1g per lb** of body weight for active adults, with many people favoring the **upper half** of that band when the deficit is deeper or sessions are brutal. Cross-check with [Protein Intake per Pound Explained](/guides/protein-per-pound) and [High Protein Diet Macros](/guides/high-protein-diet-macros).
+
+**Distribution** still matters for some people: **3 to 5 feedings** with **adequate protein** each can make the daily total easier than one massive dinner.
+
+## Protein quality without overthinking
+
+**Animal proteins** (meat, fish, eggs, dairy if you use it) make hitting grams easy. **Plant-forward** diets can work too with planning - read [Vegetarian Macros for Muscle & Fat Loss](/guides/vegetarian-macros) if that is your template. The main job is **total daily protein**, not a single “clean” food list.
+
+## Calories: match the deficit to your training
+
+Huge deficits can create fast scale movement and **fast strength loss** if you are not careful. A **moderate** deficit (often roughly **15% to 25%** below estimated maintenance for many people) is a common compromise between speed and **recoverable training**.
+
+If you are new to numbers, build your baseline in [How to Calculate Macros](/guides/how-to-calculate-macros) and the **[Macro Calculator](/#calculator)**. Adjust using **weekly weight trends** and **performance**, not one bad day.
+
+If the barbell stalls for **weeks** while sleep is reasonable, review [Fat Loss Plateau: When and How to Adjust Your Macros](/guides/fat-loss-plateau-macros) before you slash food again.
+
+## Aggressive cuts and special protocols
+
+Very low-calorie, protein-focused approaches exist, but they are **not default** muscle-retention strategies for most lifters. If you explore extreme tools, understand risk, adherence, and context first - read [Protein Sparing Modified Fasting (PSMF)](/guides/protein-sparing-modified-fasting) only if it matches your situation.
+
+## Training: keep the stimulus
+
+Muscle retention is not solved in a food tracker alone. You need **progressive overload** on **compound patterns** you can recover from, plus enough **volume** to maintain muscle without turning every week into junk volume.
+
+A common mistake is **panic cardio** paired with **half-hearted lifting**. Cardio can help adherence and health, but **lifting** is the clearest **use-it-or-lose-it** signal for muscle.
+
+Deloads belong in a good plan. Accidental **permanent deloads** do not.
+
+## Carbs and fats after protein is set
+
+**Carbs** often support **training quality** and **glycogen** for people who lift. **Fats** support **satiety** and help you absorb **fat-soluble micronutrients** at adequate intakes. You do not need **zero carb** to retain muscle unless a low-carb template genuinely improves your consistency - see [Low Carb Diet Macros](/guides/low-carb-diet-macros).
+
+## Women, men, and expectations
+
+Both sexes retain muscle with the same big levers, but **starting body composition**, **training age**, and **monthly water shifts** can change how progress **looks** on the scale. Compare [Best Macros for Women](/guides/best-macros-for-women) and [Best Macros for Men](/guides/best-macros-for-men). For cycle-related scale noise, read [Macros Across Your Menstrual Cycle](/guides/menstrual-cycle-macros).
+
+## Recovery, sleep, stress, and scale noise
+
+**Sleep** is part of the muscle retention stack. **Stress** and **salt** can swing **water weight**, which makes the scale lie short term. Use **waist measurements**, **strength logs**, and **monthly photos** alongside the scale.
+
+## Refeeds and diet breaks
+
+**Refeeds** and short **diet breaks** are optional tools for adherence and training feel. They are not required for muscle retention, and they are not magic fat-loss switches - read [Refeed and Diet Break Macros](/guides/refeed-diet-break-macros) if you use them.
+
+## Intermediate lifters and slower recomposition
+
+If you are past the beginner phase, expectations change - read [Recomposition Macros for Intermediate Lifters](/guides/recomposition-intermediate-macros). Muscle retention on a cut still follows the same big levers, but **patience** and **data** matter more when progress is subtle.
+
+## Muscle-friendly cut vs careless cut
+
+| Lever | Muscle-friendly approach | Common weak approach |
+|-------|-------------------------|----------------------|
+| Protein | High, consistent daily | Guessing and missing |
+| Deficit | Moderate, trend-based | Chaos and guilt cycles |
+| Training | Planned overload | Cardio-only phases |
+| Tracking | Repeatable, honest | Perfectionism or none |
+
+## Meal structure without complexity
+
+You do not need gourmet meal prep - read [Macro Meal Planning](/guides/macro-meal-planning). **Repeatable anchors** (breakfast template, lunch protein, dinner bowl) make protein easier when life is busy.
+
+If your logs feel messy, tighten basics in [Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes](/guides/macro-tracking-accuracy-guide).
+
+## Eating out without losing the week
+
+Restaurant meals can hide **oil** and **portion inflation** - use [Restaurant & Takeout Macros](/guides/restaurant-takeout-macros) so **one dinner** does not erase **protein consistency**.
+
+## Sanity-check your numbers on SEO pages
+
+Cluster pages like [Cutting macros](/macros/cutting-macros) and [High protein macros](/macros/high-protein-macros) help you compare **intent**. A micro example such as [150 pound female cutting standard macros](/macros/150-pound-female-cutting-standard-macros) or [180 pound male cutting standard macros](/macros/180-pound-male-cutting-standard-macros) is only a **shape reference** - your calories are individual. The [Cutting macro calculator](/macros/cutting-macro-calculator) pillar page is another entry point.
+
+## Common mistakes
+
+- **Cutting protein** to fund extra snacks or alcohol.
+- **Max cardio, minimal lifting**, then blaming genetics.
+- **Changing macros weekly** without enough trend data.
+- **Ignoring sleep** while adding work stress and hard training.
+
+## Who this is for
+
+**Healthy adults** who strength train and want **fat loss** with **lean mass protection**. Not a medical nutrition prescription.
+
+## FAQ
+
+**Will I lose muscle on any cut?** Not automatically. **Protein**, **stimulus**, **deficit size**, and **recovery** drive risk.
+
+**Should I use intermittent fasting?** It can work if **protein** still hits - see [Intermittent Fasting Macros](/guides/intermittent-fasting-macros).
+
+**Do I need a lean bulk first?** If you are **under-muscled**, sometimes **maintenance** or a **lean bulk** helps - see [Lean Bulk Macros](/guides/lean-bulk-macros) and [Skinny-Fat Recomp: Macros for Beginners With Low Muscle Mass](/guides/skinny-fat-recomp-macros).
+
+**Are BCAAs mandatory?** No - **food protein** usually matters more.
+
+**How do I know protein is enough?** Strength trends, **recovery**, and **adherence** matter as much as a spreadsheet.
+
+**What about fasted lifting?** Personal preference for many - **daily totals** still dominate outcomes for most people.
+
+**Does creatine matter on a cut?** Creatine is a **supplement** conversation, not a macro substitute - keep **protein** and **training** first.
+
+**Bottom line:** Protect **protein**, protect **training**, keep the **deficit sane**, and adjust with **weekly discipline** - not daily panic.`,
+  },
+
+  {
+    slug: "activity-level-neat-tdee-macros",
+    title: "Activity Level, NEAT, and TDEE: Why Your Macro Targets Move",
+    categoryId: "basics",
+    tags: ["tdee", "neat", "activity"],
+    excerpt:
+      "TDEE and NEAT in plain language: why maintenance shifts when steps, jobs, and training change, and how to update macro targets without guesswork spirals.",
+    metaTitle: "Activity Level, NEAT & TDEE Macros | Macro Academy | Physiq",
+    metaDescription:
+      "TDEE and NEAT explained: why maintenance calories move with steps and jobs, when to update macro targets, and how to use calculator inputs honestly. Use trends.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Your calorie needs are not fixed. Steps, jobs, and daily movement change NEAT, so maintenance and macro targets should evolve with real life.",
+    relatedGuideSlugs: [
+      "how-to-calculate-macros",
+      "what-are-macros",
+      "macro-calculator-vs-calorie-calculator",
+      "maintenance-macros-guide",
+      "fat-loss-plateau-macros",
+      "why-macros-matter",
+      "macro-tracking-accuracy-guide"
+    ],
+    relatedMacroSlugs: [
+      "maintenance-macros",
+      "cutting-macros",
+      "bulking-macros",
+      "180-pound-male-maintenance-standard-macros",
+      "macros-for-women",
+      "macros-for-men",
+      "bulking-macro-calculator"
+    ],
+    body: `## Why maintenance is not a tattoo
+
+Your **maintenance calories** (often discussed as **TDEE**, total daily energy expenditure) move when your **activity** moves. Two people with similar stats can burn different amounts of energy because of **steps**, **fidgeting**, **job type**, **cardio**, and **training volume**. That is **NEAT** (non-exercise activity thermogenesis): the **non-workout** part of your day that still burns fuel.
+
+If your macro targets feel “right” one month and **wrong** the next, your **expenditure** may have changed - even if the **scale** has not caught up yet.
+
+Start with definitions in [What Are Macros?](/guides/what-are-macros) and setup in [How to Calculate Macros](/guides/how-to-calculate-macros), then use this guide to understand **why calculators differ** and **when to revise inputs**. For **energy versus macro splits**, read [Macro Calculator vs Calorie Calculator](/guides/macro-calculator-vs-calorie-calculator).
+
+## What TDEE tries to estimate
+
+A calorie target is usually built from:
+
+- **BMR** (basal metabolic rate): baseline body function at rest
+- **Exercise**: planned training sessions
+- **NEAT**: walking, standing, chores, pacing, typing energy, **all the small stuff**
+- **TEF** (thermic effect of food): energy used to digest food (usually smaller than people think)
+
+**TDEE** bundles these into **one maintenance estimate**. It is a **starting point**, not a lab measurement.
+
+## Activity multipliers: helpful, imprecise
+
+Many calculators ask you to pick **sedentary**, **light**, **moderate**, or **very active**. Those labels **compress** huge real-world variance. A desk job person who walks **12k steps** may burn far more than a **moderate** label suggests. That is why two apps can disagree by **hundreds of calories** - they are not “wrong,” they are **uncertain**.
+
+## NEAT crash while dieting
+
+In a deficit, some people **move less without noticing**: fewer steps, less fidgeting, **easier chair time**. That **adaptive** drop can **slow fat loss** or make maintenance feel lower than your spreadsheet. If you are **stalling**, verify **steps** and **daily movement** before you slash food again - pair with [Fat Loss Plateau: When and How to Adjust Your Macros](/guides/fat-loss-plateau-macros).
+
+## When macro targets should move
+
+Consider revising maintenance or intake targets when:
+
+- You **change jobs** (on feet vs at a desk)
+- You **add or remove** cardio blocks
+- Your **step average** shifts by thousands per day
+- You finish a **bulk** and **NEAT** rises with higher energy
+- You are **injured** and training drops sharply
+
+## Steps as a check, not a personality
+
+**Step counts** are imperfect, but they are a **repeatable** proxy for NEAT when your routine is stable. Use them to spot **big** changes, not to chase perfection.
+
+## TDEE, reverse dieting, and coming out of a cut
+
+If you have been dieting a long time, **raising calories** can change movement and energy - read [Reverse Diet Macros After a Cut](/guides/reverse-diet-macros) for a structured approach. NEAT often **rises** when people feel better fed, which changes the **true** maintenance number.
+
+## Using the calculator honestly
+
+The **[Macro Calculator](/#calculator)** is only as good as the **inputs**. Pick the **activity level** that matches your **average week**, not your **best week**. Revisit after **2 to 3 weeks** of weight trend data.
+
+## Compare cluster entry points
+
+Browse [Maintenance macros](/macros/maintenance-macros) when your goal is **stability**, [Cutting macros](/macros/cutting-macros) for **fat loss**, and [Bulking macros](/macros/bulking-macros) for **muscle gain**. For a concrete maintenance example, see [180 pound male maintenance standard macros](/macros/180-pound-male-maintenance-standard-macros). [Macros for women](/macros/macros-for-women) and [Macros for men](/macros/macros-for-men) show how defaults shift by sex at the cluster level.
+
+## NEAT-friendly habits (without obsession)
+
+- **Walk** predictable slots (calls, after lunch)
+- **Stand** breaks if you are desk-bound
+- **Track steps** as a **check**, not a moral score
+- Keep **lifting** in the plan - training is not NEAT, but it anchors **muscle** and **performance** for many athletes
+
+## Maintenance eating in real life
+
+If you want a practical guide to eating at maintenance while life changes, read [Maintenance Macros: How to Eat at Your TDEE](/guides/maintenance-macros-guide).
+
+## Two calculators, two answers
+
+If **[Macro Calculator](/#calculator)** and another app disagree, that is **normal**. Different equations, different **activity assumptions**, and different **defaults** for height and age all move the number. Pick **one system**, run **2 to 3 weeks** of weigh-ins, then **adjust calories** based on **average weight change**, not on **debating formulas**.
+
+## Weekend warriors and shift work
+
+**Training three days a week** does not automatically make you **very active** if the other four days are **low movement**. Shift workers sometimes see **weird hunger** and **step patterns** - track **monthly** averages and **job changes** the same way you track **deload weeks**.
+
+## Wearables and calorie burn estimates
+
+**Watches** that estimate **calories burned** can help **trend** hard days vs easy days, but they are still **models**. Use them to **compare Monday to Monday**, not to **prove** you earned **800 extra calories** every time. If you **eat back** exercise calories, do it **consistently** and watch **weight trend** - [Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes](/guides/macro-tracking-accuracy-guide).
+
+## Thermogenesis is real but smaller than social media
+
+**Cold exposure**, **fidgeting hacks**, and **supplement fantasies** rarely replace the basics: **training**, **steps**, **lean mass**, and **consistent intake**. NEAT matters because it is **big in real life**, not because it is **exciting**.
+
+## Cutting often lowers NEAT on purpose (and by accident)
+
+When food drops, some people **feel sluggish** and **move less**. That is one reason **deficit size** matters for **adherence** - if you go **too low**, you may lose **steps** and **training quality**, which changes the **true** deficit in ways the spreadsheet does not see - pair with [Macros for Fat Loss](/guides/macros-for-fat-loss).
+
+## Bulking can raise NEAT
+
+**Higher intake** sometimes increases **spontaneous movement** and **training output**. Your **maintenance** after a bulk may not match your **maintenance** before it - revisit **[Macro Calculator](/#calculator)** inputs when body weight or lifestyle shifts.
+
+## Common mistakes
+
+- Picking **athlete** activity because you train **3x per week** but otherwise sit **10 hours**
+- Ignoring **step trends** while blaming “slow metabolism”
+- Changing calories **daily** based on **one weigh-in**
+- Assuming **one TDEE** forever after a single calculator run
+
+## Who this is for
+
+Anyone confused why **macro math drifts** when life changes. **General fitness education**, not medical test interpretation.
+
+## FAQ
+
+**Is TDEE the same as BMR?** No - **BMR** is a component; **TDEE** is closer to **all-day burn**.
+
+**Should I eat back all exercise calories?** Usually **partial** and **consistent** beats **100%** if trackers overestimate - use **trends**.
+
+**Does NEAT explain everything?** No - **water**, **salt**, **cycle timing**, and **stress** also move the scale short term.
+
+**How often should I recalc?** When **averages** shift for **weeks**, not because of **one busy weekend**.
+
+**Can I raise NEAT instead of cutting food?** Sometimes - **steps** can help adherence if you can recover.
+
+**Why do I maintain on fewer calories than the calculator says?** **Logging**, **NEAT**, and **individual variance** are common reasons - see [Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes](/guides/macro-tracking-accuracy-guide).
+
+**Bottom line:** Treat TDEE as a **moving estimate**. Update inputs when your **real life activity** changes, then adjust macros with **patience**.`,
+  },
+
+  {
+    slug: "carb-cycling-macros",
+    title: "Carb Cycling: When It Helps and How to Set Macros",
+    categoryId: "diet-strategies",
+    tags: ["carb-cycling", "performance", "structure"],
+    excerpt:
+      "Carb cycling for lifters: high-low patterns, weekly calorie discipline, protein anchors, and when simple flat macros beat rotation.",
+    metaTitle: "Carb Cycling Macros Guide | Macro Academy | Physiq",
+    metaDescription:
+      "Carb cycling macros: rotate daily carbs for training, keep protein steady, hit weekly calories. Optional structure for lifters, not magic fat-loss timing.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Carb cycling is optional structure, not magic. Use it when harder training days need fuel and you can keep weekly calories honest.",
+    relatedGuideSlugs: [
+      "how-to-calculate-macros",
+      "macro-meal-planning",
+      "macros-for-muscle-gain",
+      "macros-for-fat-loss",
+      "keto-macros-explained",
+      "endurance-running-macros",
+      "protein-per-pound",
+      "muscle-retention-while-cutting-macros"
+    ],
+    relatedMacroSlugs: [
+      "bulking-macros",
+      "cutting-macros",
+      "cutting-macro-calculator",
+      "bulking-macro-calculator",
+      "high-protein-macros",
+      "170-pound-female-cutting-standard-macros",
+      "maintenance-macros",
+      "macros-for-women"
+    ],
+    body: `## What carb cycling is (and is not)
+
+**Carb cycling** means **planned variation** in **daily carbohydrate** intake across the week while keeping **protein** relatively stable and managing **total weekly calories** for your goal. It is **not** a requirement for fat loss or muscle gain. It is a **structure** some people use for **training fuel**, **adherence**, or **psychology**.
+
+If you are new to tracking, start with [How to Calculate Macros](/guides/how-to-calculate-macros) and [Macro Meal Planning](/guides/macro-meal-planning) before layering complexity.
+
+## Why people try it
+
+Common reasons include:
+
+- **More carbs** on **hard training** days, **fewer** on rest or light days
+- **Appetite patterns** that feel easier with **high-low** rhythm
+- **Short-term** strategies during a cut where **performance days** get priority
+
+## The macro math still wins
+
+Carb cycling does **not** override **energy balance** for fat loss. If weekly calories average too high, you will not cut fat on vibes. If you want a refresher on energy versus composition, read [Macro Calculator vs Calorie Calculator](/guides/macro-calculator-vs-calorie-calculator).
+
+## A simple setup template
+
+1. Set **weekly calorie target** for your goal (cut, maintain, lean bulk).
+2. Set **protein** first (often roughly **0.8g to 1.1g per lb** for many lifters - see [Protein Intake per Pound Explained](/guides/protein-per-pound)).
+3. Split remaining calories into **carbs and fats**.
+4. **Shift carbs** day to day; **fats** often move inversely to keep calories stable.
+
+**Example pattern (illustration only):** higher carb on **leg and back** days, moderate on **upper**, lower on **rest** - adjust to your schedule.
+
+## Sample week (illustration only)
+
+| Day | Training | Carb feel | Notes |
+|-----|----------|-----------|-------|
+| Mon | Heavy lower | Higher carb | Pre-fuel if needed |
+| Tue | Upper | Moderate | Stable protein |
+| Wed | Rest | Lower carb | Fats fill calories |
+| Thu | Conditioning | Moderate | Gut tolerance matters |
+
+Your real week might be **4** lifting days or **2** - the table is a **thinking tool**, not a prescription.
+
+## Who benefits most
+
+Carb cycling tends to help people who:
+
+- Train **hard** multiple days per week
+- Feel **flat** on uniform low carb but want **some** low days
+- Like **rules** that feel like a game (high day / low day)
+
+## Who it may not help
+
+- Beginners still learning **baseline** adherence
+- People who turn **high days** into **uncontrolled feasts**
+- Anyone whose **total protein** is still inconsistent
+
+## Compare diet styles
+
+If you are **keto-aligned**, carb cycling may not fit your **carb ceiling** - see [Keto Macros Explained](/guides/keto-macros-explained). If you want **muscle gain** context, read [Macros for Muscle Gain](/guides/macros-for-muscle-gain). Endurance athletes may need **more total carbs** - see [Macros for Endurance and Running](/guides/endurance-running-macros).
+
+## Using Physiq tools
+
+Dial your baseline in the **[Macro Calculator](/#calculator)**, then **manually** redistribute carbs in your tracker across the week. For cutting context, browse [Cutting macro calculator](/macros/cutting-macro-calculator) and [Cutting macros](/macros/cutting-macros). For a **bulking** angle, see [Bulking macros](/macros/bulking-macros) and [Bulking macro calculator](/macros/bulking-macro-calculator).
+
+## Micro example pages
+
+A concrete **standard cutting** page like [170 pound female cutting standard macros](/macros/170-pound-female-cutting-standard-macros) shows one **static** split - your **cycling** version should keep **weekly averages** aligned with that intent.
+
+## Low-carb phases and cycling
+
+If you prefer **lower average carbs**, you can still **cycle within** that average - read [Low Carb Diet Macros](/guides/low-carb-diet-macros) so you do not accidentally **underfuel** hard sessions.
+
+## Gut tolerance and fiber
+
+**Higher carb days** often mean **more starch and fruit**. If **GI distress** shows up, change **food choices** before you abandon cycling - [Fiber and Macros: Targets Without Blowing Your Calories](/guides/fiber-and-macros) helps you ramp **volume** safely.
+
+## Muscle retention context
+
+If you **cycle carbs** during a **cut**, keep **protein** anchored so **muscle retention** stays the priority - [Muscle Retention While Cutting: Macros That Protect Lean Mass](/guides/muscle-retention-while-cutting-macros).
+
+## Psychology: high day discipline
+
+**High carb days** tempt people into **high everything days**. Decide whether **high** means **carbs** while **fats** stay controlled, or whether you are doing a **planned** higher calorie day - **mixed signals** to yourself create **mixed results**.
+
+## Who should skip carb cycling
+
+If you have a history of **binge-restrict cycles**, rigid **high-low** labels can backfire - flat targets and **therapy-informed** support may be safer than a **macro puzzle** - this is **not** mental health treatment advice.
+
+## Food examples for high vs low days (flexible)
+
+**Higher carb days** might lean on **rice, potatoes, fruit, and cereal** - **lower carb days** might lean on **eggs, fish, chicken, tofu, vegetables, and added oils** - still hit **protein** either way - [High Protein Diet Macros](/guides/high-protein-diet-macros).
+
+## Common mistakes
+
+- **High days** that blow the **weekly** deficit
+- **Protein dipping** on low-carb days because meals get weird
+- Calling it cycling when it is really **chaotic under-eating**
+- Expecting **extra fat loss** from timing alone
+
+## Who this is for
+
+Healthy adults who already **track** and want a **structured carb pattern**. Not medical advice.
+
+## FAQ
+
+**Is carb cycling better than a flat intake?** Not inherently - **adherence** and **weekly calories** decide outcomes.
+
+**Should beginners carb cycle?** Usually **flat targets** first.
+
+**Will it fix hormones?** This guide avoids **medical claims** - talk to a clinician for symptoms.
+
+**Can I cycle fats instead?** Some people do - **total calories** still rule.
+
+**Does it help endurance?** Often **carb availability** helps long sessions.
+
+**Can I carb cycle on a cut and a bulk?** Yes - **weekly calorie direction** still defines fat loss vs gain.
+
+**Bottom line:** Carb cycling is **optional structure**. Keep **protein** steady, keep **weekly energy** honest, and **fuel** your hardest sessions.`,
+  },
+
+  {
+    slug: "fiber-and-macros",
+    title: "Fiber and Macros: Targets Without Blowing Your Calories",
+    categoryId: "basics",
+    tags: ["fiber", "satiety", "digestion"],
+    excerpt:
+      "Fiber with macro targets: fullness on a cut, gradual increases, high-protein pairings, and keto or high-volume strategies without GI surprises.",
+    metaTitle: "Fiber and Macros Guide | Macro Academy | Physiq",
+    metaDescription:
+      "Fiber with macro targets: satiety bands, gradual increases, keto-friendly planning, and logging tips that protect protein and digestion on a cut. Skimmable.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Fiber changes fullness and meal volume, not your calorie math. Learn practical bands, logging habits, and pairings that keep protein and adherence high.",
+    relatedGuideSlugs: [
+      "what-are-macros",
+      "high-protein-diet-macros",
+      "keto-macros-explained",
+      "macro-tracking-accuracy-guide",
+      "vegetarian-macros",
+      "how-to-calculate-macros",
+      "intermittent-fasting-macros"
+    ],
+    relatedMacroSlugs: [
+      "high-protein-macros",
+      "high-protein-macro-calculator",
+      "cutting-macros",
+      "keto-macros",
+      "meal-plan-for-2000-calories-vegetarian",
+      "macros-for-women",
+      "maintenance-macros"
+    ],
+    body: `## Fiber is not a macro label, but it shapes the day
+
+**Fiber** is **carbohydrate** your body does not fully digest like sugar, yet it still **counts toward carb-rich foods** and affects **fullness**, **digestion**, and **meal volume**. If you chase **macro targets** without thinking about fiber, you can end up **hungry** on paper-perfect numbers - or **bloated** if you jump from **very low** to **very high** fiber overnight.
+
+Use [What Are Macros?](/guides/what-are-macros) for definitions, then read this for **practical fiber bands** that play nice with calorie targets.
+
+## Typical intake ranges (general adults)
+
+Many public health guidelines suggest **roughly 25g to 38g per day** for adults as a **broad** target band, while **individual tolerance** varies. Athletes eating **high calories** sometimes tolerate **more** total fiber from sheer food volume; people on **low calorie** diets may need **smarter** fiber choices so **satiety** stays high without **GI distress**.
+
+## Fiber and calorie density
+
+High-fiber foods (beans, oats, berries, vegetables, bran) add **volume** for relatively **few calories**. That helps some people stick to a **deficit**. It can also crowd out room for **protein** if you build giant salads with **little** chicken - keep **protein anchors** - see [High Protein Diet Macros](/guides/high-protein-diet-macros).
+
+## Soluble vs insoluble (practical, not academic)
+
+**Soluble** fiber (oats, beans, some fruits) often supports **satiety** and **stool consistency** for many people. **Insoluble** fiber (many vegetables, whole grains) adds **bulk**. You do not need to micromanage types - **gradual increases** and **hydration** matter more than labels.
+
+## Net carbs vs total carbs (practical)
+
+Some trackers show **net carbs** (total carbs minus fiber). Whether you focus on **net** depends on your **app** and **strategy**. On **keto**, fiber awareness matters more - read [Keto Macros Explained](/guides/keto-macros-explained) and compare [Keto macros](/macros/keto-macros).
+
+## Meal ideas that hit protein and fiber
+
+- **Greek yogurt** with berries and a small scoop of chia or bran
+- **Chicken** with beans and vegetables in a bowl
+- **Tofu stir-fry** with broccoli and brown rice (see [Vegetarian Macros for Muscle & Fat Loss](/guides/vegetarian-macros))
+- **Lentil soup** with a **double serving** of lean protein
+
+## Tracking accuracy reminder
+
+Packaged foods list fiber; whole foods are **estimates**. If your gut says you are **way off**, revisit logging habits in [Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes](/guides/macro-tracking-accuracy-guide).
+
+## Calculator and hubs
+
+Set core targets with the **[Macro Calculator](/#calculator)**. For **fat loss** with high fullness, compare [High protein macros](/macros/high-protein-macros) and [Cutting macros](/macros/cutting-macros). Example micro page: [meal plan for 2000 calories vegetarian](/macros/meal-plan-for-2000-calories-vegetarian) shows how **plant-forward** plans stack **fiber** naturally.
+
+## Fiber on a bulk
+
+On a **surplus**, fiber still supports **digestion** for many people, but **very high** fiber can make it hard to eat enough if you feel full too early - read [Lean Bulk Macros](/guides/lean-bulk-macros) for calorie delivery strategies.
+
+## Vegetables without bloating
+
+If **broccoli and beans** bother you, **rotate** sources, **cook** vegetables more often, and **increase** fiber **slowly**. **Individual tolerance** beats internet **superfood** lists.
+
+## Fiber and protein targets together
+
+**Beans and lentils** add **both** protein and fiber but also **carbs** - they can fit **vegetarian** templates with planning - compare [Vegetarian Macros for Muscle & Fat Loss](/guides/vegetarian-macros) and [Paleo Macros: Protein, Carbs, and Fat on a Paleo Template](/guides/paleo-diet-macros).
+
+## Why this matters on a cut
+
+**Hunger** ends more diets than **math**. Fiber-rich, protein-rich meals are a **practical** way to stay in a **deficit** without feeling **starving** every night - pair with [Macros for Fat Loss](/guides/macros-for-fat-loss).
+
+## Fiber and intermittent fasting
+
+If you eat **fewer meals**, each meal may need **more total food volume** to feel satisfied - fiber can help **some** people - [Intermittent Fasting Macros](/guides/intermittent-fasting-macros).
+
+## Labels that market fiber
+
+**Snack bars** advertise fiber while still being **calorie dense**. Read **calories** and **protein**, not only **marketing claims**.
+
+## Oats, beans, and repeatable meals
+
+**Oatmeal** with **berries** and **protein powder** is a **high fiber** breakfast template. **Bean bowls** with **rice** hit **fiber and protein** for **plant eaters** - weigh **dry rice** and **canned beans** the same way every week so logs stay stable.
+
+## Supplements and medications
+
+**Fiber supplements** can interact with **medications** for some people - spacing **doses** matters in those cases - ask a **pharmacist or clinician** when you take prescriptions, not a macro article.
+
+## Common mistakes
+
+- **Jumping fiber** from 10g to 40g in one day
+- **Ignoring fluids** when fiber rises
+- **Replacing protein** with **granola** “because fiber”
+- **Assuming** all bars labeled **high fiber** are **low calorie**
+
+## Who this is for
+
+People who want **fullness** and **regularity** while hitting **macro targets**. Not a treatment guide for digestive disease - see a clinician for pain or chronic symptoms.
+
+## FAQ
+
+**Does fiber have calories?** Fermentation contributes **some** energy, but for **macro tracking** you still log carbs from fiber-containing foods per your app rules.
+
+**Will fiber block fat loss?** No - **total calories** and **adherence** drive fat loss.
+
+**Should I supplement psyllium?** Some do - **increase slowly** and **hydrate**.
+
+**Is low fiber bad for lifting?** It is more about **overall diet quality** and **GI comfort** than PRs directly.
+
+**How much is too much?** If you feel **distended** or **irregular**, step changes **gradually**.
+
+**Can keto be low fiber?** It can be if vegetables are skipped - plan **low-carb high-fiber** foods on purpose.
+
+**Bottom line:** Treat fiber as a **satiety and health** lever inside your **carb budget**, not a separate game.`,
+  },
+
+  {
+    slug: "paleo-diet-macros",
+    title: "Paleo Macros: Protein, Carbs, and Fat on a Paleo Template",
+    categoryId: "diet-strategies",
+    tags: ["paleo", "whole-foods", "template"],
+    excerpt:
+      "Paleo eating with macro targets: protein density without dairy, carb sources beyond grains, fat moderation, and cuts or bulks that stay honest.",
+    metaTitle: "Paleo Diet Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Paleo macros for cuts or bulks: anchor protein, add tubers or fruit for carbs, portion fats. Whole-food template plus calculator-backed grams. Practical tips.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Paleo is a food template; macros still decide fat loss or muscle gain. Here is how to hit protein and carbs without defaulting to accidental high-fat days.",
+    relatedGuideSlugs: [
+      "mediterranean-diet-macros",
+      "how-to-calculate-macros",
+      "carnivore-macros-guide",
+      "high-protein-diet-macros",
+      "endurance-running-macros",
+      "fiber-and-macros",
+      "restaurant-takeout-macros",
+      "intermittent-fasting-macros"
+    ],
+    relatedMacroSlugs: [
+      "high-protein-macro-calculator",
+      "cutting-macro-calculator",
+      "bulking-macros",
+      "190-pound-male-cutting-standard-macros",
+      "carnivore-macros",
+      "maintenance-macros",
+      "macros-for-men"
+    ],
+    body: `## Paleo as a food template, not a religion
+
+**Paleo-style eating** usually emphasizes **whole foods** like meat, fish, eggs, vegetables, fruits, nuts, and seeds while **limiting** highly processed foods, grains, legumes, and dairy (exact rules vary by person). For **macros**, paleo is **compatible** with cutting, maintenance, or bulking - you still need **protein targets**, **calorie awareness**, and a **carb and fat split** that matches training.
+
+Pair this with [Mediterranean Diet Macros](/guides/mediterranean-diet-macros) for a different whole-food pattern, and [How to Calculate Macros](/guides/how-to-calculate-macros) for setup.
+
+## Protein on paleo
+
+Animal proteins fit easily: **beef, poultry, fish, eggs**. If you avoid dairy, lean on **seafood** and **meat** for dense protein. Nuts help **fat**, but are **easy to overeat** - measure if calories creep.
+
+Compare [High Protein Diet Macros](/guides/high-protein-diet-macros) and [Carnivore Macros Guide](/guides/carnivore-macros-guide) if you are **animal-heavy**.
+
+## Carbs without grains
+
+**Fruit, starchy tubers, squash**, and **honey** (if included) supply carbs. Endurance athletes or big lifters may need **intentional** starch portions - see [Macros for Endurance and Running](/guides/endurance-running-macros).
+
+## Fats: nuts, oils, avocado
+
+Paleo can become **high fat fast** if every meal is **coconut oil plus almond butter**. If fat loss is the goal, **portion fats** and keep **protein** central.
+
+## Fiber and allowed foods
+
+Even without grains, **vegetables** can deliver **fiber** - read [Fiber and Macros: Targets Without Blowing Your Calories](/guides/fiber-and-macros).
+
+## Paleo vs low carb vs keto
+
+Paleo is **not automatically keto**. You can eat **high carb paleo** with tubers and fruit. If you want **ketogenic** carb levels, read [Keto Macros Explained](/guides/keto-macros-explained) and browse [Keto macro calculator](/macros/keto-macro-calculator).
+
+## Using Physiq
+
+Dial calories and protein in the **[Macro Calculator](/#calculator)**, then **choose paleo foods** that hit numbers. Compare [High protein macro calculator](/macros/high-protein-macro-calculator) when protein is the priority.
+
+## Example micro splits
+
+The site generates **standard, mediterranean, keto, and carnivore** intent pages rather than a dedicated **paleo** micro slug. Use a representative cutting page like [190 pound male cutting standard macros](/macros/190-pound-male-cutting-standard-macros) as a **calorie and protein shape** reference, then **map** tubers, fruit, and fats to your paleo pantry.
+
+## Eating out
+
+Use [Restaurant & Takeout Macros](/guides/restaurant-takeout-macros) when menus are **grain-forward** - ask for **protein plus vegetables**, watch **oils**.
+
+## Meal prep that respects macros
+
+Batch-cook **proteins**, pre-chop **vegetables**, and **pre-portion** starches (sweet potato, plantains) so **fat creep** from nuts does not dominate - [Macro Meal Planning](/guides/macro-meal-planning) helps.
+
+## Budget and access
+
+**Fish, meat, and produce** can get expensive. **Frozen** protein, **canned** fish, **eggs**, and **in-season** produce still support **high protein** if you **plan** - this is **logistics**, not glamour.
+
+## Paleo vs carnivore overlap
+
+Some paleo eaters drift **very animal-heavy**. If that is you, compare [Carnivore Macros Guide](/guides/carnivore-macros-guide) and [Carnivore macros](/macros/carnivore-macros) for **fat and protein** balance, then still run your calories through the **[Macro Calculator](/#calculator)**.
+
+## Cutting without defaulting to keto
+
+**Lower carb** paleo can mimic **keto** if you remove **tubers and fruit**. If that is not your goal, keep **intentional starches** for **training** - see [Macros for Muscle Gain](/guides/macros-for-muscle-gain).
+
+## Seasonal fruit and honey budgeting
+
+**Summer fruit** can **stack carbs** quickly. **Honey** on everything turns a **paleo** day into a **sugar** day fast - weigh **dense carbs** the same way you weigh **rice** on a standard diet.
+
+## Protein on a budget cuts
+
+**Chicken thighs**, **canned fish**, **eggs**, and **frozen** seafood help **protein** when **filet mignon** is not weekly reality - [High Protein Diet Macros](/guides/high-protein-diet-macros).
+
+## Traveling paleo
+
+Airports and hotels skew **grain and oil** - pack **protein** (jerky, powder, bars you tolerate) and use [Restaurant & Takeout Macros](/guides/restaurant-takeout-macros) thinking even when you are **paleo-aligned**.
+
+## Electrolytes and very low carb paleo
+
+If you run **low carb** paleo, **hydration** and **electrolyte awareness** matter for **headaches and fatigue** in some people - this is **general education**, not medical electrolyte prescribing - compare [Keto Macros Explained](/guides/keto-macros-explained) because **mechanics** overlap even when foods differ.
+
+## Paleo and intermittent fasting
+
+**IF** plus paleo can work if **protein** still hits across the eating window - [Intermittent Fasting Macros](/guides/intermittent-fasting-macros).
+
+## Sauces, spice blends, and hidden sugar
+
+**BBQ rubs**, **jarred sauces**, and **glazes** can carry **sugar** even on a **whole-food** template - scan labels or **build** simple spice mixes at home.
+
+## Athletes and starch portions
+
+**CrossFit**, **hyrox**, and **team sports** often need **repeatable starch** amounts around training - **weigh** cooked potatoes the first few weeks until **eyeballing** matches the scale.
+
+## Common mistakes
+
+- **Unlimited nuts** erasing a deficit
+- **Too little starch** for hard training
+- Treating paleo as **low calorie** by default
+- **Skipping legumes** without replacing **protein and fiber** thoughtfully
+
+## Who this is for
+
+Adults using a **paleo template** who still want **predictable macro control**. Not a medical nutrition prescription.
+
+## FAQ
+
+**Do I need grains to bulk?** No, but **carb sources** must exist somewhere.
+
+**Is paleo anti-carb?** No - **carb amount** is independent of the template.
+
+**What about honey and maple?** They are **sugar** - budget like any carb.
+
+**Can vegetarians do paleo?** It is harder - [Vegetarian Macros for Muscle & Fat Loss](/guides/vegetarian-macros) may fit better.
+
+**How do I track?** Weigh **starches and fats**, **anchor protein**.
+
+**Does paleo mean high protein?** Only if you **build meals** that way - **template does not auto-hit grams**.
+
+**Bottom line:** Paleo picks **food quality**; **macros pick the outcome**. Do both on purpose.`,
+  },
+
+  {
+    slug: "endurance-running-macros",
+    title: "Macros for Endurance and Running (Without Wrecking Recovery)",
+    categoryId: "muscle-gain",
+    tags: ["endurance", "running", "fueling"],
+    excerpt:
+      "Fueling lifting plus running: calorie needs, carb timing ideas, protein for muscle repair, and mistakes that underfuel mileage or strength.",
+    metaTitle: "Endurance & Running Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Running and lifting macros: fuel glycogen, keep protein adequate, adjust calories by weekly trends. General endurance fueling education, not medical advice.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Add miles without wiping out the gym. This guide balances carbs and protein when endurance work stacks on top of strength training.",
+    relatedGuideSlugs: [
+      "macros-for-muscle-gain",
+      "maintenance-macros-guide",
+      "carb-cycling-macros",
+      "macros-for-fat-loss",
+      "muscle-retention-while-cutting-macros",
+      "intermittent-fasting-macros",
+      "protein-per-pound",
+      "vegan-macros"
+    ],
+    relatedMacroSlugs: [
+      "maintenance-macros",
+      "bulking-macros",
+      "bulking-macro-calculator",
+      "160-pound-female-bulking-standard-macros",
+      "high-protein-macros",
+      "cutting-macros",
+      "macros-for-women"
+    ],
+    body: `## Endurance adds a fueling problem lifting-only plans skip
+
+**Running, cycling, and other endurance work** burn **glycogen**, raise **recovery demand**, and often increase **weekly calorie needs**. If you copy **pure lifting macros** without accounting for **session length** and **frequency**, you may underfuel **mood**, **immune feel**, and **performance**.
+
+Start with [Macros for Muscle Gain](/guides/macros-for-muscle-gain) for hypertrophy basics, then layer endurance with this guide. [Maintenance Macros: How to Eat at Your TDEE](/guides/maintenance-macros-guide) helps when volume is high but **scale weight** should stay stable.
+
+## Calories: match the week, not one workout
+
+**Long sessions** (often **90+ minutes** or **high weekly mileage**) frequently need **more** total energy than **three lifting sessions** alone. Use **weight trend**, **performance**, and **hunger** (carefully) alongside the **[Macro Calculator](/#calculator)** baseline.
+
+## Carbohydrate: the performance macro for many endurance athletes
+
+**Carbs** replenish **glycogen**. Many runners and cyclists do better with **clear pre-session** carbs and **post-session** carbs, especially when sessions are **hard** or **stacked** near lifting. [Carb Cycling: When It Helps and How to Set Macros](/guides/carb-cycling-macros) can help if you like structured high-low days.
+
+## Protein: still matters for muscle repair
+
+**Protein** remains important if you lift **and** run - think **roughly 0.7g to 1.0g per lb** for many active adults, toward the **higher** side if you are **dieting** or **newer** to lifting. See [Protein Intake per Pound Explained](/guides/protein-per-pound).
+
+## Fat: essential, easy to overuse for fueling
+
+**Fats** support **hormones** and **satiety**, but **high-fat meals** right before **hard intervals** bother some athletes’ stomachs. **Personal tolerance** wins.
+
+## Hydration and electrolytes (education only)
+
+**Sweat loss** changes with heat and pace. This is **not** medical advice - if you cramp severely or feel ill, work with a **clinician or coach** for your case.
+
+## Weight loss while training for a race
+
+**Small deficits** are often safer for **retaining performance** than aggressive cuts - see [Macros for Fat Loss](/guides/macros-for-fat-loss) and [Muscle Retention While Cutting: Macros That Protect Lean Mass](/guides/muscle-retention-while-cutting-macros).
+
+## Same-day lifting and running
+
+If you **lift and run** in one day, **fueling** and **meal timing** get personal. Some people prefer **carbs around** the harder session; others split intake. **Total daily** protein and calories still matter most for **week-to-week** trends.
+
+## Macro hubs and examples
+
+Browse [Maintenance macros](/macros/maintenance-macros) and [Bulking macros](/macros/bulking-macros) depending on whether you need **more fuel** for volume. A micro example like [160 pound female bulking standard macros](/macros/160-pound-female-bulking-standard-macros) is only a **shape** reference for **higher intake** phases.
+
+## Women and endurance
+
+**Iron-containing foods** and **overall energy availability** matter for many female athletes - compare [Best Macros for Women](/guides/best-macros-for-women) and [Macros Across Your Menstrual Cycle](/guides/menstrual-cycle-macros) if cycle timing affects training.
+
+## Meal timing (flexible)
+
+**Night runners** may prefer **carb at lunch and dinner**; **morning runners** may prefer **a small breakfast** or **later fuel** depending on gut comfort - [Intermittent Fasting Macros](/guides/intermittent-fasting-macros) if you compress meals.
+
+## Vegan and plant-based endurance
+
+See [Vegan Macros](/guides/vegan-macros) for **protein density** tactics when mileage is high.
+
+## Taper weeks and lower volume
+
+Before a **race** or during a **planned down week**, **calories and carbs** often shift even if you want **scale stability**. Some athletes **reduce** training carbs slightly; others keep **carbs** higher to **feel good** - use **performance and weight trend** as feedback, not Instagram rules.
+
+## Strength sessions still need protein
+
+If you **run** and **lift**, you are asking for **recovery on two fronts**. Keep **protein** from sliding on **double days** - [Muscle Retention While Cutting: Macros That Protect Lean Mass](/guides/muscle-retention-while-cutting-macros) applies if you are also in a **deficit**.
+
+## When to involve a sports dietitian
+
+**Recurring injuries**, **lost periods** (see medical care), **big event goals**, or **confusing symptoms** are reasons to work with **qualified professionals** - articles are **starting points**, not individualized plans.
+
+## Brick workouts and stacked days
+
+**Bike plus run** or **double sessions** increase **glycogen demand** for many athletes. On those days, **carb timing** around the harder piece often matters more than **perfect macro ratios** - still keep **protein** across the day.
+
+## Hypertrophy blocks while mileage is high
+
+If you want **muscle** and **miles**, expect **tradeoffs**. Sometimes the honest move is **short strength phases** with **moderate mileage** rather than **max everything** forever - compare [Macros for Muscle Gain](/guides/macros-for-muscle-gain).
+
+## Race week practicalities
+
+**Taper** weeks change **training load** - some athletes keep **carbs** steady to **feel good**, others **trim** slightly if **appetite** falls - **GI rehearsal** for race morning matters more than **perfect macro ratios** for most hobby racers.
+
+## Common mistakes
+
+- **Copying bodybuilding cuts** while mileage climbs
+- **Protein neglect** because **cardio day**
+- **No carb plan** around long runs
+- **Ignoring injury risk** from underfueling plus overreaching
+
+## Who this is for
+
+**Recreational to serious endurance athletes** who also care about **strength** and **body composition**. Not medical nutrition for eating disorders or disease states.
+
+## FAQ
+
+**Should runners go low carb?** Some experiment - many struggle with **top-end performance** without strategic carbs.
+
+**How do I eat on rest days?** Often **slightly lower carbs**, **stable protein**, adjust **fats** to calories.
+
+**Will running kill gains?** **Recovery** and **protein** usually decide more than running itself.
+
+**Do I need gels?** Depends on **duration** and **intensity** - practice in training.
+
+**What if I am vegan?** See [Vegan Macros](/guides/vegan-macros).
+
+**How do I know if I am underfueled?** **Performance drops**, **illness frequency**, **mood**, and **cycle changes** (when applicable) are **signals** to reassess with professionals - not a self-diagnosis checklist.
+
+**Bottom line:** Endurance raises **carb and calorie needs** for many people - build a plan that supports **sessions**, **lifting**, and **weekly trends**.`,
+  },
+
+  {
+    slug: "macro-tracking-accuracy-guide",
+    title: "Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes",
+    categoryId: "basics",
+    tags: ["tracking", "accuracy", "logging"],
+    excerpt:
+      "Log macros closer to reality: raw vs cooked weights, label tricks, restaurant oil, alcohol, and when to tighten tracking versus zoom out to trends.",
+    metaTitle: "Macro Tracking Accuracy Guide | Macro Academy | Physiq",
+    metaDescription:
+      "Macro tracking accuracy: weigh consistently, catch hidden oils, log alcohol honestly. Make your Macro Calculator targets match real life with weekly averages.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Small logging errors add up. This guide tightens the basics (scales, servings, oils) so your targets and your results stop arguing.",
+    relatedGuideSlugs: [
+      "how-to-calculate-macros",
+      "restaurant-takeout-macros",
+      "alcohol-and-macros",
+      "keto-macros-explained",
+      "why-macros-matter",
+      "fat-loss-plateau-macros",
+      "macro-meal-planning",
+      "menstrual-cycle-macros"
+    ],
+    relatedMacroSlugs: [
+      "cutting-macros",
+      "high-protein-macros",
+      "protein-intake-for-200-pound-male",
+      "maintenance-macros",
+      "macros-for-women",
+      "bulking-macros",
+      "cutting-macro-calculator"
+    ],
+    body: `## Perfect tracking is a myth; useful tracking is a skill
+
+**Macro tracking** works best when it is **honest**, **repeatable**, and **good enough** to steer **weekly averages**. Small logging mistakes stack - especially with **oils**, **condiments**, and **one bite** foods - so your **deficit** might not be a deficit.
+
+Read [How to Calculate Macros](/guides/how-to-calculate-macros) for targets, then use this guide to **tighten accuracy** without obsession. For **why the scale disagrees**, revisit [Why Macros Matter](/guides/why-macros-matter).
+
+## Scales: raw vs cooked
+
+**Weights change** with cooking. Pick **one convention** (usually **raw** for meat if you buy raw, or always use the **database entry** that matches how you weigh) and **stick** to it. Mixing **raw logged as cooked** is a classic **300+ calorie** drift.
+
+## Nutrition labels: servings vs package
+
+**Servings** can be **weird** (who eats two thirds of a bar?). Weigh the **whole item** when possible. **Rounding** on labels is legal and can add noise - **trends** still work if you are consistent.
+
+## Restaurant and shared meals
+
+Oil hides in **sautés** and **sauces**. Use [Restaurant & Takeout Macros](/guides/restaurant-takeout-macros) and assume **ranges**, not precision.
+
+## Eyeballing
+
+Beginners should **weigh** for a few weeks to **calibrate**. Veterans can eyeball **stable meals** they have weighed **100 times**.
+
+## Zero-calorie traps
+
+**Sprays**, **sugar-free** products, and **keto snacks** still affect **adherence** and sometimes **calories** more than labels imply - read [Keto Macros Explained](/guides/keto-macros-explained) with skepticism for packaged hype.
+
+## Alcohol logging
+
+See [Alcohol and Macros](/guides/alcohol-and-macros) - liquid calories are easy to **half-log**.
+
+## Database hygiene
+
+Pick **one trusted entry** per staple food and **favorite it**. Switching between five different **chicken breast** logs weekly adds noise that looks like **metabolic mystery**.
+
+## Meal prep and batch cooking
+
+Weigh **before** you mix casseroles, or weigh **components** and log **per serving** consistently - [Macro Meal Planning](/guides/macro-meal-planning) helps keep repeats simple.
+
+## When to loosen vs tighten accuracy
+
+**Tighten** when progress **stalls** and habits look **on point**. **Loosen** when tracking hurts **mental health** - some people shift to **protein plus calories** only for a season.
+
+## Tools
+
+Use the **[Macro Calculator](/#calculator)** for **targets**, not as a judge of your moral character.
+
+## Compare hubs
+
+[Cutting macros](/macros/cutting-macros) and [High protein macros](/macros/high-protein-macros) help you sanity-check whether your logged day **matches intent**. Micro example: [protein intake for 200 pound male](/macros/protein-intake-for-200-pound-male).
+
+## Accuracy and plateaus
+
+If you are **sure** your logs are tight and weight still stalls, read [Fat Loss Plateau: When and How to Adjust Your Macros](/guides/fat-loss-plateau-macros) - sometimes the answer is a real adjustment, not **more guilt**.
+
+## Barcodes and branded items
+
+**Scanning** can be fast, but **serving sizes** still trick people - **weigh** the first few times even when a barcode exists. **Limited edition** flavors sometimes map to the **wrong** database entry.
+
+## International foods and mixed cuisines
+
+**Imported labels** may use **kj**, **per 100g**, or **dry weight** for grains. Pick entries that match **your package** and **your cooking method** - [Restaurant & Takeout Macros](/guides/restaurant-takeout-macros) when meals are **mixed cuisine** at home too.
+
+## Shared household meals
+
+If someone else cooks, **estimate** with **ranges** and **repeatable templates** - perfection is impossible, **bias direction** matters. One **heavy oil** meal does not erase a week if the other days are **honest**.
+
+## Pre-logging and decision fatigue
+
+**Logging ahead** (morning or night before) reduces **impulse portions** for some people - [Macro Meal Planning](/guides/macro-meal-planning).
+
+## When the scale disagrees with perfect logs
+
+**Hormonal water**, **salt**, **new training**, and **inflammation** can all move weight - women may notice **monthly patterns** - [Macros Across Your Menstrual Cycle](/guides/menstrual-cycle-macros). Trust **multi-week** averages before you **slash food**.
+
+## Kitchen scale maintenance
+
+**Low batteries** and **uneven counters** can drift weights - **tare** often and **check** with a **known weight** occasionally if something feels off.
+
+## Liquids and milks
+
+**Plant milks** and **coffee creamers** vary by brand - pick **one** entry and **scan** when the carton changes - small differences **repeat daily** become **big** weekly errors.
+
+## Duplicate foods in your diary
+
+If you log **five** different **chicken breast** items, your history becomes noise - **favorite** one **verified** entry and delete the rest from **recents**.
+
+## Guest meals and family dinners
+
+When you cannot weigh food, pick a **similar chain meal** as a **proxy** or log **components** with **ranges** - one uncertain meal does not ruin a week if the other **six days** are tight.
+
+## Common mistakes
+
+- **Different database entries** every week for the same food
+- **Forgetting oils** and **dressings**
+- **Logging exercise calories** then **eating them all back** blindly
+- **Chasing 1g accuracy** while **sleep** is broken
+
+## Who this is for
+
+Anyone who **tracks macros** and wonders why **math** and **scale** disagree. Not for clinical eating disorders - seek professional support when tracking fuels distress.
+
+## FAQ
+
+**Should I track net carbs?** Depends on **app** and **diet** - stay consistent.
+
+**Do food scales need to be expensive?** A **simple digital** scale is enough.
+
+**How often to weigh myself?** **Daily** or **3x per week** can work - use **averages**.
+
+**Is MyFitnessPal wrong?** Crowd databases vary - **verify** flagship foods.
+
+**Can I track only protein?** Sometimes - see [Why Macros Matter](/guides/why-macros-matter).
+
+**Should I weigh peanut butter?** Yes - **nut butters** are a classic underestimate.
+
+**Does cooking method change macros?** **Fat added in cooking** changes everything - log **added oil**.
+
+**Bottom line:** Accuracy is **consistency with reality** - weigh smart, log the **hidden fat**, and judge **weeks**, not single logs.`,
+  },
+
+  {
+    slug: "skinny-fat-recomp-macros",
+    title: "Skinny-Fat Recomp: Macros for Beginners With Low Muscle Mass",
+    categoryId: "body-recomposition",
+    tags: ["skinny-fat", "beginner", "recomp"],
+    excerpt:
+      "Skinny-fat beginners: protein-first macros, maintenance vs mild deficit, lifting priorities, and why panic cardio rarely fixes shape.",
+    metaTitle: "Skinny-Fat Recomp Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Skinny-fat macro plan: high protein, patient calories, consistent lifting. Beginner recomp habits using the Macro Calculator and realistic timelines. Practical.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "If you are thin but soft, the fix is usually muscle and patience, not a crash diet. This guide sets protein, calories, and training-first habits.",
+    relatedGuideSlugs: [
+      "macros-for-body-recomposition",
+      "lean-bulk-macros",
+      "fat-loss-macros",
+      "protein-per-pound",
+      "best-macros-for-women",
+      "best-macros-for-men",
+      "macro-tracking-accuracy-guide",
+      "activity-level-neat-tdee-macros"
+    ],
+    relatedMacroSlugs: [
+      "maintenance-macros",
+      "180-pound-male-recomp-standard-macros",
+      "bulking-macros",
+      "high-protein-macro-calculator",
+      "macros-for-women",
+      "macros-for-men",
+      "cutting-macros",
+      "bulking-macro-calculator"
+    ],
+    body: `## Skinny-fat usually means under-muscled, not undisciplined
+
+**Skinny-fat** describes a common beginner shape: **normal or low BMI** but **soft midsection**, **little muscle**, and **low strength reserves**. Nutrition strategy should **protect muscle**, **support training**, and avoid **panic cutting** that erases what little muscle you have.
+
+Read [Macros for Body Recomposition](/guides/macros-for-body-recomposition) and [What Are Macros?](/guides/what-are-macros), then use this guide for a **beginner-friendly** path.
+
+## Cut, bulk, or recomp first?
+
+There is no universal answer. **Effective** paths often look like:
+
+- **Begin lifting** with a **protein-forward** diet at **maintenance** or a **tiny deficit** if body fat truly bothers you
+- Avoid **aggressive deficits** if strength is **very low** and training is **inconsistent**
+- Consider a **lean bulk** after you can **train consistently** - [Lean Bulk Macros](/guides/lean-bulk-macros)
+
+## Protein first, always
+
+Aim toward **roughly 0.8g to 1.0g per lb** for many beginners who lift, adjusting with preference - [Protein Intake per Pound Explained](/guides/protein-per-pound).
+
+## Calories: patience beats drama
+
+**Maintenance** while learning technique prevents **underrecovery**. If you want fat loss, keep the deficit **mild** - pair with [Fat Loss Macros](/guides/fat-loss-macros).
+
+## Training beats macro min-maxing
+
+You need **compound movements**, **progressive overload**, and **consistency** more than a **perfect split**. Muscle is the **long-term** fix for shape.
+
+## Cardio: useful, not a replacement
+
+Cardio helps **health** and **expenditure** - it does not **build** the shoulders and glutes you want from lifting.
+
+## Women-specific notes
+
+**Iron**, **protein**, and **cycle-related water weight** can confuse beginners - read [Best Macros for Women](/guides/best-macros-for-women) and [Macros Across Your Menstrual Cycle](/guides/menstrual-cycle-macros) for **monthly** perspective.
+
+## Men-specific notes
+
+Beginners often **undereat** while **overtraining** socially - [Best Macros for Men](/guides/best-macros-for-men).
+
+## Calculator and programmatic checks
+
+Use the **[Macro Calculator](/#calculator)** with honest **activity**. Compare [Maintenance macros](/macros/maintenance-macros) and a **recomp** micro page like [180 pound male recomp standard macros](/macros/180-pound-male-recomp-standard-macros) for **structure**, not **identity**.
+
+## Intermediate expectations
+
+If you already train hard, you may need **more structured** phases - read [Recomposition Macros for Intermediate Lifters](/guides/recomposition-intermediate-macros).
+
+## Tracking without spirals
+
+If logging feels overwhelming, read [Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes](/guides/macro-tracking-accuracy-guide) and aim for **minimum effective** detail.
+
+## Timeline honesty
+
+**Months** of consistent lifting change photos more than **weeks** of macro tweaks. The scale may move slowly if muscle arrives while fat drops - **measurements** help.
+
+## A simple training priority list (beginner)
+
+Think **squat or leg press**, **hinge**, **push**, **pull**, **carry or core** - not **six** curl variations. Technique first, **progressive load** second. Nutrition cannot replace **mechanical tension** over time.
+
+## Example eating pattern (illustration)
+
+**Breakfast:** eggs or Greek yogurt plus fruit - **Lunch:** chicken or tofu bowl with rice and vegetables - **Dinner:** fish or beef with potatoes and salad - **Snack:** protein shake only if needed to hit **protein**. Swap foods freely; keep **protein** and **calorie tier** similar.
+
+## Learn the vocabulary once
+
+If **macros** feel alien, read [What Are Macros?](/guides/what-are-macros) once, then stop **restarting** from zero every Monday.
+
+## Body recomposition rate reality
+
+**Recomposition** can be **slow** - if you want faster **fat loss**, a **real deficit** phase may be needed - if you want faster **muscle**, a **surplus** phase may be needed - pretending you can **max both** forever often leads to **spinning** - [Macros for Body Recomposition](/guides/macros-for-body-recomposition).
+
+## Steps and daily movement
+
+**NEAT** helps **adherence** for some beginners - extreme **sedentary** life makes **small deficits** feel huge - read [Activity Level, NEAT, and TDEE: Why Your Macro Targets Move](/guides/activity-level-neat-tdee-macros).
+
+## When a mild deficit makes sense
+
+If **midsection fat** affects **confidence** and you already lift, a **small deficit** (often roughly **10% to 15%** below estimated maintenance for some people) can work **if protein** stays high - pair with [Fat Loss Plateau: When and How to Adjust Your Macros](/guides/fat-loss-plateau-macros) for adjustment hygiene.
+
+## Measurements and photos
+
+**Waist** at the navel, **hips**, and **thigh** every **2 to 4 weeks** beats **daily mirror** guessing. Photos in **consistent lighting** help when the scale is **flat** but shape changes - [Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes](/guides/macro-tracking-accuracy-guide) for **weigh-in discipline**.
+
+## Patience with the scale
+
+Beginners sometimes gain **a little scale weight** early from **water and muscle**, especially if they were **undertrained** - judge **months**, not **two weeks**.
+
+## Gym consistency beats perfect programs
+
+**Twice a week** forever beats **five days** for three weeks then **zero** - anchor **non-negotiable** sessions you can keep when work gets busy.
+
+## Protein powder is optional, not mandatory
+
+**Powder** can help you hit **grams** when appetite is low - it is not required if you prefer **whole food** - [Protein Intake per Pound Explained](/guides/protein-per-pound).
+
+## Common mistakes
+
+- **Crash diet** plus **no lifting**
+- **Only cardio** and **fear of food**
+- **Program hopping** weekly
+- Claiming **CICO failed** while **under-logging** oils
+
+## Who this is for
+
+**Healthy beginners** with **low muscle** who want a **saner** first year. Not medical advice.
+
+## FAQ
+
+**Should I cut belly fat first?** You cannot **spot reduce** - overall fat loss plus **muscle** changes the look.
+
+**How fast will I recomp?** **Slower** than social media - think **months**.
+
+**Do I need supplements?** **Protein food** and **training** first.
+
+**Is dirty bulking smart?** Usually **no** - [Lean Bulk Macros](/guides/lean-bulk-macros).
+
+**Can skinny-fat athletes exist?** Yes - **novice strength** still matters.
+
+**When should I get stricter with tracking?** When basics are **boringly consistent** and you need **data** to adjust.
+
+**Bottom line:** Lift, **eat enough protein**, pick **maintenance or mild deficit**, and **stay boring** for six months.`,
+  },
+
+  {
+    slug: "sugar-desserts-and-macros",
+    title: "Sugar, Desserts, and Fitting Sweets Into Macro Targets",
+    categoryId: "diet-strategies",
+    tags: ["sugar", "desserts", "flexible-dieting"],
+    excerpt:
+      "Fit desserts into macro plans: sugar as carbs, budgeting tricks, deficit vs surplus behavior, and mistakes that turn treats into invisible overages.",
+    metaTitle: "Sugar & Desserts Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Sugar and dessert macros: budget carbs and fats, protect protein, log treats on cuts or bulks. Flexible eating without pretending calories vanish. Log honestly.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "You do not need a sugar phobia to get lean. Learn how sweets fit the same macro budget as any other carb, with logging habits that stay honest.",
+    relatedGuideSlugs: [
+      "macro-meal-planning",
+      "why-macros-matter",
+      "lean-bulk-macros",
+      "macros-for-fat-loss",
+      "alcohol-and-macros",
+      "fiber-and-macros",
+      "keto-macros-explained",
+      "fat-loss-plateau-macros"
+    ],
+    relatedMacroSlugs: [
+      "cutting-macros",
+      "bulking-macros",
+      "meal-plan-for-1800-calories-standard",
+      "high-protein-macros",
+      "maintenance-macros",
+      "macros-for-women",
+      "high-protein-macro-calculator"
+    ],
+    body: `## Sugar is not a separate universe from macros
+
+**Sugar** (sucrose, glucose, fructose in sweets, drinks, sauces) contributes **carbohydrate calories** like any other carb. For **body composition**, what matters most is **total calories**, **protein adequacy**, and whether sweets **crowd out** nutrients or **trigger** overeating **for you**.
+
+Read [Why Macros Matter](/guides/why-macros-matter) and [Macro Meal Planning](/guides/macro-meal-planning) for structure.
+
+## Desserts in a fat-loss phase
+
+**Fit treats** by **budgeting**: keep **protein** high, decide **carb and fat** room, and **log before** you eat when possible. **Small daily** treats often beat **weekend binges** for adherence - pair with [Macros for Fat Loss](/guides/macros-for-fat-loss).
+
+## Desserts in a lean bulk
+
+You have **more room**, but **nutrient density** still supports **training** - see [Lean Bulk Macros](/guides/lean-bulk-macros).
+
+## Sugar and training
+
+**Fast carbs** can help **intra-workout** feel for some athletes - not required for everyone. [Macros for Endurance and Running](/guides/endurance-running-macros) touches fueling.
+
+## Alcohol plus dessert nights
+
+Stacking **wine** and **cake** is a **calorie event** - [Alcohol and Macros](/guides/alcohol-and-macros).
+
+## Fiber and fullness
+
+If sweets spike hunger, pair **protein and fiber** meals earlier - [Fiber and Macros: Targets Without Blowing Your Calories](/guides/fiber-and-macros).
+
+## Keto and sweets
+
+Keto **limits carbs**, so traditional desserts rarely fit - [Keto Macros Explained](/guides/keto-macros-explained).
+
+## Hidden sugar in sauces
+
+**BBQ**, **sweet chili**, and **condiments** can carry **surprise carbs** - [Macro Tracking Accuracy: Scales, Labels, and Logging Mistakes](/guides/macro-tracking-accuracy-guide) helps you catch them.
+
+## Using the calculator
+
+Set your **baseline** in the **[Macro Calculator](/#calculator)**. Compare [Cutting macros](/macros/cutting-macros) if treats must fit a **deficit**. Example: [meal plan for 1800 calories standard](/macros/meal-plan-for-1800-calories-standard) shows **structured** calories - swap items, keep **totals**.
+
+## Flexible dieting without chaos
+
+**Flexible** does not mean **unlogged**. Pick **planned indulgences** the same way you pick **planned protein** - see [Restaurant & Takeout Macros](/guides/restaurant-takeout-macros) when dessert is social.
+
+## Protein-forward desserts
+
+**Greek yogurt parfaits**, **protein ice cream** products, and **cottage cheese** bowls can satisfy **sweet** while helping **protein totals** - still log them - [High Protein Diet Macros](/guides/high-protein-diet-macros).
+
+## Glycemic talk (general, not medical)
+
+**Blood sugar** responses vary by person and meal context. For **fitness composition**, **total calories** and **protein** usually matter more than **GI numbers** unless a **clinician** gives you specific carb targets.
+
+## Sugar and satiety
+
+Liquids (soda, sweet coffee drinks) often add **calories** without **fullness**. If you want sweets, **solid** choices sometimes make **adherence** easier - not a rule, a **tool**.
+
+## Family and kids context
+
+If you live with **kids snacks** in the house, **pre-budget** treats the same way you budget **any** calorie - [Macro Meal Planning](/guides/macro-meal-planning). **Environmental** design (portion packs, harder reach) helps some people more than **willpower** lectures.
+
+## Cutting vs maintenance behavior
+
+On a **cut**, desserts are **tighter** because **room** is smaller - that is math, not morality. On **maintenance**, you may have **daily** sweets without sabotage - see [Maintenance Macros: How to Eat at Your TDEE](/guides/maintenance-macros-guide).
+
+## Sugar and ultra-processed foods (general)
+
+**UPF** debates are beyond this article. For **composition**, keep **protein** and **calorie targets** honest, then choose **foods** you can repeat - [Mediterranean Diet Macros](/guides/mediterranean-diet-macros) for a whole-food leaning template.
+
+## Post-workout sweets
+
+Some people like **cereal or candy** after training - if **total day** still matches goals and **protein** is covered, timing is **preference** for many - not a requirement - [Why Macros Matter](/guides/why-macros-matter).
+
+## Chocolate, baked goods, and portioning
+
+**Chocolate** is **fat plus sugar**, which stacks calories fast - **squares** or **thins** are easier to **repeat log** than breaking off **unknown** chunks from a bar. **Cookies** vary wildly - use **brand entries** or **weigh** bakery items once to **calibrate**.
+
+## Cravings vs habit loops
+
+Sometimes **dessert** is **habit** (TV time) not **hunger**. **Environment swaps** (tea, protein yogurt, earlier bedtime) can reduce **automatic** sweets - this is **behavior**, not **willpower magic**.
+
+## Sugar and fat loss plateaus
+
+If you **budget** treats honestly and still stall, the answer may be **total calories** or **NEAT**, not **sugar type** - [Fat Loss Plateau: When and How to Adjust Your Macros](/guides/fat-loss-plateau-macros).
+
+## Holidays and social calendars
+
+**Thanksgiving** is not a **macro exam** - decide **maintenance**, **rough tracking**, or **protein floor** ahead of time - [Refeed and Diet Break Macros](/guides/refeed-diet-break-macros) for structured higher days.
+
+## Frozen treats and toppings
+
+**Frozen yogurt** is not automatically **low calorie** once **toppings** arrive - weigh **sprinkles** and **sauces** once, then **repeat** the same order when you want **predictable** numbers.
+
+## Common mistakes
+
+- **Not logging** bites, licks, and tastes
+- **Moralizing** sugar instead of **budgeting** it
+- **Replacing meals** with **candy** and missing **protein**
+- **Weekend-only** chaos with **zero weekday** plan
+
+## Who this is for
+
+People who want **flexible eating** with **explicit sweets**. Not diabetes medical education - see a clinician for glycemic targets.
+
+## FAQ
+
+**Is sugar fattening?** **Excess calories** are - sugar is an **easy** calorie source.
+
+**Should I quit sugar cold turkey?** If it helps **you**, fine - **adherence** decides.
+
+**What about fruit?** **Fiber and micronutrients** - usually different **satiety** than candy.
+
+**Can I eat dessert daily?** If **weekly averages** match your goal.
+
+**Artificial sweeteners?** Personal tolerance - **hydration** and **GI** vary.
+
+**Does sugar ruin protein synthesis?** **Total protein** and **training** dominate for most people at sane intakes.
+
+**Bottom line:** Treat **dessert as carbs and fats in a budget**, protect **protein**, and keep **honest logs**.`,
+  },
+
+  {
+    slug: "menstrual-cycle-macros",
+    title: "Macros Across Your Menstrual Cycle (Energy, Appetite, Training)",
+    categoryId: "women",
+    tags: ["women", "cycle", "hormones"],
+    excerpt:
+      "Cycle-aware macro basics: common appetite and scale patterns, steady protein, when tweaks beat chaos, and when to see a clinician, not medical advice.",
+    metaTitle: "Menstrual Cycle Macros | Macro Academy | Physiq",
+    metaDescription:
+      "Cycle-aware macros for women: expect scale noise, keep protein steady, tweak carbs if helpful. Fitness education; see a clinician for pain or amenorrhea.",
+    publishedAt: "2026-04-13",
+    updatedAt: "2026-04-13",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "Hunger and scale weight shift across the month for many people. Here is how to keep macro habits stable without overreacting to short-term noise.",
+    relatedGuideSlugs: [
+      "best-macros-for-women",
+      "protein-per-pound",
+      "carb-cycling-macros",
+      "how-to-calculate-macros",
+      "reverse-diet-macros",
+      "fat-loss-plateau-macros",
+      "activity-level-neat-tdee-macros",
+      "macro-tracking-accuracy-guide"
+    ],
+    relatedMacroSlugs: [
+      "macros-for-women",
+      "cutting-macros",
+      "maintenance-macros",
+      "150-pound-female-cutting-standard-macros",
+      "high-protein-macro-calculator",
+      "bulking-macros",
+      "macros-for-men",
+      "protein-intake-for-150-pound-female"
+    ],
+    body: `## Cycles change appetite, energy, and scale noise
+
+Many people with a **menstrual cycle** notice **shifts in hunger**, **cravings**, **bloating**, and **training feel** across the month. **Individual variation is large** - this guide describes **common patterns** in general fitness language, not a diagnosis.
+
+**If you have severe pain, very irregular cycles, signs of amenorrhea, are pregnant, or have medical conditions, consult a clinician.** This content is **education**, not treatment.
+
+## Why the scale lies for days to weeks
+
+**Hormonal shifts** can influence **water retention**, **digestion**, and **glycogen storage**. That can **mask fat loss** on the scale **temporarily**. Use **monthly averages**, **waist measurements**, and **strength trends** - see [Best Macros for Women](/guides/best-macros-for-women).
+
+## Protein and training across the month
+
+**Protein** should stay **steady** for most athletes - roughly **0.8g to 1.0g per lb** for many active women, higher in some deficits - [Protein Intake per Pound Explained](/guides/protein-per-pound).
+
+## Carbs and mood or performance
+
+Some people feel better with **stable carbs**; others prefer **slight increases** premenstrually for **mood and training** - [Carb Cycling: When It Helps and How to Set Macros](/guides/carb-cycling-macros) if you like structure.
+
+## Iron-rich food context (general)
+
+Menstruation increases **iron needs** for some people - **food sources** (red meat, beans plus vitamin C) may matter for **energy**. This is **not** personalized medical advice.
+
+## Stress, sleep, and underfueling
+
+**Low energy availability** can disrupt cycles - if training plus diet feel **extreme**, seek **professional guidance**. Compare [Reverse Diet Macros After a Cut](/guides/reverse-diet-macros) only as **general education**.
+
+## RED-S style awareness (education only)
+
+**Relative energy deficiency** in sport is a **clinical** topic. If you have **lost your cycle**, feel **cold**, **injured**, or **terrified of food**, prioritize **medical and sports medicine** support - not macro blogs alone.
+
+## Tracking tips
+
+- Compare **cycle phase** notes to **weight** charts
+- Avoid **weekly panic cuts** based on **one high day**
+- Keep **protein** non-negotiable
+
+## Calculator
+
+Use the **[Macro Calculator](/#calculator)** with **typical** activity, not **one bloated day**.
+
+## Macro pages
+
+Browse [Macros for women](/macros/macros-for-women), [Cutting macros](/macros/cutting-macros), and [Maintenance macros](/macros/maintenance-macros). Example micro: [150 pound female cutting standard macros](/macros/150-pound-female-cutting-standard-macros).
+
+## Follicular vs luteal patterns (very general)
+
+Some people report **better strength or mood** in the **early** part of the cycle and **more fatigue or cravings** in the **late** part - others notice **little**. Do not force your diary to match a textbook. **Individual variation is large.**
+
+## Appetite swings and food volume
+
+If hunger rises, **protein and fiber** and **meal volume** (vegetables, broth-forward meals) can help **without** pretending cravings do not exist - [Fiber and Macros: Targets Without Blowing Your Calories](/guides/fiber-and-macros).
+
+## Activity and NEAT still move the budget
+
+**Steps** and **stress** interact with how you **feel** day to day - when **energy** drops, people sometimes move less - read [Activity Level, NEAT, and TDEE: Why Your Macro Targets Move](/guides/activity-level-neat-tdee-macros).
+
+## Strength training across the month
+
+Some lifters keep **RPE** stable by **auto-regulating** volume; others keep **volume** stable and accept **some** sessions feel harder - neither approach requires **moralizing** a bad day as **lack of discipline**.
+
+## Pregnancy and postpartum
+
+**Pregnancy**, **postpartum**, and **breastfeeding** change **needs and risks** - this guide does not cover those periods - **work with obstetric and pediatric clinicians** for individualized guidance.
+
+## Pain, clots, or sudden changes
+
+**Severe pain**, **very heavy bleeding**, **dizziness**, or **sudden cycle changes** deserve **medical evaluation** - macros are **not** the first tool.
+
+## Sleep, stress, and cravings
+
+**Short sleep** raises **appetite noise** for many people regardless of cycle phase - fixing **sleep** sometimes stabilizes **evening sugar** better than macro tweaks alone.
+
+## Contraception, IUDs, and tracking
+
+**Hormonal methods** change **bleeding patterns** - your **scale** may behave differently than **non-user** friends - compare **your own** months, not their apps.
+
+## Training log plus cycle notes
+
+A simple spreadsheet column for **cycle day** next to **session RPE** helps you spot **patterns** without turning training into **astrology** - keep it **lightweight**.
+
+## Hydration and headaches
+
+**Headaches** around your cycle can have **many causes** - **hydration**, **caffeine changes**, **sleep**, and **medical issues** belong in a **clinical** conversation when severe or new - this guide does not diagnose.
+
+## Body composition testing noise
+
+**DEXA** and other scans can be affected by **hydration** and **cycle timing** - if you test, try **consistent scheduling** month to month rather than comparing **random** days.
+
+## Travel and time zones
+
+**Sleep disruption** from travel can mimic **cycle-related fatigue** - give yourself **a few days** back home before you rewrite macros based on **one jet-lagged** weigh-in.
+
+## Common mistakes
+
+- **Cutting harder** every time the scale jumps
+- **Ignoring** strength logs while trusting **scale only**
+- **Blaming** hormones for **real** overeating patterns - both can coexist
+- Skipping **medical care** when pain or cycle loss appears
+
+## Who this is for
+
+**Adult women** who want **macro literacy** with **cycle awareness**. **Not** a substitute for medical care.
+
+## FAQ
+
+**Should macros change by phase?** Some **tweak carbs or calories** slightly; many keep **targets stable** and adjust **adherence tools**.
+
+**Why am I starving before my period?** **Common**, not universal - **protein and fiber** and **sleep** help many people.
+
+**Can I still cut fat?** Yes - use **trend data**.
+
+**Does birth control change this?** Often **yes** - individual response varies; talk to your **prescriber** for specifics.
+
+**Should beginners track macros cycle-aware?** **Basics first** - [How to Calculate Macros](/guides/how-to-calculate-macros).
+
+**Is bloating fat?** Usually **water and GI**, not overnight fat gain.
+
+**Bottom line:** Expect **noise**, protect **protein**, judge **months**, and involve **clinicians** when health red flags show.`,
+  }
+
 ];

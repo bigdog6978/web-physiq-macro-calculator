@@ -4,18 +4,18 @@
  */
 export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
   "cutting-macros": [
-    "intermittent-fasting-macros",
-    "vegetarian-macros",
+    "muscle-retention-while-cutting-macros",
+    "macro-tracking-accuracy-guide",
     "macros-for-fat-loss",
   ],
   "bulking-macros": [
-    "vegetarian-macros",
+    "carb-cycling-macros",
     "intermittent-fasting-macros",
     "macros-for-muscle-gain",
   ],
   "maintenance-macros": [
-    "reverse-diet-macros",
-    "intermittent-fasting-macros",
+    "activity-level-neat-tdee-macros",
+    "maintenance-macros-guide",
     "macros-for-body-recomposition",
   ],
   "keto-macros": [
@@ -29,9 +29,9 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "high-protein-diet-macros",
   ],
   "high-protein-macros": [
-    "vegetarian-macros",
-    "intermittent-fasting-macros",
+    "fiber-and-macros",
     "high-protein-diet-macros",
+    "vegetarian-macros",
   ],
   "macros-for-men": [
     "intermittent-fasting-macros",
@@ -39,9 +39,9 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "best-macros-for-men",
   ],
   "macros-for-women": [
-    "intermittent-fasting-macros",
-    "reverse-diet-macros",
+    "menstrual-cycle-macros",
     "best-macros-for-women",
+    "reverse-diet-macros",
   ],
   "keto-macro-calculator": [
     "intermittent-fasting-macros",
@@ -54,18 +54,18 @@ export const MACRO_SLUG_TO_ACADEMY_GUIDES: Record<string, string[]> = {
     "high-protein-diet-macros",
   ],
   "cutting-macro-calculator": [
-    "intermittent-fasting-macros",
-    "reverse-diet-macros",
+    "muscle-retention-while-cutting-macros",
+    "macro-tracking-accuracy-guide",
     "macros-for-fat-loss",
   ],
   "bulking-macro-calculator": [
-    "vegetarian-macros",
+    "endurance-running-macros",
     "intermittent-fasting-macros",
     "macros-for-muscle-gain",
   ],
   "high-protein-macro-calculator": [
-    "vegetarian-macros",
-    "intermittent-fasting-macros",
+    "fiber-and-macros",
+    "macro-tracking-accuracy-guide",
     "high-protein-diet-macros",
   ],
 };
