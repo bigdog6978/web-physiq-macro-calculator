@@ -744,10 +744,10 @@ Low carb diets may work well for people who prefer fatty foods or have low activ
     categoryId: "comparisons",
     tags: ["calculator", "comparison"],
     excerpt:
-      "Calorie calculators give you a daily energy target. Macro calculators add protein, carbs, and fat—better for composition and performance.",
+      "Calorie calculators estimate a daily energy budget (TDEE). Macro calculators add protein, carbs, and fat grams so you can steer composition, training, and adherence—not just scale weight.",
     metaTitle: "Macro Calculator vs Calorie Calculator | Macro Academy | Physiq",
     metaDescription:
-      "Macro vs calorie calculator: energy-only vs protein, carbs, and fats—when each fits, plus Physiq’s high-protein and keto macro calculator hubs.",
+      "Macro vs calorie calculator: when TDEE-only targets work, when protein and carbs matter, and how Physiq’s calculator outputs calories plus macro grams.",
     publishedAt: "2026-04-03",
     updatedAt: "2026-04-13",
     author: "Physiq",
@@ -756,28 +756,131 @@ Low carb diets may work well for people who prefer fatty foods or have low activ
     relatedGuideSlugs: [
       "what-are-macros",
       "how-to-calculate-macros",
+      "why-macros-matter",
       "macros-for-fat-loss",
       "macros-for-muscle-gain",
     ],
     relatedMacroSlugs: [
       "cutting-macros",
       "bulking-macros",
-      RECOMP_MACRO_SLUG,
       "maintenance-macros",
+      "cutting-macro-calculator",
+      "bulking-macro-calculator",
       "high-protein-macro-calculator",
       "keto-macro-calculator",
     ],
     heroIntro:
-      "A calorie calculator tells you how many calories to eat per day. A macro calculator tells you calories plus protein, carbs, and fat targets.",
-    body: `A calorie calculator tells you how many calories to eat per day. A macro calculator tells you calories plus protein, carbs, and fat targets.
+      "Choosing between calorie-only targets and full macro targets is really a question about what you are optimizing: scale weight, or weight quality, training, and sustainability. Here is a clear comparison—plus when each approach is enough.",
+    body: `If you only want the scale to move, a **calorie target** can be enough. If you care how that weight breaks down—**muscle vs fat**—or how you **feel in the gym**, **macro targets** (protein, carbohydrates, fat) usually pay off. This guide explains what each tool estimates, where they overlap, and how to choose without overcomplicating your life.
 
-Macros give you more control over body composition and performance than calories alone.
+For definitions, read [What Are Macros?](/guides/what-are-macros). For the full sequence (calories → protein → fats → carbs), see [How to Calculate Macros](/guides/how-to-calculate-macros). For the “why bother” case, see [Why Macros Matter](/guides/why-macros-matter).
 
-## Which Physiq macro page should I open next?
+## What a calorie calculator actually estimates
 
-If you already know your **style** or **priority**, open a **pillar hub** that matches: **[High protein macro calculator](/macros/high-protein-macro-calculator)** for protein-first setups, or **[Keto macro calculator](/macros/keto-macro-calculator)** for very low carb—both use the same calculator logic with different defaults.
+A **calorie calculator** (or “TDEE calculator”) answers one main question: **about how much energy you burn per day**, so you can set an **intake budget**.
 
-👉 Use the **[Macro Calculator](/#calculator)** to determine your macros.`,
+- It uses inputs such as **weight, height, age, sex**, and **activity level** to approximate **total daily energy expenditure (TDEE)**—the calories you burn across training, steps, digestion, and baseline physiology combined.
+- It outputs a **daily calorie target** (or a range) for **maintenance**, or a **deficit/surplus** if you pick a goal.
+
+**What it does not tell you:** how to split those calories into **protein, carbs, and fats**. Two people can eat the **same calories** with very different **protein** and **carb** intake—and get very different **training performance**, **hunger**, and **body-composition** results.
+
+**What it does not guarantee:** that every calculator agrees. Different formulas and activity multipliers produce **different numbers**. Treat any output as a **starting hypothesis**, then adjust using **weekly weight trends** and **performance**, not one calculator’s ego.
+
+## What a macro calculator adds
+
+A **macro calculator** starts from the same idea—**estimate energy needs**—then allocates calories into **grams of protein, carbs, and fat**.
+
+- **Protein** is set first (or emphasized) because it supports **lean mass**, **recovery**, and **satiety** for many people in fitness contexts.
+- **Fats** are often set as a **percentage of calories** or a **minimum** for hormones and food enjoyment.
+- **Carbohydrates** usually fill **remaining calories** after protein and fat—especially relevant if you **train hard** and care about **glycogen** and performance.
+
+**Same calorie budget, different composition:** A **maintenance** calorie line can be built from **high-carb / moderate-fat** or **lower-carb / higher-fat** patterns—both can match calories, but **training feel** and **adherence** may differ.
+
+### Quick mental model
+
+- **Calorie calculator** → “**How much energy should I budget?**”
+- **Macro calculator** → “**How should I spend that budget across protein, carbs, and fats?**”
+
+## Side-by-side comparison
+
+| | **Calorie calculator** | **Macro calculator** |
+|---|------------------------|------------------------|
+| **Primary output** | Daily **calories** (maintenance or goal-adjusted) | Daily **calories** **plus** **protein / carb / fat grams** |
+| **Typical inputs** | Body size, age, sex, activity, sometimes goal | Same, **plus eating style or macro strategy** in many tools |
+| **Best for** | Simple weight change focus, minimal tracking tolerance, quick baselines | Training, muscle retention, performance, structured eating styles |
+| **Limitations** | No protein/carb/fat guidance; composition outcomes under-specified | Slightly more setup; still only as good as inputs and consistency |
+| **Tracking burden** | Lower (calories only) | Higher (three macros + calories) |
+
+## When calories alone can be enough
+
+Calorie-only targets are often reasonable when:
+
+- Your main outcome is **weight on the scale**, not **muscle retention** or **performance nuance**.
+- You are running a **short experiment** (a few weeks) and want **one number** to follow.
+- You have **low tolerance** for detailed logging—**calorie awareness** alone still beats guessing.
+- Your clinician or coach has prescribed **energy-only** guidance for a specific context (always follow **their** instructions first).
+
+## When macros matter more
+
+Macro targets tend to matter more when:
+
+- You are in a **deficit** and want to **preserve muscle**—usually via **higher protein** (see [Macros for Fat Loss](/guides/macros-for-fat-loss)).
+- You are **building muscle** or running a **surplus**—**protein** and **carbs** often support **training volume** and recovery (see [Macros for Muscle Gain](/guides/macros-for-muscle-gain)).
+- You follow a **style-specific** plan (**keto**, **high protein**, **low carb**) where **carb and fat** are not interchangeable even at the same calories.
+- You care about **recomposition** or **performance** outcomes that **calories alone** do not describe.
+
+## Common misconceptions
+
+**“Macros magically override calories.”** They do not. Macros are **how you allocate** your calorie budget. Energy balance still drives broad weight trends for most people in most contexts.
+
+**“All calorie calculators agree.”** They do not. Use **trends** (2–3 weeks), not a single app’s first guess.
+
+**“Protein doesn’t change the calorie line.”** Protein still has **4 calories per gram**—it is part of the same budget. The win is **what protein does for adherence and lean mass**, not a free pass past physics.
+
+**“If I track macros, I don’t need calories.”** Most people still benefit from knowing whether their macro choices **sum** to the **intake** they intended—especially when learning.
+
+**“Carbs and fats are interchangeable for everyone.”** At the **same calories**, some people feel and perform better with different **carb/fat** splits—**preference and training** matter.
+
+## How Physiq fits
+
+The **[Physiq Macro Calculator](/#calculator)** is built to give you **both**: a **daily calorie target** and **macro grams** aligned with your **goal**, **activity**, and **eating style** where applicable.
+
+When you want **goal-specific examples** on dedicated URLs, these **pillar hubs** mirror common intents—open them when they match what you are doing (they are not mandatory clicks):
+
+- **[Cutting macro calculator](/macros/cutting-macro-calculator)** — deficit-oriented framing with Physiq defaults for cutting.
+- **[Bulking macro calculator](/macros/bulking-macro-calculator)** — surplus-oriented framing for muscle-gain contexts.
+- **[High protein macro calculator](/macros/high-protein-macro-calculator)** — protein-forward presets.
+- **[Keto macro calculator](/macros/keto-macro-calculator)** — very-low-carb strategy framing.
+
+For **cluster-level** context (not pillar pages), **[Cutting macros](/macros/cutting-macros)** and **[Bulking macros](/macros/bulking-macros)** are useful comparison anchors; **[Maintenance macros](/macros/maintenance-macros)** helps when your near-term target is **stability** rather than aggressive dieting.
+
+## Practical workflow
+
+1. **Estimate your calorie budget** (maintenance, deficit, or surplus) using a calculator you will actually use consistently—including the **[Macro Calculator](/#calculator)**.
+2. **Set protein first** to a practical range for your goal and training (often roughly **0.7–1.1g per lb** body weight for many active adults—individual needs vary).
+3. **Set dietary fat** to a sustainable minimum or percentage band that supports **satiety** and **food enjoyment**.
+4. **Allocate carbohydrates** from the remaining calories—often higher when training volume is high, lower when you prefer fat-led meals or a carb-controlled strategy.
+5. **Track 5–7 typical days**, then adjust based on **weekly averages** (scale trend, measurements if used, gym performance)—not single-day noise.
+6. **Re-run inputs** when weight, activity, or goals change materially.
+
+This workflow is the same “spine” described in [How to Calculate Macros](/guides/how-to-calculate-macros)—this article focuses on **why** you might choose macro tracking versus calorie-only tracking.
+
+## FAQ
+
+**Is TDEE the same as BMR?** **No.** **BMR** is closer to **resting** energy needs; **TDEE** includes **activity** and **training**. Most daily calorie targets for active people use a **TDEE-like** estimate, not BMR alone.
+
+**Should beginners track macros?** Not required. Some beginners do best with **one habit** (protein or calories). If you want clearer structure from day one, macros can help—just avoid **perfectionism** on week one.
+
+**Can I track only protein plus calories?** Often, yes—**protein plus total calories** is a common “middle path.” You are still making macro decisions implicitly for the remaining calories.
+
+**Do I need different tools for keto vs high protein?** You need **different macro constraints**, not necessarily different apps. A good macro calculator lets you express **strategy** (Physiq also exposes **pillar pages** like **[Keto macro calculator](/macros/keto-macro-calculator)** for keto-style defaults).
+
+**Will a macro calculator fix plateaus instantly?** No calculator replaces **accuracy**, **sleep**, **stress**, and **training**. Calculators set targets; **consistency and adjustment** drive outcomes.
+
+**Is this medical advice?** No—this is **general fitness education**. If you have a medical condition or special dietary needs, work with a **qualified professional**.
+
+👉 Start here: **[Macro Calculator](/#calculator)** for calorie + macro targets in one pass.
+`,
   },
   {
     slug: "best-macros-for-women",
