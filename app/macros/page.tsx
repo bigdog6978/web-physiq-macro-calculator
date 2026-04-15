@@ -118,12 +118,15 @@ export default function MacrosIndexPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
-      <nav className="mb-6 flex items-center gap-2 text-sm text-[#8a9e00] dark:text-muted-foreground" aria-label="Breadcrumb">
-        <Link href="/" className="text-[#8a9e00] dark:text-muted-foreground hover:text-[#768800] dark:hover:text-foreground transition-colors">
+      <nav
+        className="guide-breadcrumb mb-6 flex items-center gap-2 text-sm"
+        aria-label="Breadcrumb"
+      >
+        <Link href="/" className="transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-[#8a9e00] dark:text-muted-foreground">Macro Guides</span>
+        <span className="guide-breadcrumb-current">Macro Guides</span>
       </nav>
 
       <header className="mb-10">

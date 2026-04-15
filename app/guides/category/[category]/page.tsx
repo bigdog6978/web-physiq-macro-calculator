@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ACADEMY_CATEGORIES, getCategoryBySlug } from "@/lib/academy/categories";
 import { CATEGORY_HERO_CONFIG, CATEGORY_IMAGE_MAP } from "@/lib/academy/categoryImages";
+import { ACADEMY_ARTICLE_ROW_LINK } from "@/lib/academy/academyCardStyles";
 import { getArticlesByCategorySlug } from "@/lib/academy/queries";
 import { CalculatorCTA } from "@/components/academy/CalculatorCTA";
 import { AppConversionCTA } from "@/components/cta/AppConversionCTA";
@@ -54,18 +55,18 @@ export default async function AcademyCategoryPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <nav
-        className="mb-6 flex items-center gap-2 text-sm text-[#8a9e00] dark:text-muted-foreground"
+        className="guide-breadcrumb mb-6 flex items-center gap-2 text-sm"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+        <Link href="/" className="transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <Link href="/guides" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+        <Link href="/guides" className="transition-colors">
           Macro Academy
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-[#8a9e00] dark:text-muted-foreground">{cat.label}</span>
+        <span className="guide-breadcrumb-current">{cat.label}</span>
       </nav>
 
       {heroImage ? (
@@ -110,7 +111,7 @@ export default async function AcademyCategoryPage({
             <li key={a.slug}>
               <Link
                 href={`/guides/${a.slug}`}
-                className="block rounded-xl border border-card-border bg-card px-4 py-4 transition-colors hover:border-primary/40 hover:bg-primary-muted/40"
+                className={ACADEMY_ARTICLE_ROW_LINK}
               >
                 <span className="font-medium text-foreground">{a.title}</span>
                 <p className="mt-1 text-sm text-muted-foreground line-clamp-2">

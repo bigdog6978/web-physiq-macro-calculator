@@ -4,6 +4,10 @@ import Link from "next/link";
 import { ACADEMY_CATEGORIES } from "@/lib/academy/categories";
 import { CATEGORY_IMAGE_MAP } from "@/lib/academy/categoryImages";
 import {
+  ACADEMY_TOPIC_CARD_LINK,
+  ACADEMY_TOPIC_CARD_TITLE,
+} from "@/lib/academy/academyCardStyles";
+import {
   countPublishedByCategoryId,
   getFeaturedArticles,
   getPublishedArticles,
@@ -52,16 +56,14 @@ export default function MacroAcademyHubPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <nav
-        className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#8a9e00] dark:text-muted-foreground"
+        className="guide-breadcrumb mb-6 flex flex-wrap items-center gap-2 text-sm"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+        <Link href="/" className="transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-[#8a9e00] dark:text-muted-foreground">
-          Macro Academy
-        </span>
+        <span className="guide-breadcrumb-current">Macro Academy</span>
       </nav>
       <header className="mb-12 max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-wider text-[#b3cf00] dark:text-primary mb-3">
@@ -89,7 +91,7 @@ export default function MacroAcademyHubPage() {
               <Link
                 key={c.id}
                 href={`/guides/category/${c.slug}`}
-                className="group flex aspect-square flex-col justify-between rounded-2xl border border-card-border bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md sm:p-6 dark:bg-card dark:shadow-none dark:hover:translate-y-0 dark:hover:shadow-none"
+                className={ACADEMY_TOPIC_CARD_LINK}
               >
                 <div>
                   {imagePath ? (
@@ -99,18 +101,16 @@ export default function MacroAcademyHubPage() {
                         alt={`${c.label} category card`}
                         width={320}
                         height={180}
-                        className="h-24 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                        className="h-24 w-full object-cover"
                       />
                     </div>
                   ) : null}
-                  <h3 className="text-sm font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
-                    {c.label}
-                  </h3>
-                  <p className="mt-2 text-xs text-muted-foreground leading-snug line-clamp-3">
+                  <h3 className={ACADEMY_TOPIC_CARD_TITLE}>{c.label}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground line-clamp-3">
                     {c.description}
                   </p>
                 </div>
-                <p className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                   {n > 0 ? `${n} guide${n === 1 ? "" : "s"}` : "Coming soon"}
                 </p>
               </Link>

@@ -33,7 +33,7 @@ function IconButton({
   className?: string;
 }) {
   const baseClassName =
-    "inline-flex h-[31px] w-[31px] items-center justify-center rounded-full bg-[#8a9e00] text-white transition-all hover:brightness-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a9e00]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-primary dark:text-black dark:focus-visible:ring-primary/70";
+    "guide-share-icon-button inline-flex h-[31px] w-[31px] items-center justify-center rounded-full transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
   if (href) {
     return (
       <a

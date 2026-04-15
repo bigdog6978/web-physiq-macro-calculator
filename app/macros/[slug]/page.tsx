@@ -107,18 +107,18 @@ export default async function MacroPage({
 
       {/* Breadcrumb */}
       <nav
-        className="mb-6 flex items-center gap-2 text-sm text-[#8a9e00] dark:text-muted-foreground"
+        className="guide-breadcrumb mb-6 flex items-center gap-2 text-sm"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+        <Link href="/" className="transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <Link href="/macros" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+        <Link href="/macros" className="transition-colors">
           Guides
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-[#8a9e00] dark:text-muted-foreground truncate">{content.h1}</span>
+        <span className="guide-breadcrumb-current truncate">{content.h1}</span>
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 items-start">

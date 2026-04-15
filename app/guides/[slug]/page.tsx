@@ -118,14 +118,14 @@ export default async function AcademyGuidePage({
       />
 
       <nav
-        className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#8a9e00] dark:text-muted-foreground"
+        className="guide-breadcrumb mb-6 flex flex-wrap items-center gap-2 text-sm"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+        <Link href="/" className="transition-colors">
           Home
         </Link>
         <span aria-hidden="true">›</span>
-        <Link href="/guides" className="hover:text-[#768800] dark:hover:text-foreground transition-colors">
+        <Link href="/guides" className="transition-colors">
           Macro Academy
         </Link>
         {category && (
@@ -133,14 +133,14 @@ export default async function AcademyGuidePage({
             <span aria-hidden="true">›</span>
             <Link
               href={`/guides/category/${category.slug}`}
-              className="hover:text-[#768800] dark:hover:text-foreground transition-colors"
+              className="transition-colors"
             >
               {category.label}
             </Link>
           </>
         )}
         <span aria-hidden="true">›</span>
-        <span className="text-[#8a9e00] dark:text-muted-foreground truncate max-w-[12rem] sm:max-w-none">
+        <span className="guide-breadcrumb-current truncate max-w-[12rem] sm:max-w-none">
           {article.title}
         </span>
       </nav>

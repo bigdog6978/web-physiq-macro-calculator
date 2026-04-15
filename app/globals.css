@@ -36,6 +36,9 @@
   --carbs: #2563eb;
   --fat: #d97706;
   --calories: #dc2626;
+  --guide-accent: #8a9e00;
+  --guide-accent-hover: #768800;
+  --guide-share-icon: #ffffff;
 }
 
 .dark {
@@ -52,12 +55,12 @@
   --input-bg: #1a1a1a;
   --input-border: #2a2a2a;
   /* Dark: bright chartreuse + black text on buttons */
-  --primary: #e7ff00;
-  --primary-hover: #d4eb00;
+  --primary: #deff00;
+  --primary-hover: #cde600;
   --primary-foreground: #000000;
-  --primary-muted: rgba(231, 255, 0, 0.12);
-  --accent-bright: #e7ff00;
-  --ring: #e7ff00;
+  --primary-muted: rgba(222, 255, 0, 0.12);
+  --accent-bright: #deff00;
+  --ring: #deff00;
   --shadow-card: none;
   --cta-surface: #1a1a1a;
   --cta-surface-strong: #1f1f0a;
@@ -69,10 +72,13 @@
   --warning: #fbbf24;
   --warning-muted: rgba(251, 191, 36, 0.15);
   --danger: #ef4444;
-  --protein: #e7ff00;
+  --protein: #deff00;
   --carbs: #3b82f6;
   --fat: #fbbf24;
   --calories: #ef4444;
+  --guide-accent: #deff00;
+  --guide-accent-hover: #cde600;
+  --guide-share-icon: #000000;
 }
 
 @theme inline {
@@ -100,6 +106,8 @@
   --color-carbs: var(--carbs);
   --color-fat: var(--fat);
   --color-calories: var(--calories);
+  --color-guide-accent: var(--guide-accent);
+  --color-guide-accent-hover: var(--guide-accent-hover);
   --shadow-card: var(--shadow-card);
 }
 
@@ -137,5 +145,30 @@
 
   ::placeholder {
     color: var(--text-muted);
+  }
+
+  .guide-breadcrumb {
+    color: var(--guide-accent);
+  }
+
+  .guide-breadcrumb a {
+    transition: color 0.2s ease;
+  }
+
+  .guide-breadcrumb a:hover {
+    color: var(--guide-accent-hover);
+  }
+
+  .guide-breadcrumb-current {
+    color: var(--guide-accent);
+  }
+
+  .guide-share-icon-button {
+    background-color: var(--guide-accent);
+    color: var(--guide-share-icon);
+  }
+
+  .guide-share-icon-button:hover {
+    filter: brightness(1.1);
   }
 }

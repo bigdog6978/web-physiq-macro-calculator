@@ -1,0 +1,116 @@
+---
+description: Macro Academy article structure — SEO, slugs, metadata, body outline, cross-links, quality gate.
+globs:
+  - lib/academy/**
+  - "**/articles.ts"
+  - app/guides/**
+  - components/academy/**
+alwaysApply: false
+---
+
+# Macro Academy Article Template
+
+You are writing for **Physiq Macro Academy** (Next.js app). Every article MUST follow this template.
+
+**Registry field names:** In `lib/academy/articles.ts`, the Markdown field is **`body`** (string). When drafting, you may call the full Markdown `bodyMarkdown` for clarity, but the shipped object must use **`body`**.
+
+---
+
+## 1) Purpose & audience
+
+- One primary reader intent (e.g. “set macros for fat loss as a woman who lifts”).
+- Secondary intents become **links** to other guides, not new H2 sections that repeat the same thesis.
+- Tone: clear, non-clinical, **general fitness education**; flag medical conditions; no diagnosis or treatment claims.
+
+---
+
+## 2) URL & slug
+
+- **Slug:** lowercase, hyphenated, descriptive, stable (`best-macros-for-women`). No dates, no marketing fluff.
+- Match slug to **title promise**; avoid clickbait that the body does not deliver.
+
+---
+
+## 3) Title (viral + honest)
+
+- Pattern: **[Specific outcome or tension] + [Qualifier] + [Optional twist in parenthesis]**.
+- Must be true after reading the article; avoid “secret,” “doctors hate,” absolute cures.
+- Length: ~50–70 characters ideal for SERP; keep under ~65 where possible.
+
+---
+
+## 4) SEO metadata (fill every field)
+
+- **metaTitle:** Unique; includes primary keyword once; brand suffix if required (`| Physiq`).
+- **metaDescription:** 150–160 characters; **benefit + who it’s for + soft CTA** (calculator/guide); no duplicate of title.
+- **excerpt:** 1–2 sentences for cards/previews; distinct from metaDescription.
+
+---
+
+## 5) Taxonomy
+
+- **categoryId:** One academy category (e.g. `women`, `fat-loss`) — aligns with site IA (see `lib/academy/categories.ts`).
+- **tags:** 3–6 relevant tags; consistent naming with existing articles.
+
+---
+
+## 6) Article body structure (Markdown)
+
+- Article length **1400–2000 words**.
+
+**Order (do not shuffle without reason):**
+
+1. **Hero intro (1 short paragraph)** — promise + constraint (what this is / isn’t). Often maps to **`heroIntro`** in the registry (falls back to excerpt if omitted).
+2. **Problem framing** — 1–2 short paragraphs OR **one** tight “Key links” box (max 3–5 bullets), not a wall of bold one-liners.
+3. **Core teaching** — tables/steps only where they improve scannability (Myth vs Reality, numbered steps).
+4. **Implementation** — calculator usage, ranges, **when to adjust** (trends, not single days).
+   - **`## How to use the Macro Calculator` (and close variants):** Must mirror the real **`<form>`** in `components/MacroCalculator.tsx`. **First subsection = UI steps only** (`### In the calculator (follow the form)`): body stats (weight, height, age; optional body fat % with the form’s accuracy line if useful), **Sex** (Male / Female), **Goal** (Cut Fat, Build Muscle, Maintain, Body Recomposition), **Activity level** (honest average week), **Eating style** (note keto / carnivore / PSMF carb–fat logic), **Dietary restrictions & preferences** (toggles + optional other notes), then **Calculate Macros** → calorie + macro gram outputs. **Do not** present manual “set protein, then fat %, then carbs” as numbered *calculator* steps—that is interpretation, not the form. Put interpretation under separate headings (e.g. `### After you calculate`, `### Understanding your numbers`).
+5. **FAQ** — **one** consolidated FAQ section (group by theme); no “FAQ part 2/3/4” unless truly distinct audiences.
+6. **Closing** — one paragraph + **one** primary CTA (e.g. Macro Calculator).
+7. **Related** — handled by `relatedGuideSlugs` / `relatedMacroSlugs` + short “Next reads” list in body; **avoid** duplicating the same idea in 10+ `## Appendix:` blocks.
+
+**Forbidden patterns:**
+
+- Dozens of parallel `## Appendix:` sections that repeat the same thesis.
+- Multiple fragmented FAQ blocks with overlapping questions.
+- Long chains of “phrase—[link]” without prose context.
+
+---
+
+## 7) Cross-links & internal linking
+
+- **relatedGuideSlugs:** 5–8 guides — **highest relevance** only (published slugs only).
+- **relatedMacroSlugs:** 5–8 macro program pages/calculators — match user phase (slugs must exist under the project’s SEO macro pages).
+- **In-body links:** 1–2 per major section max; prefer **contextual** sentences over link stacks.
+- Every cross-link must answer: “Would the reader need this **now** or should it be sidebar only?”
+
+---
+
+## 8) Dates & authorship
+
+- **publishedAt** / **updatedAt:** ISO dates (`YYYY-MM-DD`); **updatedAt** when meaningfully revised.
+- **author:** Consistent house name unless byline is real.
+- **status:** `"published"` | `"draft"`; **featured** optional for hub.
+
+---
+
+## 9) Quality gate (before ship)
+
+- [ ] Title ↔ body promise aligned
+- [ ] Meta unique vs other articles
+- [ ] No duplicate FAQ answers
+- [ ] Medical/high-risk topics disclaimed once, visibly
+- [ ] Primary CTA clear
+- [ ] Slug readable in isolation
+
+---
+
+## Output format when asked to “draft an article”
+
+Provide YAML or a bullet list of all fields the app expects, then the full Markdown body.
+
+**Include at minimum:**
+
+`slug`, `title`, `metaTitle`, `metaDescription`, `excerpt`, `categoryId`, `tags`, `heroIntro`, `body` (or draft label `bodyMarkdown` — must become **`body`** in `articles.ts`), `relatedGuideSlugs`, `relatedMacroSlugs`, `publishedAt`, `updatedAt`, `author`, `status` (and `featured` if used).
+
+Then output the full Markdown for **`body`**, following the section order and forbidden patterns above.

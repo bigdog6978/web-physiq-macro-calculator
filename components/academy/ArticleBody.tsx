@@ -15,7 +15,7 @@ export function ArticleBody({ markdown }: ArticleBodyProps) {
         [&_h4]:text-base [&_h4]:font-semibold [&_h4]:text-[#b3cf00] dark:[&_h4]:text-foreground [&_h4]:mt-4 [&_h4]:mb-1
         [&_p]:leading-relaxed
         [&_strong]:text-foreground [&_strong]:font-semibold
-        [&_a]:text-[#b3cf00] dark:[&_a]:text-primary [&_a]:underline-offset-2 hover:[&_a]:text-[#9db500] dark:hover:[&_a]:text-primary/85
+        [&_a]:text-[#b3cf00] dark:[&_a]:text-[var(--guide-accent)] [&_a]:underline-offset-2 hover:[&_a]:text-[#9db500] dark:hover:[&_a]:text-[var(--guide-accent)]
         [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5
         [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5
         [&_blockquote]:border-l-2 [&_blockquote]:border-primary/50 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground/90
