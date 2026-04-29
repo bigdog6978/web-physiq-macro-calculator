@@ -39,6 +39,15 @@
   --guide-accent: #8a9e00;
   --guide-accent-hover: #768800;
   --guide-share-icon: #ffffff;
+  /* PSMF disclaimer panel — light: #fff surface; body/muted meet ≥4.5:1 on white */
+  --psmf-notice-bg: #ffffff;
+  --psmf-notice-border: var(--card-border);
+  --psmf-notice-heading: var(--foreground);
+  --psmf-notice-body: var(--foreground);
+  /* #4b5563 ≈ 7.25:1 on #ffffff (AA body) */
+  --psmf-notice-muted: #4b5563;
+  --psmf-notice-link: var(--primary-hover);
+  --psmf-notice-link-decoration: var(--primary-hover);
 }
 
 .dark {
@@ -79,6 +88,14 @@
   --guide-accent: #deff00;
   --guide-accent-hover: #cde600;
   --guide-share-icon: #000000;
+  /* PSMF panel — preserve tinted surface + primary border (matches prior Tailwind look) */
+  --psmf-notice-bg: var(--primary-muted);
+  --psmf-notice-border: color-mix(in srgb, var(--primary) 45%, transparent);
+  --psmf-notice-heading: var(--foreground);
+  --psmf-notice-body: var(--foreground);
+  --psmf-notice-muted: var(--muted-foreground);
+  --psmf-notice-link: var(--foreground);
+  --psmf-notice-link-decoration: var(--primary);
 }
 
 @theme inline {
@@ -170,5 +187,57 @@
 
   .guide-share-icon-button:hover {
     filter: brightness(1.1);
+  }
+}
+
+@layer components {
+  .psmf-education-panel {
+    background-color: var(--psmf-notice-bg);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--psmf-notice-border);
+    color: var(--psmf-notice-heading);
+  }
+
+  .psmf-education-panel__heading {
+    color: var(--psmf-notice-heading);
+    font-weight: 600;
+  }
+
+  .psmf-education-panel__body {
+    color: var(--psmf-notice-body);
+  }
+
+  .psmf-education-panel__muted {
+    color: var(--psmf-notice-muted);
+  }
+
+  .psmf-education-panel__section-title {
+    color: var(--psmf-notice-heading);
+    font-weight: 500;
+  }
+
+  .psmf-education-panel a {
+    color: var(--psmf-notice-link);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--psmf-notice-link-decoration);
+    border-radius: 2px;
+  }
+
+  .psmf-education-panel a:hover {
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--psmf-notice-link-decoration) 80%,
+      transparent
+    );
+  }
+
+  .psmf-education-panel a:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--psmf-notice-bg),
+      0 0 0 4px var(--ring);
   }
 }

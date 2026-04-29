@@ -9,13 +9,13 @@ const LEAD =
 export function PsmfEducationPanel() {
   return (
     <div
-      className="rounded-lg border border-primary/45 bg-primary-muted px-4 py-3 text-sm text-foreground space-y-3"
+      className="psmf-education-panel rounded-lg px-4 py-3 text-sm space-y-3"
       role="region"
       aria-label="PSMF medical notice and sources"
     >
-      <p className="font-semibold text-foreground">PSMF — read before you start</p>
-      <p className="text-muted-foreground leading-relaxed">{LEAD}</p>
-      <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+      <p className="psmf-education-panel__heading">PSMF — read before you start</p>
+      <p className="psmf-education-panel__body leading-relaxed">{LEAD}</p>
+      <ul className="psmf-education-panel__muted list-disc pl-5 space-y-1">
         <li>Not medical advice. Consult a physician or registered dietitian before a very-low-calorie plan.</li>
         <li>Short-term use; monitor hydration, electrolytes, and micronutrients (often with professional guidance).</li>
         <li>
@@ -24,16 +24,11 @@ export function PsmfEducationPanel() {
         </li>
       </ul>
       <div>
-        <p className="font-medium text-foreground mb-2">Sources &amp; further reading</p>
+        <p className="psmf-education-panel__section-title mb-2">Sources &amp; further reading</p>
         <ul className="space-y-2">
           {PSMF_SOURCE_LINKS.map((s) => (
-            <li key={s.href} className="text-muted-foreground">
-              <a
-                href={s.href}
-                className="rounded-sm text-foreground underline decoration-2 decoration-primary underline-offset-2 hover:decoration-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <li key={s.href} className="psmf-education-panel__muted">
+              <a href={s.href} target="_blank" rel="noopener noreferrer">
                 {s.label}
               </a>
               <span> — {s.description}</span>

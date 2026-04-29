@@ -201,55 +201,98 @@ If you take one thing from this guide, take this: **protect protein**, **keep th
   },
   {
     slug: "protein-per-pound",
-    title: "Protein per Pound: The Range That Works (Without the Bro Math)",
+    title: "Protein per Pound: Gram Bands for Fat Loss, Muscle, and Maintenance",
     categoryId: "basics",
-    tags: ["protein"],
+    tags: ["protein", "basics", "high-protein", "nutrition", "macro-split"],
     excerpt:
-      "Grams per pound beats “percent of calories” when you are busy. Learn practical protein bands for cuts, bulks, and maintenance—plus how to spread intake without meal-prep cosplay.",
-    metaTitle: "Protein per Pound for Fat Loss & Muscle | Physiq Macro Academy",
+      "Turn protein advice into daily grams using per-pound ranges for cuts, surpluses, and maintenance—then hold the target steady long enough to read real weight and strength trends.",
+    metaTitle: "Protein per Pound: Gram Targets by Goal | Physiq Macro Academy",
     metaDescription:
-      "Protein intake per lb: practical 0.7–1.1g/lb bands, meal spacing, and calculator workflow. Set grams in the Macro Calculator—then keep the target boring.",
+      "How much protein per pound? Practical gram bands for cuts and gains, plus how to set protein in Physiq’s Macro Calculator—general education, not medical advice.",
     publishedAt: "2024-06-01",
-    updatedAt: "2026-04-14",
+    updatedAt: "2026-04-28",
+    author: "Physiq",
     featured: false,
     status: "published",
+    heroIntro:
+      "Protein targets are easiest to run in real life when you express them as grams per day—and grams per day are simplest to set from protein per pound of body weight. This guide covers practical bands for common training goals, how eating style affects carbs and fats (not whether protein matters), and how to use the calculator without treating any number as permanent law.",
     relatedGuideSlugs: [
       "what-are-macros",
       "how-to-calculate-macros",
       "high-protein-diet-macros",
       "macros-for-fat-loss",
       "macros-for-muscle-gain",
+      "macros-for-body-recomposition",
       "muscle-retention-while-cutting-macros",
+      "macro-tracking-accuracy-guide",
     ],
     relatedMacroSlugs: [
-      "protein-intake-for-180-pound-male",
-      "protein-intake-for-150-pound-female",
       "high-protein-macros",
       "high-protein-macro-calculator",
       "cutting-macros",
+      "cutting-macro-calculator",
       "bulking-macros",
+      "bulking-macro-calculator",
+      "protein-intake-for-180-pound-male",
+      "protein-intake-for-150-pound-female",
     ],
-    body: `If someone tells you to eat “more protein” but cannot translate that into **grams per day**, you still do not have a plan. **Protein per pound** is the simplest bridge between textbook recommendations and a food scale you will actually use.
+    body: `“Eat more protein” only becomes a plan when it turns into **how much protein per day**—a number your grocery list and food log can actually see. **Protein per pound** of body weight is a widely used shortcut because it scales with body size, matches how labels and apps report food, and stays stable when you talk about goals in plain language.
 
-**Pick a gram target you can hit on your worst Tuesday—not your best Sunday.**
+If the macro labels are still fuzzy, read [What Are Macros?](/guides/what-are-macros). If you want the full setup sequence (calories first, then protein, then fats and carbs), [How to Calculate Macros](/guides/how-to-calculate-macros) is the right companion—this article zooms in on the protein line only.
 
-**Per-pound math is a coaching shortcut because body size scales appetite and recovery demands.**
+## Why grams per pound beats percent of calories
 
-**Higher protein often shines in a deficit; maintenance and surplus still need enough to support training.**
+Percent-of-calories protein looks tidy until your calorie target moves. In a **fat-loss** phase, calories often drop; if you keep the same **percentage**, you can accidentally reduce **absolute grams** of protein right when recovery is already stressed. In a **muscle-gain** phase, a “high” protein **percentage** can still be **too few grams** for someone training hard if total calories are modest.
 
-**Spreading protein across the day beats one heroic dinner for many people.**
-
-**Your tracker’s daily total matters more than the label “clean.”**
+Anchoring protein to body weight keeps the recommendation in **grams per day**. You can still express it as a ratio—**grams per pound** or **grams per kilogram**—without turning every week into a theoretical argument you cannot cook to. The point is practical: **repeatable kitchen math**.
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “More protein always builds more muscle.” | Muscle growth still needs **training stimulus** and **calories** in the right phase—protein is necessary, not magical. |
-| “You cannot absorb more than 30g per meal.” | Digestion is not a hard stopwatch—**daily total** still dominates for most practical goals. |
-| “Percent protein is easier than grams.” | Percentages move when calories move; **grams per lb** stays interpretable. |
+### Myth: “More protein always builds more muscle.”
+**Reality:** Muscle gain still needs **progressive training** and calories that match the phase. Protein is necessary, but it cannot replace training stimulus and recovery.
 
-Start with definitions in [What Are Macros?](/guides/what-are-macros), then learn the full allocation order in [How to Calculate Macros](/guides/how-to-calculate-macros).
+### Myth: “Your body can only use ~30g protein per meal.”
+**Reality:** There is no universal meal cap that overrides **daily total**. For most fitness goals, consistency across the day and week matters more than a single hard meal limit.
+
+### Myth: “Only serious lifters need high protein.”
+**Reality:** Many active adults benefit from higher protein than sedentary baselines, especially during a calorie deficit. Higher does not mean extreme; it means enough to support your goal.
+
+## How much protein per day: bands by goal
+
+These ranges are **starting points** for generally healthy, active adults and not medical nutrition therapy.
+
+- **Fat loss (trained adult): 0.8-1.1 g/lb**  
+  Quick note: deeper deficits and harder training often feel better near the **upper half** for satiety and recovery. For full phase setup, see [Macros for Fat Loss](/guides/macros-for-fat-loss).
+- **Muscle gain: 0.7-1.0 g/lb**  
+  Quick note: calories still need to support performance; protein cannot replace missing energy. [Macros for Muscle Gain](/guides/macros-for-muscle-gain) explains the full build-phase budget.
+- **Maintenance/recomp: 0.7-0.9 g/lb**  
+  Quick note: appetite, strength trends, and body-composition goals help refine where you land inside the range.
+
+Use the same body-weight method each week and adjust from trend data rather than single-day changes.
+
+## Scale weight, lean mass, and the optional body fat field
+
+Per-pound rules usually anchor to **total body weight** because you can measure it consistently. For many lifters at moderate body fat, that is a good enough proxy for planning. At higher body fat, total weight can **overstate** lean mass; people still often **start** with total weight, then adjust using multi-week trends rather than pretending body-fat estimates are perfect.
+
+If you have a trustworthy body fat measurement, the calculator can incorporate it (see the form steps below). If you do not, skip it—**consistent** inputs beat fantasy precision.
+
+## Spreading protein across the day
+
+**Daily total** is the lever that matters most for many outcomes. Splitting protein across **three to five** eating occasions often helps **appetite** and **meal structure** compared with dumping most of the target into one late meal—but rigid symmetry is optional. Front-load protein if evenings are chaotic; anchor lunch if mornings are light.
+
+If you compress feeding into fewer hours, daily grams still need to land somewhere. [Intermittent Fasting Macros](/guides/intermittent-fasting-macros) is useful when **meal count** changes but **protein per day** should not.
+
+## Execution, logging, and high-protein meals
+
+Most stalls that look “metabolic” are **logging** problems: mixing **raw** and **cooked** entries, underestimating oils and nut butters, or logging restaurant portions like measured home plates. [Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide) walks through how small errors compound—and how to tighten them without building a second job.
+
+Once grams exist, make them livable. [High Protein Diet Macros](/guides/high-protein-diet-macros) focuses on meal structure and food choices. Powders can help when travel or appetite makes whole food hard; they are optional when a few repeatable **protein anchors** (Greek yogurt, eggs, canned fish, tofu, lean meats) are already in rotation.
+
+Plant-forward eaters can hit strong totals with planning—[Vegetarian Macros for Muscle & Fat Loss](/guides/vegetarian-macros) and [Vegan Macros](/guides/vegan-macros) cover quality and variety. The mistake is building meals from only low-protein plants and hoping the day adds up.
+
+## When eating style is keto, carnivore, or PSMF
+
+In Physiq’s workflow, **eating style** mainly changes how **carbohydrates and dietary fat** are set around a protein anchor—not whether protein matters. **Keto** eaters still need clarity on fat as a lever—[Keto Macros Explained](/guides/keto-macros-explained). **Carnivore-style** templates narrow food lists but not calorie awareness—[Carnivore Macros Guide](/guides/carnivore-macros-guide). **PSMF** is a specialized, short-term, higher-risk pattern; treat the in-app medical notice seriously and read [Protein Sparing Modified Fasting (PSMF)](/guides/protein-sparing-modified-fasting) only if that context truly fits you.
 
 ## How to use the Macro Calculator
 
@@ -257,141 +300,43 @@ Start with definitions in [What Are Macros?](/guides/what-are-macros), then lear
 
 1. **Body stats:** Enter **weight**, **height**, and **age**. **Body fat %** is optional—if you know it, the calculator can use it for more accurate macros (the form says: “If you know your body fat %, we can calculate more accurate macros.”).
 2. **Sex:** Choose **Male** or **Female**.
-3. **Goal:** Select **Cut Fat**, **Build Muscle**, **Maintain**, or **Body Recomposition**—match your phase.
+3. **Goal:** Select **Cut Fat**, **Build Muscle**, **Maintain**, or **Body Recomposition**.
 4. **Activity level:** Pick the option that matches your **honest average week**, not an aspirational one.
 5. **Eating style:** Choose how you eat (for example **Standard**, **Keto**, **Carnivore**, or **PSMF**). Keto, carnivore, and PSMF change how carbs and fats are set; PSMF also adds a large deficit versus TDEE—use the **PSMF** info icon on that card if you select it.
 6. **Dietary restrictions & preferences:** Toggle what applies and add **other dietary notes** if needed.
-7. Click **Calculate Macros**—you’ll get **calorie and macro gram** targets.
+7. Click **Calculate Macros** to receive **calorie and macro gram** targets.
 
 ### After you calculate
 
-Read **protein grams** as your **daily contract**—not a suggestion you negotiate with snacks. Cross-check examples on **[High protein macros](/macros/high-protein-macros)** and the **[High protein macro calculator](/macros/high-protein-macro-calculator)**—your grams should feel **directionally** similar if your goal is protein-forward. If you want a static reference profile, compare **[Protein intake for 180 pound male](/macros/protein-intake-for-180-pound-male)** or **[Protein intake for 150 pound female](/macros/protein-intake-for-150-pound-female)**—still individual, but useful as a sanity check.
+Read **protein grams** as the budget line to defend first—then fit **carbohydrates** and **fats** around preference, digestion, and training within calories. Compare the **shape** of your output to **[High protein macros](/macros/high-protein-macros)** and the **[High protein macro calculator](/macros/high-protein-macro-calculator)**. Micro examples such as **[Protein intake for 180 pound male](/macros/protein-intake-for-180-pound-male)** and **[Protein intake for 150 pound female](/macros/protein-intake-for-150-pound-female)** are illustrations, not mandates. Phase hubs like **[Cutting macros](/macros/cutting-macros)** and **[Bulking macros](/macros/bulking-macros)** describe intent; your grams stay individual.
 
-## Practical ranges (starting points, not laws)
+### Understanding your numbers
 
-For many active adults:
+If the order **calories → protein → fats → carbs** still feels abstract, spend a few minutes in [How to Calculate Macros](/guides/how-to-calculate-macros). Protein is usually set before you negotiate the carb–fat split.
 
-- **Fat loss / muscle retention:** often about **~0.8–1.1g per lb** body weight, with many people toward the **upper half** in deeper deficits—see [Macros for Fat Loss](/guides/macros-for-fat-loss) and [Muscle Retention While Cutting](/guides/muscle-retention-while-cutting-macros).
-- **Muscle gain:** commonly **~0.7–1.0g per lb**, with total calories supporting training—see [Macros for Muscle Gain](/guides/macros-for-muscle-gain).
-- **Maintenance / recomposition contexts:** often **~0.7–0.9g per lb**, depending on preference and training—pair with [Macros for Body Recomposition](/guides/macros-for-body-recomposition).
+## When to recalculate or nudge protein
 
-If you eat mostly plants, lean on [Vegetarian Macros for Muscle & Fat Loss](/guides/vegetarian-macros) or [Vegan Macros](/guides/vegan-macros) for **quality and variety**—total daily protein still runs the show.
+Update targets when your **real week** changes, not when one high-sodium dinner surprises the scale. Practical triggers include roughly **10–15 pounds** of sustained weight change, a new job that crushes daily movement, a real jump in training volume, or moving between **cut**, **maintenance**, and **surplus** phases. If you run a structured diet break, protein often stays relatively high for satiety—[Refeed & Diet Break Macros](/guides/refeed-diet-break-macros) covers the broader idea.
 
-## Spread it out (without obsession)
+## Medical note
 
-Spreading protein across **3–5 eating occasions** often improves **adherence** and **satiety** compared with one massive meal. You do not need perfect symmetry—**front-load** protein if evenings are chaotic, or **anchor lunch** if mornings are rushed.
-
-## Common mistakes
-
-- **Setting protein once** and never updating it after **10–15 lb** body weight change.
-- **Logging “close enough”** portions—[Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide) explains why small errors become big misses.
-- **Chasing powder** instead of **food-first** protein—supplements are optional; consistency is not.
-
-## Who this is for
-
-Anyone who tracks macros or wants a **repeatable protein anchor**—especially people in a **deficit** or **hypertrophy phase**. Not a medical prescription for kidney disease or other conditions; defer to your care team when those apply.
+This article is **general fitness education**, not medical advice. Kidney disease, some metabolic conditions, pregnancy, and certain medications change how protein should be managed. Use these ranges to understand common training contexts—and work with your clinician when personal health factors apply.
 
 ## FAQ
 
-**Do I weigh cooked or raw meat?** Pick one method and stay consistent—most confusion is **inconsistent logging**, not biology.
+**Should I use pounds or kilograms?** Either is fine if you are consistent. Many lifters think in pounds; research often reports grams per kilogram. Physiq’s calculator supports your preferred units—pick one workflow and keep it.
 
-**Is 1.2g/lb ever useful?** Some contexts use higher intakes temporarily; most people do not need to live at the ceiling—**adherence** wins.
+**Is 1.2g per lb ever appropriate?** Some short-term, supervised contexts push higher; most people do not need to live at the top of the range forever. If a higher target destroys adherence, it is not the right target.
 
-**Does fasting change the rule?** Eating windows can change **meal shape**, not necessarily **daily protein needs**—read [Intermittent Fasting Macros](/guides/intermittent-fasting-macros) if you use IF.
+**Do older adults need special rules?** Protein distribution and resistance training still matter with age; appetite and medical context vary. Individualize with professionals when mobility, medications, or kidney concerns are in play.
 
-**What about older adults?** Protein distribution and strength training still matter—individualize with professionals if mobility or appetite are limited.
+**Does protein timing around workouts override daily total?** For many people, **total daily protein** matters most once totals are consistent; timing is a refinement, not a rescue parachute for chronically low intake.
 
-**Should protein change during a diet break?** Often **kept high** for satiety—see [Refeed & Diet Break Macros](/guides/refeed-diet-break-macros).
+**If protein is high, must carbs be low?** No. Carbs can stay substantial when calories and preference allow—especially for performance. Eating style determines how aggressively carbs flex after protein is set.
 
-**Do I need different pages for bulk vs cut?** Compare **[Bulking macros](/macros/bulking-macros)** vs **[Cutting macros](/macros/cutting-macros)** for intent—your grams come from your calculator and trends.
+**How do I sanity-check my numbers quickly?** Use the **[Macro Calculator](/#calculator)**, log a normal week, and compare rolling weight and strength trends to your intent before you rewrite the whole plan.
 
-## Protein and body weight: when to update
-
-If you lose **10–15 lb**, your **maintenance** and **protein** needs may shift. Re-run the **[Macro Calculator](/#calculator)** when:
-
-- Body weight changes materially
-- Training volume changes (new job, new program)
-- You switch from cut → maintenance → surplus
-
-## Whole foods vs powders (practical hierarchy)
-
-Prioritize **food protein** first: meat, fish, eggs, dairy (if tolerated), legumes (if plant-forward). Powders are useful when:
-
-- Travel makes whole food annoying
-- Morning appetite is low
-- You need a **cheap** gram top-off
-
-If you are vegan, pair sources intentionally—[Vegan Macros](/guides/vegan-macros).
-
-## Putting grams into meals (three templates)
-
-- **Breakfast:** yogurt bowl + fruit + scoop (optional) if needed
-- **Lunch:** double protein (two palm-sized portions) + vegetables + starch
-- **Dinner:** lean protein + salad + measured dressing + carb portion
-
-Templates beat novelty when consistency is the goal—[Macro Meal Planning](/guides/macro-meal-planning).
-
-## FAQ (part 2)
-
-**Does protein timing matter around workouts?** For many people, **daily total** matters most; timing is secondary once total is solid.
-
-**What if protein feels expensive?** Frozen chicken, canned fish, eggs, and store-brand Greek yogurt are simple levers—[High-Protein Grocery List](/guides/high-protein-grocery-list-ranked).
-
-## Protein and dietary preferences (without turning it into identity)
-
-Vegetarian and vegan templates can hit high protein—they just require **planning**—[Vegetarian Macros](/guides/vegetarian-macros), [Vegan Macros](/guides/vegan-macros). Carnivore-style eaters still need **calorie awareness**—[Carnivore Macros Guide](/guides/carnivore-macros-guide).
-
-## Protein and “I do not like meat”
-
-You can still win with dairy, eggs, fish, tofu, tempeh, seitan (if tolerated), and smart grocery choices—[Macro-Friendly Fast Food](/guides/macro-friendly-fast-food-guide) when you are stuck.
-
-## Protein mistakes that look like “mystery stalls”
-
-- Switching between **raw** and **cooked** logging
-- Forgetting **sauces** and **cheese** in bowls
-- Estimating **restaurant** portions as home portions—[Restaurant & Takeout Macros](/guides/restaurant-takeout-macros)
-
-## Deep dive: why per-pound works better than “percent calories” for lifters
-
-Percent-of-calories protein sounds neat in a textbook, but calories move when goals move. In a deficit, your calorie line drops—percent protein can accidentally drop **absolute grams** unless you actively protect them. In a surplus, percent protein can look “high” on paper while still being **too low in grams** for hard training.
-
-Per-pound recommendations stay stable in plain language: **grams per day**, anchored to **body size**. That is why coaches default to it for clients who are not spreadsheet hobbyists.
-
-## Deep dive: protein distribution (3 vs 4 vs 5 meals)
-
-You do not need a perfect schedule. You need a schedule you can repeat. If you prefer two larger meals, you can often still hit daily totals—some people feel better with fewer feedings; others feel better with more. If hunger is chaotic, splitting protein can help—if hunger is fine, do not force meal frequency for no reason.
-
-## Deep dive: plant-forward protein without misery
-
-Beans, lentils, soy foods, seitan (if tolerated), and smart combinations can work—[Vegetarian Macros](/guides/vegetarian-macros), [Vegan Macros](/guides/vegan-macros). The common mistake is choosing only low-protein plants and hoping it adds up—build meals around **protein-forward** anchors first.
-
-## Deep dive: protein on maintenance (the forgotten season)
-
-Maintenance is not “off season” from protein—[Maintenance Macros Guide](/guides/maintenance-macros-guide). If you want to preserve muscle while life is chaotic, protein is still the easiest lever to keep stable while calories drift.
-
-## Putting it together with Physiq hubs
-
-Use **[High protein macros](/macros/high-protein-macros)** and **[High protein macro calculator](/macros/high-protein-macro-calculator)** as intent checks. Compare **[Cutting macros](/macros/cutting-macros)** vs **[Bulking macros](/macros/bulking-macros)** depending on phase—protein stays high in both for many lifters; calories change.
-
-## Long-haul adherence: the real failure modes
-
-Most people do not fail because they picked **0.9g/lb** instead of **1.0g/lb**. They fail because life gets loud: new jobs, new babies, new schedules, travel, stress, and sleep debt. Protein per pound is not a math flex—it is a **portable rule** you can apply when meal prep is not happening.
-
-When consistency breaks, simplify: **one protein anchor per meal**, **one grocery list**, **one logging method**. Rebuild the habit before you rebuild the spreadsheet—[Macro Tracker Burnout](/guides/macro-tracker-burnout-guide).
-
-## Coaching-style prompts (ask yourself weekly)
-
-- Did I hit my protein target **at least 5/7** days?
-- Did I eat enough to support training without feeling foggy?
-- Did I change my target more than once without **14 days** of data?
-
-## Closing the loop with related guides
-
-Pair this article with [How to Calculate Macros](/guides/how-to-calculate-macros) for setup order, [What Are Macros?](/guides/what-are-macros) for definitions, and [Muscle Retention While Cutting](/guides/muscle-retention-while-cutting-macros) if you are dieting while lifting heavy.
-
-If your goal changes—from cut to maintenance to bulk—your **calorie line** changes first. Protein often stays relatively high across phases; what shifts is whether you are in a deficit, surplus, or maintenance budget.
-
-**👉** Lock grams in the **[Macro Calculator](/#calculator)**, then make the same meals boring enough to repeat.`,
+Pick a protein target you can repeat on a busy week, log honestly, and let trends argue for changes. When you are ready for numbers tied to your stats and goal, open the **[Macro Calculator](/#calculator)** and treat the output as a starting hypothesis—not a tattoo.`,
   },
   {
     slug: "keto-macros-explained",
