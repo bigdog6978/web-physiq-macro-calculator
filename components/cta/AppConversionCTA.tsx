@@ -7,6 +7,11 @@ import {
   type CTAPlacement,
   type CTAPageType,
 } from "@/lib/cta/config";
+import {
+  APP_STORE_BOTTOM_EYEBROW_CLASS,
+  APP_STORE_BOTTOM_HEADLINE_CLASS,
+  APP_STORE_BOTTOM_PAGE_PANEL_CLASS,
+} from "@/lib/cta/appStorePanel";
 
 interface AppConversionCTAProps {
   placement: CTAPlacement;
@@ -25,8 +30,7 @@ const containerStyles: Record<CTAPlacement, string> = {
     "rounded-2xl border border-card-border bg-card p-5 sm:p-6 shadow-sm dark:shadow-none",
   post_results:
     "rounded-2xl border border-primary/30 bg-card p-5 sm:p-6 shadow-sm dark:shadow-none",
-  bottom_page:
-    "rounded-2xl border border-primary/50 bg-primary-muted/60 p-5 sm:p-6 shadow-sm dark:shadow-none",
+  bottom_page: APP_STORE_BOTTOM_PAGE_PANEL_CLASS,
   sticky_mobile:
     "rounded-2xl border border-primary/35 bg-card px-4 py-3.5 shadow-xl dark:bg-muted",
 };
@@ -73,11 +77,14 @@ export function AppConversionCTA({
   const conciseHeadline = "Calculate here. Track daily in Physiq: Macro Tracker.";
   const supportingLine = "Save your macro targets and track your food in seconds.";
   const isBottomStoreCard = canShowStore && placement === "bottom_page";
-  /** Product page: white promo panel + chartreuse border, matches app store marketing card. */
+  /** Marketing vs home: same panel + typography; copy/layout only (concise vs chips). */
   const isMarketingBottomStoreCard =
     isBottomStoreCard && pageType === "marketing";
+  /** Non–bottom_page store cards (hero, post_results, inline_article). */
   const storeCardTitleClass =
     "font-bold leading-snug text-black dark:text-foreground";
+  const storeCardEyebrowOnTintClass =
+    "text-[11px] font-semibold uppercase tracking-widest text-black dark:text-foreground";
   const bottomHeadline =
     "Consistency wins. Track it with the Physiq Macro Tracker.";
   const bottomSupportingLine =
@@ -109,26 +116,19 @@ export function AppConversionCTA({
     onSecondaryClick?.();
   };
 
-  const containerClassName = isMarketingBottomStoreCard
-    ? "rounded-2xl border-2 border-primary bg-white p-5 shadow-sm sm:p-6 dark:bg-white"
-    : containerStyles[placement];
-
-  const storeCardPaddingTweak =
-    canShowStore && !isMarketingBottomStoreCard ? "p-4 sm:p-4" : "";
-
   return (
     <div
-      className={`@container ${containerClassName} ${storeCardPaddingTweak} ${className}`}
+      className={`@container ${containerStyles[placement]} ${className}`}
       role="complementary"
       aria-label={landmarkLabels[placement]}
     >
       {isBottomStoreCard && storeBtnProps ? (
         isMarketingBottomStoreCard ? (
           <div className="space-y-2 text-left">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+            <p className={APP_STORE_BOTTOM_EYEBROW_CLASS}>
               PHYSIQ MACRO TRACKER APP
             </p>
-            <h3 className={`text-base sm:text-lg ${storeCardTitleClass}`}>
+            <h3 className={APP_STORE_BOTTOM_HEADLINE_CLASS}>
               {conciseHeadline}
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground leading-snug">
@@ -145,12 +145,10 @@ export function AppConversionCTA({
           </div>
         ) : (
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+            <p className={APP_STORE_BOTTOM_EYEBROW_CLASS}>
               PHYSIQ MACRO TRACKER APP
             </p>
-            <h3
-              className={`mt-1 text-base sm:text-lg ${storeCardTitleClass}`}
-            >
+            <h3 className={`mt-1 ${APP_STORE_BOTTOM_HEADLINE_CLASS}`}>
               {bottomHeadline}
             </h3>
             <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-snug">
@@ -183,7 +181,7 @@ export function AppConversionCTA({
         )
       ) : canShowStore && storeBtnProps ? (
         <div className="space-y-2">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+          <p className={storeCardEyebrowOnTintClass}>
             Physiq Macro Tracker App
           </p>
           <h3 className={`text-base sm:text-lg ${storeCardTitleClass}`}>
@@ -213,7 +211,7 @@ export function AppConversionCTA({
           >
             {/* Text block: stack in narrow sidebars; row when container width reaches @md */}
             <div className="min-w-0 flex-1">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-foreground mb-1">
                 {content.eyebrow}
               </p>
               <h3

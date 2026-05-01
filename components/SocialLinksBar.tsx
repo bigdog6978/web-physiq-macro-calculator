@@ -1,6 +1,7 @@
 /** Social links strip below the site header (not inside the black bar). */
 
 import { Instagram } from "lucide-react";
+import { FaFacebookF, FaPinterestP, FaReddit } from "react-icons/fa6";
 
 function XLogo({ className }: { className?: string }) {
   return (
@@ -26,7 +27,7 @@ export function SocialLinksBar() {
       aria-label="Social links"
     >
       <div className="mx-auto flex max-w-6xl justify-center px-4 pt-2 pb-1 sm:justify-end">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-end">
           <a
             href="https://x.com/PHYSIQMacros"
             target="_blank"
@@ -44,6 +45,33 @@ export function SocialLinksBar() {
             aria-label="Physiq on Instagram"
           >
             <Instagram className="h-[18px] w-[18px]" aria-hidden />
+          </a>
+          <a
+            href="https://www.facebook.com/share/g/18SiY9eQCr/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={iconButton}
+            aria-label="Physiq on Facebook"
+          >
+            <FaFacebookF className="h-[18px] w-[18px]" aria-hidden />
+          </a>
+          <a
+            href="https://pin.it/1iqqZrxhF"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={iconButton}
+            aria-label="Physiq on Pinterest"
+          >
+            <FaPinterestP className="h-[18px] w-[18px]" aria-hidden />
+          </a>
+          <a
+            href="https://www.reddit.com/r/PhysiqMacroTracking/s/I11sXruL80"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={iconButton}
+            aria-label="Physiq Macro Tracking on Reddit"
+          >
+            <FaReddit className="h-[18px] w-[18px]" aria-hidden />
           </a>
         </div>
       </div>

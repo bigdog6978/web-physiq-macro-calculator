@@ -48,6 +48,8 @@
   --psmf-notice-muted: #4b5563;
   --psmf-notice-link: var(--primary-hover);
   --psmf-notice-link-decoration: var(--primary-hover);
+  /* Bottom app-store panel: near-black on light tinted primary-muted */
+  --app-store-cta-emphasis-text: #0a0a0a;
 }
 
 .dark {
@@ -96,6 +98,8 @@
   --psmf-notice-muted: var(--muted-foreground);
   --psmf-notice-link: var(--foreground);
   --psmf-notice-link-decoration: var(--primary);
+  /* Bottom app-store panel: chartreuse on dark tinted surface */
+  --app-store-cta-emphasis-text: var(--primary);
 }
 
 @theme inline {
@@ -125,6 +129,7 @@
   --color-calories: var(--calories);
   --color-guide-accent: var(--guide-accent);
   --color-guide-accent-hover: var(--guide-accent-hover);
+  --color-app-store-cta-emphasis: var(--app-store-cta-emphasis-text);
   --shadow-card: var(--shadow-card);
 }
 
