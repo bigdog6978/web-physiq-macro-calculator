@@ -2836,6 +2836,146 @@ Calorie-only tracking can be enough for **short-term weight change** experiments
 `,
   },
   {
+    slug: "physiq-macros-free-macro-resource",
+    title: "PhysiqMacros: Free Calculator, Macro Academy & iOS Tracker",
+    categoryId: "basics",
+    tags: ["basics", "calculator", "macro-academy", "getting-started", "resources"],
+    excerpt:
+      "PhysiqMacros is the free web macro calculator plus Macro Academy guides and an optional iOS app—built so you can estimate TDEE, set protein-forward targets, and learn adjustments without a forced paywall on the site.",
+    metaTitle: "PhysiqMacros Free Macro Calculator & Academy | Physiq",
+    metaDescription:
+      "Use Physiq's free macro calculator (Mifflin-St Jeor), 70+ Macro Academy guides, optional iOS tracker. Transparent math on the web—no paywall to run numbers.",
+    publishedAt: "2026-04-30",
+    updatedAt: "2026-04-30",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    relatedGuideSlugs: [
+      "what-are-macros",
+      "how-to-calculate-macros",
+      "macro-calculator-vs-calorie-calculator",
+      "why-macros-matter",
+      "macros-for-fat-loss",
+      "protein-sparing-modified-fasting",
+      "macro-tracker-burnout-guide",
+    ],
+    relatedMacroSlugs: [
+      "cutting-macro-calculator",
+      "bulking-macro-calculator",
+      "high-protein-macro-calculator",
+      "keto-macro-calculator",
+      "cutting-macros",
+      "maintenance-macros",
+      "macros-for-women",
+      "macros-for-men",
+    ],
+    heroIntro:
+      "This is a plain-English map of what PhysiqMacros actually is today: the on-site calculator math, the Macro Academy guide library, optional mobile logging, and where each piece fits if you want structure without hype.",
+    body: `If you are tired of paywalled calculators, black-box “custom macros,” and blog posts that never connect back to a real tool, PhysiqMacros is built around the opposite idea: **transparent targets on the web**, **deep guides when you want context**, and **optional logging on iPhone** when you are ready to execute daily.
+
+This article is **general fitness education**. It is not medical advice, a diagnosis, or a promise of outcomes—especially for aggressive protocols like **PSMF (protein-sparing)**, which needs careful risk framing (see [Protein Sparing Modified Fasting (PSMF)](/guides/protein-sparing-modified-fasting)).
+
+## What “PhysiqMacros” includes
+
+PhysiqMacros is best understood as **three cooperating layers**:
+
+- **The free macro calculator on the website** — estimates **BMR** with the **Mifflin–St Jeor** equation, multiplies by **activity level** to approximate **TDEE**, then applies **goal-based calorie adjustments** and splits calories into **protein, carbohydrate, and fat grams** (plus meal suggestions in the flow).
+- **Macro Academy** — a **growing library of more than 70 published guides** at \`/guides\`, organized by topics like fat loss, muscle gain, recomposition, diet strategies, and sex-specific framing.
+- **Physiq Macro Tracker (iOS)** — optional app to **save targets** from the calculator and **log food** with a fast search flow. Details: [Get the App](/get-the-app).
+
+You do not need a subscription to **run numbers on the web calculator**. Guides are read on the same site; the app is a separate download for people who want pocket logging.
+
+## How the calculator thinks (so you trust the output)
+
+### BMR and TDEE
+
+**BMR (basal metabolic rate)** is estimated from **weight, height, age, and sex** using **Mifflin–St Jeor**. **TDEE** multiplies BMR by an **activity multiplier** tied to the activity card you select (from sedentary through very active patterns in the form).
+
+### Goal adjustments (calories)
+
+For standard goals (not the specialized **PSMF eating style** path), calorie targets apply these **relative TDEE shifts** in the engine:
+
+- **Cut Fat** — about **20% below TDEE**
+- **Build Muscle** — about **10% above TDEE**
+- **Maintain** — **at TDEE**
+- **Body Recomposition** — stays **near maintenance**, with a **small deficit** only in specific cases when **body fat %** is available and above built-in thresholds—otherwise it behaves closer to maintenance (see breakdown text in your result after calculating).
+
+Floors and feasibility rules still apply, so **very small people** or **edge inputs** may not land at the “full” theoretical percentage—your output includes the calculator’s own notes when that happens.
+
+### Eating styles and modifiers
+
+**Eating style** changes **meal suggestions** for everyone, and for **Keto**, **Carnivore**, and **PSMF** it also changes how **carbs and fats** are set (the form explains this). **PSMF** targets a **large deficit versus TDEE** (on the order of **roughly half of estimated TDEE before safety adjustments**), with **very low carbs**, **minimal essential fat**, and **high protein**—treat it as **short-term, high-risk planning**, read the **in-app notice**, and pair with [PSMF overview](/guides/protein-sparing-modified-fasting).
+
+**Dietary restrictions & preferences** toggles (for example gluten-free, dairy-free, intermittent fasting, halal, kosher) and **other dietary notes** help the meal generator avoid obvious mismatches—they do not replace allergy protocols or clinical diets.
+
+### Food search (USDA)
+
+When you **search for foods** on the site or in the app, requests can go to the **USDA FoodData Central** API so nutrition values come from a **public, documented database** (see site privacy copy for what is transmitted). That is separate from the macro **math**—the math uses your **profile inputs**; USDA search powers **logging and lookup**.
+
+## Macro Academy: where education lives
+
+Macro Academy articles live under **[/guides](/guides)** with stable URLs like \`/guides/how-to-calculate-macros\`. Each guide is written as **practical fitness education**: definitions, tradeoffs, adherence tactics, and links back to the **same calculator** you can run for yourself.
+
+### Where to start (pick one lane)
+
+- **New to macros entirely** — [What Are Macros?](/guides/what-are-macros), then [How to Calculate Macros](/guides/how-to-calculate-macros).
+- **Choosing tools** — [Macro Calculator vs Calorie Calculator](/guides/macro-calculator-vs-calorie-calculator).
+- **Fat loss with training** — [Macros for Fat Loss](/guides/macros-for-fat-loss) and **[Cutting macros](/macros/cutting-macros)** as a **shape check**, not a prescription.
+- **Muscle gain** — [Macros for Muscle Gain](/guides/macros-for-muscle-gain).
+- **Burnout or obsession risk** — [Macro Tracker Burnout](/guides/macro-tracker-burnout-guide).
+
+You can browse **category hubs** such as \`/guides/category/fat-loss\` when you want a themed reading list rather than one long article.
+
+## How to use the Macro Calculator
+
+### In the calculator (follow the form)
+
+1. **Body stats:** Under **Body Stats**, enter **weight** (lb or kg) and **height** (ft/in or cm), plus **age**. **Body fat %** is optional—if you know it, the calculator can use it for more accurate macros (the form says: "If you know your body fat %, we can calculate more accurate macros.").
+2. **Sex:** Choose **Male** or **Female**.
+3. **Goal:** Select **Cut Fat**, **Build Muscle**, **Maintain**, or **Body Recomposition**—your goal affects calories and macro targets.
+4. **Activity level:** Pick the option that matches your **honest average week** (the form notes this affects calories, protein, and carb needs).
+5. **Eating style:** Choose how you eat. Options in the product include **Standard**, **Mediterranean**, **Vegan**, **Vegetarian**, **Paleo**, **Keto**, **Carnivore**, and **PSMF (protein-sparing)**. **Keto**, **Carnivore**, and **PSMF** change how carbs and fats are set; **PSMF** also uses a large deficit versus TDEE—use the **PSMF** info icon on that card and read [PSMF guide](/guides/protein-sparing-modified-fasting) before treating it like a default diet.
+6. **Dietary restrictions & preferences:** Toggle what applies and add **other dietary notes** if needed.
+7. Click **Calculate Macros**—you will get **calorie and macro gram** targets (and meal suggestions tied to your selections).
+
+### After you calculate
+
+Treat the line as a **two-week hypothesis**, not a personality verdict. Log **5–7 normal days**, compare **weekly averages** for weight and **trend** markers (waist, strength, energy), then adjust or re-run inputs—[Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide).
+
+If your intent matches a **pillar page** (for example **[Cutting macro calculator](/macros/cutting-macro-calculator)** or **[Maintenance macros](/macros/maintenance-macros)**), use it to sanity-check **the shape** of your numbers, not to copy a stranger’s grams.
+
+### What the calculator does not do
+
+No honest tool can promise **exact** daily expenditure: **NEAT** swings with stress, sleep, caffeine, job changes, and step habits. The activity cards are **labels for a multiplier**, not a readout from your nervous system. **Body fat %** improves protein and recomposition logic when it is accurate, but bad guesses can mis-steer targets—leave it blank if you do not trust the number.
+
+Meal suggestions are **templates for adherence**, not prescriptions for micronutrient completeness, medical diets, or sport-periodized fueling. When life gets messy—travel, shift work, new medications—use the guides for **adjustment philosophy** and professionals for **clinical** decisions.
+
+## Who this setup is for
+
+PhysiqMacros fits **healthy adults** who want **clear calorie and macro targets**, **style-aware defaults**, and **readable education**—from first-time trackers to experienced lifters who just want a consistent calculator and a bookmarkable guide library.
+
+It is a poor fit if you need **clinical meal plans**, **eating-disorder treatment content**, or **guaranteed timelines**. For pregnancy, breastfeeding, medications, or disease-specific nutrition, work with a **qualified clinician**.
+
+## FAQ
+
+**Is the web macro calculator really free?** Yes—the calculator on the site is built to run without a paywall for generating targets. The iOS tracker is a separate product with its own App Store listing.
+
+**Does Physiq replace my coach or doctor?** No. It is a **self-serve tool plus education**. Use professional guidance for medical nutrition therapy.
+
+**Why does my result differ from another app?** Different apps use different **activity multipliers**, **protein rules**, and **rounding**. Physiq publishes its **Mifflin–St Jeor** BMR path and the **goal percentages** described above—compare **trends**, not single-day matches across apps.
+
+**Is PSMF a good default for fat loss?** Usually **no**—it is a **specialized, short-term, higher-risk** pattern. Read [Protein Sparing Modified Fasting (PSMF)](/guides/protein-sparing-modified-fasting) and the in-app warnings before experimenting.
+
+**How many Macro Academy guides exist?** The registry currently ships **more than 70 published** articles; the exact count grows as new guides ship—bookmark **[/guides](/guides)** for the hub list.
+
+If you want one action after reading: open the **[Macro Calculator](/#calculator)**, run your real stats once, save a screenshot or note of the targets, and pick **one** companion guide that matches your phase—then repeat the same plan for **14 days** before rewriting everything.
+
+---
+
+**Medical note:** Very low calorie intakes, aggressive deficits, and condition-specific nutrition require individualized care. This overview does not replace professional advice.
+`,
+  },
+  {
     slug: "best-macros-for-women",
     title: "Best Macros for Women: Protein First, Then Reality (Not the Scale Drama)",
     categoryId: "women",
@@ -9811,6 +9951,142 @@ This article is for women who want fat-loss or recomposition results without bur
 ### Extra checkpoint
 
 Before making another change, run one more week of consistent protein, stable steps, and repeatable meal templates. Most apparent stalls resolve when execution becomes boringly consistent.`,
+  },
+
+  {
+    slug: "womens-complete-guide-macro-tracking",
+    title: "The Woman's Complete Guide to Macro Tracking — Eat for Your Goals, Stop Guessing",
+    categoryId: "women",
+    tags: ["women", "macros", "fat-loss", "protein", "tracking"],
+    excerpt:
+      "A women-focused path through macro tracking: what protein, carbs, and fat do, how to run Physiq's calculator, goal-specific links, and eight myths that stall progress—without 1,200-calorie dogma.",
+    metaTitle: "Women's Macro Tracking Guide — Goals, Calculator & Myths | Physiq",
+    metaDescription:
+      "Macro tracking for women: protein-first targets, free Macro Calculator steps, myth busting, and phase guides for fat loss or muscle. Start on Physiq.",
+    publishedAt: "2026-04-30",
+    updatedAt: "2026-04-30",
+    author: "Physiq",
+    featured: false,
+    status: "published",
+    heroIntro:
+      "If restrictive diets kept boomeranging, the missing piece was structure—not willpower. This guide explains macros for women's physique goals, walks the real calculator form, busts common myths, and points you to evidence-based next reads.",
+    relatedGuideSlugs: [
+      "best-macros-for-women",
+      "what-are-macros",
+      "how-to-calculate-macros",
+      "high-protein-diet-macros",
+      "macros-for-fat-loss",
+      "women-scale-up-fat-down-explained",
+      "women-heavy-lifting-not-bulky",
+      "macro-tracker-burnout-guide",
+    ],
+    relatedMacroSlugs: [
+      "macros-for-women",
+      "cutting-macros",
+      "maintenance-macros",
+      "high-protein-macros",
+      "cutting-macro-calculator",
+      "high-protein-macro-calculator",
+      "150-pound-female-cutting-standard-macros",
+      "bulking-macros",
+    ],
+    body: `If you have tried "eating clean," 1,200 calories, or cutting whole food groups, you are not short on effort—you are short on **structure**. Macro tracking is the practice of knowing not just calories, but how those calories split across **protein**, **carbohydrates**, and **fat** so you can steer **body composition** (fat vs lean tissue), not only scale weight.
+
+This guide is for women who want a clear through-line: what macros are, how they apply in real life, how to use Physiq's calculator, and which myths keep people stuck. It is general fitness education, not medical advice.
+
+## What macros are—and why they matter
+
+**Macros** (macronutrients) are the three calorie-bearing nutrients: **protein**, **carbs**, and **fat**. Each plays a different role. Protein supports muscle repair, satiety, and training recovery. Carbs are the default fuel for hard training and daily energy. Fat supports hormones, joints, and absorption of fat-soluble vitamins—dropping fat too low can backfire, especially for women.
+
+Tracking macros means you are budgeting **grams per day**, not chasing vague "clean" rules. That is how you move from losing *weight* (which can include muscle) toward losing *fat* while protecting shape. For definitions and math context, see [What Are Macros?](/guides/what-are-macros).
+
+## The best macros for women: no "pink formula"
+
+The levers are the same as for anyone: calories matched to the goal, **protein set first**, carbs and fats filled by preference and training. What often differs for women is **context**—cycle-related water shifts, social pressure to under-eat, and programming that over-emphasizes cardio. Those make **adherence** harder; they do not rewrite physiology.
+
+For framing and ranges, read [Best Macros for Women](/guides/best-macros-for-women). Active women frequently land near **~0.7–1.0 g protein per lb** body weight (higher in a deficit or when muscle is the priority), **~25–35%** of calories from fat for many templates, with carbs filling the rest—especially if you train hard.
+
+## How to use the Macro Calculator
+
+### In the calculator (follow the form)
+
+1. **Body stats:** Under **Body Stats**, enter **weight** (lb or kg) and **height** (ft/in or cm), plus **age**. **Body fat %** is optional—if you know it, the calculator can use it for more accurate macros (the form says: "If you know your body fat %, we can calculate more accurate macros.").
+2. **Sex:** Choose **Male** or **Female**.
+3. **Goal:** Select **Cut Fat**, **Build Muscle**, **Maintain**, or **Body Recomposition**—your goal affects calories and macro targets.
+4. **Activity level:** Pick the option that matches your **honest average week** (the form notes this affects calories, protein, and carb needs).
+5. **Eating style:** Choose how you eat. The form explains that **Keto**, **Carnivore**, and **PSMF** change how carbs and fat are set, and that **PSMF** adds a large deficit versus TDEE—use the **PSMF** info icon on that card if you select it.
+6. **Dietary restrictions & preferences:** Toggle what applies and add **other dietary notes** if needed (these help avoid foods that do not fit your needs).
+7. Click **Calculate Macros**—you will get **calorie and macro gram** targets.
+
+### After you calculate
+
+Treat the output as your **starting hypothesis**. Log a week of normal days, then compare **averages** to trends on the scale, waist, photos, and strength—not single weigh-ins. For logging discipline, see [Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide).
+
+### Understanding your numbers
+
+**TDEE** is maintenance energy at your stated activity; the calculator applies goal-specific calorie logic on top. **Protein** is the main guardrail for muscle and hunger in a cut; **carbs** often support performance; **fat** should rarely be driven to extremes. Re-run the calculator when weight, training, or daily movement changes materially—[How to Calculate Macros](/guides/how-to-calculate-macros).
+
+## Why protein is the cheat code for many women
+
+Higher protein improves satiety, protects lean mass in a deficit, supports recovery from lifting, and has a higher thermic effect than the other macros. It is not a bodybuilding-only tactic—it is one of the most practical adherence tools in the literature for composition goals. Deep dive: [High Protein Diet Macros](/guides/high-protein-diet-macros).
+
+## Goal-based nutrition (same tool, different dial)
+
+- **Fat loss:** Needs a **calorie deficit** with protein prioritized—see [Macros for Fat Loss](/guides/macros-for-fat-loss).
+- **Muscle gain / lean bulk:** Controlled surplus with training progression—[Macros for Muscle Gain](/guides/macros-for-muscle-gain).
+- **Recomposition:** Often works best near maintenance with high protein and progressive strength work—[Macros for Body Recomposition](/guides/macros-for-body-recomposition).
+- **Maintenance:** Calories near TDEE between phases—[Maintenance Macros Guide](/guides/maintenance-macros-guide).
+
+## Eight macro myths that keep women stuck
+
+| Myth | Reality |
+|------|---------|
+| "Women should eat ~1,200 calories." | That number is culturally sticky, not universal. Many active women need far more for training, hormones, and recovery—chronic under-eating plus hard training is a common stall pattern. |
+| "Carbs make you fat." | **Surplus calories** drive fat gain. Carbs within your targets fuel training and mood; they are not magically fat-storing. |
+| "Protein will make me bulky." | Bulk is **calories + time + intent** with progressive training—not a high-protein lunch. Most women under-eat protein; raising it usually improves shape, not unwanted size—[Lift Heavy, Not Tiny](/guides/women-heavy-lifting-not-bulky). |
+| "The scale is the best progress metric." | Weight swings 2–5+ lb from water, sodium, glycogen, digestion, and cycle timing—[Up 3 Pounds Overnight](/guides/women-scale-up-fat-down-explained). Use weekly/monthly trends plus waist, photos, and strength. |
+| "Hormones mean I cannot lose fat." | Hormones influence appetite and water; they do not erase energy balance. Medical conditions need clinicians—[Hormone Myths](/guides/women-fat-loss-hormone-myths) for culture vs nuance. |
+| "Cardio is the key to fat loss." | Cardio burns calories, but **composition** usually needs **strength + protein**—[Cardio Is Not Your Personality](/guides/women-cardio-not-enough-macros-strength). |
+| "Macro tracking means no 'fun' foods." | Flexible tracking budgets **daily totals**; quality still matters for health, but rigid moralizing is not required for progress. |
+| "Tracking is always obsessive." | It is a skill. If it harms your relationship with food, **simplify** before you quit entirely—[Macro Tracker Burnout](/guides/macro-tracker-burnout-guide). |
+
+## Fat loss with macros: a no-drama framework
+
+1. Get maintenance context from the **[Macro Calculator](/#calculator)** (TDEE at honest activity).
+2. Run a **moderate deficit** (often ~15–20% below TDEE) rather than a crash—muscle and adherence last longer.
+3. **Set protein first** (many cuts land roughly **~0.9–1.0 g/lb**; individualize).
+4. Split remaining calories between carbs and fat for preference and training.
+5. Log most days for **2–3 weeks**, then adjust on **trends**—not one salty dinner.
+6. Keep **progressive strength training** in the plan; macros without stimulus rarely produce the "toned" look people describe.
+
+Compare your output to **[Macros for women](/macros/macros-for-women)** and examples like **[150 pound female cutting standard macros](/macros/150-pound-female-cutting-standard-macros)** as shape checks, not prescriptions.
+
+## Why use Physiq for this path
+
+The calculator is **free**, uses **Mifflin-St Jeor** for BMR with an activity multiplier toward TDEE, and applies goal and eating-style logic transparently. The Macro Academy ties education back to the same tool so you can act the same day you read. For logging on the go, use the **Physiq Macro Tracker** app ([Get the App](/get-the-app)) with the USDA-backed database.
+
+## Your next step
+
+Run the **[Macro Calculator](/#calculator)**, save your targets, and pick **one** companion guide for your current phase (fat loss, bulk, recomp, or maintenance). Commit to **30 days** of honest logging and training—then review averages and adjust.
+
+---
+
+**Medical note:** Pregnancy, breastfeeding, eating disorders, medications, and diagnosed conditions need individualized care. This article does not replace a qualified healthcare provider.
+
+## FAQ
+
+**How is macro tracking different from "clean eating"?** Clean eating labels foods as good or bad; macro tracking budgets **grams and calories** so you can include more foods while still hitting targets.
+
+**Do women need different macro math than men?** Same framework; different **noise** (culture, cycles, scale). Use [Menstrual Cycle Macros](/guides/menstrual-cycle-macros) when monthly patterns confuse short-term data.
+
+**How often should I change calories?** About every **2–3 weeks** when adherence is solid and the trend is clear—small nudges (for example **100–150 kcal**) beat weekly panic cuts.
+
+**Is daily weighing bad?** Not if you use **averages** and expect cycle-related bumps—pair the scale with waist and strength metrics.
+
+**Can I do this if I am plant-based?** Yes—protein becomes a planning puzzle; the calculator's eating styles and preferences help you set a coherent split, then you choose foods that hit protein.
+
+**What if tracking feels like it is taking over my life?** Shrink the method (meal templates, protein-only floors, fewer perfect days) before abandoning the goal—[Macro Tracker Burnout](/guides/macro-tracker-burnout-guide).
+`,
   },
 
   {
