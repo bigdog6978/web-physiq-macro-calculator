@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Manual theme toggle uses `class="dark"` on <html>; default v4 `dark:` is media-only. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Chartreuse bright: #e7ff00 — light-mode primary fill: #c9e800 */
 :root {
   color-scheme: light;
