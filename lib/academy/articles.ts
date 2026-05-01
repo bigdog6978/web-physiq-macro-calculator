@@ -54,11 +54,14 @@ export const ACADEMY_ARTICLES: AcademyArticle[] = [
 
 ## Myth vs reality (quick framework)
 
-| Myth | Reality |
-|------|---------|
-| “If I am not hungry, I am not losing fat.” | Hunger varies with sleep, stress, steps, and fiber—not just calories. |
-| “Carbs are why I cannot lose weight.” | Energy balance still drives weight change; carbs often affect water and training quality. |
-| “I should slash everything at once.” | Smaller, repeatable deficits outperform heroic Mondays. |
+#### Myth: “If I am not hungry, I am not losing fat.”
+**Reality:** Hunger varies with sleep, stress, steps, and fiber—not just calories.
+
+#### Myth: “Carbs are why I cannot lose weight.”
+**Reality:** Energy balance still drives weight change; carbs often affect water and training quality.
+
+#### Myth: “I should slash everything at once.”
+**Reality:** Smaller, repeatable deficits outperform heroic Mondays.
 
 For the full cutting playbook, read [Macros for Fat Loss](/guides/macros-for-fat-loss). For protein specifics, see [Protein Intake per Pound Explained](/guides/protein-per-pound).
 
@@ -248,13 +251,13 @@ Anchoring protein to body weight keeps the recommendation in **grams per day**. 
 
 ## Myth vs reality
 
-### Myth: “More protein always builds more muscle.”
+#### Myth: “More protein always builds more muscle.”
 **Reality:** Muscle gain still needs **progressive training** and calories that match the phase. Protein is necessary, but it cannot replace training stimulus and recovery.
 
-### Myth: “Your body can only use ~30g protein per meal.”
+#### Myth: “Your body can only use ~30g protein per meal.”
 **Reality:** There is no universal meal cap that overrides **daily total**. For most fitness goals, consistency across the day and week matters more than a single hard meal limit.
 
-### Myth: “Only serious lifters need high protein.”
+#### Myth: “Only serious lifters need high protein.”
 **Reality:** Many active adults benefit from higher protein than sedentary baselines, especially during a calorie deficit. Higher does not mean extreme; it means enough to support your goal.
 
 ## How much protein per day: bands by goal
@@ -382,11 +385,14 @@ Pick a protein target you can repeat on a busy week, log honestly, and let trend
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Keto means unlimited fat.” | Fat has calories; **energy balance** still matters for weight change. |
-| “You must be in ketosis to lose fat.” | Fat loss still tracks **calories** for most goals; ketosis is a metabolic state, not a guarantee. |
-| “Carbs are the only reason you bloat.” | Sodium, fiber shifts, and hormones can shift **water**—read [Women Scale Up, Fat Down](/guides/women-scale-up-fat-down-explained) if monthly swings confuse you. |
+#### Myth: “Keto means unlimited fat.”
+**Reality:** Fat has calories; **energy balance** still matters for weight change.
+
+#### Myth: “You must be in ketosis to lose fat.”
+**Reality:** Fat loss still tracks **calories** for most goals; ketosis is a metabolic state, not a guarantee.
+
+#### Myth: “Carbs are the only reason you bloat.”
+**Reality:** Sodium, fiber shifts, and hormones can shift **water**—read [Women Scale Up, Fat Down](/guides/women-scale-up-fat-down-explained) if monthly swings confuse you.
 
 For adjacent low-carb setups, read [Low Carb Diet Macros](/guides/low-carb-diet-macros). For the full “calories vs composition” framing, see [Macro Calculator vs Calorie Calculator](/guides/macro-calculator-vs-calorie-calculator).
 
@@ -574,11 +580,14 @@ If you want a second opinion on your numbers, compare **[Keto macros](/macros/ke
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Carnivore means I cannot gain fat.” | You can overeat fat calories on any template. |
-| “Carbs were the only problem.” | Calories, sleep, stress, and training still matter—see [Macro Mistakes Stalling Fat Loss](/guides/macro-mistakes-stalling-fat-loss). |
-| “More meat always equals more protein.” | Very fatty cuts can **under-shoot protein** per calorie—sometimes leaner cuts win. |
+#### Myth: “Carnivore means I cannot gain fat.”
+**Reality:** You can overeat fat calories on any template.
+
+#### Myth: “Carbs were the only problem.”
+**Reality:** Calories, sleep, stress, and training still matter—see [Macro Mistakes Stalling Fat Loss](/guides/macro-mistakes-stalling-fat-loss).
+
+#### Myth: “More meat always equals more protein.”
+**Reality:** Very fatty cuts can **under-shoot protein** per calorie—sometimes leaner cuts win.
 
 ## How to use the Macro Calculator
 
@@ -773,11 +782,14 @@ Carnivore overlaps with **keto** and **high protein** hubs depending on carb int
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Dirty bulk builds more muscle.” | Extra calories mostly accelerate **fat gain** once training stimulus is covered. |
-| “You cannot gain muscle without huge carbs.” | Total calories and protein matter; **carbs help performance** for many lifters. |
-| “If I am not sore, I did not grow.” | Soreness is a poor proxy—**progressive overload** and **recovery** matter more. |
+#### Myth: “Dirty bulk builds more muscle.”
+**Reality:** Extra calories mostly accelerate **fat gain** once training stimulus is covered.
+
+#### Myth: “You cannot gain muscle without huge carbs.”
+**Reality:** Total calories and protein matter; **carbs help performance** for many lifters.
+
+#### Myth: “If I am not sore, I did not grow.”
+**Reality:** Soreness is a poor proxy—**progressive overload** and **recovery** matter more.
 
 Read the full muscle-gain baseline in [Macros for Muscle Gain](/guides/macros-for-muscle-gain) and surplus sizing in [Lean Bulk Macros](/guides/lean-bulk-macros).
 
@@ -984,11 +996,14 @@ Use **[Bulking macros](/macros/bulking-macros)** and **[Bulking macro calculator
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “My maintenance is a fixed number forever.” | **TDEE moves** with steps, jobs, stress—see [Activity Level, NEAT, and TDEE](/guides/activity-level-neat-tdee-macros). |
-| “Macros override calories.” | Macros **allocate** calories; energy balance still drives weight trend for most people. |
-| “I need the perfect formula.” | Consistency with a **good-enough** target beats precision with **zero** tracking. |
+#### Myth: “My maintenance is a fixed number forever.”
+**Reality:** **TDEE moves** with steps, jobs, stress—see [Activity Level, NEAT, and TDEE](/guides/activity-level-neat-tdee-macros).
+
+#### Myth: “Macros override calories.”
+**Reality:** Macros **allocate** calories; energy balance still drives weight trend for most people.
+
+#### Myth: “I need the perfect formula.”
+**Reality:** Consistency with a **good-enough** target beats precision with **zero** tracking.
 
 Definitions: [What Are Macros?](/guides/what-are-macros). Philosophy: [Why Macros Matter](/guides/why-macros-matter). Comparison: [Macro Calculator vs Calorie Calculator](/guides/macro-calculator-vs-calorie-calculator).
 
@@ -1204,11 +1219,14 @@ Do not set macros from a calculator once and ignore life for **six months**. Job
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Healthy foods do not count.” | Calories still sum from **protein, carbs, and fats**—even when the food is “clean.” |
-| “Carbs are inherently fattening.” | **Energy balance** drives weight change; carbs affect **training fuel** and **water shifts**. |
-| “Fat makes you fat.” | Dietary fat is **calorie-dense**; it is easy to overeat, but it is not evil—**portion math** matters. |
+#### Myth: “Healthy foods do not count.”
+**Reality:** Calories still sum from **protein, carbs, and fats**—even when the food is “clean.”
+
+#### Myth: “Carbs are inherently fattening.”
+**Reality:** **Energy balance** drives weight change; carbs affect **training fuel** and **water shifts**.
+
+#### Myth: “Fat makes you fat.”
+**Reality:** Dietary fat is **calorie-dense**; it is easy to overeat, but it is not evil—**portion math** matters.
 
 Go deeper on philosophy in [Why Macros Matter](/guides/why-macros-matter) and on setup order in [How to Calculate Macros](/guides/how-to-calculate-macros).
 
@@ -1445,11 +1463,14 @@ For definitions, read [What Are Macros?](/guides/what-are-macros). For setup ord
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Only calories matter.” | Calories dominate **weight change**; **protein and training** heavily influence **lean mass** in a deficit or surplus—[Macros for Fat Loss](/guides/macros-for-fat-loss). |
-| “Macro split overrides calories.” | Macros **allocate** the same calorie budget—they do not erase energy balance—[Macro Calculator vs Calorie Calculator](/guides/macro-calculator-vs-calorie-calculator). |
-| “Tracking is obsessive.” | Tracking can be **minimal** (protein + calories) or **detailed**—you choose the dose—[Macro Tracker Burnout](/guides/macro-tracker-burnout-guide). |
+#### Myth: “Only calories matter.”
+**Reality:** Calories dominate **weight change**; **protein and training** heavily influence **lean mass** in a deficit or surplus—[Macros for Fat Loss](/guides/macros-for-fat-loss).
+
+#### Myth: “Macro split overrides calories.”
+**Reality:** Macros **allocate** the same calorie budget—they do not erase energy balance—[Macro Calculator vs Calorie Calculator](/guides/macro-calculator-vs-calorie-calculator).
+
+#### Myth: “Tracking is obsessive.”
+**Reality:** Tracking can be **minimal** (protein + calories) or **detailed**—you choose the dose—[Macro Tracker Burnout](/guides/macro-tracker-burnout-guide).
 
 ## What macros are (30 seconds)
 
@@ -1634,11 +1655,14 @@ If you run or play a sport **and** lift, your **carb** needs may exceed a sedent
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “I must go keto to lose fat.” | **Energy balance** drives weight change—keto can help adherence for some—[Keto Macros Explained](/guides/keto-macros-explained). |
-| “High protein will bulk me up on a cut.” | A deficit limits weight gain; protein supports **lean mass retention**—[Muscle Retention While Cutting](/guides/muscle-retention-while-cutting-macros). |
-| “If I am not sore, I am not losing fat.” | Soreness is a poor measure—**trends** matter. |
+#### Myth: “I must go keto to lose fat.”
+**Reality:** **Energy balance** drives weight change—keto can help adherence for some—[Keto Macros Explained](/guides/keto-macros-explained).
+
+#### Myth: “High protein will bulk me up on a cut.”
+**Reality:** A deficit limits weight gain; protein supports **lean mass retention**—[Muscle Retention While Cutting](/guides/muscle-retention-while-cutting-macros).
+
+#### Myth: “If I am not sore, I am not losing fat.”
+**Reality:** Soreness is a poor measure—**trends** matter.
 
 ## How to use the Macro Calculator
 
@@ -1842,11 +1866,14 @@ Aggressive deficits raise adherence risk for many people—[Protein Sparing Modi
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Eat big to get big.” | Past a point, extra calories mostly add **fat**—see [Best Macro Split for Muscle Gain](/guides/best-macro-split-for-muscle-gain). |
-| “Carbs make you fat in a surplus.” | **Total surplus** drives fat gain; carbs often **improve training**. |
-| “You need 2g protein per lb forever.” | Many people thrive closer to **~0.8–1.0g/lb**—[Protein Intake per Pound Explained](/guides/protein-per-pound). |
+#### Myth: “Eat big to get big.”
+**Reality:** Past a point, extra calories mostly add **fat**—see [Best Macro Split for Muscle Gain](/guides/best-macro-split-for-muscle-gain).
+
+#### Myth: “Carbs make you fat in a surplus.”
+**Reality:** **Total surplus** drives fat gain; carbs often **improve training**.
+
+#### Myth: “You need 2g protein per lb forever.”
+**Reality:** Many people thrive closer to **~0.8–1.0g/lb**—[Protein Intake per Pound Explained](/guides/protein-per-pound).
 
 ## How to use the Macro Calculator
 
@@ -2056,11 +2083,14 @@ If rapid weight gain aggravates joints, smaller surplus steps and **technique** 
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Everyone should recomp forever.” | Progress rates vary; intermediates often need **phases**—[Recomposition Macros for Intermediate Lifters](/guides/recomposition-intermediate-macros). |
-| “You cannot gain muscle in a deficit.” | Beginners can—context matters—[Skinny-Fat Recomp](/guides/skinny-fat-recomp-macros). |
-| “Recomp means no tracking.” | Tracking—or at least **protein**—still drives outcomes. |
+#### Myth: “Everyone should recomp forever.”
+**Reality:** Progress rates vary; intermediates often need **phases**—[Recomposition Macros for Intermediate Lifters](/guides/recomposition-intermediate-macros).
+
+#### Myth: “You cannot gain muscle in a deficit.”
+**Reality:** Beginners can—context matters—[Skinny-Fat Recomp](/guides/skinny-fat-recomp-macros).
+
+#### Myth: “Recomp means no tracking.”
+**Reality:** Tracking—or at least **protein**—still drives outcomes.
 
 ## How to use the Macro Calculator
 
@@ -2273,11 +2303,14 @@ If you need **performance** above all, sometimes **maintenance** or a **tiny sur
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Only shakes count.” | **Food protein** usually anchors adherence—[Macro Meal Planning](/guides/macro-meal-planning). |
-| “High protein harms everyone.” | Individual contexts vary—this is **general fitness education**, not medical advice. |
-| “More protein always builds more muscle.” | **Training stimulus** and **calories** still matter—[Macros for Muscle Gain](/guides/macros-for-muscle-gain). |
+#### Myth: “Only shakes count.”
+**Reality:** **Food protein** usually anchors adherence—[Macro Meal Planning](/guides/macro-meal-planning).
+
+#### Myth: “High protein harms everyone.”
+**Reality:** Individual contexts vary—this is **general fitness education**, not medical advice.
+
+#### Myth: “More protein always builds more muscle.”
+**Reality:** **Training stimulus** and **calories** still matter—[Macros for Muscle Gain](/guides/macros-for-muscle-gain).
 
 ## How to use the Macro Calculator
 
@@ -2497,11 +2530,14 @@ If **protein** is not in the cart first, the week is harder—[High-Protein Groc
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Low carb means I cannot gain fat.” | **Energy surplus** still drives weight gain—[Macros for Muscle Gain](/guides/macros-for-muscle-gain). |
-| “Carbs are required to lose fat.” | **Deficit** drives fat loss; carbs affect **performance** and **water**—[Macros for Fat Loss](/guides/macros-for-fat-loss). |
-| “Low carb fixes hormones by itself.” | Lifestyle factors are multifactorial—avoid diagnostic claims. |
+#### Myth: “Low carb means I cannot gain fat.”
+**Reality:** **Energy surplus** still drives weight gain—[Macros for Muscle Gain](/guides/macros-for-muscle-gain).
+
+#### Myth: “Carbs are required to lose fat.”
+**Reality:** **Deficit** drives fat loss; carbs affect **performance** and **water**—[Macros for Fat Loss](/guides/macros-for-fat-loss).
+
+#### Myth: “Low carb fixes hormones by itself.”
+**Reality:** Lifestyle factors are multifactorial—avoid diagnostic claims.
 
 ## How to use the Macro Calculator
 
@@ -3023,11 +3059,14 @@ If you want one action after reading: open the **[Macro Calculator](/#calculator
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Women need low protein.” | Active women often thrive on **higher protein** for satiety and training—[Protein Intake per Pound](/guides/protein-per-pound). |
-| “Carbs cause fat gain.” | **Surplus calories** drive weight gain; carbs support **performance**. |
-| “1200 calories is normal.” | Often too low to support strength—[Macros for Fat Loss](/guides/macros-for-fat-loss). |
+#### Myth: “Women need low protein.”
+**Reality:** Active women often thrive on **higher protein** for satiety and training—[Protein Intake per Pound](/guides/protein-per-pound).
+
+#### Myth: “Carbs cause fat gain.”
+**Reality:** **Surplus calories** drive weight gain; carbs support **performance**.
+
+#### Myth: “1200 calories is normal.”
+**Reality:** Often too low to support strength—[Macros for Fat Loss](/guides/macros-for-fat-loss).
 
 ## How to use the Macro Calculator
 
@@ -3251,11 +3290,14 @@ Macros are a **tool**, not a verdict on your worth—[Macro Tracker Burnout](/gu
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Men need bro-level protein only.” | Many men do well near **~0.8–1.0g/lb**—more is not always better—[Protein Intake per Pound](/guides/protein-per-pound). |
-| “Carbs make you fat.” | **Surplus calories** drive fat gain; carbs support **performance**. |
-| “I should cut and bulk weekly.” | Phase changes need **trends**—[Dad Bod to Athletic Truth](/guides/dad-bod-to-athletic-truth). |
+#### Myth: “Men need bro-level protein only.”
+**Reality:** Many men do well near **~0.8–1.0g/lb**—more is not always better—[Protein Intake per Pound](/guides/protein-per-pound).
+
+#### Myth: “Carbs make you fat.”
+**Reality:** **Surplus calories** drive fat gain; carbs support **performance**.
+
+#### Myth: “I should cut and bulk weekly.”
+**Reality:** Phase changes need **trends**—[Dad Bod to Athletic Truth](/guides/dad-bod-to-athletic-truth).
 
 ## How to use the Macro Calculator
 
@@ -3666,11 +3708,14 @@ If terminology is fuzzy, read [What Are Macros?](/guides/what-are-macros) and [H
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Skipping breakfast ‘speeds metabolism.’” | Meal timing mostly changes **appetite and convenience**, not magical burn rates. |
-| “IF means I don’t need to track.” | Short windows can still hold **very high-calorie** foods—oils, sweets, and snacks add up fast. |
-| “Carbs after 6 p.m. store as fat.” | **Daily intake** drives energy balance; late carbs can affect sleep and training for some people, but they are not a separate fuel tank. |
+#### Myth: “Skipping breakfast ‘speeds metabolism.’”
+**Reality:** Meal timing mostly changes **appetite and convenience**, not magical burn rates.
+
+#### Myth: “IF means I don’t need to track.”
+**Reality:** Short windows can still hold **very high-calorie** foods—oils, sweets, and snacks add up fast.
+
+#### Myth: “Carbs after 6 p.m. store as fat.”
+**Reality:** **Daily intake** drives energy balance; late carbs can affect sleep and training for some people, but they are not a separate fuel tank.
 
 ## How to use the Macro Calculator
 
@@ -3810,11 +3855,14 @@ Read [Macros for Fat Loss](/guides/macros-for-fat-loss) for deficit fundamentals
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “You must reverse or you’ll regain everything.” | Some people transition fine with a **planned jump** to maintenance—pick the approach you can execute. |
-| “Carbs refeed your metabolism.” | Carbs can restore **glycogen**, **training quality**, and **satiety signals**—useful, but not magical. |
-| “Add calories forever slowly.” | The point is an **endpoint**—maintenance or a controlled surplus—not infinite micro-bumps. |
+#### Myth: “You must reverse or you’ll regain everything.”
+**Reality:** Some people transition fine with a **planned jump** to maintenance—pick the approach you can execute.
+
+#### Myth: “Carbs refeed your metabolism.”
+**Reality:** Carbs can restore **glycogen**, **training quality**, and **satiety signals**—useful, but not magical.
+
+#### Myth: “Add calories forever slowly.”
+**Reality:** The point is an **endpoint**—maintenance or a controlled surplus—not infinite micro-bumps.
 
 ## How to use the Macro Calculator
 
@@ -3956,11 +4004,14 @@ If you are newer to macro vocabulary, read [What Are Macros?](/guides/what-are-m
 
 ## Myth vs reality (vegetarian edition)
 
-| Myth | Reality |
-|------|---------|
-| “Plants can’t be ‘complete’ enough for muscle.” | Total **daily** protein and training stimulus matter most; combine sources across meals. |
-| “You must eat tiny portions to lose fat.” | Fat loss is **calorie availability**, not portion theater—vegetarian diets can be very high calorie if oils and cheese creep in. |
-| “Smoothies and salads are automatically ‘macro friendly.’” | They can be **low protein and high sugar/fat** unless you design them like meals. |
+#### Myth: “Plants can’t be ‘complete’ enough for muscle.”
+**Reality:** Total **daily** protein and training stimulus matter most; combine sources across meals.
+
+#### Myth: “You must eat tiny portions to lose fat.”
+**Reality:** Fat loss is **calorie availability**, not portion theater—vegetarian diets can be very high calorie if oils and cheese creep in.
+
+#### Myth: “Smoothies and salads are automatically ‘macro friendly.’”
+**Reality:** They can be **low protein and high sugar/fat** unless you design them like meals.
 
 ## How to use the Macro Calculator
 
@@ -4095,12 +4146,17 @@ This guide pairs with Mediterranean-style programmatic pages in the app. If you 
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Mediterranean means low carb.” | Many traditional patterns are **moderate to high carb** from grains, beans, and fruit—**carbs are not the enemy**, energy balance is. |
-| “Olive oil is free calories.” | **1 tablespoon** is still a **meaningful** energy chunk—budget it like any fat source. |
-| “It’s automatically high protein.” | Protein still needs **anchors**—fish, poultry, Greek yogurt, legumes, smaller cheese portions. |
-| “Wine is part of the diet.” | Alcohol is **optional** and **caloric**—treat it like any other discretionary choice. |
+#### Myth: “Mediterranean means low carb.”
+**Reality:** Many traditional patterns are **moderate to high carb** from grains, beans, and fruit—**carbs are not the enemy**, energy balance is.
+
+#### Myth: “Olive oil is free calories.”
+**Reality:** **1 tablespoon** is still a **meaningful** energy chunk—budget it like any fat source.
+
+#### Myth: “It’s automatically high protein.”
+**Reality:** Protein still needs **anchors**—fish, poultry, Greek yogurt, legumes, smaller cheese portions.
+
+#### Myth: “Wine is part of the diet.”
+**Reality:** Alcohol is **optional** and **caloric**—treat it like any other discretionary choice.
 
 ## How Mediterranean macros differ from generic “clean eating”
 
@@ -4312,11 +4368,14 @@ See [High Protein Diet Macros](/guides/high-protein-diet-macros) for protein-hea
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “I need a new recipe daily.” | **Repeat** meals beat novelty for logging accuracy—[Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide). |
-| “Meal prep means Sunday misery.” | **One hour** of prep can cover **most** of the week if you keep meals boring on purpose—[15-Minute Macro Meal Prep](/guides/15-minute-macro-meal-prep-system). |
-| “If it fits macros, it fits life.” | **Context** still matters—alcohol, sleep, and stress affect adherence—[Alcohol and Macros](/guides/alcohol-and-macros). |
+#### Myth: “I need a new recipe daily.”
+**Reality:** **Repeat** meals beat novelty for logging accuracy—[Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide).
+
+#### Myth: “Meal prep means Sunday misery.”
+**Reality:** **One hour** of prep can cover **most** of the week if you keep meals boring on purpose—[15-Minute Macro Meal Prep](/guides/15-minute-macro-meal-prep-system).
+
+#### Myth: “If it fits macros, it fits life.”
+**Reality:** **Context** still matters—alcohol, sleep, and stress affect adherence—[Alcohol and Macros](/guides/alcohol-and-macros).
 
 ## Shift work and families (macro planning)
 
@@ -4612,12 +4671,17 @@ Read [What Are Macros?](/guides/what-are-macros) and [How to Calculate Macros](/
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Plants auto-lean you out.” | **Energy balance** still rules—vegan pastries and oils can out-eat a deficit. |
-| “You must combine amino acids every meal.” | **Daily variety** across legumes, grains, and soy usually suffices—**consistency** matters more than chemistry theater. |
-| “Nuts are a protein snack.” | Nuts are often **fat-first**—use them when fat grams fit, not as your primary protein strategy. |
-| “Protein powder is cheating.” | Powder is a **tool** for hitting grams when whole food is bulky or inconvenient. |
+#### Myth: “Plants auto-lean you out.”
+**Reality:** **Energy balance** still rules—vegan pastries and oils can out-eat a deficit.
+
+#### Myth: “You must combine amino acids every meal.”
+**Reality:** **Daily variety** across legumes, grains, and soy usually suffices—**consistency** matters more than chemistry theater.
+
+#### Myth: “Nuts are a protein snack.”
+**Reality:** Nuts are often **fat-first**—use them when fat grams fit, not as your primary protein strategy.
+
+#### Myth: “Protein powder is cheating.”
+**Reality:** Powder is a **tool** for hitting grams when whole food is bulky or inconvenient.
 
 ## Protein: density, distribution, and anchors
 
@@ -4783,11 +4847,14 @@ Start with the framework in [Macros for Fat Loss](/guides/macros-for-fat-loss) a
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “My metabolism crashed.” | **TDEE** moves with weight, steps, and training—often it is **math**, not mystery—[Activity Level, NEAT, and TDEE](/guides/activity-level-neat-tdee-macros). |
-| “I should keto harder.” | **Energy balance** drives fat loss; keto can help adherence for some—[Keto Macros Explained](/guides/keto-macros-explained). |
-| “More cardio is always the fix.” | Cardio raises **hunger** and **fatigue** for some—fix **intake accuracy** first—[Macro Mistakes Stalling Fat Loss](/guides/macro-mistakes-stalling-fat-loss). |
+#### Myth: “My metabolism crashed.”
+**Reality:** **TDEE** moves with weight, steps, and training—often it is **math**, not mystery—[Activity Level, NEAT, and TDEE](/guides/activity-level-neat-tdee-macros).
+
+#### Myth: “I should keto harder.”
+**Reality:** **Energy balance** drives fat loss; keto can help adherence for some—[Keto Macros Explained](/guides/keto-macros-explained).
+
+#### Myth: “More cardio is always the fix.”
+**Reality:** Cardio raises **hunger** and **fatigue** for some—fix **intake accuracy** first—[Macro Mistakes Stalling Fat Loss](/guides/macro-mistakes-stalling-fat-loss).
 
 ## Step 1: Confirm you are actually stalled
 
@@ -5168,11 +5235,14 @@ If deficits are new to you, read [Macros for Fat Loss](/guides/macros-for-fat-lo
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Refeeds fix hormones instantly.” | They can **support training and adherence**—they do not replace a **long-run calorie deficit** for fat loss. |
-| “A diet break means I failed.” | Breaks can be **planned maintenance**—useful psychology for long cuts. |
-| “Carbs make you gain fat overnight.” | Rapid scale jumps are often **water**, especially after raising carbs—context matters. |
+#### Myth: “Refeeds fix hormones instantly.”
+**Reality:** They can **support training and adherence**—they do not replace a **long-run calorie deficit** for fat loss.
+
+#### Myth: “A diet break means I failed.”
+**Reality:** Breaks can be **planned maintenance**—useful psychology for long cuts.
+
+#### Myth: “Carbs make you gain fat overnight.”
+**Reality:** Rapid scale jumps are often **water**, especially after raising carbs—context matters.
 
 ## How to use the Macro Calculator
 
@@ -5324,11 +5394,14 @@ For vocabulary, read [What Are Macros?](/guides/what-are-macros) and [How to Cal
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Vodka has no calories.” | Spirits have **alcohol calories** even when **carbs are low**—mixers add more. |
-| “I’ll burn it off tomorrow.” | **Compensation cardio** is a shaky strategy—**budgeting** beats panic movement. |
-| “Keto makes alcohol ‘free.’” | Alcohol still contributes **energy**—very-low-carb eating does not erase ethanol or sugary mixers. |
+#### Myth: “Vodka has no calories.”
+**Reality:** Spirits have **alcohol calories** even when **carbs are low**—mixers add more.
+
+#### Myth: “I’ll burn it off tomorrow.”
+**Reality:** **Compensation cardio** is a shaky strategy—**budgeting** beats panic movement.
+
+#### Myth: “Keto makes alcohol ‘free.’”
+**Reality:** Alcohol still contributes **energy**—very-low-carb eating does not erase ethanol or sugary mixers.
 
 ## How to use the Macro Calculator
 
@@ -5484,12 +5557,17 @@ Anchor your home baseline with [How to Calculate Macros](/guides/how-to-calculat
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Healthy restaurant options are low calorie.” | **Dressings, oils, and cheese** often dominate—salads and grain bowls are not automatically light. |
-| “I’ll log it tomorrow.” | **Tomorrow logging** is how weekends erase weekdays—[Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide) matters most when meals are messy. |
-| “My fitness pal says 400.” | **Kitchen variance** is real; use published numbers as **anchors**, not gospel. |
-| “I ruined the day.” | **Partial credit** exists—return to targets at the **next meal**, not next Monday. |
+#### Myth: “Healthy restaurant options are low calorie.”
+**Reality:** **Dressings, oils, and cheese** often dominate—salads and grain bowls are not automatically light.
+
+#### Myth: “I’ll log it tomorrow.”
+**Reality:** **Tomorrow logging** is how weekends erase weekdays—[Macro Tracking Accuracy](/guides/macro-tracking-accuracy-guide) matters most when meals are messy.
+
+#### Myth: “My fitness pal says 400.”
+**Reality:** **Kitchen variance** is real; use published numbers as **anchors**, not gospel.
+
+#### Myth: “I ruined the day.”
+**Reality:** **Partial credit** exists—return to targets at the **next meal**, not next Monday.
 
 ## The three levers: protein, oil, starch
 
@@ -5844,11 +5922,14 @@ Read [Macros for Fat Loss](/guides/macros-for-fat-loss) for the full playbook, t
 
 ## Myth vs reality (muscle-sparing cuts)
 
-| Myth | Reality |
-|------|---------|
-| “I must do fasted cardio to preserve muscle.” | **Total protein**, **strength training**, and **recovery** matter more than fasted labels. |
-| “BCAAs replace protein.” | **Food protein** usually wins—see [High Protein Diet Macros](/guides/high-protein-diet-macros). |
-| “If I eat enough protein, I cannot lose muscle.” | Very large deficits and very low energy availability raise risk—**context** matters. |
+#### Myth: “I must do fasted cardio to preserve muscle.”
+**Reality:** **Total protein**, **strength training**, and **recovery** matter more than fasted labels.
+
+#### Myth: “BCAAs replace protein.”
+**Reality:** **Food protein** usually wins—see [High Protein Diet Macros](/guides/high-protein-diet-macros).
+
+#### Myth: “If I eat enough protein, I cannot lose muscle.”
+**Reality:** Very large deficits and very low energy availability raise risk—**context** matters.
 
 ## How to use the Macro Calculator
 
@@ -6362,11 +6443,14 @@ Use [What Are Macros?](/guides/what-are-macros) for definitions, then read this 
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Fiber cancels carbs.” | You still log carbs **per your app rules**—net vs total depends on **strategy**—[Low Carb Diet Macros](/guides/low-carb-diet-macros). |
-| “More fiber always helps fat loss.” | **Total calories** still matter—some high-fiber bars are **calorie dense**—[Sugar, Desserts, and Macros](/guides/sugar-desserts-and-macros). |
-| “I need a fiber supplement.” | Food first; supplements **interact** with meds for some people—ask a clinician when needed. |
+#### Myth: “Fiber cancels carbs.”
+**Reality:** You still log carbs **per your app rules**—net vs total depends on **strategy**—[Low Carb Diet Macros](/guides/low-carb-diet-macros).
+
+#### Myth: “More fiber always helps fat loss.”
+**Reality:** **Total calories** still matter—some high-fiber bars are **calorie dense**—[Sugar, Desserts, and Macros](/guides/sugar-desserts-and-macros).
+
+#### Myth: “I need a fiber supplement.”
+**Reality:** Food first; supplements **interact** with meds for some people—ask a clinician when needed.
 
 ## Typical intake ranges (general adults)
 
@@ -6856,11 +6940,14 @@ Read [How to Calculate Macros](/guides/how-to-calculate-macros) for targets, the
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “My tracker says I’m under budget.” | **Databases** and **eyeballs** err—**trends** and **repeatable entries** matter—[Fat Loss Plateau](/guides/fat-loss-plateau-macros). |
-| “I don’t use much oil.” | **Two tablespoons** is easy to pour—log it—[Restaurant & Takeout Macros](/guides/restaurant-takeout-macros). |
-| “I eat clean so I don’t need scales.” | **Clean** is not grams—[What Are Macros?](/guides/what-are-macros). |
+#### Myth: “My tracker says I’m under budget.”
+**Reality:** **Databases** and **eyeballs** err—**trends** and **repeatable entries** matter—[Fat Loss Plateau](/guides/fat-loss-plateau-macros).
+
+#### Myth: “I don’t use much oil.”
+**Reality:** **Two tablespoons** is easy to pour—log it—[Restaurant & Takeout Macros](/guides/restaurant-takeout-macros).
+
+#### Myth: “I eat clean so I don’t need scales.”
+**Reality:** **Clean** is not grams—[What Are Macros?](/guides/what-are-macros).
 
 ## How to use the Macro Calculator
 
@@ -10039,16 +10126,29 @@ Higher protein improves satiety, protects lean mass in a deficit, supports recov
 
 ## Eight macro myths that keep women stuck
 
-| Myth | Reality |
-|------|---------|
-| "Women should eat ~1,200 calories." | That number is culturally sticky, not universal. Many active women need far more for training, hormones, and recovery—chronic under-eating plus hard training is a common stall pattern. |
-| "Carbs make you fat." | **Surplus calories** drive fat gain. Carbs within your targets fuel training and mood; they are not magically fat-storing. |
-| "Protein will make me bulky." | Bulk is **calories + time + intent** with progressive training—not a high-protein lunch. Most women under-eat protein; raising it usually improves shape, not unwanted size—[Lift Heavy, Not Tiny](/guides/women-heavy-lifting-not-bulky). |
-| "The scale is the best progress metric." | Weight swings 2–5+ lb from water, sodium, glycogen, digestion, and cycle timing—[Up 3 Pounds Overnight](/guides/women-scale-up-fat-down-explained). Use weekly/monthly trends plus waist, photos, and strength. |
-| "Hormones mean I cannot lose fat." | Hormones influence appetite and water; they do not erase energy balance. Medical conditions need clinicians—[Hormone Myths](/guides/women-fat-loss-hormone-myths) for culture vs nuance. |
-| "Cardio is the key to fat loss." | Cardio burns calories, but **composition** usually needs **strength + protein**—[Cardio Is Not Your Personality](/guides/women-cardio-not-enough-macros-strength). |
-| "Macro tracking means no 'fun' foods." | Flexible tracking budgets **daily totals**; quality still matters for health, but rigid moralizing is not required for progress. |
-| "Tracking is always obsessive." | It is a skill. If it harms your relationship with food, **simplify** before you quit entirely—[Macro Tracker Burnout](/guides/macro-tracker-burnout-guide). |
+#### Myth: "Women should eat ~1,200 calories."
+**Reality:** That number is culturally sticky, not universal. Many active women need far more for training, hormones, and recovery—chronic under-eating plus hard training is a common stall pattern.
+
+#### Myth: "Carbs make you fat."
+**Reality:** **Surplus calories** drive fat gain. Carbs within your targets fuel training and mood; they are not magically fat-storing.
+
+#### Myth: "Protein will make me bulky."
+**Reality:** Bulk is **calories + time + intent** with progressive training—not a high-protein lunch. Most women under-eat protein; raising it usually improves shape, not unwanted size—[Lift Heavy, Not Tiny](/guides/women-heavy-lifting-not-bulky).
+
+#### Myth: "The scale is the best progress metric."
+**Reality:** Weight swings 2–5+ lb from water, sodium, glycogen, digestion, and cycle timing—[Up 3 Pounds Overnight](/guides/women-scale-up-fat-down-explained). Use weekly/monthly trends plus waist, photos, and strength.
+
+#### Myth: "Hormones mean I cannot lose fat."
+**Reality:** Hormones influence appetite and water; they do not erase energy balance. Medical conditions need clinicians—[Hormone Myths](/guides/women-fat-loss-hormone-myths) for culture vs nuance.
+
+#### Myth: "Cardio is the key to fat loss."
+**Reality:** Cardio burns calories, but **composition** usually needs **strength + protein**—[Cardio Is Not Your Personality](/guides/women-cardio-not-enough-macros-strength).
+
+#### Myth: "Macro tracking means no 'fun' foods."
+**Reality:** Flexible tracking budgets **daily totals**; quality still matters for health, but rigid moralizing is not required for progress.
+
+#### Myth: "Tracking is always obsessive."
+**Reality:** It is a skill. If it harms your relationship with food, **simplify** before you quit entirely—[Macro Tracker Burnout](/guides/macro-tracker-burnout-guide).
 
 ## Fat loss with macros: a no-drama framework
 
@@ -12187,12 +12287,17 @@ Read the overview in [Protein-Sparing Modified Fasting](/guides/protein-sparing-
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “PSMF means zero fat.” | You still need **some** dietary fat for sanity and food culture—**minimal**, not absent, unless medically supervised otherwise. |
-| “More protein always equals more safety.” | Protein should track **lean mass and context**—absurd intakes can crowd out adherence without extra benefit. |
-| “If I feel flat, I should add random carbs.” | **Structured refeeds** beat panic carbs—see [PSMF Refeed Strategy](/guides/psmf-refeed-strategy). |
-| “The scale daily proves success.” | **Water and sodium** swing hard on aggressive plans—use **weekly trends** and **waist**—[Fat Loss Plateau](/guides/fat-loss-plateau-macros). |
+#### Myth: “PSMF means zero fat.”
+**Reality:** You still need **some** dietary fat for sanity and food culture—**minimal**, not absent, unless medically supervised otherwise.
+
+#### Myth: “More protein always equals more safety.”
+**Reality:** Protein should track **lean mass and context**—absurd intakes can crowd out adherence without extra benefit.
+
+#### Myth: “If I feel flat, I should add random carbs.”
+**Reality:** **Structured refeeds** beat panic carbs—see [PSMF Refeed Strategy](/guides/psmf-refeed-strategy).
+
+#### Myth: “The scale daily proves success.”
+**Reality:** **Water and sodium** swing hard on aggressive plans—use **weekly trends** and **waist**—[Fat Loss Plateau](/guides/fat-loss-plateau-macros).
 
 ## What “PSMF macros” means in plain terms
 
@@ -12535,12 +12640,17 @@ Anchor context first: [Protein-Sparing Modified Fasting](/guides/protein-sparing
 
 ## Myth vs reality
 
-| Myth | Reality |
-|------|---------|
-| “Refeed means eat whatever.” | **Structure** is what differentiates recovery from chaos—macros still exist. |
-| “Carbs will make me fat in one day.” | **Single days** rarely determine fat balance; **weeks** do—[Macros for Fat Loss](/guides/macros-for-fat-loss). |
-| “I need a refeed because I’m sad.” | **Psychology** matters, but **planned** beats **emotional** for physique goals. |
-| “I failed if the scale jumps.” | **Glycogen and sodium** can shift weight without changing weekly fat loss trends—[Fat Loss Plateau](/guides/fat-loss-plateau-macros). |
+#### Myth: “Refeed means eat whatever.”
+**Reality:** **Structure** is what differentiates recovery from chaos—macros still exist.
+
+#### Myth: “Carbs will make me fat in one day.”
+**Reality:** **Single days** rarely determine fat balance; **weeks** do—[Macros for Fat Loss](/guides/macros-for-fat-loss).
+
+#### Myth: “I need a refeed because I’m sad.”
+**Reality:** **Psychology** matters, but **planned** beats **emotional** for physique goals.
+
+#### Myth: “I failed if the scale jumps.”
+**Reality:** **Glycogen and sodium** can shift weight without changing weekly fat loss trends—[Fat Loss Plateau](/guides/fat-loss-plateau-macros).
 
 ## Refeed vs diet break vs “cheat”
 
