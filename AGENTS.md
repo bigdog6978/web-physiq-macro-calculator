@@ -2,7 +2,7 @@
 
 ## Macro Academy Article Template
 
-Academy articles **must** follow the rule in [`.cursor/rules/macro-academy-article-template.mdc`](.cursor/rules/macro-academy-article-template.mdc) (Cursor SEO template: briefing, keyword brief, structure prompt, meta block, checklist, topic table). Published guides still map into `lib/academy/articles.ts` (`slug`, `title`, `metaTitle`, `metaDescription`, `excerpt`, `heroIntro`, `body`, related slugs, dates, etc.).
+Academy articles **must** follow the rule in [`.cursor/rules/macro-academy-article-template.mdc`](.cursor/rules/macro-academy-article-template.mdc) (Cursor SEO template: **4-tier Physiq keyword strategy**, briefing, keyword brief, structure prompt, meta block, checklist, topic table, **`lib/academy/articles.ts`** registry, and **Macro Calculator** steps that mirror `components/MacroCalculator.tsx`). Published guides still map into `lib/academy/articles.ts` (`slug`, `title`, `metaTitle`, `metaDescription`, `excerpt`, `heroIntro`, `body`, related slugs, dates, etc.).
 
 The rule auto-attaches via globs when editing under `lib/academy/`, `**/articles.ts`, `app/guides/`, and `components/academy/`.
 

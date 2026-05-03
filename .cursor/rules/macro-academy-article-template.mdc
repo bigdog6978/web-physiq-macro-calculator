@@ -1,5 +1,5 @@
 ---
-description: SEO long-form article writing for Physiq Macro Academy — keyword brief, structure prompt, meta template, checklist, and topic table (Cursor AI workflow).
+description: SEO long-form Macro Academy writing — 4-tier Physiq keyword strategy, keyword brief, structure prompt, meta template, checklist, app registry notes, and Macro Calculator form parity (Cursor AI workflow).
 globs:
   - lib/academy/**
   - "**/articles.ts"
@@ -38,6 +38,8 @@ CALL TO ACTION:         [e.g. Use the free macro calculator at PhysiqMacros.com]
 ## SECTION 2: SEO KEYWORD BRIEF (Fill This Out)
 ## ═══════════════════════════════════════
 
+*Before listing keywords, classify intent using **SEO keyword tiers (Physiq strategy)** (next section). Pick terms by tier—do not paste every example into one article.*
+
 ### Primary (Short-Tail) Keywords — 5 to 10
 *These are 1–3 word high-volume terms to use throughout the article naturally.*
 
@@ -72,6 +74,50 @@ CALL TO ACTION:         [e.g. Use the free macro calculator at PhysiqMacros.com]
 2. [e.g. "How many hours should you fast?"]
 3. [e.g. "Does intermittent fasting work for women?"]
 ```
+
+---
+
+## ═══════════════════════════════════════
+## SEO keyword tiers (Physiq strategy)
+## ═══════════════════════════════════════
+
+Classify keywords **by search intent and competition**, then place them deliberately. Macro Academy guides are **not** the place to brute-force homepage “money” terms in every paragraph.
+
+### Tier 1 — Core money keywords (homepage & calculator)
+
+- **Role:** Highest volume / highest competition; protect the homepage, `/#calculator`, and primary product surfaces.
+- **Typical use in Academy:** **Sparingly**—primary Tier‑1 term in `metaTitle` / `title` **only** when the article truly matches that query; **one** natural mention in intro or closing CTA; otherwise link with descriptive anchor to **`/#calculator`** or the relevant **`/macros/...`** hub instead of repeating the phrase.
+- **Examples — “from search” (illustrative high-demand head terms):** macro calculator, free macro calculator, TDEE calculator, calorie calculator, calorie and macro calculator, macro calculator online, best free macro calculator.
+- **Examples — “recommended” / brand-aligned (support positioning, still competitive):** Physiq macro calculator, macro calculator app, macro tracking app, free macro calculator no signup, macro and calorie calculator for weight loss.
+- **Do not** treat either list as copy-paste boilerplate for every guide.
+
+### Tier 2 — Goal-based keywords (audience & phase)
+
+- **Role:** **Primary mapping for most Macro Academy articles**—fat loss, muscle gain, women/men, keto, high protein, cutting, recomp, PSMF calculator, maintenance, bulking, etc.
+- **Use:** Natural **H2/H3** targets where the section answers that intent; 1–2 in-body mentions where it reads human; align **`relatedMacroSlugs`** (and in-body links) with these intents—e.g. `cutting-macros`, `high-protein-macro-calculator`, `keto-macros`, `maintenance-macros`—**verify slugs exist** under `lib/seo/pages` or published guides before shipping.
+
+### Tier 3 — Long-tail / question keywords (high intent)
+
+- **Role:** Specific questions and “how to / what should I” queries; strong for snippets and depth.
+- **Use:** **Subheadings** or **FAQ** answers; **2–4 sentence** featured-snippet-style answers when the section genuinely resolves the query.
+- **Examples:** how do I calculate my macros, what macros should I eat to lose fat, intermittent fasting macros how to set them, fat loss plateau what to do with macros, PSMF diet what to eat, how much protein per pound when cutting, etc.
+
+### Tier 4 — Informational / Academy growth
+
+- **Role:** Definitions, education, comparisons, lifestyle framing; supports topical authority and **internal linking**.
+- **Use:** Explainers, “what is…”, myth vs reality, cross-links to other **`/guides/[slug]`** articles; language for **`tags`**, **`excerpt`**, and supporting paragraphs—not keyword stuffing.
+
+### Operational rules (per article)
+
+- **Pick:** **1 primary** keyword (usually **Tier 2** or **Tier 3** for guides), **3–6 secondary** terms (mix **Tier 3** questions + **Tier 4** support), and **≤2 Tier‑1 touches** unless the piece is **explicitly** calculator- or homepage-focused.
+- **Forbidden:** Pasting long tier lists into a single article; **keyword stuffing**; repeating the same Tier‑1 phrase in every section.
+- **Required mapping:** Chosen primary → **`metaTitle`**, **`metaDescription`**, first **~100 words** of **`body`** (or hero intro where used), and **at least one H2** that matches the promise; long-tails → **H2/H3** or **FAQ** **only** when that section **answers** the query.
+- **Internal links:** Tier‑2 intent should tie to real **`/macros/...`** and **`/guides/...`** paths; **confirm slugs** in the repo before merge.
+- **Tone / safety:** Unchanged—**general fitness education**; medical disclaimers and extra care for aggressive protocols (e.g. PSMF).
+
+### Source of truth (optional)
+
+- If the team maintains a **canonical keyword spreadsheet** or strategy doc, add one line in the article briefing: **Source of truth:** `[link or repo path]` — this rule **summarizes usage**; the spreadsheet may add/remove terms by quarter.
 
 ---
 
@@ -209,6 +255,7 @@ Follow this exact structure:
 ---
 
 **SEO REQUIREMENTS:**
+- Map keywords using **Physiq 4-tier strategy** (Tier 1 sparing; Tier 2 primary for most guides; Tier 3 questions in H2/H3/FAQ; Tier 4 education + internal links)—see rule section *SEO keyword tiers (Physiq strategy)*.
 - Primary keyword appears in: headline, first paragraph, at least one H2, meta description
 - Long-tail keywords used as: H2 or H3 subheadings where possible, naturally in body copy
 - Featured snippet targets answered directly and concisely (2 to 3 sentences max per answer)
@@ -278,6 +325,8 @@ FEATURED IMAGE ALT TEXT:
 *Run through this before publishing every article.*
 
 **SEO Checklist**
+- [ ] **Tier plan:** 1 primary (Tier 2 or 3 for most guides), 3–6 secondary (Tier 3 + Tier 4 mix), ≤2 Tier‑1 touches unless the article is explicitly calculator/homepage-focused
+- [ ] **No dump / no stuffing:** not repeating the same Tier‑1 phrase across sections; not pasting long example lists from the rule into the draft
 - [ ] Primary keyword in headline (first 5 words if possible)
 - [ ] Primary keyword in first paragraph
 - [ ] Primary keyword in at least one H2 subheading
@@ -332,6 +381,35 @@ FEATURED IMAGE ALT TEXT:
 | Fat Loss Plateau | Fat Loss Coach | "fat loss plateau" | "Why did my weight loss stop?" |
 | High Protein Diet | Sports Nutrition Expert | "high protein diet" | "How much protein do I need to lose weight?" |
 | Carb Cycling | Performance Nutrition Coach | "carb cycling" | "What is carb cycling and does it work?" |
+
+---
+
+## ═══════════════════════════════════════
+## Physiq Macro Academy — app registry & Macro Calculator accuracy
+## ═══════════════════════════════════════
+
+When shipping content into the **Next.js** app (not only a CMS draft), the canonical registry is **`lib/academy/articles.ts`**. Each published guide should include at minimum:
+
+- **`slug`**, **`title`**, **`metaTitle`**, **`metaDescription`**, **`excerpt`**, **`body`** (Markdown string), **`heroIntro`** (optional), **`categoryId`**, **`tags`**, **`publishedAt`**, **`updatedAt`**, **`author`**, **`status`** (`published` / `draft`), **`featured`** (optional), **`relatedGuideSlugs`**, **`relatedMacroSlugs`**.
+
+**`relatedGuideSlugs` / `relatedMacroSlugs`:** only **published** slugs that exist in the repo; align Tier‑2 intent with real **`/guides/...`** and **`/macros/...`** targets.
+
+### `## How to use the Macro Calculator` (must mirror the real form)
+
+If the article includes calculator walkthrough copy, the **numbered “in the calculator” steps** must follow the actual **`<form>`** in **`components/MacroCalculator.tsx`**—**UI order only** in the first subsection (e.g. `### In the calculator (follow the form)`). Do **not** invent a different field order.
+
+**Form order (must match the component top to bottom):**
+
+1. **Body Stats:** **Weight** (lb/kg), then **Height** (ft/in or cm)
+2. **Age** and optional **Body fat %** (same row as in the UI; helper: *“If you know your body fat %, we can calculate more accurate macros.”*)
+3. **Sex:** Male / Female
+4. **Goal:** Cut Fat, Build Muscle, Maintain, Body Recomposition (labels/descriptions per `GOALS` in the form)
+5. **Activity Level:** one option that matches an honest average week
+6. **Eating Style:** Standard, Mediterranean, Vegan, Vegetarian, Paleo, Keto, Carnivore, PSMF (Keto, Carnivore, PSMF change carb/fat logic; PSMF adds a large deficit vs TDEE—PSMF info icon + in-result / post-calculate notices when relevant)
+7. **Dietary Restrictions & Preferences:** toggles + optional “Other dietary notes”
+8. **Calculate Macros** → calorie + macro gram outputs
+
+Put **interpretation** (what the numbers mean, when to adjust, PSMF engine notes, etc.) under separate headings such as **`### After you calculate`**—not as fake calculator steps.
 
 ---
 
