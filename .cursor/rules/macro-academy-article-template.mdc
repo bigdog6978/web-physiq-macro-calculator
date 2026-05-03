@@ -1,5 +1,5 @@
 ---
-description: Macro Academy article structure — SEO, slugs, metadata, body outline, cross-links, quality gate.
+description: SEO long-form article writing for Physiq Macro Academy — keyword brief, structure prompt, meta template, checklist, and topic table (Cursor AI workflow).
 globs:
   - lib/academy/**
   - "**/articles.ts"
@@ -8,109 +8,332 @@ globs:
 alwaysApply: false
 ---
 
-# Macro Academy Article Template
+# CURSOR AI — SEO ARTICLE WRITING TEMPLATE
+### Based on: PhysiqMacros.com Content Style & Structure
+---
 
-You are writing for **Physiq Macro Academy** (Next.js app). Every article MUST follow this template.
-
-**Registry field names:** In `lib/academy/articles.ts`, the Markdown field is **`body`** (string). When drafting, you may call the full Markdown `bodyMarkdown` for clarity, but the shipped object must use **`body`**.
+> **HOW TO USE THIS TEMPLATE IN CURSOR**
+> Copy this entire file into Cursor. Replace every `[BRACKETED PLACEHOLDER]` with your specific topic details, then prompt your AI with:
+> *"Using the structure and instructions in this template, write me a full SEO article."*
 
 ---
 
-## 1) Purpose & audience
+## ═══════════════════════════════════════
+## SECTION 1: ARTICLE BRIEFING (Fill This Out First)
+## ═══════════════════════════════════════
 
-- One primary reader intent (e.g. “set macros for fat loss as a woman who lifts”).
-- Secondary intents become **links** to other guides, not new H2 sections that repeat the same thesis.
-- Tone: clear, non-clinical, **general fitness education**; flag medical conditions; no diagnosis or treatment claims.
-
----
-
-## 2) URL & slug
-
-- **Slug:** lowercase, hyphenated, descriptive, stable (`best-macros-for-women`). No dates, no marketing fluff.
-- Match slug to **title promise**; avoid clickbait that the body does not deliver.
-
----
-
-## 3) Title (viral + honest)
-
-- Pattern: **[Specific outcome or tension] + [Qualifier] + [Optional twist in parenthesis]**.
-- Must be true after reading the article; avoid “secret,” “doctors hate,” absolute cures.
-- Length: ~50–70 characters ideal for SERP; keep under ~65 where possible.
+```
+TOPIC:                  [e.g. Intermittent Fasting for Fat Loss]
+TARGET AUDIENCE:        [e.g. Women 25–45 trying to lose body fat]
+PRIMARY WEBSITE:        [e.g. www.physiqmacros.com]
+ARTICLE GOAL:           [e.g. Drive traffic to the macro calculator + educate on IF]
+WORD COUNT TARGET:      [e.g. 2,500–3,500 words]
+TONE:                   [e.g. Direct, science-backed, motivational, no-fluff]
+CALL TO ACTION:         [e.g. Use the free macro calculator at PhysiqMacros.com]
+```
 
 ---
 
-## 4) SEO metadata (fill every field)
+## ═══════════════════════════════════════
+## SECTION 2: SEO KEYWORD BRIEF (Fill This Out)
+## ═══════════════════════════════════════
 
-- **metaTitle:** Unique; includes primary keyword once; brand suffix if required (`| Physiq`).
-- **metaDescription:** 150–160 characters; **benefit + who it’s for + soft CTA** (calculator/guide); no duplicate of title.
-- **excerpt:** 1–2 sentences for cards/previews; distinct from metaDescription.
+### Primary (Short-Tail) Keywords — 5 to 10
+*These are 1–3 word high-volume terms to use throughout the article naturally.*
 
----
+```
+1. [e.g. intermittent fasting]
+2. [e.g. fat loss]
+3. [e.g. macro tracking]
+4. [e.g. calorie deficit]
+5. [e.g. high protein diet]
+6. [ADD MORE AS NEEDED]
+```
 
-## 5) Taxonomy
+### Secondary (Long-Tail) Keywords — 8 to 15
+*These are 4–8 word phrases that match specific search intent. Use as subheadings or naturally in body copy.*
 
-- **categoryId:** One academy category (e.g. `women`, `fat-loss`) — aligns with site IA (see `lib/academy/categories.ts`).
-- **tags:** 3–6 relevant tags; consistent naming with existing articles.
+```
+1. [e.g. how to do intermittent fasting for fat loss]
+2. [e.g. best intermittent fasting schedule for women]
+3. [e.g. intermittent fasting macros — how to set them]
+4. [e.g. does intermittent fasting preserve muscle mass]
+5. [e.g. intermittent fasting vs calorie counting for weight loss]
+6. [e.g. how to calculate macros with intermittent fasting]
+7. [e.g. intermittent fasting plateau — what to do next]
+8. [ADD MORE AS NEEDED]
+```
 
----
+### Featured Snippet Target Phrases
+*Phrases likely to trigger Google featured snippets — answer them directly in the article.*
 
-## 6) Article body structure (Markdown)
-
-- Article length **1400–2000 words**.
-
-**Order (do not shuffle without reason):**
-
-1. **Hero intro (1 short paragraph)** — promise + constraint (what this is / isn’t). Often maps to **`heroIntro`** in the registry (falls back to excerpt if omitted).
-2. **Problem framing** — 1–2 short paragraphs OR **one** tight “Key links” box (max 3–5 bullets), not a wall of bold one-liners.
-3. **Core teaching** — tables/steps only where they improve scannability (Myth vs Reality, numbered steps).
-4. **Implementation** — calculator usage, ranges, **when to adjust** (trends, not single days).
-   - **`## How to use the Macro Calculator` (and close variants):** Must mirror the real **`<form>`** in `components/MacroCalculator.tsx`. **First subsection = UI steps only** (`### In the calculator (follow the form)`): body stats (weight, height, age; optional body fat % with the form’s accuracy line if useful), **Sex** (Male / Female), **Goal** (Cut Fat, Build Muscle, Maintain, Body Recomposition), **Activity level** (honest average week), **Eating style** (note keto / carnivore / PSMF carb–fat logic), **Dietary restrictions & preferences** (toggles + optional other notes), then **Calculate Macros** → calorie + macro gram outputs. **Do not** present manual “set protein, then fat %, then carbs” as numbered *calculator* steps—that is interpretation, not the form. Put interpretation under separate headings (e.g. `### After you calculate`, `### Understanding your numbers`).
-5. **FAQ** — **one** consolidated FAQ section (group by theme); no “FAQ part 2/3/4” unless truly distinct audiences.
-6. **Closing** — one paragraph + **one** primary CTA (e.g. Macro Calculator).
-7. **Related** — handled by `relatedGuideSlugs` / `relatedMacroSlugs` + short “Next reads” list in body; **avoid** duplicating the same idea in 10+ `## Appendix:` blocks.
-
-**Forbidden patterns:**
-
-- Dozens of parallel `## Appendix:` sections that repeat the same thesis.
-- Multiple fragmented FAQ blocks with overlapping questions.
-- Long chains of “phrase—[link]” without prose context.
-
----
-
-## 7) Cross-links & internal linking
-
-- **relatedGuideSlugs:** 5–8 guides — **highest relevance** only (published slugs only).
-- **relatedMacroSlugs:** 5–8 macro program pages/calculators — match user phase (slugs must exist under the project’s SEO macro pages).
-- **In-body links:** 1–2 per major section max; prefer **contextual** sentences over link stacks.
-- Every cross-link must answer: “Would the reader need this **now** or should it be sidebar only?”
+```
+1. [e.g. "What is intermittent fasting?"]
+2. [e.g. "How many hours should you fast?"]
+3. [e.g. "Does intermittent fasting work for women?"]
+```
 
 ---
 
-## 8) Dates & authorship
+## ═══════════════════════════════════════
+## SECTION 3: ARTICLE STRUCTURE PROMPT
+## ═══════════════════════════════════════
 
-- **publishedAt** / **updatedAt:** ISO dates (`YYYY-MM-DD`); **updatedAt** when meaningfully revised.
-- **author:** Consistent house name unless byline is real.
-- **status:** `"published"` | `"draft"`; **featured** optional for hub.
-
----
-
-## 9) Quality gate (before ship)
-
-- [ ] Title ↔ body promise aligned
-- [ ] Meta unique vs other articles
-- [ ] No duplicate FAQ answers
-- [ ] Medical/high-risk topics disclaimed once, visibly
-- [ ] Primary CTA clear
-- [ ] Slug readable in isolation
+*Paste this block into Cursor with your topic filled in:*
 
 ---
 
-## Output format when asked to “draft an article”
+### CURSOR PROMPT — PASTE THIS:
 
-Provide YAML or a bullet list of all fields the app expects, then the full Markdown body.
+```
+You are an expert SEO copywriter and [NICHE EXPERT ROLE — e.g. fitness nutrition coach].
 
-**Include at minimum:**
+Write a long-form SEO article about [TOPIC] for [TARGET AUDIENCE].
 
-`slug`, `title`, `metaTitle`, `metaDescription`, `excerpt`, `categoryId`, `tags`, `heroIntro`, `body` (or draft label `bodyMarkdown` — must become **`body`** in `articles.ts`), `relatedGuideSlugs`, `relatedMacroSlugs`, `publishedAt`, `updatedAt`, `author`, `status` (and `featured` if used).
+Follow this exact structure:
 
-Then output the full Markdown for **`body`**, following the section order and forbidden patterns above.
+---
+
+**STRUCTURE TO FOLLOW:**
+
+[HEADLINE]
+- Format: "[Topic]: [Bold Claim or Promise] — [Credibility Hook]"
+- Include the primary keyword in the first 5 words
+- Make it emotionally compelling and specific
+- Example: "PSMF: The Extreme Fat Loss Protocol Everyone's Whispering About — And the Science Behind Why It Works"
+
+[OPENING HOOK — 2 to 3 paragraphs]
+- Start with a relatable frustration or common failure the audience has experienced
+- Do NOT start with "I" or a compliment
+- Build tension before introducing the solution
+- Transition: "Here's what no one told you:" or similar pattern
+- Introduce the topic as the solution in the third paragraph
+
+[WHAT IS [TOPIC]? — Definition Section]
+- Clear, plain-language definition in the first paragraph
+- Include the history or origin if it adds credibility (researcher, institution, decade)
+- Explain the core mechanism in simple terms
+- Bold the key term on first use
+- Include 1 citation or source reference if available
+
+[HOW IT WORKS — The Science Section]
+- Subheading: "The Science Behind [Topic]: Why It Works"
+- Break into 3 to 5 sub-points, each with a bold subheading
+- Lead each sub-point with what the research shows
+- Use this citation format inline: (Source, Year) or "According to [Source]..."
+- Translate scientific language into plain English immediately after citing it
+- Minimum 2 cited studies or credible sources
+
+[BENEFITS — Results-Focused Section]
+- Subheading: "The Benefits of [Topic]: What You Can Realistically Expect"
+- 4 to 6 benefit statements
+- Each benefit: bold the outcome, then explain the mechanism in 2 to 3 sentences
+- Be honest — do not overclaim. Use words like "may," "research suggests," "most people report"
+- Where possible, add a timeframe ("visible changes within 1–2 weeks," "within 30 days")
+
+[RISKS & DOWNSIDES — Credibility Section]
+- Subheading: "The Risks of [Topic]: What You Must Not Ignore"
+- This section MUST be included — it builds trust and credibility
+- 4 to 6 risks, each with a bold subheading
+- Be direct and honest about severity
+- For each risk: name it, explain why it happens, explain how to mitigate it
+- Include a note about who is most at risk
+
+[HOW TO DO IT CORRECTLY — Actionable Section]
+- Subheading: "How to [Do Topic] Correctly: Precision Over Guesswork"
+- Numbered step-by-step walkthrough (Step 1, Step 2, etc.)
+- Reference [PRIMARY WEBSITE] as a free tool at the appropriate step
+- Explain exactly what the tool does and why it matters here
+- Include any app, calculator, or resource available at the site
+
+[SAMPLE DAY / EXAMPLE — Practical Section]
+- Subheading: "A Sample [Topic] Day (Simple Version)"
+- Meal-by-meal or time-block-by-time-block example
+- Keep it realistic and achievable
+- Call out what makes each choice correct for the protocol
+
+[WHO IT'S FOR / WHO IT'S NOT FOR — Audience Qualifier]
+- Two-column style or two clearly labeled paragraphs
+- "Best for:" — 3 to 5 bullet points
+- "Not appropriate for:" — 3 to 5 bullet points
+- Be direct and specific (not vague)
+
+[COMPARISON TABLE — SEO Featured Snippet Target]
+- Compare the topic against 2 to 3 alternatives
+- Columns: Protocol | Calorie Level | Key Macro | Best For | Difficulty
+- Use a markdown table
+- This targets Google comparison search snippets
+
+[MYTHS / MISTAKES SECTION — Optional but High-Value]
+- Include if there are 3+ common misconceptions about the topic
+- Format: "Myth #1: [Myth Statement]" followed by "The Truth: [Correction]"
+- Cite research where available
+- Keep each myth rebuttal to 2 to 4 sentences
+
+[PRACTICAL TIPS FOR SUCCESS]
+- Subheading: "Practical Tips for [Doing Topic Successfully]"
+- 5 to 8 actionable tips in bold-lead format
+- Each tip: bold the key instruction, then explain why in 1 to 2 sentences
+- Include at least one tip about tracking/logging that references [PRIMARY WEBSITE]
+
+[CONCLUSION / FINAL TAKE]
+- 2 to 3 paragraphs
+- Restate the core promise (what the reader can achieve)
+- Acknowledge it's not magic — it requires precision and consistency
+- End with a direct call to action linking to [PRIMARY WEBSITE]
+- Final line should be punchy and memorable
+
+[SCIENTIFIC REFERENCES]
+- List all cited sources in numbered format
+- Include: Author, Year, Title, Publication, URL or DOI if available
+- Minimum 3 citations for credibility
+
+[MEDICAL / LEGAL DISCLAIMER]
+- Always include for health, fitness, nutrition, and medical topics
+- Cover: not medical advice, consult physician, specific contraindications relevant to the topic
+- Format as a blockquote or clearly separated section at the end
+
+---
+
+**WRITING STYLE RULES:**
+- Tone: [TONE — e.g. Direct, intelligent, motivational, no-fluff, science-backed]
+- Reading level: Accessible — write for a smart non-expert, not an academic
+- Sentence variety: Mix short punchy sentences with longer explanatory ones
+- Avoid: Filler phrases ("In conclusion," "It goes without saying," "As we all know")
+- Avoid: Overclaiming or hyperbole ("guaranteed," "miracle," "never fails")
+- Use: Power words — precision, structure, evidence, results, protocol, discipline
+- Formatting: Use H2 for main sections, H3 for sub-points, bold for key terms and benefit/risk headers
+- Links: Hyperlink [PRIMARY WEBSITE] naturally 4 to 8 times — at the tool mention, in the how-to, in practical tips, and in the CTA
+- Every section should answer a question someone would type into Google
+
+---
+
+**SEO REQUIREMENTS:**
+- Primary keyword appears in: headline, first paragraph, at least one H2, meta description
+- Long-tail keywords used as: H2 or H3 subheadings where possible, naturally in body copy
+- Featured snippet targets answered directly and concisely (2 to 3 sentences max per answer)
+- Include at least one comparison table (targets comparison search queries)
+- Internal link anchor text: use descriptive phrases, not "click here"
+- Meta description: Write one at the end — 150 to 160 characters, includes primary keyword and a click trigger
+
+---
+
+**SOURCES TO RESEARCH AND CITE:**
+[LIST ANY KNOWN SOURCES OR INSTRUCT THE AI:]
+- Search PubMed for clinical studies on [TOPIC]
+- Reference Healthline, WebMD, or peer-reviewed journals for risk information
+- Cite the primary website [PRIMARY WEBSITE] as an educational resource
+- [ANY SPECIFIC SOURCES YOU WANT INCLUDED]
+
+---
+
+Now write the full article following this structure exactly.
+Topic: [TOPIC]
+Target Audience: [TARGET AUDIENCE]
+Primary Website to Reference: [PRIMARY WEBSITE]
+Tone: [TONE]
+Word Count: [WORD COUNT TARGET]
+```
+
+---
+
+## ═══════════════════════════════════════
+## SECTION 4: META DATA TEMPLATE
+## ═══════════════════════════════════════
+
+*Fill this out after the article is written. Use for WordPress, Webflow, or any CMS.*
+
+```
+TITLE TAG (50–60 chars):
+[e.g. PSMF Diet Guide: Rapid Fat Loss Protocol Explained]
+
+META DESCRIPTION (150–160 chars):
+[e.g. What is PSMF? Learn how the Protein Sparing Modified Fast works, its benefits, risks, and how to calculate your macros free at PhysiqMacros.com]
+
+FOCUS KEYWORD:
+[e.g. PSMF diet]
+
+SECONDARY KEYWORDS (comma separated):
+[e.g. protein sparing modified fast, PSMF macros, rapid fat loss protocol]
+
+SLUG (URL path):
+[e.g. /psmf-protein-sparing-modified-fast-guide]
+
+CATEGORY:
+[e.g. Fat Loss / Nutrition Protocols]
+
+TAGS:
+[e.g. PSMF, fat loss, macro tracking, high protein diet, calorie deficit]
+
+FEATURED IMAGE ALT TEXT:
+[e.g. Meal prep containers with lean protein and vegetables for PSMF diet plan]
+```
+
+---
+
+## ═══════════════════════════════════════
+## SECTION 5: ARTICLE QUALITY CHECKLIST
+## ═══════════════════════════════════════
+
+*Run through this before publishing every article.*
+
+**SEO Checklist**
+- [ ] Primary keyword in headline (first 5 words if possible)
+- [ ] Primary keyword in first paragraph
+- [ ] Primary keyword in at least one H2 subheading
+- [ ] Long-tail keywords used as subheadings or naturally in body copy
+- [ ] Featured snippet questions answered directly and concisely
+- [ ] Comparison table included (targets Google comparison snippets)
+- [ ] Meta title written (50–60 characters)
+- [ ] Meta description written (150–160 characters, includes keyword + click trigger)
+- [ ] URL slug is short, keyword-rich, and hyphenated
+- [ ] Internal links to other relevant articles (if available)
+- [ ] External links to credible sources open in new tab
+
+**Content Checklist**
+- [ ] Opens with a hook that addresses the reader's frustration or goal
+- [ ] Includes a clear definition section (answers "what is [topic]?")
+- [ ] Science/research section includes minimum 2 cited sources
+- [ ] Benefits section is honest — no overclaiming
+- [ ] Risks section is included and thorough (builds credibility)
+- [ ] Step-by-step how-to section is actionable and specific
+- [ ] Primary website referenced and linked 4–8 times contextually
+- [ ] Comparison table included
+- [ ] Practical tips section included
+- [ ] Strong, action-oriented conclusion with CTA
+- [ ] Scientific references listed
+- [ ] Medical/legal disclaimer included (for health topics)
+
+**Readability Checklist**
+- [ ] No paragraphs longer than 4–5 lines
+- [ ] Mix of short punchy sentences and longer explanatory ones
+- [ ] No filler phrases or weak openers
+- [ ] Key terms bolded on first use
+- [ ] Subheadings every 200–300 words to break up long sections
+- [ ] Read aloud test: does it sound like a smart human wrote it?
+
+---
+
+## ═══════════════════════════════════════
+## SECTION 6: TOPIC-SPECIFIC CUSTOMIZATION EXAMPLES
+## ═══════════════════════════════════════
+
+*Swap these in when writing articles on different PhysiqMacros topics:*
+
+| Article Topic | Niche Expert Role | Primary Keyword | Featured Snippet Target |
+|---|---|---|---|
+| PSMF Protocol | Fitness Nutrition Coach | "PSMF diet" | "What is PSMF?" |
+| Macros for Women | Women's Health & Fitness Expert | "best macros for women" | "How do I calculate my macros?" |
+| Body Recomposition | Strength & Physique Coach | "body recomposition" | "Can you lose fat and gain muscle?" |
+| Intermittent Fasting Macros | Performance Nutrition Expert | "intermittent fasting macros" | "How to set macros for intermittent fasting?" |
+| Lean Bulk Strategy | Muscle Building Coach | "lean bulk macros" | "How do I bulk without gaining fat?" |
+| Macro Tracking Basics | Nutrition Education Expert | "macro tracking" | "What is macro tracking?" |
+| Keto Macros | Ketogenic Diet Expert | "keto macro calculator" | "How do I calculate keto macros?" |
+| Fat Loss Plateau | Fat Loss Coach | "fat loss plateau" | "Why did my weight loss stop?" |
+| High Protein Diet | Sports Nutrition Expert | "high protein diet" | "How much protein do I need to lose weight?" |
+| Carb Cycling | Performance Nutrition Coach | "carb cycling" | "What is carb cycling and does it work?" |
+
+---
+
+*Template built from PhysiqMacros.com article series. Use with Cursor AI or any AI writing tool.*
+*Primary resource to reference in all articles: [www.physiqmacros.com](https://www.physiqmacros.com)*

@@ -20,7 +20,7 @@ export function ArticleBody({ markdown }: ArticleBodyProps) {
         [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5
         [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5
         [&_blockquote]:border-l-2 [&_blockquote]:border-primary/50 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground/90
-        [&_img]:my-6 [&_img]:block [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:border [&_img]:border-card-border/60
+        [&_img]:my-4 [&_img]:block [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:border [&_img]:border-card-border/60
       "
     >
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>

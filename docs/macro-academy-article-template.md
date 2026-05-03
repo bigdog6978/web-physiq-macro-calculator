@@ -1,7 +1,7 @@
-# Macro Academy Article Template
+# Macro Academy — SEO article template (Cursor)
 
-The canonical, maintained copy of the **Macro Academy Article Template** (purpose, slugs, SEO, body structure, cross-links, quality gate, and draft output format) lives in:
+The **canonical** instructions for long-form SEO articles (briefing, keyword brief, structure prompt, meta template, checklist, topic table) live in:
 
 **[`.cursor/rules/macro-academy-article-template.mdc`](../.cursor/rules/macro-academy-article-template.mdc)**
 
-For workflow context (where files live in the repo), see also [`MACRO_ACADEMY.md`](./MACRO_ACADEMY.md).
+That rule attaches when editing `lib/academy/**`, `**/articles.ts`, `app/guides/**`, or `components/academy/**`. For repo layout and workflow, see [`MACRO_ACADEMY.md`](./MACRO_ACADEMY.md).
