@@ -13961,7 +13961,7 @@ If you want targets that match your body, goal, and activity, run your numbers i
     ],
     heroIntro:
       "The viral fat loss protocol that Harvard researchers, keto doctors, and everyday people are using to break through plateaus, reset metabolism, and ignite body transformation — and how to use it as the launch pad to long-term results.",
-    featuredImage: "/images/sardine_diet.png",
+    featuredImage: "/images/sardine_diet1.png",
     featuredImageAlt:
       "Canned sardines as a short-term fat loss reset protocol with macro tracking follow-through",
     body: `# Nobody Wanted to Hear About Sardines. Then the Science Showed Up.
