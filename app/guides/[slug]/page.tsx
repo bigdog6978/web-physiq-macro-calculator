@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/academy/ArticleBody";
@@ -34,6 +35,10 @@ export async function generateMetadata({
   const url = `${BASE_URL}/guides/${slug}`;
   const title = article.metaTitle ?? `${article.title} | Physiq`;
   const description = article.metaDescription ?? article.excerpt;
+  const socialImagePath = article.ogImage ?? article.featuredImage;
+  const socialImageUrl = socialImagePath
+    ? `${BASE_URL}${socialImagePath.startsWith("/") ? "" : "/"}${socialImagePath}`
+    : undefined;
 
   return {
     title,
@@ -46,11 +51,13 @@ export async function generateMetadata({
       type: "article",
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
+      ...(socialImageUrl ? { images: [{ url: socialImageUrl }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      ...(socialImageUrl ? { images: [socialImageUrl] } : {}),
     },
     robots: { index: true, follow: true },
   };
@@ -70,6 +77,13 @@ function articleJsonLd(
     author: article.author
       ? { "@type": "Person", name: article.author }
       : { "@type": "Organization", name: "Physiq" },
+    ...(article.featuredImage
+      ? {
+          image: `${BASE_URL}${
+            article.featuredImage.startsWith("/") ? "" : "/"
+          }${article.featuredImage}`,
+        }
+      : {}),
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 }
@@ -161,6 +175,18 @@ export default async function AcademyGuidePage({
             {article.title}
           </h1>
           <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{intro}</p>
+          {article.featuredImage ? (
+            <div className="mt-6 overflow-hidden rounded-lg border border-card-border/60 bg-card">
+              <Image
+                src={article.featuredImage}
+                alt={article.featuredImageAlt ?? ""}
+                width={1200}
+                height={675}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
+          ) : null}
           <p className="mt-3 text-xs text-muted-foreground">
             Updated {article.updatedAt}
             {article.author ? ` · ${article.author}` : ""}

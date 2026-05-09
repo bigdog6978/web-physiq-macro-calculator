@@ -20,6 +20,11 @@ export interface AcademyArticle {
   author?: string;
   /** Shown under the title; falls back to excerpt */
   heroIntro?: string;
+  /** Public URL path under `public/` (e.g. `/images/hero.png`) */
+  featuredImage?: string;
+  featuredImageAlt?: string;
+  /** Open Graph / social image path; defaults to `featuredImage` when omitted */
+  ogImage?: string;
   body: string;
   relatedGuideSlugs?: string[];
   relatedMacroSlugs?: string[];
